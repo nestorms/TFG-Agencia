@@ -12,15 +12,21 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nombre',
+        'apellidos',
         'email',
         'password',
+        'rol',
+        'telefono',
+
     ];
 
     /**
@@ -42,4 +48,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function setPasswordAttribute($value){ //La funcion ha de llamarse así para que Laravel y Eloquent lo entienda --> set + nombre atributo + Attribute
+        $this->attributes['password'] = bcrypt($value);
+    }
 }
