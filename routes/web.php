@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
+use Illuminate\Auth\Events\Login;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,13 @@ use \App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::view('/','index');
 
+
+/********************   INICIO DE SESIÓN ********************/
 Route::get('/registro', [UserController::class,'registro']);
-
 Route::post('/registro', [UserController::class,'store']);
+
+//Route::view('/login', 'login');
+Route::get('/login', [UserController::class,'login']);
+Route::post('/login', [UserController::class,'login']);
