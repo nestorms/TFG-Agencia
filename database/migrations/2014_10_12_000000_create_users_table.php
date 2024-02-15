@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('password');
             $table->string('rol');
             $table->string('telefono',9)->nullable();
+            $table->string('empresa')->nullable();
+            $table->string('enlace')->nullable();
+            $table->text('bio')->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });
