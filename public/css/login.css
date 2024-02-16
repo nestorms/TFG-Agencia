@@ -1,0 +1,52 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color:lightyellow;
+}
+
+/* Contenedor del logo */
+.logo-container {
+    margin-bottom: 20px; /* Espacio entre el logo y el formulario */
+}
+
+/* Estilos para la imagen del logo */
+.logo-container img {
+    max-width: 90%;
+    height: auto;
+}
+
+/* Estilos para el formulario */
+.form-signin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Centra verticalmente en la pantalla */
+   
+}
+
+/* Estilos para el formulario */
+.form-signin form {
+    max-width: 400px;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+form h1{
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.separator{
+    border: none;
+    border-top: 1px solid black; /* Establece el estilo de la línea separadora */
+    margin-top: 20px auto; /* Ajusta el margen para centrar la línea */
+    width: 100%; /* Ajusta el ancho de la línea */
+}
+
+p{
+    margin-bottom: 0px;
+    color: grey;
+}

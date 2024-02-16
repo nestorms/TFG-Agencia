@@ -1,49 +1,50 @@
 @extends('layouts.base')
 @section('title', 'Inicio')
+@section('estilos')
+
+@endsection
 
 @section('content')
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:lightgrey; padding:0.2rem;">
-        <div class="container align-items-center">
-            <!-- Logo -->
-            <a class="navbar-brand" href="#">
-                <img src="{{ asset('images/logo.png') }}" alt="Newstor Logo" style="width: auto; height: 5rem;">
-            </a>
-            <!-- Barra de búsqueda -->
-            <form class="d-flex mx-auto" >
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
-            <div class="d-flex justify-content-end align-items-center">
-                <div class="mx-3">
-                    <a href="#">
-                        <img src="{{ asset('images/bell.png') }}" alt="Notificaciones" class="img-fluid" style="width: auto; height: 25px;">
-                    </a>
-                </div>
-                <div class="mx-3">
-                    <a href="#">
-                        <img src="{{ asset('images/message.png') }}" alt="Mensajes" class="img-fluid" style="width: auto; height: 30px;">
-                    </a>
+<h1>Pagina principal Newstor</h1>
+
+<div class="container" style="max-width: 800px;">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{{ asset('images/coparey.jpg') }}" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="color: white;">Título de la Noticia 1</h5>
+                    <p>Descripción de la Noticia 1</p>
                 </div>
             </div>
-            <div class="dropdown" style="color: black; margin-left:7rem;">
-                <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="align-items-center" style="color:black;">
-                        <img src="{{ asset('images/profile.png') }}" alt="Perfil" class="img-fluid" style="width: auto; height: 3rem;">
-                        <i class="bi bi-caret-down-fill"></i> <!-- Flecha -->
-                        <p>Néstor</p>
-                    </div>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Mi perfil</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
-                </ul>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{{ asset('images/profile.png') }}" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Título de la Noticia 2</h5>
+                    <p>Descripción de la Noticia 2</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{{ asset('images/bell.png') }}" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Título de la Noticia 3</h5>
+                    <p>Descripción de la Noticia 3</p>
+                </div>
             </div>
         </div>
-    </nav>
-</header>
-<div>
-    <h1>Página principal Newstor</h1>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 </div>
 @endsection

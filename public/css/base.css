@@ -1,0 +1,25 @@
+/* Estilos adicionales */
+.navbar {
+    background-color: #333; /* Color de fondo de la barra de navegación */
+    padding: 0;
+    width: 100%;
+}
+
+.navbar-nav .nav-link {
+    color: white; /* Color del texto */
+    font-size: 1.5rem; /* Tamaño de la fuente */
+    margin-right: 5rem; /* Espacio entre elementos de la barra de navegación */
+    margin-left: 5rem;
+}
+
+.navbar-nav .nav-link {
+    color: white; /* Color del texto */
+    font-size: 1.5rem; /* Tamaño de la fuente */
+    margin-right: 5rem; /* Espacio entre elementos de la barra de navegación */
+    margin-left: 5rem;
+}
+
+.navbar-nav .nav-item:hover {
+    background-color: #555; /* Cambia el color de fondo al pasar el ratón por encima */
+    border-radius: 10px;
+}
