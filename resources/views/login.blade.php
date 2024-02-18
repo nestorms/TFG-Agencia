@@ -40,6 +40,12 @@
             @csrf   
             <h1>Iniciar sesión</h1>
 
+            @if ($errors->has('message'))
+                <div class="alert alert-danger">
+                    <strong>{{ $errors->first('message') }}</strong>
+                </div>
+            @endif
+
             <!-- Campo de Correo Electrónico -->
             <div class="form-group form-floating mb-3">
                 <input type="text" class="form-control" name="email" placeholder="Correo electrónico" required="required" autofocus>

@@ -25,7 +25,15 @@ class UserController extends Controller
 
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:5']);
+            'password' => 'required|min:5'],
+            [
+                'email.required' => 'El campo email es requerido',
+                'email.email' => 'El email debe ser una dirección de correo válida',
+                'password.required' => 'El campo contraseña es requerido',
+                'password.min' => 'La contraseña debe tener al menos :min caracteres'
+            ]);
+
+        $credentials = $request->only('email', 'password');
 
         if(!Auth::validate($credentials)){
             return redirect('/login')->withErrors([
@@ -43,7 +51,6 @@ class UserController extends Controller
     public function logout(){
         
         Session::flush();
-        
         Auth::logout();
 
         return redirect('/');

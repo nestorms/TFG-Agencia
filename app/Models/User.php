@@ -31,6 +31,19 @@ class User extends Authenticatable
 
     ];
 
+
+    //Los redactores pueden tener varias noticias asociadas
+    public function noticias_redactor()
+    {
+        return $this->hasMany(Noticia::class);
+    }
+
+    //Los medios pueden tener seleccionadas muchas noticias
+    public function noticias_medio()
+    {
+        return $this->belongsToMany(Noticia::class, 'user_noticia', 'user_id', 'noticia_id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

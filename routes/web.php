@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NoticiaController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\Login;
@@ -26,3 +27,7 @@ Route::view('/login', 'login');
 Route::post('/login', [UserController::class,'login']);
 
 Route::get('/logout', [UserController::class,'logout']);
+
+
+/********************   NOTICIAS  ********************/
+Route::get('/', [NoticiaController::class,'show']);

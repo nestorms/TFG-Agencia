@@ -35,5 +35,17 @@ class DatabaseSeeder extends Seeder
             'enlace' => 'chiringuitojugones.com',
             
         ]);
+
+        User::create([
+            'nombre' => 'Migue',
+            'email' => 'migue@ex.com',
+            'password' => 'migue1234',
+            'rol' => 'medio',
+            'apellidos' => 'Rosado García',
+            'empresa' => 'Princess',
+            'telefono' => '675433628',
+            'enlace' => 'noticiasprincesa.com',
+            
+        ]);
     }
 }

@@ -26,13 +26,53 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->text('descripcion');
+            $table->text('palabras_clave')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('noticias', function (Blueprint $table) {
+            $table->id();
+            $table->string('titulo');
+            $table->text('descripcion');
+            $table->text('contenido');
+            $table->string('foto');
+            $table->text('palabras_clave')->nullable();
+            $table->integer('likes');
+            $table->time('hora');
+            $table->date('fecha');
+            $table->foreignId('categoria_id')->constrained('categories');
+            $table->foreignId('redactor_id')->constrained('users');
+            $table->timestamps();
+        });
+
+        
+
+        Schema::create('user_noticia', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('noticia_id');
+            $table->timestamps();
+        
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('noticia_id')->references('id')->on('noticias')->onDelete('cascade');
+            $table->primary(['user_id', 'noticia_id']);
+        });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations
      */
     public function down(): void
     {
+        Schema::dropIfExists('categories');
+        Schema::dropIfExists('user_noticia');
+        Schema::dropIfExists('noticias');
         Schema::dropIfExists('users');
+        
+        
     }
 };
