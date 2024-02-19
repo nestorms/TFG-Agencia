@@ -5,6 +5,9 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use \App\Models\User;
+use \App\Models\Noticia;
+use App\Http\Controllers\NoticiaController;
+use App\Models\Category;
 
 class DatabaseSeeder extends Seeder
 {
@@ -37,6 +40,18 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
+            'nombre' => 'David',
+            'email' => 'david@ex.com',
+            'password' => 'david1234',
+            'rol' => 'medio',
+            'apellidos' => 'Martínez Díaz',
+            'empresa' => 'RandomSA',
+            'telefono' => '722433618',
+            'enlace' => 'randomize.com',
+            
+        ]);
+
+        User::create([
             'nombre' => 'Migue',
             'email' => 'migue@ex.com',
             'password' => 'migue1234',
@@ -47,5 +62,102 @@ class DatabaseSeeder extends Seeder
             'enlace' => 'noticiasprincesa.com',
             
         ]);
+
+        Category::create([
+            'nombre' => 'Economía',
+            'descripcion' => 'Noticias sobre la economía española e internacional.',
+            'palabras_clave' => 'ibex,dinero,economia,pib,gobierno',
+        ]);
+
+        Category::create([
+            'nombre' => 'Deportes',
+            'descripcion' => 'Noticias sobre los eventos deportivos nacionales e internacionales.',
+            'palabras_clave' => 'laliga,futbol,baloncesto,campeonato,champions',
+        ]);
+
+
+
+        /**********************   NOTICIAS ECONOMIA    ************************* */
+
+        $campos=["ibex", "baloncesto", "psoe", "tecnologia"];
+
+        /*foreach ($campos as $campo) {
+            
+        }*/
+
+        // Obtener noticias de la API
+        $noticias = NoticiaController::obtenerNewsAPI("ibex");
+            
+        $usuariosMedio = User::where('rol', 'medio')->get();
+
+        $categoria = Category::where('nombre','Economia')->get()->first();
+        
+
+        // Almacenar las noticias en la base de datos
+        foreach ($noticias as $noticia) {
+
+            $usuarioMedio = $usuariosMedio->random();
+
+            //list($fecha, $hora) = explode('T', $noticia['publishedAt']);
+
+            $fechaHora = explode('T', $noticia->publishedAt);
+            $fecha = $fechaHora[0];
+            $hora = $fechaHora[1];
+
+            Noticia::create([
+                'titulo' => $noticia->title,
+                'descripcion' => $noticia->description,
+                'foto' => $noticia->urlToImage,
+                'contenido' => $noticia->content,
+                'likes' => rand(10,150),
+                'fecha' => $fecha,
+                'hora' => substr($hora, 0, 8),
+                'redactor_id' => $usuarioMedio->id, 
+                'categoria_id' => $categoria->id, 
+                // Otros campos de la noticia...
+            ]);
+        }
+
+
+
+
+
+
+        /**********************   NOTICIAS DEPORTES    ************************* */
+
+        $noticias = NoticiaController::obtenerNewsAPI("arbitro");
+            
+        $usuariosMedio = User::where('rol', 'medio')->get();
+
+        $categoria = Category::where('nombre','Deportes')->get()->first();
+        
+
+        // Almacenar las noticias en la base de datos
+        foreach ($noticias as $noticia) {
+
+            $usuarioMedio = $usuariosMedio->random();
+
+            //list($fecha, $hora) = explode('T', $noticia['publishedAt']);
+
+            $fechaHora = explode('T', $noticia->publishedAt);
+            $fecha = $fechaHora[0];
+            $hora = $fechaHora[1];
+
+            Noticia::create([
+                'titulo' => $noticia->title,
+                'descripcion' => $noticia->description,
+                'foto' => $noticia->urlToImage,
+                'contenido' => $noticia->content,
+                'likes' => rand(10,150),
+                'fecha' => $fecha,
+                'hora' => substr($hora, 0, 8),
+                'redactor_id' => $usuarioMedio->id, 
+                'categoria_id' => $categoria->id, 
+                // Otros campos de la noticia...
+            ]);
+        }
+
+
+
     }
 }

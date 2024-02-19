@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use jcobhams\NewsApi\NewsApi;
+use App\Models\Noticia;
 
 class NoticiaController extends Controller
 {
@@ -12,7 +13,7 @@ class NoticiaController extends Controller
     public function show()
     {
         // Llama a la función para obtener las noticias de la API
-        $noticias = $this->obtenerNewsAPI();
+        $noticias = Noticia::inRandomOrder()->limit(20)->get();
 
         // Pasa los datos recuperados a la vista
         return view('index', ['noticias' => $noticias]);
@@ -41,19 +42,20 @@ class NoticiaController extends Controller
     }*/
 
 
-    public function obtenerNewsAPI(){
+    public static function obtenerNewsAPI($consulta){
 
         $newsapi = new NewsApi('8b979930f5714e1bb4d38e1842b3bd66');
-        $category="sports";
-        $q="futbol";
-        # /v2/everything
-        $all_articles = $newsapi->getEverything($q, null, null, null, null, null, "es", null,  20, null);
-
+        $category="business";
+        
         # /v2/top-headlines/sources
         $sources = $newsapi->getSources($category, "es", null);
+        # /v2/everything
+        $all_articles = $newsapi->getEverything($consulta, null, null, null, null, null, "es", null,  20, null);
+
+        
 
         # /v2/top-headlines
-        $top_headlines = $newsapi->getTopHeadlines($q, $sources, null, null, 20, null);
+        //$top_headlines = $newsapi->getTopHeadlines(null, null, null, null, 20, null);
 
         if (isset($all_articles->articles)) {
             // Si hay artículos, devolverlos
