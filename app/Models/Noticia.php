@@ -32,6 +32,11 @@ class Noticia extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'categoria_id');
+    }
+
+    public function redactor()
+    {
+        return $this->belongsTo(User::class,'redactor_id');
     }
 }

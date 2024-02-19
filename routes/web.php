@@ -30,4 +30,5 @@ Route::get('/logout', [UserController::class,'logout']);
 
 
 /********************   NOTICIAS  ********************/
-Route::get('/', [NoticiaController::class,'show']);
+Route::get('/', [NoticiaController::class,'index']);
+Route::get('/noticia/{id}', [NoticiaController::class,'show'])->name('noticias.show');

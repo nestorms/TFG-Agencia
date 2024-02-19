@@ -79,83 +79,10 @@ class DatabaseSeeder extends Seeder
 
         /**********************   NOTICIAS ECONOMIA    ************************* */
 
-        $campos=["ibex", "baloncesto", "psoe", "tecnologia"];
-
-        /*foreach ($campos as $campo) {
-            
-        }*/
-
-        // Obtener noticias de la API
-        $noticias = NoticiaController::obtenerNewsAPI("ibex");
-            
-        $usuariosMedio = User::where('rol', 'medio')->get();
-
-        $categoria = Category::where('nombre','Economia')->get()->first();
-        
-
-        // Almacenar las noticias en la base de datos
-        foreach ($noticias as $noticia) {
-
-            $usuarioMedio = $usuariosMedio->random();
-
-            //list($fecha, $hora) = explode('T', $noticia['publishedAt']);
-
-            $fechaHora = explode('T', $noticia->publishedAt);
-            $fecha = $fechaHora[0];
-            $hora = $fechaHora[1];
-
-            Noticia::create([
-                'titulo' => $noticia->title,
-                'descripcion' => $noticia->description,
-                'foto' => $noticia->urlToImage,
-                'contenido' => $noticia->content,
-                'likes' => rand(10,150),
-                'fecha' => $fecha,
-                'hora' => substr($hora, 0, 8),
-                'redactor_id' => $usuarioMedio->id, 
-                'categoria_id' => $categoria->id, 
-                // Otros campos de la noticia...
-            ]);
-        }
-
-
-
-
-
-
-        /**********************   NOTICIAS DEPORTES    ************************* */
-
-        $noticias = NoticiaController::obtenerNewsAPI("arbitro");
-            
-        $usuariosMedio = User::where('rol', 'medio')->get();
-
-        $categoria = Category::where('nombre','Deportes')->get()->first();
-        
-
-        // Almacenar las noticias en la base de datos
-        foreach ($noticias as $noticia) {
-
-            $usuarioMedio = $usuariosMedio->random();
-
-            //list($fecha, $hora) = explode('T', $noticia['publishedAt']);
-
-            $fechaHora = explode('T', $noticia->publishedAt);
-            $fecha = $fechaHora[0];
-            $hora = $fechaHora[1];
-
-            Noticia::create([
-                'titulo' => $noticia->title,
-                'descripcion' => $noticia->description,
-                'foto' => $noticia->urlToImage,
-                'contenido' => $noticia->content,
-                'likes' => rand(10,150),
-                'fecha' => $fecha,
-                'hora' => substr($hora, 0, 8),
-                'redactor_id' => $usuarioMedio->id, 
-                'categoria_id' => $categoria->id, 
-                // Otros campos de la noticia...
-            ]);
-        }
+        NoticiaController::crearNoticias("economica","Economía");
+        NoticiaController::crearNoticias("deporte","Deportes");
+        NoticiaController::crearNoticias("arbitro","Deportes");
+        //NoticiaController::crearNoticias("movil","Tecnología");
 
 
 

@@ -39,7 +39,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->text('descripcion');
-            $table->text('contenido');
+            $table->longText('contenido');
             $table->string('foto');
             $table->text('palabras_clave')->nullable();
             $table->integer('likes');

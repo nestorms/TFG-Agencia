@@ -5,12 +5,14 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use jcobhams\NewsApi\NewsApi;
 use App\Models\Noticia;
+use App\Models\User;
+use App\Models\Category;
 
 class NoticiaController extends Controller
 {
     //
 
-    public function show()
+    public function index()
     {
         // Llama a la función para obtener las noticias de la API
         $noticias = Noticia::inRandomOrder()->limit(20)->get();
@@ -19,27 +21,48 @@ class NoticiaController extends Controller
         return view('index', ['noticias' => $noticias]);
     }
 
-    /*public function obtenerNoticias()
-    {
-        $client = new Client();
+    public function show($id){
 
-        // Configura la solicitud GET con la URL de la API de NewsAPI y tus credenciales de API
-        $response = $client->get('https://newsapi.org/v2/top-headlines', [
-            'query' => [
-                'country' => 'us', // Cambia el país según tu preferencia
-                'apiKey' => '8b979930f5714e1bb4d38e1842b3bd66', // Reemplaza con tu propia clave API
-            ]
-        ]);
+        $noticia = Noticia::findOrFail($id);
 
-        // Obtiene el cuerpo de la respuesta como una cadena JSON
-        $body = $response->getBody();
+        return view('noticia', ['noticia' => $noticia]);
+    }
 
-        // Convierte la respuesta JSON en un array asociativo
-        $data = json_decode($body, true);
 
-        // Devuelve los datos de noticias obtenidos de la API
-        return $data['articles'];
-    }*/
+    public static function crearNoticias($consulta, $categoria){
+        // Obtener noticias de la API
+        $noticias = NoticiaController::obtenerNewsAPI($consulta);
+            
+        $usuariosMedio = User::where('rol', 'medio')->get();
+
+        $categoria = Category::where('nombre',$categoria)->get()->first();
+        
+
+        // Almacenar las noticias en la base de datos
+        foreach ($noticias as $noticia) {
+
+            $usuarioMedio = $usuariosMedio->random();
+
+            //list($fecha, $hora) = explode('T', $noticia['publishedAt']);
+
+            $fechaHora = explode('T', $noticia->publishedAt);
+            $fecha = $fechaHora[0];
+            $hora = $fechaHora[1];
+
+            Noticia::create([
+                'titulo' => $noticia->title,
+                'descripcion' => $noticia->description,
+                'foto' => $noticia->urlToImage,
+                'contenido' => $noticia->content,
+                'likes' => rand(10,150),
+                'fecha' => $fecha,
+                'hora' => substr($hora, 0, 8),
+                'redactor_id' => $usuarioMedio->id, 
+                'categoria_id' => $categoria->id, 
+                // Otros campos de la noticia...
+            ]);
+        }
+    }
 
 
     public static function obtenerNewsAPI($consulta){
