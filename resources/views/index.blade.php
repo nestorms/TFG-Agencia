@@ -30,7 +30,7 @@
                     <a href="{{ route('noticias.show', $noticias[0]->id) }}" style="text-decoration: none";>
                         <div class="carousel-item" data-bs-interval="10000" style="height: 550px;">
                             <div class="card h-100" >
-                                <img src="{{$noticias[0]->foto}}" class="card-img-top" style="height: 380px;" alt="...">
+                                <img src="{{asset($noticias[0]->foto)}}" class="card-img-top" style="height: 380px;" alt="...">
                                 <div class="card-body" style="margin-bottom: 35px;">
                                     <h5 class="card-title">{{$noticias[0]->titulo}}</h5>
                                     <p class="card-text">{{$noticias[0]->descripcion}}</p>

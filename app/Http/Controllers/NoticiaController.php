@@ -15,7 +15,7 @@ class NoticiaController extends Controller
     public function index()
     {
         // Llama a la función para obtener las noticias de la API
-        $noticias = Noticia::inRandomOrder()->limit(20)->get();
+        $noticias = Noticia::limit(20)->get();
 
         // Pasa los datos recuperados a la vista
         return view('index', ['noticias' => $noticias]);
@@ -89,6 +89,30 @@ class NoticiaController extends Controller
         }
         
     }
+
+    public function like($id)
+    {
+        $noticia = Noticia::findOrFail($id);
+        $noticia->likes++;
+        $noticia->save();
+        return response()->json(['likes' => $noticia->likes]);
+    }
+
+    public function unlike($id)
+    {
+        $noticia = Noticia::findOrFail($id);
+        $noticia->likes--;
+        $noticia->save();
+        return response()->json(['likes' => $noticia->likes]);
+    }
+
+    /*public function save($id)
+    {
+        $noticia = Noticia::findOrFail($id);
+        $noticia->saved++;
+        $noticia->save();
+        return response()->json(['saved' => $noticia->saved]);
+    }*/
 
     
 }

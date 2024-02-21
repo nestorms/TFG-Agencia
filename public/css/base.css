@@ -19,10 +19,29 @@
     margin-left: 5rem;
 }
 
+.form-control {
+    width: 30vw!important;
+}
+
 .form-control:focus {
     box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5); /* Sombra negra */
 }
 
+
+/* Media query para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .texto-normal {
+        font-size: 14px; /* Tamaño de texto más pequeño para pantallas pequeñas */
+    }
+
+    .d-flex{
+        flex-wrap: wrap;
+    }
+
+    .form-control {
+        width: 50vw!important;
+    }
+}
 
 /*.navbar-nav .nav-item:hover {
     background-color: #555; /* Cambia el color de fondo al pasar el ratón por encima 
