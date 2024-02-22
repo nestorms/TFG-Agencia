@@ -50,10 +50,6 @@
         color: yellow; /* Cambia el color a amarillo */
     }
 
-    .form-control:focus {
-        border-color: #ced4da!important; /* Cambia el color del borde cuando tiene focus */
-        box-shadow: 0 0 0 0.15rem darkgreen!important; /* Cambia el color y el tamaño de la sombra */
-    }
 
     .btn-success{
         background-color: gray;
@@ -104,8 +100,14 @@
                 <img src="{{ asset('images/corazon.png') }}" class="img-fluid" style="max-width: 50px;" alt="">
                 <!-- Contador -->
                 <span id="likeCount{{ $noticia->id }}" class="mx-1">{{ $noticia->likes }}</span>
+                @guest
+                    <small>Me gusta</small>
+                @endguest
                 <!-- Botón -->
-                <button id="like" onclick="like()" data-id="{{ $noticia->id }}" type="button" class="btn btn-outline-light likeBtn">Me gusta</button>
+                @auth
+                    <button id="like" onclick="like()" data-id="{{ $noticia->id }}" type="button" class="btn btn-outline-light likeBtn">Me gusta</button>
+                @endauth
+                
             </div>
         
             <!-- Espacio grande -->
@@ -117,13 +119,22 @@
                 <img src="{{ asset('images/marca.png') }}" class="img-fluid" style="max-width: 45px;" alt="">
                 <!-- Contador -->
                 <span id="saveCount" class="mx-1">3</span>
+                @guest
+                    <small>Guardados</small>
+                @endguest
                 <!-- Botón -->
-                <button data-id="{{ $noticia->id }}" type="button" class="btn btn-outline-light saveBtn">Guardar</button>
+                @auth
+                    <button data-id="{{ $noticia->id }}" type="button" class="btn btn-outline-light saveBtn">Guardar</button>
+                @endauth
+                
             </div>
         </div>
         <hr>
     </div>
     <div class="container mb-5 mt-4" style="max-width: 1100px;">
+        @if (session('success'))
+            <span class="alert alert-success text-left">{{ session('success') }}</span> <br> <br>
+        @endif
         <h3>Comentarios</h3>
         
         @foreach ($noticia->comentarios as $comment)
@@ -164,6 +175,7 @@
             <div class="container p-0">
                 <form action="{{ route('comentar.store') }}" method="POST" class="d-flex align-items-center justify-items-center ">
                     @csrf
+                    <input type="hidden" name="noticia_id" value="{{ $noticia->id }}">
                     <!-- Comentario -->
                     <div class="mb-5 w-75">
                         <label for="comentario" class="form-label"><h5>Publica un comentario:</h5></label>

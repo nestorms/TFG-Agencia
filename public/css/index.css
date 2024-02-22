@@ -1,0 +1,55 @@
+.news-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Agregamos box-shadow a la transición */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Añadimos una sombra predeterminada */
+    background-color: #C4B7B5;
+}
+
+.card-footer{
+    background-color: #C4B7B5!important;
+}
+
+
+.news-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4); /* Cambiamos la sombra al hacer hover */
+    transition: 500ms;
+}
+
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.author-info {
+    color: #666;
+    margin-bottom: 0;
+}
+
+.author-name {
+    font-weight: bold;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.text-muted {
+    color: #999;
+    font-size: 0.875rem;
+}

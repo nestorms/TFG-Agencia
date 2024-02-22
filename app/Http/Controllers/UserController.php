@@ -67,8 +67,22 @@ class UserController extends Controller
         'email' => 'required|unique:users,email|min:7|max:255',
         'password' => 'required|min:5',
         'enlace' => 'min:5',
-        'empresa' => 'required|min:4',
-        'telefono' => 'required']);
+        'empresa' => 'required|min:3',
+        'telefono' => 'required'],
+        [
+            'email.required' => 'El campo email es requerido',
+            'email.unique' => 'Este correo ya está en uso',
+            'email.min' => 'Longitud mínima de 2 caracteres',
+            'nombre.required' => 'El campo nombre es requerido',
+            'nombre.min' => 'Longitud mínima de 2 caracteres',
+            'password.required' => 'El campo contraseña es requerido',
+            'password.min' => 'Longitud mínima de 5 caracteres',
+            'apellidos.required' => 'El campo apellido es requerido',
+            'apellidos.min' => 'Longitud mínima de 2 caracteres',
+            'empresa.required' => 'El campo empresa es requerido',
+            'telefono.required' => 'El campo teléfono es requerido',
+            
+        ]);
 
         $user['rol']="medio";
 

@@ -1,32 +1,52 @@
 /* Estilos adicionales */
 .navbar {
-    background-color: #333; /* Color de fondo de la barra de navegación */
+    background-color: white; /* Color de fondo de la barra de navegación */
     padding: 0;
     width: 100%;
+    justify-content: center!important;
+    display: flex;
+    font-family: "Spectral", serif;
+    font-weight: 600;
+
+}
+body{
+    font-family: "Merriweather", serif!important;
+}
+
+input{
+    border: none;
+    width: 60%;
+}
+
+input:focus{
+    outline: none;
+    border-color: black!important;
+    transition: 1000ms;
+}
+
+
+.navbar-nav{
+    gap: 1rem;
 }
 
 .navbar-nav .nav-link {
-    color: white; /* Color del texto */
-    font-size: 1.5rem; /* Tamaño de la fuente */
-    margin-right: 5rem; /* Espacio entre elementos de la barra de navegación */
-    margin-left: 5rem;
-}
+    color: black; /* Color del texto */
+    font-size: 1rem; /* Tamaño de la fuente */
 
-.navbar-nav .nav-link {
-    color: white; /* Color del texto */
-    font-size: 1.5rem; /* Tamaño de la fuente */
-    margin-right: 5rem; /* Espacio entre elementos de la barra de navegación */
-    margin-left: 5rem;
 }
 
 .form-control {
     width: 30vw!important;
 }
 
-.form-control:focus {
-    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5); /* Sombra negra */
+.login{
+    margin-bottom: 0!important;
+    font-size: 15px!important;
 }
 
+a{
+    text-decoration: none!important; /* Eliminar subrayado */
+}
 
 /* Media query para pantallas pequeñas */
 @media screen and (max-width: 768px) {
@@ -36,6 +56,7 @@
 
     .d-flex{
         flex-wrap: wrap;
+        width: 100%;
     }
 
     .form-control {

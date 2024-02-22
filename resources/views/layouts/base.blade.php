@@ -11,21 +11,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
     @yield('estilos')
      
 </head>
-<body class="bg-dark bg-gradient text-white">
+<body class="bg-light bg-gradient ">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:lightgrey; padding:0.2rem;">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:white; padding:0.2rem;">
             <div class="container align-items-center">
                 <!-- Logo -->
                 <a class="navbar-brand" href="/">
                     <img src="{{ asset('images/logo.png') }}" alt="Newstor Logo" style="width: auto; height: 5rem;">
                 </a>
                 <!-- Barra de búsqueda -->
-                <form class="d-flex">
-                    <input class="form-control me-2 rounded-pill" type="search" placeholder="Deportes, economía, cultura..." aria-label="Search">
-                    <button class="btn btn-outline-dark rounded-circle" type="submit"><i class="bi bi-search" id="search-icon"></i></button>
+                <form class="d-flex w-50">
+                    <button class="btn" type="submit"><i class="bi bi-search" id="search-icon"></i></button>
+                    <input class="me-2 border-bottom border-dark-subtle" type="search" placeholder="Deportes, economía, cultura..." aria-label="Search">
+                    
                 </form>
                 @auth
                     <div class="d-flex justify-content-end align-items-center">
@@ -63,7 +69,7 @@
                     <a class="badge badge-info" href="/login" id="login" role="button">
                         <div class="align-items-center" style="color:black;">
                             <img src="{{ asset('images/profile.png') }}" alt="Perfil" class="img-fluid" style="width: auto; height: 3rem;">
-                            <p>Iniciar sesión</p>
+                            <p class="login">Iniciar sesión</p>
                         </div>
                     </a>
                     @endguest                    
@@ -74,31 +80,30 @@
         
     </header>
 
-    <nav class="navbar navbar-dark navbar-expand-lg">
-        <div class="container-fluid">
+    <nav class="navbar navbar-light navbar-expand-lg">
         
-            <!-- Navbar links -->
-            
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Más recientes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Recomendadas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Categorías</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Conócenos</a>
-                </li>
-            </ul>
-            
-        </div>
+        <!-- Navbar links -->
+        
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">INICIO</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">MÁS RECIENTES</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">RECOMENDADAS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">CATEGORÍAS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">CONÓCENOS</a>
+            </li>
+        </ul>
     </nav>
+    <hr class="w-75 mx-auto">
+    
 
 
         @yield('content')

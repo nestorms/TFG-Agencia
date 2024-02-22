@@ -18,10 +18,16 @@ class CommentController extends Controller
             'valoracion.required' => 'Selecciona tu valoracion de 1 a 5 ',
         ]);
 
+
+        $usuario = auth()->user();
+
         // Crear un nuevo comentario
         $comentario = new Comment();
-        $comentario->comentario = $request->comentario;
+        $comentario->contenido = $request->comentario;
         $comentario->valoracion = $request->valoracion;
+        $comentario->fecha = date('Y-m-d');
+        $comentario->medio = $usuario->nombre . ' ' . $usuario->apellidos;
+        $comentario->noticia_id = $request->noticia_id;
 
         // Guardar el comentario en la base de datos
         $comentario->save();

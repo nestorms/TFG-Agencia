@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color:lightyellow;
+    background-color:#C4B7B5 ;
 }
 
 /* Contenedor del logo */
@@ -33,6 +33,7 @@ body {
     padding: 15px;
     border-radius: 8px;
 }
+
 
 form h1{
     font-weight: bold;
