@@ -50,6 +50,16 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->text('contenido');
+            $table->integer('valoracion');
+            $table->date('fecha');
+            $table->string('medio');
+
+            $table->foreignId('noticia_id')->constrained('noticias');
+        });
+
         
 
         Schema::create('user_noticia', function (Blueprint $table) {
@@ -61,6 +71,8 @@ return new class extends Migration
             $table->foreign('noticia_id')->references('id')->on('noticias')->onDelete('cascade');
             $table->primary(['user_id', 'noticia_id']);
         });
+
+
     }
 
     /**
@@ -69,10 +81,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('categories');
+        Schema::dropIfExists('comments');
         Schema::dropIfExists('user_noticia');
         Schema::dropIfExists('noticias');
         Schema::dropIfExists('users');
-        
         
     }
 };

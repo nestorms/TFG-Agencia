@@ -3,6 +3,7 @@
 use App\Http\Controllers\NoticiaController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\CommentController;
 use Illuminate\Auth\Events\Login;
 
 /*
@@ -36,3 +37,8 @@ Route::get('/noticia/{id}', [NoticiaController::class,'show'])->name('noticias.s
 Route::post('/noticias/{id}/like', [NoticiaController::class, 'like'])->name('noticias.like');
 Route::post('/noticias/{id}/unlike', [NoticiaController::class, 'unlike'])->name('noticias.unlike');
 //Route::post('/noticias/{id}/guardar', [NoticiaController::class, 'guardar'])->name('noticias.guardar');
+
+
+
+
+Route::post('/comentar', [CommentController::class,'store'])->name('comentar.store');

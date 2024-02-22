@@ -39,4 +39,9 @@ class Noticia extends Model
     {
         return $this->belongsTo(User::class,'redactor_id');
     }
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

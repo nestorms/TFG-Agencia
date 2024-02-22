@@ -8,6 +8,7 @@ use \App\Models\User;
 use \App\Models\Noticia;
 use App\Http\Controllers\NoticiaController;
 use App\Models\Category;
+use App\Models\Comment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -89,7 +90,7 @@ class DatabaseSeeder extends Seeder
             'palabras_clave' => 'laliga,futbol,copa,rey',
             'hora'=>date('H:i:s'),
             'fecha' => date('Y-m-d'),
-            'categoria_id'=>1,
+            'categoria_id'=>2,
             'redactor_id' => $usuarioMedio->id,
             ]);
 
@@ -101,6 +102,22 @@ class DatabaseSeeder extends Seeder
         //NoticiaController::crearNoticias("movil","Tecnología");
 
 
+        /**********************   COMENTARIOS   ************************* */
 
+        Comment::create([
+            'contenido' => 'El mejor partido que he visto en mucho tiempo, me ha encantado. Que grande es Berenguer, aupa athletic ostia, el de Bilbao, no el otro.',
+            'valoracion' => 5,
+            'fecha' => date('Y-m-d'),
+            'medio' => $usuarioMedio->nombre . ' ' .$usuarioMedio->apellidos,
+            'noticia_id' => 1,
+        ]);
+
+        Comment::create([
+            'contenido' => 'Basura de partido, el atleti esta muy muy mal. Cholo fuer YA!',
+            'valoracion' => 3,
+            'fecha' => date('Y-m-d'),
+            'medio' => $usuarioMedio->nombre . ' ' .$usuarioMedio->apellidos,
+            'noticia_id' => 1,
+        ]);
     }
 }

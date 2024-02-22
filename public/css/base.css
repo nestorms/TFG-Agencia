@@ -41,6 +41,13 @@
     .form-control {
         width: 50vw!important;
     }
+    .div.col.mx-5.mb-3{
+        margin-left: 0!important;
+    }
+    .container{
+        margin: 0!important;
+        padding: 0!important;
+    }
 }
 
 /*.navbar-nav .nav-item:hover {
