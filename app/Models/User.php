@@ -41,7 +41,7 @@ class User extends Authenticatable
     //Los medios pueden tener seleccionadas muchas noticias
     public function noticias_medio()
     {
-        return $this->belongsToMany(Noticia::class, 'user_noticia', 'user_id', 'noticia_id');
+        return $this->hasMany(UserNoticia::class);
     }
 
     /**

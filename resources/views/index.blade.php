@@ -67,10 +67,9 @@
 
 
 <div class="container mt-4">
-    <div class="row row-cols-1 row-cols-md-4 g-4 mt-5">
+    <div class="carta">
         @foreach ($noticias as $noticia)
-            <div class="col mx-5 mb-3">
-                <a class="carta" href="{{ route('noticias.show', $noticia->id) }}" style="text-decoration: none";>
+                <a href="{{ route('noticias.show', $noticia->id) }}">
                     <div class="card news-card h-100">
                         <img src="{{ $noticia->foto }}" class="card-img-top" alt="Imagen de la noticia">
                         <div class="card-body">
@@ -81,9 +80,7 @@
                             <small class="text-muted">Publicado {{ \Carbon\Carbon::parse($noticia->fecha)->diffForHumans() }}</small>
                         </div>
                     </div>
-                    
                 </a>
-            </div>
         @endforeach
     </div>
 </div>

@@ -19,7 +19,7 @@
     @yield('estilos')
      
 </head>
-<body class="bg-light bg-gradient ">
+<body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color:white; padding:0.2rem;">
             <div class="container align-items-center">
@@ -28,20 +28,39 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Newstor Logo" style="width: auto; height: 5rem;">
                 </a>
                 <!-- Barra de búsqueda -->
-                <form class="d-flex w-50">
+                <form class="d-flex w-50 mx-auto">
                     <button class="btn" type="submit"><i class="bi bi-search" id="search-icon"></i></button>
                     <input class="me-2 border-bottom border-dark-subtle" type="search" placeholder="Deportes, economía, cultura..." aria-label="Search">
                     
                 </form>
                 @auth
                     <div class="d-flex justify-content-end align-items-center">
-                        <div class="mx-3">
-                            
-                            <button type="button" class="btn rounded-circle" data-html="true" data-toggle="popover" data-placement="bottom" data-content="Nueva noticia deportes! <br> Nueva noticia local! "><img src="{{ asset('images/bell.png') }}" alt="Notificaciones" class="img-fluid" style="width: auto; height: 25px;"></button>
 
-                        </div>
+                        @if (auth()->user()->rol == "medio")
+                            <div class="mx-3">  
+                                <button type="button" class="btn rounded-circle" data-html="true" data-toggle="popover" data-placement="bottom" data-content="Nueva noticia deportes! <br> Nueva noticia local! ">
+                                    <img src="{{ asset('images/bell.png') }}" alt="Notificaciones" class="img-fluid" style="width: auto; height: 25px;">
+                                </button>
+                            </div>
+  
+                        @else
+                            <div class="mx-3">  
+                                @if (auth()->user()->rol == "admin")
+                                    <a href="/administracion">
+                                        <img src="{{ asset('images/llave.png') }}" alt="Notificaciones" class="img-fluid" style="width: auto; height: 25px;">
+                                    </a>
+
+                                @elseif(auth()->user()->rol == "redactor")
+                                    <a href="/publicar">
+                                        <img src="{{ asset('images/llave.png') }}" alt="Notificaciones" class="img-fluid" style="width: auto; height: 25px;">
+                                    </a>
+                                @endif
+                                
+                            </div>
+                        @endif
+
                         <div class="mx-3">
-                            <a href="#">
+                            <a href="/mensajes">
                                 <img src="{{ asset('images/message.png') }}" alt="Mensajes" class="img-fluid" style="width: auto; height: 30px;">
                             </a>
                         </div>
@@ -52,17 +71,37 @@
                             <div class="align-items-center" style="color:black;">
                                 <img src="{{ asset('images/profile.png') }}" alt="Perfil" class="img-fluid" style="width: auto; height: 3rem;">
                                 <i class="bi bi-caret-down-fill"></i> <!-- Flecha -->
-                                @if (auth()->user()->rol == "medio")
-                                    <p>{{auth()->user()->nombre}}</p>
+                                @if (auth()->user()->rol == "admin")
+                                    <p>Administrador</p>
+                                
+                                @else
+                                    <p>{{auth()->user()->nombre}}</p> 
                                 @endif
                                 
                             </div>
                         </a>
+                        
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Mis noticias</a></li>
-                            <li><a class="dropdown-item" href="#">Configuración</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
+                            @if (auth()->user()->rol == "admin")
+                                <li><a class="dropdown-item" href="/personal">Mis noticias</a></li>
+                                <li><a class="dropdown-item" href="/administracion">Administración</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
+                            @endif
+                            @if (auth()->user()->rol == "redactor")
+                                <li><a class="dropdown-item" href="/personal">Mis publicaciones</a></li>
+                                <li><a class="dropdown-item" href="/config">Configuración</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
+                            @endif
+                            @if (auth()->user()->rol == "medio")
+                                <li><a class="dropdown-item" href="/personal">Mis noticias</a></li>
+                                <li><a class="dropdown-item" href="/config">Configuración</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
+                            @endif
+                            
+                            
                         </ul>
                 @endauth
                     @guest

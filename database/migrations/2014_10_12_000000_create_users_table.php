@@ -43,6 +43,7 @@ return new class extends Migration
             $table->string('foto');
             $table->text('palabras_clave')->nullable();
             $table->integer('likes');
+            $table->integer('guardados');
             $table->time('hora');
             $table->date('fecha');
             $table->foreignId('categoria_id')->constrained('categories');
@@ -63,13 +64,9 @@ return new class extends Migration
         
 
         Schema::create('user_noticia', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('noticia_id');
+            $table->foreignId('noticia_id')->constrained('noticias');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
-        
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('noticia_id')->references('id')->on('noticias')->onDelete('cascade');
-            $table->primary(['user_id', 'noticia_id']);
         });
 
 

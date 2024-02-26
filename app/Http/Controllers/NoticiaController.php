@@ -7,6 +7,7 @@ use jcobhams\NewsApi\NewsApi;
 use App\Models\Noticia;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\UserNoticia;
 
 class NoticiaController extends Controller
 {
@@ -55,6 +56,7 @@ class NoticiaController extends Controller
                 'foto' => $noticia->urlToImage,
                 'contenido' => $noticia->content,
                 'likes' => rand(10,150),
+                'guardados' => rand(10,150),
                 'fecha' => $fecha,
                 'hora' => substr($hora, 0, 8),
                 'redactor_id' => $usuarioMedio->id, 
@@ -106,13 +108,47 @@ class NoticiaController extends Controller
         return response()->json(['likes' => $noticia->likes]);
     }
 
-    /*public function save($id)
+    public function save($id)
     {
-        $noticia = Noticia::findOrFail($id);
-        $noticia->saved++;
-        $noticia->save();
-        return response()->json(['saved' => $noticia->saved]);
-    }*/
+        if (auth()->check()) {
+            // Obtengo el ID del usuario autenticado
+            $userId = auth()->user()->id;
+            $noticia = Noticia::findOrFail($id);
+            UserNoticia::create([
+                'user_id' => $userId,
+                'noticia_id' => $id,
+            ]);
+            $noticia->guardados++;
+            $noticia->save();
+            return response()->json(['saved' => $noticia->guardados]);
+
+        }
+        else {
+            // Si el usuario no está autenticado, devuelvo mensaje de error
+            return response()->json(['error' => 'Usuario no autenticado'], 401);
+        }
+    }
+
+    public function unsave($id)
+    {
+        if (auth()->check()) {
+            // Obtengo el ID del usuario autenticado
+            $userId = auth()->user()->id;
+            $noticia = Noticia::findOrFail($id);
+            
+            // Busco la fila en la tabla intermedia user_noticia
+            UserNoticia::where('user_id', $userId)->where('noticia_id', $id)->delete();
+
+            $noticia->guardados--;
+            $noticia->save();
+            return response()->json(['saved' => $noticia->guardados]);
+
+        }
+        else {
+            // Si el usuario no está autenticado, devuelvo mensaje de error
+            return response()->json(['error' => 'Usuario no autenticado'], 401);
+        }
+    }
 
     
 }

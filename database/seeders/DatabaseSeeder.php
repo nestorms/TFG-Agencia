@@ -9,6 +9,7 @@ use \App\Models\Noticia;
 use App\Http\Controllers\NoticiaController;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\UserNoticia;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,8 +22,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
              'nombre' => 'Néstor',
-             'email' => 'nestor@example.com',
-             'password' => 'test',
+             'email' => 'nestor@ex.com',
+             'password' => 'nestor',
              'rol' => 'admin',
              'apellidos' => 'Martínez Sáez',
              'telefono' => '123456789',
@@ -64,6 +65,18 @@ class DatabaseSeeder extends Seeder
             
         ]);
 
+        User::create([
+            'nombre' => 'Alex',
+            'email' => 'alex@ex.com',
+            'password' => 'alex1234',
+            'rol' => 'redactor',
+            'apellidos' => 'Vallecillo Zorrilla',
+            'empresa' => 'BasketFans',
+            'telefono' => '622433428',
+            'enlace' => 'basketfans.com',
+            
+        ]);
+
         Category::create([
             'nombre' => 'Economía',
             'descripcion' => 'Noticias sobre la economía española e internacional.',
@@ -87,6 +100,7 @@ class DatabaseSeeder extends Seeder
                             En un lado de la balanza, su velocidad para neutralizar la de Iñaki y su posición para dar carrete a Lino por la banda; en el otro, su exceso de energía, su trato con la pelota y los escasos minutos que ha jugado con la rojiblanca desde la lesión. Al del traje negro le pareció que el aparato se inclinaba en todo caso hacia las primeras referencias y envidó con Reinildo en la alineación. Salió cruz. En el ecuador del primer acto, y con el partido equilibrado, el mozambiqueño se aturulló en la salida y estuvo a punto de regalarla. Pero no quedó ahí la cosa: asustado quizás por lo que pudo ser, en la continuación de la jugada hizo una entrada infame a Prados justo cuando éste superaba la línea del área.',
             'foto' => 'images/coparey.jpg',
             'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
             'palabras_clave' => 'laliga,futbol,copa,rey',
             'hora'=>date('H:i:s'),
             'fecha' => date('Y-m-d'),
@@ -118,6 +132,16 @@ class DatabaseSeeder extends Seeder
             'fecha' => date('Y-m-d'),
             'medio' => $usuarioMedio->nombre . ' ' .$usuarioMedio->apellidos,
             'noticia_id' => 1,
+        ]);
+
+
+
+        /**********************   NOTICIAS SELECCIONADAS   ************************* */
+
+
+        UserNoticia::create([
+            'user_id' => 4,
+            'noticia_id' => 2,
         ]);
     }
 }

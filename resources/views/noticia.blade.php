@@ -29,7 +29,7 @@
     }
 
     .border{
-        background-color:darkslategray;
+        background: linear-gradient(to top, #C4B7B5, #ffffff)!important;
     }
 
     .rating2 label {
@@ -43,7 +43,8 @@
     }
 
     .star {
-        color: #ccc; /* Color por defecto de las estrellas */
+        color: black; /* Color por defecto de las estrellas */
+        
     }
 
     .star.yellow {
@@ -66,7 +67,7 @@
         <!-- Categoria de la noticia -->
         <div class="mb-3 mt-5">
             <h3>{{ $noticia->category->nombre }}</h3>
-            <hr style="width: 25%;"> <!-- Separador -->
+            <hr style="width: 25%;opacity: 0.9!important;"> <!-- Separador -->
         </div>
         
         <!-- Titulo de la noticia -->
@@ -81,7 +82,7 @@
         </div>
         <small class="text-center mb-2">Publicado el {{ $noticia->fecha }} a las {{ $noticia->hora }}</small>
         <!-- Separador -->
-        <hr>
+        <hr style="opacity: 0.7!important;">
         
         <!-- Nombre del autor -->
         <p class="text-center mb-4"><strong>Autor: {{ $noticia->redactor->nombre }} {{ $noticia->redactor->apellidos }}</strong></p>
@@ -105,7 +106,7 @@
                 @endguest
                 <!-- Botón -->
                 @auth
-                    <button id="like" onclick="like()" data-id="{{ $noticia->id }}" type="button" class="btn btn-outline-light likeBtn">Me gusta</button>
+                        <button id="like" onclick="like()" data-id="{{ $noticia->id }}" type="button" class="btn btn-outline-dark likeBtn">Me gusta</button>
                 @endauth
                 
             </div>
@@ -118,18 +119,23 @@
                 <!-- Icono -->
                 <img src="{{ asset('images/marca.png') }}" class="img-fluid" style="max-width: 45px;" alt="">
                 <!-- Contador -->
-                <span id="saveCount" class="mx-1">3</span>
+                <span id="saveCount{{ $noticia->id }}" class="mx-1">{{ $noticia->guardados }}</span>
                 @guest
                     <small>Guardados</small>
                 @endguest
                 <!-- Botón -->
                 @auth
-                    <button data-id="{{ $noticia->id }}" type="button" class="btn btn-outline-light saveBtn">Guardar</button>
+                    @if(auth()->user()->noticias_medio()->pluck('noticia_id')->contains($noticia->id))
+                        <button id="guardar" onclick="unsave()" data-id="{{ $noticia->id }}" type="button" class="btn btn-dark unsaveBtn">No guardar</button>
+                    @else
+                        <button id="guardar" onclick="save()" data-id="{{ $noticia->id }}" type="button" class="btn btn-outline-dark saveBtn">Guardar</button>
+                    @endif
+                    
                 @endauth
                 
             </div>
         </div>
-        <hr>
+        <hr style="opacity: 0.7!important;">
     </div>
     <div class="container mb-5 mt-4" style="max-width: 1100px;">
         @if (session('success'))
@@ -138,7 +144,7 @@
         <h3>Comentarios</h3>
         
         @foreach ($noticia->comentarios as $comment)
-            <div class="border border-dark-subtle rounded-start-4 mb-5 mt-4 p-3">
+            <div class="border rounded-start-2 mb-5 mt-4 p-3">
                 <div class="d-flex align-items-start justify-items-center">
                     <div class="me-3">
                         <img src="{{asset('images/profile_white.png')}}" class="img-fluid" style="width: 3vw;">
@@ -156,9 +162,9 @@
                 
                                 @for ($i = 1; $i <= 5; $i++)
                                     @if ($i <= $rating)
-                                        <span class="star yellow">&#9733;</span> <!-- Estrella rellena -->
+                                        <span class="bi bi-star-fill text-warning"></span> <!-- Estrella rellena -->
                                     @else
-                                        <span class="star">&#9734;</span> <!-- Estrella vacía -->
+                                        <span class="bi bi-star text-warning"></span> <!-- Estrella vacía -->
                                     @endif
                                 @endfor
                             </div>

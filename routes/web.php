@@ -36,7 +36,8 @@ Route::get('/noticia/{id}', [NoticiaController::class,'show'])->name('noticias.s
 
 Route::post('/noticias/{id}/like', [NoticiaController::class, 'like'])->name('noticias.like');
 Route::post('/noticias/{id}/unlike', [NoticiaController::class, 'unlike'])->name('noticias.unlike');
-//Route::post('/noticias/{id}/guardar', [NoticiaController::class, 'guardar'])->name('noticias.guardar');
+Route::post('/noticias/{id}/save', [NoticiaController::class, 'save'])->name('noticias.save');
+Route::post('/noticias/{id}/unsave', [NoticiaController::class, 'unsave'])->name('noticias.unsave');
 
 
 

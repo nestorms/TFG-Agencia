@@ -11,6 +11,7 @@
 }
 body{
     font-family: "Merriweather", serif!important;
+    background-color: white!important;
 }
 
 input{
@@ -24,13 +25,18 @@ input:focus{
     transition: 1000ms;
 }
 
-
 .navbar-nav{
     gap: 1rem;
 }
 
 .navbar-nav .nav-link {
     color: black; /* Color del texto */
+    font-size: 1rem; /* Tamaño de la fuente */
+
+}
+
+.navbar-nav .nav-link:hover {
+    color: #C4B7B5!important; /* Color del texto */
     font-size: 1rem; /* Tamaño de la fuente */
 
 }
@@ -42,6 +48,10 @@ input:focus{
 .login{
     margin-bottom: 0!important;
     font-size: 15px!important;
+}
+.login:hover{
+    color: gray;
+    transition: 300ms;
 }
 
 a{

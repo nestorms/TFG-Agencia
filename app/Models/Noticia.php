@@ -44,4 +44,9 @@ class Noticia extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function seleccionadas()
+    {
+        return $this->hasMany(UserNoticia::class);
+    }
 }

@@ -19,7 +19,7 @@
                 <img src="{{ asset('images/logo.png') }}" alt="Logo de la Agencia">
             </div>
             
-            <h1 class=" text-decoration-underline mb-5">Registro</h1>
+            <h1 class="text-decoration-underline mb-5">Registro</h1>
             <!-- Formulario de Inicio de Sesión -->
             <form method="post" action="/registro" class="container align-items-center w-50 mb-5">
                 @csrf   
