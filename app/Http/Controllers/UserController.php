@@ -93,6 +93,40 @@ class UserController extends Controller
         return redirect('/login')->with('success', 'Registro completado con éxito!');
     }
 
+    public function modificar($id){
+        
+        $usuario = User::findOrFail($id);
+
+        return view('modificar_user', ['usuario' => $usuario]);
+    }
+
+    public function editar(Request $request, $id){
+
+        $usuario = User::findOrFail($id);
+
+        $datos = $request->only(['nombre', 'apellidos', 'enlace', 'empresa', 'telefono', 'email']); //La contraseña no, ya que debo hashearla antes de meterla en la BD
+
+        if ($request->filled('password')) {
+            // Hasheo la nueva contraseña
+            $passwordEncriptada = bcrypt($request->password);
+            // Actualizo la contraseña del usuario
+            $usuario->password = $passwordEncriptada;
+        }
+    
+        $usuario->fill($datos);
+        $usuario->save();
+
+
+        if($usuario->rol =="medio"){
+            $rol="Medio";
+        }
+        else{
+            $rol="Redactor";
+        }
+
+        return redirect()->route('administracion')->with('message', $rol . " modificado con éxito");
+    }
+
 
     public function administracion(){
 

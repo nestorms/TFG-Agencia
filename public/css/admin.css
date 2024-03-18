@@ -2,9 +2,9 @@ h2{
     text-decoration: underline;
 }
 
-.btn-secondary{
+.btn-dark{
     margin: 3vh;
-    padding: 3vh;
+    padding: 2vh;
 }
 
 th{
@@ -19,4 +19,32 @@ td{
 
 .table-spaced {
     border-spacing: 50px!important; /* Cambia el valor según la cantidad de espacio deseada */
+}
+
+.btn-dark {
+    font-size: 20px!important;
+}
+
+.pagination {
+    margin-top: 20px!important; /* Espacio superior */
+    background-color: transparent!important; /* Color de fondo */
+}
+
+.page-item.active .page-link {
+    background-color: lightgrey!important; /* Color de fondo del elemento activo */
+    border-color: gray!important; /* Color del borde del elemento activo */
+}
+
+.page-link {
+    color: black!important; /* Color del texto de los enlaces */
+}
+
+.small.text-muted{
+    display: none;
+}
+
+.page-link:hover {
+    color: gray!important; /* Color del texto de los enlaces al pasar el ratón */
+    text-decoration: none!important; /* Eliminar subrayado */
+    background-color: #f8f9fa!important; /* Cambiar el color de fondo al pasar el ratón */
 }

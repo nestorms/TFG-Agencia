@@ -8,16 +8,23 @@
 @section('content')
 <div class="container">
     <h2>Administración</h2>
+    <a href="/noticias/1/descargar" class="btn btn-primary" download>Descargar PDF</a>
+
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
 
     <div class="row">
         <div class="col-md-3">
             <!-- Botones verticales -->
-            <div class="btn-group-vertical p-4">
-                <button type="button" class="btn btn-secondary rounded" onclick="showNoticias()">Noticias</button>
-                <button type="button" class="btn btn-secondary rounded" onclick="showMedios()">Medios</button>
-                <button type="button" class="btn btn-secondary rounded" onclick="showRedactores()">Redactores</button>
-                <button type="button" class="btn btn-secondary rounded" onclick="showCategorias()">Categorías</button>
-                <button type="button" class="btn btn-secondary rounded" onclick="showComentarios()">Comentarios</button>
+            <div class="btn-group-vertical p-2">
+                <button type="button" class="btn btn-dark rounded" onclick="showNoticias()">Noticias</button>
+                <button type="button" class="btn btn-dark rounded" onclick="showMedios()">Medios</button>
+                <button type="button" class="btn btn-dark rounded" onclick="showRedactores()">Redactores</button>
+                <button type="button" class="btn btn-dark rounded" onclick="showCategorias()">Categorías</button>
+                <button type="button" class="btn btn-dark rounded" onclick="showComentarios()">Comentarios</button>
             </div>
         </div>
         <div class="col-md-9">
@@ -43,8 +50,8 @@
                                 <td>{{$medio->telefono}}</td>
                                 <td>{{$medio->email}}</td>
                                 <td>
-                                    <a href="/modificar_medio/{{$medio->id}}"><i class="bi bi-wrench mx-2" style="color: black;"></i></a>
-                                    <a href="/eliminar_medio/{{$medio->id}}"><i class="bi bi-trash mx-2" style="color: black;"></i></a>
+                                    <a href="/modificar_user/{{$medio->id}}"><i class="bi bi-wrench mx-2" style="color: black;"></i></a>
+                                    <a href="/eliminar_user/{{$medio->id}}"><i class="bi bi-trash mx-2" style="color: black;"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -74,8 +81,8 @@
                                 <td>{{$redactor->telefono}}</td>
                                 <td>{{$redactor->email}}</td>
                                 <td>
-                                    <a href="/modificar_redactor/{{$redactor->id}}"><i class="bi bi-wrench mx-2" style="color: black;"></i></a>
-                                    <a href="/eliminar_redactor/{{$redactor->id}}"><i class="bi bi-trash mx-2" style="color: black;"></i></a>
+                                    <a href="/modificar_user/{{$redactor->id}}"><i class="bi bi-wrench mx-2" style="color: black;"></i></a>
+                                    <a href="/eliminar_user/{{$redactor->id}}"><i class="bi bi-trash mx-2" style="color: black;"></i></a>
                                 </td>
                             </tr>
                         @endforeach

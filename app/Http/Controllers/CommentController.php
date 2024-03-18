@@ -35,4 +35,23 @@ class CommentController extends Controller
         // Redireccionar a la página anterior o a cualquier otra página que desees
         return redirect()->back()->with('success', 'Comentario publicado exitosamente.');
     }
+
+
+    public function modificar($id){
+        
+        $comentario = Comment::findOrFail($id);
+
+        return view('modificar_comentario', ['comentario' => $comentario]);
+    }
+
+    public function editar(Request $request, $id){
+
+        $comentario = Comment::findOrFail($id);
+
+        $datos = $request->only([ 'valoracion', 'fecha', 'contenido']);
+        $comentario->fill($datos);
+        $comentario->save();
+
+        return redirect()->route('administracion')->with('message',"Comentario modificado con éxito");
+    }
 }

@@ -9,6 +9,9 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\UserNoticia;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 class NoticiaController extends Controller
 {
     //
@@ -42,10 +45,19 @@ class NoticiaController extends Controller
         $noticia = Noticia::findOrFail($id);
 
         $datos = $request->only(['titulo', 'descripcion', 'palabras_clave', 'fecha', 'contenido']);
+
+        // Guardar la imagen en el sistema de archivos
+        if($request->filled('foto')){
+
+            $imagenPath = "images/" . $request['foto'] ;
+            $noticia->foto = $imagenPath;
+        }
+
+
         $noticia->fill($datos);
         $noticia->save();
 
-        return redirect()->route('noticias.show', ['id' => $noticia->id]);
+        return redirect()->route('administracion')->with('message',"Noticia modificada con éxito");
     }
 
 
@@ -167,6 +179,25 @@ class NoticiaController extends Controller
             // Si el usuario no está autenticado, devuelvo mensaje de error
             return response()->json(['error' => 'Usuario no autenticado'], 401);
         }
+    }
+
+
+    public function descargarPDF($id)
+    {
+        $noticia = Noticia::findOrFail($id);
+
+        // Cargar la vista con la información de la noticia
+        $pdf = new Dompdf();
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $pdf->setOptions($options);
+        $pdf->loadHtml(view('noticia_pdf', ['noticia' => $noticia])->render());
+
+        // Renderizar el PDF
+        $pdf->render();
+
+        // Descargar el PDF
+        return $pdf->stream('noticia.pdf');
     }
 
     
