@@ -1,0 +1,22 @@
+h2{
+    text-decoration: underline;
+}
+
+.btn-secondary{
+    margin: 3vh;
+    padding: 3vh;
+}
+
+th{
+    text-align: center;
+}
+
+td{
+    text-align: center;
+    margin: 20px!important;
+    max-width: 300px;
+}
+
+.table-spaced {
+    border-spacing: 50px!important; /* Cambia el valor según la cantidad de espacio deseada */
+}

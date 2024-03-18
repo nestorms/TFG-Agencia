@@ -40,6 +40,11 @@ Route::post('/noticias/{id}/save', [NoticiaController::class, 'save'])->name('no
 Route::post('/noticias/{id}/unsave', [NoticiaController::class, 'unsave'])->name('noticias.unsave');
 
 
+/********************   ADMINISTRACIÓN  ********************/
+Route::get('/administracion', [UserController::class,'administracion']);
+Route::get('/modificar_noticia/{id}', [NoticiaController::class, 'modificar']);
+Route::post('/modificar_noticia/{id}', [NoticiaController::class, 'editar']);
+
 
 
 Route::post('/comentar', [CommentController::class,'store'])->name('comentar.store');

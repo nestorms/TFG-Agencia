@@ -29,6 +29,25 @@ class NoticiaController extends Controller
         return view('noticia', ['noticia' => $noticia]);
     }
 
+    public function modificar($id){
+        
+        $noticia = Noticia::findOrFail($id);
+        $categorias = Category::whereNotIn('id', [$noticia->category->id])->get();
+
+        return view('modificar_noticia', ['noticia' => $noticia, 'categorias' => $categorias]);
+    }
+
+    public function editar(Request $request, $id){
+
+        $noticia = Noticia::findOrFail($id);
+
+        $datos = $request->only(['titulo', 'descripcion', 'palabras_clave', 'fecha', 'contenido']);
+        $noticia->fill($datos);
+        $noticia->save();
+
+        return redirect()->route('noticias.show', ['id' => $noticia->id]);
+    }
+
 
     public static function crearNoticias($consulta, $categoria){
         // Obtener noticias de la API

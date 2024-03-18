@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Noticia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -88,5 +91,29 @@ class UserController extends Controller
 
         User::create($user);
         return redirect('/login')->with('success', 'Registro completado con éxito!');
+    }
+
+
+    public function administracion(){
+
+        $medios = User::where('rol', 'medio')->get();
+        $redactores = User::where('rol', 'redactor')->get();
+        $categorias = Category::all();
+        $noticias = Noticia::paginate(5);
+        $comentarios = Comment::all();
+
+        if(auth()->user()->rol == "admin"){
+            return view('/administracion',
+            [
+                'medios' => $medios,
+                'redactores' => $redactores,
+                'noticias' => $noticias,
+                'categorias' => $categorias,
+                'comentarios' => $comentarios
+            ]);
+        }
+        else{
+            return redirect('/');
+        }
     }
 }

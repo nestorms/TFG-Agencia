@@ -1,0 +1,31 @@
+.box{
+    margin-bottom: 2vh!important;
+    margin-right: 12vw!important;
+    margin-top: 4vh;
+    max-width: 400px;
+}
+
+h2{
+    font-weight: bold;
+}
+
+.desplegable{
+    width: 40%;
+}
+
+input, textarea, select{
+    border-color: gray!important;
+}
+
+.contenido{
+    width: 100%;
+}
+
+.btn{
+    font-size: 22px;
+}
+
+label{
+    font-size: 20px;
+    font-weight:400;
+}
