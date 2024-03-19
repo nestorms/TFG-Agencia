@@ -41,23 +41,36 @@ Route::post('/noticias/{id}/save', [NoticiaController::class, 'save'])->name('no
 Route::post('/noticias/{id}/unsave', [NoticiaController::class, 'unsave'])->name('noticias.unsave');
 
 
+
 /********************   ADMINISTRACIÓN  ********************/
 Route::get('/administracion', [UserController::class,'administracion'])->name('administracion');
 Route::get('/modificar_noticia/{id}', [NoticiaController::class, 'modificar']);
-Route::post('/modificar_noticia/{id}', [NoticiaController::class, 'editar']);
+Route::post('/modificar_noticia/{id}', [NoticiaController::class, 'update']);
+Route::get('/eliminar_noticia/{id}', [NoticiaController::class, 'delete']);
 
 Route::get('/modificar_categoria/{id}', [CategoryController::class, 'modificar']);
-Route::post('/modificar_categoria/{id}', [CategoryController::class, 'editar']);
+Route::post('/modificar_categoria/{id}', [CategoryController::class, 'update']);
+Route::get('/eliminar_categoria/{id}', [CategoryController::class, 'delete']);
 
 Route::get('/modificar_comentario/{id}', [CommentController::class, 'modificar']);
-Route::post('/modificar_comentario/{id}', [CommentController::class, 'editar']);
+Route::post('/modificar_comentario/{id}', [CommentController::class, 'update']);
+Route::get('/eliminar_comentario/{id}', [CommentController::class, 'delete']);
 
 Route::get('/modificar_user/{id}', [UserController::class, 'modificar']);
-Route::post('/modificar_user/{id}', [UserController::class, 'editar']);
+Route::post('/modificar_user/{id}', [UserController::class, 'update']);
+Route::get('/eliminar_user/{id}', [UserController::class, 'delete']);
+
+
+
+/********************   SECCIÓN PERSONAL  ********************/
+Route::get('/personal/{id}', [UserController::class, 'personal']);
+Route::get('/noticias/{id}/unsave', [NoticiaController::class, 'unsave_personal']);
+
 
 
 /********************   DESCARGA DE NOTICIAS  ********************/
 Route::get('/noticias/{id}/descargar', [NoticiaController::class, 'descargarPDF']);
 
 
+/********************   COMENTARIOS  ********************/
 Route::post('/comentar', [CommentController::class,'store'])->name('comentar.store');

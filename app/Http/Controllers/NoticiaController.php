@@ -40,7 +40,7 @@ class NoticiaController extends Controller
         return view('modificar_noticia', ['noticia' => $noticia, 'categorias' => $categorias]);
     }
 
-    public function editar(Request $request, $id){
+    public function update(Request $request, $id){
 
         $noticia = Noticia::findOrFail($id);
 
@@ -58,6 +58,13 @@ class NoticiaController extends Controller
         $noticia->save();
 
         return redirect()->route('administracion')->with('message',"Noticia modificada con éxito");
+    }
+
+    public function delete($id){
+        
+        Noticia::findOrFail($id)->delete();
+
+        return redirect()->route('administracion')->with('message',"Noticia eliminada con éxito");
     }
 
 
@@ -174,6 +181,29 @@ class NoticiaController extends Controller
             $noticia->save();
             return response()->json(['saved' => $noticia->guardados]);
 
+        }
+        else {
+            // Si el usuario no está autenticado, devuelvo mensaje de error
+            return response()->json(['error' => 'Usuario no autenticado'], 401);
+        }
+    }
+
+    public function unsave_personal($id)
+    {
+        if (auth()->check()) {
+            // Obtengo el ID del usuario autenticado
+            $userId = auth()->user()->id;
+            $noticia = Noticia::findOrFail($id);
+            
+            // Busco la fila en la tabla intermedia user_noticia
+            UserNoticia::where('user_id', $userId)->where('noticia_id', $id)->delete();
+
+            $noticia->guardados--;
+            $noticia->save();
+
+            $personal=UserNoticia::where('user_id',$userId)->paginate(3);
+
+            return view('personal', ['personal' => $personal]);
         }
         else {
             // Si el usuario no está autenticado, devuelvo mensaje de error

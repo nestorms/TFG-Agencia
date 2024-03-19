@@ -83,19 +83,19 @@
                         
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             @if (auth()->user()->rol == "admin")
-                                <li><a class="dropdown-item" href="/personal">Mis noticias</a></li>
+                                <li><a class="dropdown-item" href="/personal/{{auth()->user()->id}}">Mis noticias</a></li>
                                 <li><a class="dropdown-item" href="/administracion">Administración</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
                             @endif
                             @if (auth()->user()->rol == "redactor")
-                                <li><a class="dropdown-item" href="/personal">Mis publicaciones</a></li>
+                                <li><a class="dropdown-item" href="/personal/{{auth()->user()->id}}">Mis publicaciones</a></li>
                                 <li><a class="dropdown-item" href="/config">Configuración</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
                             @endif
                             @if (auth()->user()->rol == "medio")
-                                <li><a class="dropdown-item" href="/personal">Mis noticias</a></li>
+                                <li><a class="dropdown-item" href="/personal/{{auth()->user()->id}}">Mis noticias</a></li>
                                 <li><a class="dropdown-item" href="/config">Configuración</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>

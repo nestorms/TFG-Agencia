@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Noticia;
+use App\Models\UserNoticia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -99,8 +100,9 @@ class UserController extends Controller
 
         return view('modificar_user', ['usuario' => $usuario]);
     }
+    
 
-    public function editar(Request $request, $id){
+    public function update(Request $request, $id){
 
         $usuario = User::findOrFail($id);
 
@@ -127,6 +129,21 @@ class UserController extends Controller
         return redirect()->route('administracion')->with('message', $rol . " modificado con éxito");
     }
 
+    public function delete($id){
+        
+        $usuario = User::findOrFail($id);
+        User::findOrFail($id)->delete();
+
+        if($usuario->rol =="medio"){
+            $rol="Medio";
+        }
+        else{
+            $rol="Redactor";
+        }
+
+        return redirect()->route('administracion')->with('message', $rol . " eliminado con éxito");
+    }
+
 
     public function administracion(){
 
@@ -149,5 +166,13 @@ class UserController extends Controller
         else{
             return redirect('/');
         }
+    }
+
+
+    public function personal($id){
+
+        $personal=UserNoticia::where('user_id',$id)->paginate(3);
+
+        return view('personal', ['personal' => $personal]);
     }
 }

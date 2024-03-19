@@ -44,7 +44,7 @@ class CommentController extends Controller
         return view('modificar_comentario', ['comentario' => $comentario]);
     }
 
-    public function editar(Request $request, $id){
+    public function update(Request $request, $id){
 
         $comentario = Comment::findOrFail($id);
 
@@ -53,5 +53,12 @@ class CommentController extends Controller
         $comentario->save();
 
         return redirect()->route('administracion')->with('message',"Comentario modificado con éxito");
+    }
+
+    public function delete($id){
+        
+        Comment::findOrFail($id)->delete();
+
+        return redirect()->route('administracion')->with('message',"Comentario eliminado con éxito");
     }
 }

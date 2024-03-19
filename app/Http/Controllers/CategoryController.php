@@ -14,7 +14,7 @@ class CategoryController extends Controller
         return view('modificar_categoria', ['categoria' => $categoria]);
     }
 
-    public function editar(Request $request, $id){
+    public function update(Request $request, $id){
 
         $categoria = Category::findOrFail($id);
 
@@ -23,5 +23,12 @@ class CategoryController extends Controller
         $categoria->save();
 
         return redirect()->route('administracion')->with('message',"Categoría modificada con éxito");
+    }
+
+    public function delete($id){
+        
+        Category::findOrFail($id)->delete();
+
+        return redirect()->route('administracion')->with('message',"Categoría eliminada con éxito");
     }
 }

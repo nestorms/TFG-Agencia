@@ -14,12 +14,16 @@ th{
 
 td{
     text-align: center;
-    margin: 20px!important;
     max-width: 300px;
+    padding: 30px!important;
+}
+
+.table-spaced tbody tr {
+    padding-bottom: 30px!important; /* Cambia este valor según tus necesidades */
 }
 
 .table-spaced {
-    border-spacing: 50px!important; /* Cambia el valor según la cantidad de espacio deseada */
+    border-spacing: 70px!important; /* Cambia el valor según la cantidad de espacio deseada */
 }
 
 .btn-dark {

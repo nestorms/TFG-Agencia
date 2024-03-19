@@ -8,13 +8,13 @@
 @section('content')
 <div class="container">
     <h2>Administración</h2>
-    <a href="/noticias/1/descargar" class="btn btn-primary" download>Descargar PDF</a>
 
     @if(session()->has('message'))
         <div class="alert alert-success">
             {{ session('message') }}
         </div>
     @endif
+    
 
     <div class="row">
         <div class="col-md-3">
