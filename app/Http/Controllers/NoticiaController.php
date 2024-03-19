@@ -221,6 +221,7 @@ class NoticiaController extends Controller
         $options = new Options();
         $options->set('isHtml5ParserEnabled', true);
         $pdf->setOptions($options);
+        
         $pdf->loadHtml(view('noticia_pdf', ['noticia' => $noticia])->render());
 
         // Renderizar el PDF

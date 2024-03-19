@@ -18,8 +18,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
-    <body>
-        <div class="container" style="max-width: 900px;">
+    <body style="align-content: center;">
+        <div class="container" style="max-width: 900px; text-align:center;">
             <!-- Categoria de la noticia -->
             <div class="mb-3 mt-5">
                 <h3>{{ $noticia->category->nombre }}</h3>
@@ -33,10 +33,24 @@
             <p class="text-left mb-4">{{ $noticia->descripcion }}</p>
             
             <!-- Imagen de portada de la noticia -->
-            <div class="text-center mb-4">
-                <img src="{{ asset($noticia->foto) }}" alt="{{ $noticia->titulo }}" style="max-width: 100%;">
+            <div class="text-center mb-4" style="text-align: center;">
+                <?php
+                    // Obtener la ruta de la imagen
+                    $imagePath = public_path($noticia->foto);
+                    
+                    // Obtener el tipo de imagen
+                    $imageType = pathinfo($imagePath, PATHINFO_EXTENSION);
+                    
+                    // Obtener los datos de la imagen en formato base64
+                    $imageData = file_get_contents($imagePath);
+                    $base64Image = 'data:image/' . $imageType . ';base64,' . base64_encode($imageData);
+                ?>
+                <!-- Mostrar la imagen usando base64 -->
+                <img src="{{ $base64Image }}" alt="{{ $noticia->titulo }}" style="max-width: 60%;">
             </div>
+            <br>
             <small class="text-center mb-2">Publicado el {{ $noticia->fecha }} a las {{ $noticia->hora }}</small>
+            <br>
             <!-- Separador -->
             <hr style="opacity: 0.7!important;">
             
@@ -49,12 +63,23 @@
             <div>
                 <p style="font-size: 1.2rem;">{{ $noticia->contenido }}</p>
             </div>
+            <br>
 
             <div class="d-flex justify-content align-items-center mt-5 mb-5">
                 <!-- Primer conjunto de icono, contador y botón -->
                 <div id="likeButton{{ $noticia->id }}">
-                    <!-- Icono -->
-                    <img src="{{ asset('images/corazon.png') }}" class="img-fluid" style="max-width: 50px;" alt="">
+                    <?php
+                        // Obtener la ruta de la imagen
+                        $imagePath2 = public_path("images/corazon.jpg");
+                        
+                        // Obtener el tipo de imagen
+                        $imageType2 = pathinfo($imagePath2, PATHINFO_EXTENSION);
+                        
+                        // Obtener los datos de la imagen en formato base64
+                        $imageData2 = file_get_contents($imagePath2);
+                        $base64Image2 = 'data:image/' . $imageType2 . ';base64,' . base64_encode($imageData2);
+                    ?>
+                    <img src="{{ $base64Image2 }}" class="img-fluid" style="max-width: 45px;" alt="">
                     <!-- Contador -->
                     <span id="likeCount{{ $noticia->id }}" class="mx-1">{{ $noticia->likes }}</span>
                         <small>Me gusta</small>   
@@ -66,7 +91,18 @@
                 <!-- Segundo conjunto de icono, contador y botón -->
                 <div id="saveButton">
                     <!-- Icono -->
-                    <img src="{{ asset('images/marca.png') }}" class="img-fluid" style="max-width: 45px;" alt="">
+                    <?php
+                        // Obtener la ruta de la imagen
+                        $imagePath2 = public_path("images/marca.jpg");
+                        
+                        // Obtener el tipo de imagen
+                        $imageType2 = pathinfo($imagePath2, PATHINFO_EXTENSION);
+                        
+                        // Obtener los datos de la imagen en formato base64
+                        $imageData2 = file_get_contents($imagePath2);
+                        $base64Image2 = 'data:image/' . $imageType2 . ';base64,' . base64_encode($imageData2);
+                    ?>
+                    <img src="{{ $base64Image2 }}" class="img-fluid" style="max-width: 45px;" alt="">
                     <!-- Contador -->
                     <span id="saveCount{{ $noticia->id }}" class="mx-1">{{ $noticia->guardados }}</span>
                         <small>Guardados</small>
