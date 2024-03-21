@@ -74,3 +74,7 @@ Route::get('/noticias/{id}/descargar', [NoticiaController::class, 'descargarPDF'
 
 /********************   COMENTARIOS  ********************/
 Route::post('/comentar', [CommentController::class,'store'])->name('comentar.store');
+
+
+Route::get('/indexar-noticias', [NoticiaController::class, 'indexarNoticias']);
+Route::get('/recomendar', [NoticiaController::class, 'buscarPorRanking']);

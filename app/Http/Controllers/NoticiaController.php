@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use jcobhams\NewsApi\NewsApi;
 use App\Models\Noticia;
@@ -9,12 +8,117 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\UserNoticia;
 
+use Elastic\Elasticsearch\Client;
+
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
 class NoticiaController extends Controller
 {
     //
+    protected $elasticsearch;
+
+    public function __construct(Client $elasticsearch)
+    {
+        $this->elasticsearch = $elasticsearch;
+    }
+
+    public function indexarNoticias()
+    {
+        // Obtener todos los medios
+        $usuarios = User::where('rol', 'medio')->get();
+
+        // Eliminar el índice existente si es necesario
+        $params = [
+            'index' => 'noticias',
+        ];
+
+        if ($this->elasticsearch->indices()->exists($params)) {
+            $this->elasticsearch->indices()->delete($params);
+        }
+
+        // Crear un nuevo índice
+        $this->elasticsearch->indices()->create([
+            'index' => 'noticias',
+            // Agregar cualquier configuración adicional necesaria para el índice
+        ]);
+
+        // Iterar sobre cada usuario
+        foreach ($usuarios as $usuario) {
+            // Obtener todas las noticias asociadas a este perfil de usuario
+            $perfiles = $usuario->noticias_medio;
+
+            // Variables para almacenar titulos, contenidos y descripciones
+            $titulos = '';
+            $contenidos = '';
+            $descripciones = '';
+
+            // Itero sobre cada noticia de cada perfil que he obtenido
+            foreach ($perfiles as $perfil) {
+                $titulos .= $perfil->noticia->titulo . ' ';
+                $contenidos .= $perfil->noticia->contenido . ' ';
+                $descripciones .= $perfil->noticia->descripcion . ' ';
+            }
+
+            $params = [
+                'index' => 'noticias', // Nombre del índice en Elasticsearch
+                'id'    => $usuario->id, // ID único de la noticia
+                'body'  => [
+                    'titulo'       => $titulos,
+                    'descripcion'  => $descripciones,
+                    'contenido'    => $contenidos,
+                    'id_medio'     => $usuario->id,
+                ],
+            ];
+
+            // Indexar la noticia en Elasticsearch
+            $response = $this->elasticsearch->index($params);
+        }
+
+
+        return response()->json(['message' => 'Noticias indexadas correctamente en Elasticsearch!!']);
+    }
+
+    public function buscarPorRanking()
+    {
+        // Definir los parámetros de búsqueda
+        $params = [
+            'index' => 'noticias', // Nombre del índice en Elasticsearch
+            'body' => [
+                'query' => [
+                    'match' => [
+                        'titulo' => [
+                            'query' => 'bluetooth'
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        // Realizar la consulta a Elasticsearch
+        $response = $this->elasticsearch->search($params);
+
+        // Obtener los resultados de la consulta
+        $hits = $response['hits']['hits'];
+
+        // Procesar los resultados según sea necesario
+        $noticias = [];
+        foreach ($hits as $hit) {
+            // Acceder a la fuente (_source) de cada documento
+            $source = $hit['_source'];
+            // Agregar la noticia a la lista de noticias
+            $noticias[] = [
+                'titulo' => $source['titulo'],
+                'descripcion' => $source['descripcion'],
+                'contenido' => $source['contenido'],
+                'id_medio' => $source['id_medio'],
+                
+            ];
+        }
+
+        // Retornar las noticias encontradas
+        return response()->json(['noticias' => $noticias]);
+    }
 
     public function index()
     {
