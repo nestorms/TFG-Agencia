@@ -28,9 +28,10 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Newstor Logo" style="width: auto; height: 5rem;">
                 </a>
                 <!-- Barra de búsqueda -->
-                <form class="d-flex w-50 mx-auto">
+                <form method="post" action="/buscadorIndex" class="d-flex w-50 mx-auto">
+                    @csrf
                     <button class="btn" type="submit"><i class="bi bi-search" id="search-icon"></i></button>
-                    <input class="me-2 border-bottom border-dark-subtle" type="search" placeholder="Deportes, economía, cultura..." aria-label="Search">
+                    <input class="me-2 border-bottom border-dark-subtle" type="search" name="busqueda" placeholder="Deportes, economía, cultura..." aria-label="Search">
                     
                 </form>
                 @auth

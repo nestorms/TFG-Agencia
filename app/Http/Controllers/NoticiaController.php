@@ -23,6 +23,121 @@ class NoticiaController extends Controller
         $this->elasticsearch = $elasticsearch;
     }
 
+
+    public function indexarPrincipal()
+    {
+        // Obtener todas las noticias
+        $noticias = Noticia::limit(20)->get();
+
+        // Eliminar el índice existente si es necesario
+        $params = [
+            'index' => 'principal',
+        ];
+
+        if ($this->elasticsearch->indices()->exists($params)) {
+            $this->elasticsearch->indices()->delete($params);
+        }
+
+
+        $mapping = [
+            'mappings' => [
+                'properties' => [
+                    'titulo' => [
+                        'type' => 'text',
+                        'analyzer' => 'spanish'
+                    ],
+                    'descripcion' => [
+                        'type' => 'text',
+                        'analyzer' => 'spanish'
+                    ],
+                    'contenido' => [
+                        'type' => 'text',
+                        'analyzer' => 'spanish'
+                    ],  
+                ]
+            ]
+        ];
+
+        // Crear un nuevo índice
+        $this->elasticsearch->indices()->create([
+            'index' => 'principal',
+            'body' => $mapping,
+        ]);
+
+        // Iterar sobre cada usuario
+        foreach ($noticias as $noticia) {
+
+            $params = [
+                'index' => 'principal', // Nombre del índice en Elasticsearch
+                'id'    => $noticia->id, // ID único de la noticia
+                'body'  => [
+                    'titulo'       => $noticia->titulo,
+                    'descripcion'  => $noticia->descripcion,
+                    'contenido'    => $noticia->contenido,
+                    'id_redactor'  => $noticia->redactor->id,
+                    'id'           => $noticia->id,
+                ],
+            ];
+
+            // Indexar la noticia en Elasticsearch
+            $response = $this->elasticsearch->index($params);
+        }
+
+        return response()->json(['message' => 'Noticias de la página principal indexadas correctamente en Elasticsearch!!']);
+    }
+
+
+    public function buscadorIndex(Request $request)
+    {
+        // Defino los parámetros de la búsqueda
+        $params = [
+            'index' => 'principal', // Nombre del índice en Elasticsearch
+            'body' => [
+                'query' => [
+                    "bool" => [
+                        "should" => [
+                            [
+                                "match" =>[ "titulo" => $request->busqueda]
+                            ],
+                            [
+                                "match" => [ "descripcion" => $request->busqueda]
+                            ],
+                            [
+                                "match" => [ "contenido" => $request->busqueda]
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        // Realizar la consulta a Elasticsearch
+        $response = $this->elasticsearch->search($params);
+
+        // Obtener los resultados de la consulta
+        $hits = $response['hits']['hits'];
+
+        // Procesar los resultados según sea necesario
+        $noticias = [];
+        foreach ($hits as $hit) {
+            // Acceder a la fuente (_source) de cada documento
+            $source = $hit['_source'];
+            $score = $hit['_score'];
+            // Agregar la noticia a la lista de noticias
+            $noticias[] = Noticia::findOrFail($source['id']);
+
+            /*$noticias[] = [
+                'titulo' => $source['titulo'],
+                'descripcion' => $source['descripcion'],
+                'score' => $score,
+                'id_medio' => $source['id_medio'],
+            ];*/
+        }
+
+        // Retornar las noticias encontradas
+        return view('index', ['noticias' => $noticias]);
+    }
+
     public function indexarNoticias()
     {
         // Obtener todos los medios
@@ -37,9 +152,30 @@ class NoticiaController extends Controller
             $this->elasticsearch->indices()->delete($params);
         }
 
+
+        $mapping = [
+            'mappings' => [
+                'properties' => [
+                    'titulo' => [
+                        'type' => 'text',
+                        'analyzer' => 'spanish'
+                    ],
+                    'descripcion' => [
+                        'type' => 'text',
+                        'analyzer' => 'spanish'
+                    ],
+                    'contenido' => [
+                        'type' => 'text',
+                        'analyzer' => 'spanish'
+                    ],
+                ]
+            ]
+        ];
+
         // Crear un nuevo índice
         $this->elasticsearch->indices()->create([
             'index' => 'noticias',
+            'body' => $mapping,
             // Agregar cualquier configuración adicional necesaria para el índice
         ]);
 
@@ -86,9 +222,14 @@ class NoticiaController extends Controller
             'index' => 'noticias', // Nombre del índice en Elasticsearch
             'body' => [
                 'query' => [
-                    'match' => [
-                        'titulo' => [
-                            'query' => 'bluetooth'
+                    "bool" => [
+                        "should" => [
+                            [
+                            "match" =>[ "titulo" => "razon"]
+                            ],
+                            [
+                            "match" => [ "descripcion" => "futbol"]
+                            ],
                         ],
                     ],
                 ],
@@ -106,13 +247,13 @@ class NoticiaController extends Controller
         foreach ($hits as $hit) {
             // Acceder a la fuente (_source) de cada documento
             $source = $hit['_source'];
+            $score = $hit['_score'];
             // Agregar la noticia a la lista de noticias
             $noticias[] = [
                 'titulo' => $source['titulo'],
                 'descripcion' => $source['descripcion'],
-                'contenido' => $source['contenido'],
+                'score' => $score,
                 'id_medio' => $source['id_medio'],
-                
             ];
         }
 

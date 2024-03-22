@@ -32,7 +32,7 @@ Route::get('/logout', [UserController::class,'logout']);
 
 
 /********************   NOTICIAS  ********************/
-Route::get('/', [NoticiaController::class,'index']);
+Route::get('/', [NoticiaController::class,'index'])->name('index');
 Route::get('/noticia/{id}', [NoticiaController::class,'show'])->name('noticias.show');
 
 Route::post('/noticias/{id}/like', [NoticiaController::class, 'like'])->name('noticias.like');
@@ -77,4 +77,6 @@ Route::post('/comentar', [CommentController::class,'store'])->name('comentar.sto
 
 
 Route::get('/indexar-noticias', [NoticiaController::class, 'indexarNoticias']);
+Route::get('/indexar-principal', [NoticiaController::class, 'indexarPrincipal']);
 Route::get('/recomendar', [NoticiaController::class, 'buscarPorRanking']);
+Route::post('/buscadorIndex', [NoticiaController::class, 'buscadorIndex']);
