@@ -42,6 +42,28 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
+            'nombre' => 'Ana',
+            'email' => 'ana@ex.com',
+            'password' => 'ana1234',
+            'rol' => 'medio',
+            'apellidos' => 'Gómez López',
+            'empresa' => 'Diario ABC',
+            'telefono' => '987654321',
+            'enlace' => 'diarioabc.es',
+        ]);
+
+        User::create([
+            'nombre' => 'Javier',
+            'email' => 'javier@ex.com',
+            'password' => 'javier1234',
+            'rol' => 'medio',
+            'apellidos' => 'Fernández Rodríguez',
+            'empresa' => 'El País',
+            'telefono' => '789123456',
+            'enlace' => 'elpais.com',
+        ]);
+
+        User::create([
             'nombre' => 'David',
             'email' => 'david@ex.com',
             'password' => 'david1234',
@@ -77,22 +99,129 @@ class DatabaseSeeder extends Seeder
             
         ]);
 
+        User::create([
+            'nombre' => 'Raúl',
+            'email' => 'raul@ex.com',
+            'password' => 'raul1234',
+            'rol' => 'redactor',
+            'apellidos' => 'Meco Alvarez',
+            'empresa' => 'Marca',
+            'telefono' => '622433428',
+            'enlace' => 'marca.com',
+            
+        ]);
+
+        User::create([
+            'nombre' => 'Mario',
+            'email' => 'mario@ex.com',
+            'password' => 'mario1234',
+            'rol' => 'redactor',
+            'apellidos' => 'Martínez Sáez',
+            'empresa' => 'Europa Press',
+            'telefono' => '622133428',
+            'enlace' => 'press.com',
+            
+        ]);
+
+        User::create([
+            'nombre' => 'Álvaro',
+            'email' => 'alvaro@ex.com',
+            'password' => 'alvaro1234',
+            'rol' => 'redactor',
+            'apellidos' => 'Megías Sandoval',
+            'empresa' => 'Relevo',
+            'telefono' => '622433468',
+            'enlace' => 'relevo.com',
+            
+        ]);
+
+        User::create([
+            'nombre' => 'Jose Manuel',
+            'email' => 'josema@ex.com',
+            'password' => 'josema1234',
+            'rol' => 'redactor',
+            'apellidos' => 'Sevilla Rodríguez',
+            'empresa' => 'Reuters',
+            'telefono' => '622433218',
+            'enlace' => 'reuters.com',
+            
+        ]);
+
+        User::create([
+            'nombre' => 'María',
+            'email' => 'maria@ex.com',
+            'password' => 'maria1234',
+            'rol' => 'redactor',
+            'apellidos' => 'García Pérez',
+            'empresa' => 'Noticias al Día',
+            'telefono' => '987654321',
+            'enlace' => 'noticiasaldia.com',
+        ]);
+
+        User::create([
+            'nombre' => 'Juan',
+            'email' => 'juan@ex.com',
+            'password' => 'juan1234',
+            'rol' => 'redactor',
+            'apellidos' => 'Martínez López',
+            'empresa' => 'Últimas Noticias',
+            'telefono' => '123456789',
+            'enlace' => 'ultimasnoticias.com',
+        ]);
+
+        User::create([
+            'nombre' => 'Laura',
+            'email' => 'laura@ex.com',
+            'password' => 'laura1234',
+            'rol' => 'redactor',
+            'apellidos' => 'Fernández Gómez',
+            'empresa' => 'Información Diaria',
+            'telefono' => '456789123',
+            'enlace' => 'informaciondiaria.com',
+        ]);
+
+        User::create([
+            'nombre' => 'Carlos',
+            'email' => 'carlos@ex.com',
+            'password' => 'carlos1234',
+            'rol' => 'redactor',
+            'apellidos' => 'Rodríguez Martín',
+            'empresa' => 'Noticias Online',
+            'telefono' => '789123456',
+            'enlace' => 'noticiasonline.com',
+        ]);
+
         Category::create([
             'nombre' => 'Economía',
             'descripcion' => 'Noticias sobre la economía española e internacional.',
-            'palabras_clave' => 'ibex,dinero,economia,pib,gobierno',
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
         ]);
 
         Category::create([
             'nombre' => 'Deportes',
             'descripcion' => 'Noticias sobre los eventos deportivos nacionales e internacionales.',
-            'palabras_clave' => 'laliga,futbol,baloncesto,campeonato,champions',
+            'palabras_clave' => 'futbol,deporte,baloncesto,tenis,partido,entrenador',
+        ]);
+
+        Category::create([
+            'nombre' => 'Tecnología',
+            'descripcion' => 'Noticias sobre la tecnología global y actualizada.',
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
         ]);
 
 
 
         $usuarioMedio = User::where('rol', 'medio')->get()->random();
         $usuarioRedactor = User::where('rol', 'redactor')->get()->random();
+
+
+
+
+
+        /********************************************       DEPORTES        ************************************************  */
+
+
+
 
         Noticia::create([
             'titulo' => 'El Athletic tiene un color especial',
@@ -106,7 +235,7 @@ class DatabaseSeeder extends Seeder
             'hora'=>date('H:i:s'),
             'fecha' => date('Y-m-d'),
             'categoria_id'=>2,
-            'redactor_id' => $usuarioRedactor->id,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
             ]);
 
         Noticia::create([
@@ -129,7 +258,7 @@ class DatabaseSeeder extends Seeder
             'hora'=>date('H:i:s'),
             'fecha' => date('Y-m-d'),
             'categoria_id'=>2,
-            'redactor_id' => $usuarioRedactor->id,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
 
         Noticia::create([
@@ -151,7 +280,7 @@ class DatabaseSeeder extends Seeder
             'hora'=>date('H:i:s'),
             'fecha' => date('Y-m-d'),
             'categoria_id'=>2,
-            'redactor_id' => $usuarioRedactor->id,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
 
         Noticia::create([
@@ -184,7 +313,7 @@ class DatabaseSeeder extends Seeder
             'hora'=>date('H:i:s'),
             'fecha' => date('Y-m-d'),
             'categoria_id'=>2,
-            'redactor_id' => $usuarioRedactor->id,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
 
         Noticia::create([
@@ -228,7 +357,7 @@ class DatabaseSeeder extends Seeder
             'hora'=>date('H:i:s'),
             'fecha' => date('Y-m-d'),
             'categoria_id'=>2,
-            'redactor_id' => $usuarioRedactor->id,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
 
         Noticia::create([
@@ -258,7 +387,7 @@ class DatabaseSeeder extends Seeder
             'hora'=>date('H:i:s'),
             'fecha' => date('Y-m-d'),
             'categoria_id'=>2,
-            'redactor_id' => $usuarioRedactor->id,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
 
         Noticia::create([
@@ -285,14 +414,584 @@ class DatabaseSeeder extends Seeder
             'hora'=>date('H:i:s'),
             'fecha' => date('Y-m-d'),
             'categoria_id'=>2,
-            'redactor_id' => $usuarioRedactor->id,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
+
+
+
+
+
+        /********************************************       ECONOMÍA        ************************************************  */
+
+
+        Noticia::create([
+            'titulo' => 'La transformación digital: clave para la competitividad de las empresas españolas',
+            'descripcion' => 'La transformación digital es un proceso imparable que está redefiniendo todos los sectores de la economía. Las empresas españolas que no se adapten a esta nueva realidad corren el riesgo de quedarse atrás en un mercado cada vez más competitivo.',
+            'contenido' => 'a transformación digital es un proceso imparable que está redefiniendo todos los sectores de la economía. Las empresas españolas que no se adapten a esta nueva realidad corren el riesgo de quedarse atrás en un mercado cada vez más competitivo.
+
+            La digitalización de los procesos permite a las empresas ahorrar tiempo y costes, mejorar la calidad de sus productos y servicios, crear nuevos modelos de negocio y llegar a nuevos clientes. En definitiva, las empresas que se digitalizan son más competitivas en el mercado global.
+            
+            Sin embargo, la transformación digital también presenta algunos retos. La falta de inversión, la escasez de talento digital y la resistencia al cambio cultural son algunos de los principales obstáculos que las empresas deben superar.
+            
+            Para tener éxito en la transformación digital, es necesario definir una estrategia clara que se alinee con los objetivos de la empresa, contar con un liderazgo comprometido, crear una cultura de innovación y formación, e invertir en la formación de los empleados.
+            
+            La transformación digital es clave para el futuro de la economía española. Las empresas que se adapten a esta nueva realidad estarán mejor posicionadas para competir en el mercado global y contribuir al crecimiento económico del país.
+            
+            El gobierno español tiene un papel importante que jugar en la promoción de la transformación digital de las empresas. Es necesario crear un marco regulatorio favorable a la innovación, facilitar el acceso a la financiación y a la formación, y fomentar la colaboración entre las empresas, el gobierno y la sociedad civil.
+            
+            En definitiva, la transformación digital es una oportunidad para que las empresas españolas sean más competitivas en el mercado global. Es un esfuerzo que requiere la colaboración de todos los actores para que España aproveche al máximo esta oportunidad.',
+            'foto' => 'images/digital.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Los bancos centrales endurecen su política monetaria para combatir la inflación',
+            'descripcion' => 'Subida de tipos de interés, reducción de la compra de activos y control de la inflación: las medidas que están tomando los bancos centrales para contener la subida de precios',
+            'contenido' => 'Los bancos centrales de todo el mundo están endureciendo su política monetaria en un intento de contener la inflación. La Reserva Federal de Estados Unidos (Fed), el Banco Central Europeo (BCE) y el Banco de Inglaterra (BoE) han anunciado subidas de los tipos de interés, mientras que otros bancos centrales, como el Banco de Japón (BoJ), están empezando a reducir sus programas de compra de activos.
+
+            Razones del endurecimiento monetario:
+            
+            Controlar la inflación: La principal razón del endurecimiento monetario es la necesidad de controlar la inflación, que se encuentra en niveles muy altos en la mayoría de las economías desarrolladas.
+            Evitar una espiral inflacionaria: Los bancos centrales temen que la inflación se descontrole y se convierta en una espiral inflacionaria, lo que sería muy negativo para la economía.
+            Anclar las expectativas de inflación: Los bancos centrales también quieren anclar las expectativas de inflación, es decir, que los agentes económicos esperen que la inflación se mantenga en niveles controlados en el futuro.
+            Medidas que se están tomando:
+            
+            Subida de tipos de interés: La medida más común que están tomando los bancos centrales es la subida de los tipos de interés. Esto encarece el crédito y reduce la demanda agregada, lo que a su vez ayuda a contener la inflación.
+            Reducción de la compra de activos: Los bancos centrales también están reduciendo sus programas de compra de activos, que habían puesto en marcha durante la pandemia para estimular la economía.
+            Control de la curva de tipos: Algunos bancos centrales, como la Fed, también están utilizando herramientas de control de la curva de tipos para mantener los tipos de interés a largo plazo en niveles bajos.
+            Riesgos del endurecimiento monetario:
+            
+            El endurecimiento monetario también tiene algunos riesgos. Una subida de los tipos de interés puede ralentizar el crecimiento económico e incluso provocar una recesión. Además, el endurecimiento monetario puede tener un impacto negativo en los mercados financieros.
+            
+            Efectos del endurecimiento monetario:
+            
+            El endurecimiento monetario ya está empezando a tener algunos efectos en la economía. Los tipos de interés a largo plazo han subido y el crecimiento económico se ha ralentizado en algunos países. Sin embargo, todavía es pronto para saber si el endurecimiento monetario será suficiente para contener la inflación sin provocar una recesión.
+            
+            En definitiva, los bancos centrales están tomando medidas para contener la inflación, pero estas medidas también tienen algunos riesgos. Es importante que los bancos centrales calibres cuidadosamente su política monetaria para evitar una recesión.',
+            'foto' => 'images/banco.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+
+        Noticia::create([
+            'titulo' => 'El paro registrado en España baja en febrero por quinto mes consecutivo',
+            'descripcion' => 'l paro registrado en España ha bajado en febrero por quinto mes consecutivo, situándose en 2,89 millones de personas. La tasa de paro se ha reducido al 12,6%, la más baja desde 2008.',
+            'contenido' => 'El Ministerio de Trabajo y Economía Social ha publicado este martes los datos del paro correspondientes al mes de febrero, que muestran una nueva caída del desempleo en España. En concreto, el paro registrado se ha reducido en 70.744 personas en el último mes, lo que supone un descenso del 2,4%.
+
+            Esta bajada del paro se ha producido en todos los sectores de actividad, con especial incidencia en el sector servicios, que ha registrado una reducción del desempleo del 3,1%. También se ha producido una bajada significativa del paro en la agricultura (-2,8%) y en la industria (-2,2%).
+            
+            La tasa de paro se ha situado en el 12,6%, lo que supone una décima menos que en el mes anterior y la tasa más baja desde abril de 2008. La tasa de paro entre los jóvenes también ha bajado, situándose en el 32,2%.
+            
+            El número de afiliados a la Seguridad Social también ha aumentado en febrero, en 204.344 personas, lo que supone un crecimiento del 1,1%. El número total de afiliados se sitúa ya en 19.224.112 personas.
+            
+            Contexto:
+            
+            La buena evolución del mercado laboral español se produce en un contexto de recuperación económica tras la pandemia de COVID-19. El crecimiento del PIB en 2022 fue del 5,5%, y se espera que siga creciendo en 2023.
+            
+            Implicaciones:
+            
+            La bajada del paro y el aumento de la afiliación a la Seguridad Social son buenas noticias para la economía española. Estas cifras indican que la recuperación económica está creando empleo y que el mercado laboral español está mejorando.
+            
+            Retos:
+            
+            A pesar de la buena evolución del mercado laboral, todavía hay algunos retos que afrontar. Uno de los principales retos es la alta tasa de paro juvenil.
+            
+            Futuro:
+            
+            Se espera que el mercado laboral español siga mejorando en los próximos meses. El Gobierno español ha puesto en marcha una serie de medidas para fomentar la creación de empleo, como la reforma laboral y el plan de recuperación económica.
+            
+            Conclusión:
+            
+            La bajada del paro en febrero es una buena noticia para la economía española. Es un indicador de que la recuperación económica está en marcha y que el mercado laboral está mejorando. Sin embargo, todavía hay algunos retos que afrontar, como la alta tasa de paro juvenil.',
+            'foto' => 'images/paro.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+        Noticia::create([
+            'titulo' => 'La Reserva Federal de EE.UU. sube los tipos de interés 0,25 puntos, anticipando nuevas subidas',
+            'descripcion' => 'La Reserva Federal de EE.UU. ha elevado los tipos de interés en 0,25 puntos, la primera subida desde 2018. Se espera que otros bancos centrales, como el Banco Central Europeo (BCE), tomen medidas similares en los próximos meses para combatir la inflación.',
+            'contenido' => 'La Reserva Federal de EE.UU. ha decidido subir los tipos de interés en un 0,25%, la primera subida desde diciembre de 2018. La decisión se ha tomado en un contexto de elevada inflación en EE.UU., que se situó en el 7,5% en febrero.
+
+            Se espera que otros bancos centrales, como el Banco Central Europeo (BCE), tomen medidas similares en los próximos meses. El BCE ha anunciado que comenzará a reducir su programa de compra de activos en marzo, lo que podría ser un primer paso hacia la subida de los tipos de interés.
+            
+            Razones:
+            
+            La subida de los tipos de interés tiene como objetivo combatir la inflación. Los bancos centrales consideran que la inflación es demasiado alta y que es necesario tomar medidas para controlarla.
+            
+            Impacto:
+            
+            La subida de los tipos de interés tendrá un impacto en la economía global. Se espera que frene el crecimiento económico, pero también podría ayudar a contener la inflación. Los bancos centrales están tratando de encontrar un equilibrio entre el crecimiento económico y la estabilidad de precios.
+            
+            Perspectivas:
+            
+            Se espera que los bancos centrales continúen subiendo los tipos de interés en los próximos meses. El ritmo de las subidas dependerá de la evolución de la inflación.
+            
+            Consecuencias:
+            
+            La subida de los tipos de interés tendrá un impacto en los hogares y las empresas. Los hogares tendrán que pagar más por sus hipotecas y préstamos, y las empresas tendrán que pagar más por sus créditos.
+            
+            Debate:
+            
+            Existe un debate sobre si la subida de los tipos de interés es la mejor manera de combatir la inflación. Algunos economistas consideran que la subida de los tipos de interés podría ser contraproducente y podría frenar el crecimiento económico.
+            
+            Conclusión:
+            
+            La subida de los tipos de interés es una medida importante que tendrá un impacto en la economía global. Es importante que los bancos centrales sean prudentes y que monitoricen la evolución de la inflación para tomar las medidas adecuadas.',
+            'foto' => 'images/tipo.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+        Noticia::create([
+            'titulo' => 'La inflación en España se dispara al 6,0% en enero, la tasa más alta desde 1992',
+            'descripcion' => 'El Índice de Precios al Consumidor (IPC) de enero en España se ha situado en el 6,0%, una tasa interanual que supone la más alta desde diciembre de 1992. La energía sigue siendo el principal componente del alza de precios, con una subida del 29,3%.',
+            'contenido' => 'El dato del IPC de enero en España confirma la tendencia al alza de la inflación en los últimos meses. La tasa de inflación se ha duplicado en el último año, pasando del 3,0% en enero de 2022 al 6,0% en enero de 2023.
+
+            La energía es el principal factor que impulsa la inflación, con una subida del 29,3% en enero. Los alimentos también experimentaron un alza significativa, con un aumento del 5,5%.
+            
+            El resto de los componentes del IPC también registraron subidas, aunque en menor medida. Los precios de los bienes no energéticos subieron un 2,4%, mientras que los precios de los servicios subieron un 2,1%.
+            La elevada inflación está teniendo un impacto negativo en el poder adquisitivo de los hogares españoles. El gobierno ha implementado algunas medidas para paliar sus efectos, como la bonificación de 20 céntimos por litro de combustible, pero los expertos consideran que se necesitan medidas adicionales.
+            Se espera que la inflación se mantenga en niveles altos en los próximos meses, aunque es probable que comience a moderarse a partir de la segunda mitad del año. El Banco Central Europeo (BCE) ha anunciado que subirá los tipos de interés en julio, lo que podría ayudar a contener la inflación.
+            El gobierno español ha implementado algunas medidas para paliar los efectos de la inflación, como la bonificación de 20 céntimos por litro de combustible, la ampliación del bono social eléctrico y la subida del Salario Mínimo Interprofesional (SMI).
+            Las reacciones a la subida del IPC han sido variadas. Los sindicatos han pedido medidas más contundentes para proteger a los trabajadores, mientras que las empresas han advertido que la subida de los precios podría afectar a la competitividad de la economía española.',
+            'foto' => 'images/inflacion.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+        Noticia::create([
+            'titulo' => 'La economía española: luces y sombras en el horizonte',
+            'descripcion' => 'Crecimiento moderado, inflación persistente y mercado laboral en recuperación: radiografía de la economía española en el primer trimestre de 2024',
+            'contenido' => 'La economía española se encuentra en un momento de incertidumbre. La guerra en Ucrania, la subida de los precios de la energía y las interrupciones en las cadenas de suministro han contribuido a una ralentización del crecimiento económico. Sin embargo, el PIB español creció un 0,4% en el primer trimestre de 2024 en comparación con el trimestre anterior, un crecimiento moderado pero positivo que se espera que se mantenga en los próximos trimestres.
+
+            La inflación se ha convertido en el principal problema económico de España. En el mes de marzo, la tasa de inflación interanual se situó en el 5,5%, una cifra que no se alcanzaba desde hace décadas. La subida de los precios de la energía y los alimentos es la principal causa de la inflación, que está erosionando el poder adquisitivo de los hogares españoles.
+            
+            El mercado laboral español ha mostrado signos de recuperación en los últimos meses. La tasa de paro se ha reducido hasta el 12,5%, la más baja desde 2008. La creación de empleo se ha concentrado en el sector servicios, especialmente en el turismo.
+            
+            La economía española se enfrenta a una serie de retos en el corto y mediano plazo. La guerra en Ucrania, la inflación y la incertidumbre económica global son algunos de los principales desafíos. El futuro de la economía española dependerá en gran medida de la evolución de la guerra en Ucrania, la contención de la inflación y la capacidad del gobierno para implementar medidas que fomenten el crecimiento económico y la creación de empleo.
+            
+            El gobierno español ha implementado una serie de medidas para paliar los efectos de la inflación y la guerra en Ucrania. Entre estas medidas se encuentran la bonificación de 20 céntimos por litro de combustible, la ampliación del bono social eléctrico y la subida del Salario Mínimo Interprofesional (SMI).
+            
+            En definitiva, la economía española se encuentra en un momento complejo, con luces y sombras en el horizonte. El crecimiento moderado, la inflación persistente y la recuperación del mercado laboral son algunos de los indicadores que marcarán el futuro económico del país. El gobierno tendrá que tomar medidas contundentes para afrontar los desafíos que se presentan y asegurar la estabilidad económica de España.',
+            'foto' => 'images/economia.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'El mercado de criptomonedas se estabiliza tras la volatilidad inicial del año',
+            'descripcion' => 'Después de un comienzo de año marcado por la incertidumbre y la volatilidad, el mercado de criptomonedas muestra signos de estabilización. Los inversores observan con cautela mientras Bitcoin y otras criptomonedas encuentran un nuevo equilibrio después de las fluctuaciones extremas de los últimos meses.',
+            'contenido' => 'El mercado de criptomonedas ha sido objeto de un intenso escrutinio en los últimos tiempos, con fluctuaciones de precios que han desconcertado tanto a inversores como a analistas. Sin embargo, en las últimas semanas, hemos observado una cierta calma después de la tormenta. Bitcoin, la criptomoneda líder, ha mostrado una tendencia alcista moderada, mientras que otras altcoins también muestran signos de recuperación.
+
+            Este periodo de estabilización sigue a una serie de eventos que sacudieron el mercado a principios de año, incluyendo regulaciones más estrictas en varios países, la caída del mercado de valores y preocupaciones sobre la inflación. A pesar de estos desafíos, muchos expertos ven esta fase como una oportunidad para una mayor consolidación y madurez en el mercado de criptomonedas.
+            
+            Los inversores están observando de cerca los movimientos del mercado, evaluando tanto los riesgos como las oportunidades. Algunos ven esta estabilización como una señal positiva de que el mercado está encontrando un nuevo equilibrio después de un período tumultuoso, mientras que otros permanecen cautelosos, conscientes de que la volatilidad aún puede persistir en el futuro cercano.
+            
+            En última instancia, el futuro del mercado de criptomonedas sigue siendo incierto, pero muchos están optimistas sobre su potencial a largo plazo. A medida que la tecnología blockchain continúa evolucionando y más inversores institucionales ingresan al espacio, es probable que veamos una mayor legitimación y adopción de las criptomonedas en los próximos años.',
+            'foto' => 'images/bit.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'El precio del petróleo alcanza máximos de seis años impulsado por tensiones geopolíticas',
+            'descripcion' => 'Los precios del petróleo han alcanzado niveles no vistos en seis años debido a las crecientes tensiones geopolíticas en importantes regiones productoras. La escalada de conflictos en Medio Oriente y las interrupciones en el suministro están generando preocupaciones sobre la estabilidad del mercado petrolero global.',
+            'contenido' => 'El precio del petróleo ha experimentado un notable aumento en las últimas semanas, con el crudo Brent superando los $100 por barril por primera vez desde 2014. Este repunte se debe en gran parte a las tensiones geopolíticas en varias regiones productoras clave, incluido el Medio Oriente.
+
+            Los recientes enfrentamientos entre Arabia Saudita e Irán han aumentado las preocupaciones sobre posibles interrupciones en el suministro de petróleo en la región. Además, la escalada del conflicto en Ucrania y las sanciones occidentales contra Rusia han generado temores de una reducción en las exportaciones de crudo ruso, lo que ha contribuido aún más a la presión alcista sobre los precios del petróleo.
+            
+            Estas tensiones geopolíticas han exacerbado los desafíos existentes en el mercado petrolero, incluida la recuperación lenta de la demanda mundial de combustible debido a la pandemia de COVID-19 y las restricciones asociadas. Aunque la Organización de Países Exportadores de Petróleo (OPEP) y sus aliados han aumentado gradualmente la producción para satisfacer la creciente demanda, la incertidumbre geopolítica continúa ejerciendo presión al alza sobre los precios del crudo.
+            
+            Los analistas advierten que la volatilidad en el mercado petrolero podría persistir en el corto plazo, especialmente si las tensiones geopolíticas se intensifican aún más. Además, el impacto de los precios más altos del petróleo en la inflación y la economía global es motivo de preocupación, ya que podría aumentar los costos para los consumidores y las empresas, lo que a su vez podría ralentizar la recuperación económica.',
+            'foto' => 'images/petrol.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Nuevas regulaciones fiscales impactan en el mercado de criptomonedas',
+            'descripcion' => 'Las recientes regulaciones fiscales implementadas por varios países están generando repercusiones en el mercado de criptomonedas. Este artículo explora cómo las nuevas normativas afectan la inversión y el comercio de activos digitales, así como las medidas adoptadas por los inversores para adaptarse a los cambios en el entorno regulatorio.',
+            'contenido' => 'La creciente popularidad de las criptomonedas ha llevado a los gobiernos de todo el mundo a considerar nuevas regulaciones fiscales para abordar los desafíos asociados con estos activos digitales. En muchos casos, las autoridades fiscales están buscando mejorar la transparencia y la fiscalización de las transacciones de criptomonedas, así como garantizar el cumplimiento de las obligaciones tributarias por parte de los inversores y comerciantes.
+
+            Las nuevas regulaciones fiscales pueden variar considerablemente de un país a otro. Algunas jurisdicciones han optado por imponer impuestos sobre las ganancias de capital obtenidas a través de la compra y venta de criptomonedas, mientras que otras están considerando gravar las transacciones de criptomonedas de manera similar a las transacciones financieras tradicionales. Estas medidas buscan aumentar la recaudación fiscal y garantizar que los inversores en criptomonedas contribuyan equitativamente al sistema tributario.
+            
+            El impacto de las nuevas regulaciones fiscales en el mercado de criptomonedas ha sido variado. Por un lado, algunas medidas regulatorias han generado incertidumbre y volatilidad en el mercado, lo que ha llevado a una corrección en los precios de muchas criptomonedas. Por otro lado, se espera que la implementación de regulaciones claras y transparentes a largo plazo pueda contribuir a la estabilidad y la legitimidad del mercado de criptomonedas, lo que a su vez podría atraer a nuevos inversores institucionales y aumentar la adopción de criptomonedas en la economía global.
+            
+            En respuesta a las nuevas regulaciones fiscales, muchos inversores y comerciantes de criptomonedas están adoptando medidas para cumplir con las obligaciones fiscales y mitigar los riesgos asociados con la inversión en activos digitales. Esto incluye la realización de auditorías fiscales internas, la declaración adecuada de las ganancias y pérdidas de criptomonedas en las declaraciones de impuestos, y la búsqueda de asesoramiento profesional para comprender y cumplir con las regulaciones fiscales aplicables en sus jurisdicciones.
+            
+            En resumen, las nuevas regulaciones fiscales están remodelando el panorama del mercado de criptomonedas y están generando desafíos y oportunidades para los inversores y comerciantes en este espacio. A medida que los países continúan desarrollando y ajustando sus marcos regulatorios, se espera que el mercado de criptomonedas evolucione para adaptarse a un entorno regulatorio cambiante y maduro.',
+            'foto' => 'images/fiscal.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'El sector turístico enfrenta desafíos ante la incertidumbre de las restricciones de viaje',
+            'descripcion' => 'El sector turístico se enfrenta a nuevos desafíos debido a la incertidumbre que rodea a las restricciones de viaje impuestas por la pandemia. A medida que algunos países flexibilizan las medidas y otros las refuerzan, las empresas turísticas buscan adaptarse a un entorno cambiante mientras intentan recuperarse de las pérdidas sufridas durante la crisis.',
+            'contenido' => 'El sector turístico, uno de los más afectados por la pandemia de COVID-19, continúa enfrentando dificultades a medida que las restricciones de viaje fluctúan en todo el mundo. Si bien la progresiva vacunación y la reducción de casos han llevado a la relajación de algunas medidas en ciertos países, la persistencia de variantes del virus y el temor a nuevas oleadas han llevado a otros a mantener o incluso endurecer las restricciones.
+
+            Esta incertidumbre en torno a las restricciones de viaje ha generado desafíos adicionales para las empresas turísticas, que buscan recuperarse de las pérdidas sufridas durante la pandemia. Las agencias de viajes, aerolíneas, hoteles y otros actores de la industria se enfrentan a la difícil tarea de planificar y operar en un entorno caracterizado por la volatilidad y la falta de predictibilidad.
+            
+            Las empresas turísticas están implementando diversas estrategias para adaptarse a esta situación cambiante. Esto incluye la flexibilización de las políticas de cancelación y reembolso para brindar mayor tranquilidad a los viajeros, así como la diversificación de las ofertas y destinos para adaptarse a las preferencias emergentes de los turistas en medio de la pandemia.
+            
+            Además, la industria turística está intensificando sus esfuerzos para promover destinos seguros y responsables, destacando las medidas de salud y seguridad implementadas en hoteles, aeropuertos y otras instalaciones para tranquilizar a los viajeros preocupados por su bienestar durante el viaje.
+            
+            Sin embargo, a pesar de estos esfuerzos, la recuperación completa del sector turístico sigue siendo incierta, ya que la evolución de la pandemia y las medidas gubernamentales continuarán influyendo en los patrones de viaje y el comportamiento del consumidor. La colaboración entre los actores del sector y el apoyo gubernamental seguirán siendo fundamentales para superar los desafíos actuales y sentar las bases para una recuperación sostenible del turismo a nivel global.',
+            'foto' => 'images/turistico.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'El impacto de la crisis energética en la economía mundial: desafíos y perspectivas',
+            'descripcion' => 'La crisis energética desencadenada por la escalada de precios del petróleo y la inestabilidad geopolítica está generando preocupaciones en la economía mundial. Este artículo analiza los diversos impactos de la crisis en los mercados financieros, la inflación, el crecimiento económico y la transición hacia fuentes de energía renovable, así como las perspectivas y desafíos que enfrentan los países y las empresas en este contexto.',
+            'contenido' => 'La reciente escalada de precios del petróleo y la inestabilidad geopolítica en diversas regiones del mundo han desencadenado una crisis energética de alcance global, con implicaciones significativas para la economía mundial. Esta crisis ha generado preocupaciones en múltiples sectores y plantea desafíos importantes para los gobiernos, las empresas y los consumidores en todo el mundo.
+
+            Uno de los impactos más inmediatos de la crisis energética se observa en los mercados financieros, donde la volatilidad de los precios del petróleo ha generado incertidumbre y ha afectado a sectores clave, como el transporte, la industria manufacturera y la logística. La escalada de precios también ha aumentado los costos de producción y transporte para las empresas, lo que puede traducirse en presiones inflacionarias adicionales en la economía.
+            
+            La inflación, de hecho, es uno de los principales desafíos que enfrentan las autoridades económicas en este contexto. El aumento de los precios de la energía y los productos básicos puede erosionar el poder adquisitivo de los consumidores y afectar negativamente al consumo y la inversión, lo que a su vez puede frenar el crecimiento económico y dificultar la recuperación de la crisis provocada por la pandemia.
+            
+            Además, la crisis energética está generando un renovado debate sobre la necesidad de acelerar la transición hacia fuentes de energía renovable y sostenible. Si bien la dependencia del petróleo y otros combustibles fósiles sigue siendo predominante en muchos países, la volatilidad de los precios y la preocupación por el cambio climático están impulsando la inversión en energías limpias y tecnologías renovables.
+            
+            Sin embargo, esta transición no está exenta de desafíos. La necesidad de infraestructuras y tecnologías adecuadas, así como de marcos regulatorios y políticas energéticas coherentes, plantea desafíos significativos para los países y las empresas. Además, la transición hacia energías renovables debe ser inclusiva y justa, teniendo en cuenta los impactos sociales y económicos en comunidades dependientes de la industria extractiva tradicional.
+            
+            En resumen, la crisis energética actual representa un desafío multifacético que requiere una respuesta coordinada a nivel internacional y un enfoque integral que aborde tanto los aspectos económicos como medioambientales. La adopción de políticas y estrategias orientadas a la diversificación energética, la eficiencia energética y la sostenibilidad será fundamental para mitigar los impactos negativos de la crisis y sentar las bases para un futuro energético más seguro y sostenible.',
+            'foto' => 'images/energia.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+
+
+
+
+        /********************************************       TECNOLOGIA        ************************************************  */
+
+
+
+        Noticia::create([
+            'titulo' => 'Nueva tecnología de realidad aumentada revoluciona la experiencia de compra en línea',
+            'descripcion' => 'Una innovadora tecnología de realidad aumentada está cambiando la forma en que las personas compran en línea, ofreciendo una experiencia de compra más inmersiva y personalizada. ',
+            'contenido' => 'La realidad aumentada (RA) está transformando la industria del comercio electrónico al brindar una experiencia de compra completamente nueva y envolvente. Esta tecnología permite a los usuarios visualizar productos en su entorno real a través de dispositivos como teléfonos inteligentes y tabletas, utilizando la cámara para superponer imágenes virtuales sobre el mundo físico.
+
+            Una de las aplicaciones más impactantes de la realidad aumentada en el comercio electrónico es la capacidad de "probar" productos antes de comprarlos. Por ejemplo, los consumidores pueden ver cómo se vería un mueble en su sala de estar, cómo quedaría un par de gafas de sol en su rostro, o incluso cómo se vería un nuevo color de pintura en sus paredes. Esta experiencia inmersiva no solo ayuda a los clientes a tomar decisiones más informadas, sino que también aumenta la confianza en sus compras, lo que reduce las devoluciones y aumenta la satisfacción del cliente.
+            
+            Además de mejorar la experiencia de compra para los consumidores, la realidad aumentada también beneficia a los minoristas al aumentar las tasas de conversión y las ventas. Al ofrecer una vista previa virtual de los productos, las marcas pueden atraer y retener a los clientes de manera más efectiva, convirtiendo las visitas a sus sitios web en transacciones exitosas. Esto se traduce en un aumento en los ingresos y una mayor fidelidad del cliente a largo plazo.
+            
+            A medida que la tecnología de realidad aumentada continúa mejorando y volviéndose más accesible, se espera que su adopción en el comercio electrónico siga creciendo. Los minoristas que inviertan en esta innovadora tecnología estarán mejor posicionados para destacarse en un mercado cada vez más competitivo y brindar experiencias de compra excepcionales a sus clientes.',
+            'foto' => 'images/real.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Desarrollan nueva tecnología de inteligencia artificial para detectar enfermedades cardíacas',
+            'descripcion' => 'Un equipo de investigadores ha desarrollado una innovadora tecnología de inteligencia artificial capaz de diagnosticar enfermedades cardíacas con una precisión sin precedentes. Esta noticia explora cómo esta tecnología podría revolucionar el diagnóstico y tratamiento de enfermedades cardiovasculares en el futuro cercano.',
+            'contenido' => 'La enfermedad cardiovascular es una de las principales causas de muerte en todo el mundo, y su detección temprana es crucial para un tratamiento efectivo y una mejor atención al paciente. En este contexto, los avances en inteligencia artificial están demostrando ser herramientas prometedoras para mejorar el diagnóstico y la prevención de enfermedades cardíacas.
+
+            El equipo de investigadores ha desarrollado un algoritmo de inteligencia artificial entrenado con miles de imágenes médicas de ecocardiogramas, resonancias magnéticas y otras pruebas cardíacas. Este algoritmo utiliza técnicas de aprendizaje profundo para analizar las imágenes y detectar patrones sutiles asociados con diversas enfermedades cardíacas, incluyendo la enfermedad coronaria, la insuficiencia cardíaca y las anomalías estructurales del corazón.
+            
+            Lo más destacado de esta tecnología es su capacidad para identificar anomalías cardiacas con una precisión y rapidez excepcionales, superando incluso a los expertos médicos en algunos casos. Además, la tecnología es no invasiva y puede integrarse fácilmente en la práctica clínica existente, lo que la hace accesible para un amplio espectro de profesionales de la salud y pacientes.
+            
+            Se espera que esta nueva tecnología de inteligencia artificial tenga un impacto significativo en el campo de la cardiología al mejorar la detección temprana de enfermedades cardíacas, permitiendo tratamientos más efectivos y personalizados, y reduciendo la carga sobre los sistemas de salud. Además, abre nuevas oportunidades para la investigación en el campo de la medicina cardiovascular y promueve la colaboración entre científicos, médicos y expertos en inteligencia artificial.
+            
+            En resumen, el desarrollo de esta tecnología de inteligencia artificial marca un hito importante en el campo de la salud cardiovascular y ejemplifica el potencial transformador de la inteligencia artificial en el diagnóstico y tratamiento de enfermedades críticas. Con el tiempo, se espera que estas innovaciones mejoren significativamente la calidad de vida de millones de personas en todo el mundo.',
+            'foto' => 'images/ia.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Google anuncia avances en la tecnología de realidad aumentada para facilitar la navegación urbana',
+            'descripcion' => 'Google ha revelado nuevos avances en su tecnología de realidad aumentada, destinados a mejorar la experiencia de navegación urbana para los usuarios de Google Maps. Esta noticia destaca cómo la realidad aumentada está siendo utilizada para proporcionar indicaciones más precisas y visuales mientras se navega por entornos urbanos complejos.',
+            'contenido' => 'La navegación en entornos urbanos puede ser desafiante, con calles congestionadas, edificios altos y múltiples puntos de referencia que pueden confundir a los usuarios. En respuesta a estos desafíos, Google ha estado desarrollando su tecnología de realidad aumentada para ofrecer una experiencia de navegación más intuitiva y precisa.
+
+            La última actualización de Google Maps presenta una función de realidad aumentada mejorada que utiliza la cámara del teléfono inteligente del usuario para superponer indicaciones visuales en tiempo real sobre el mundo real. Al apuntar la cámara hacia adelante, los usuarios pueden ver señales digitales superpuestas en la pantalla que indican direcciones, giros y destinos, lo que facilita la orientación y la toma de decisiones durante la navegación.
+            
+            Esta tecnología utiliza algoritmos avanzados de visión por computadora y mapeo 3D para identificar con precisión la ubicación del usuario y los elementos circundantes en el entorno urbano. Además, se integra con datos en tiempo real de Google Maps, lo que permite a los usuarios recibir actualizaciones sobre el tráfico, la construcción de carreteras y otros eventos relevantes mientras navegan por la ciudad.
+            
+            La realidad aumentada se ha convertido en una herramienta valiosa para mejorar la experiencia de navegación, especialmente en entornos urbanos densos y complejos. Al proporcionar indicaciones visuales claras y contextualizadas, esta tecnología ayuda a los usuarios a tomar decisiones más informadas y a llegar a su destino de manera más eficiente.
+            
+            Google continúa invirtiendo en el desarrollo de la realidad aumentada y su integración en productos como Google Maps, con el objetivo de ofrecer una experiencia de navegación más intuitiva y personalizada para millones de usuarios en todo el mundo. Este avance marca un paso significativo hacia el futuro de la navegación urbana y demuestra el potencial transformador de la realidad aumentada en nuestra vida diaria.',
+            'foto' => 'images/google.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Tesla anuncia avances en su tecnología de conducción autónoma con la introducción de Tesla Vision',
+            'descripcion' => 'Tesla ha dado un paso adelante en su búsqueda de la conducción autónoma al anunciar Tesla Vision, una nueva tecnología de visión por computadora diseñada para mejorar la seguridad y la eficiencia de sus vehículos eléctricos. Esta noticia destaca cómo Tesla está avanzando hacia un futuro de conducción totalmente autónoma mediante el desarrollo de sistemas de percepción visual más sofisticados.',
+            'contenido' => 'La visión por computadora desempeña un papel fundamental en el desarrollo de vehículos autónomos, permitiendo que los sistemas de conducción interpreten y comprendan su entorno circundante de manera similar a como lo haría un conductor humano. Tesla ha estado a la vanguardia de la tecnología de conducción autónoma, y su último avance, Tesla Vision, promete llevar esta capacidad un paso más allá.
+
+            Tesla Vision es una solución de visión por computadora basada en redes neuronales que utiliza cámaras integradas en los vehículos Tesla para capturar y procesar imágenes en tiempo real del entorno circundante. Estas cámaras, ubicadas estratégicamente en diferentes partes del automóvil, permiten una visión de 360 grados que abarca tanto la carretera como los objetos y peatones cercanos.
+            
+            Lo que distingue a Tesla Vision es su capacidad para prescindir de los sensores LiDAR tradicionales, que utilizan láseres para mapear el entorno en 3D. En su lugar, Tesla confía en la inteligencia artificial y el aprendizaje automático para interpretar y analizar datos visuales, lo que permite una conducción autónoma más precisa y eficiente.
+            
+            Al eliminar la dependencia de los costosos sensores LiDAR, Tesla puede reducir significativamente el costo de producción de sus vehículos autónomos, lo que los hace más accesibles para los consumidores. Además, al confiar en la visión por computadora, Tesla puede mejorar la robustez y la fiabilidad de sus sistemas de conducción autónoma en una variedad de condiciones climáticas y de iluminación.
+            
+            Tesla Vision representa un paso importante hacia el objetivo final de Tesla de lograr la conducción completamente autónoma. Si bien aún queda trabajo por hacer para perfeccionar esta tecnología y superar los desafíos regulatorios y de seguridad, su introducción marca un hito significativo en el camino hacia un futuro de transporte más seguro, eficiente y sostenible.',
+            'foto' => 'images/tesla.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Google presenta su nuevo chip Tensor para potenciar la inteligencia artificial en dispositivos móviles',
+            'descripcion' => 'Google ha revelado su último avance en tecnología de inteligencia artificial con el lanzamiento del chip Tensor, diseñado específicamente para impulsar el rendimiento de la IA en dispositivos móviles.',
+            'contenido' => 'El chip Tensor de Google marca un hito significativo en la evolución de la inteligencia artificial en dispositivos móviles. Diseñado internamente por los ingenieros de Google, este chip ofrece un rendimiento excepcional en tareas de aprendizaje automático y procesamiento de datos, lo que permite una amplia gama de aplicaciones innovadoras en dispositivos portátiles.
+
+            Una de las características más destacadas del chip Tensor es su capacidad para ejecutar modelos de inteligencia artificial directamente en el dispositivo, sin necesidad de depender de una conexión a la nube. Esto significa que los dispositivos equipados con el chip Tensor pueden realizar tareas de IA de manera más rápida y eficiente, incluso cuando están fuera de línea o tienen una conexión de datos limitada.
+            
+            El chip Tensor está optimizado para una variedad de aplicaciones de inteligencia artificial, desde reconocimiento de voz y traducción en tiempo real hasta análisis de imágenes y asistencia personalizada. Con su arquitectura altamente eficiente y su capacidad para procesar grandes volúmenes de datos en tiempo real, el chip Tensor proporciona una experiencia de usuario más fluida y receptiva en dispositivos móviles.
+            
+            Google ha anunciado que el chip Tensor debutará en su próxima línea de teléfonos inteligentes Pixel, pero también tiene planes de llevar esta tecnología a otros dispositivos, como tabletas, dispositivos portátiles y dispositivos domésticos inteligentes. Al integrar capacidades avanzadas de inteligencia artificial en una amplia gama de productos, Google busca mejorar la vida cotidiana de las personas y proporcionar soluciones innovadoras a los desafíos del mundo real.',
+            'foto' => 'images/tensor.jpeg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'España avanza en la digitalización de la administración pública con el lanzamiento de nuevas plataformas online',
+            'descripcion' => 'España está dando pasos significativos hacia la digitalización de la administración pública con el lanzamiento de nuevas plataformas en línea que facilitan los trámites y servicios gubernamentales. ',
+            'contenido' => 'En un esfuerzo por modernizar la administración pública y hacerla más eficiente, el gobierno español ha puesto en marcha varias iniciativas de digitalización que están transformando la forma en que los ciudadanos interactúan con los servicios gubernamentales.
+
+            Una de estas iniciativas es la plataforma "Trámites.gob.es", que ofrece un punto de acceso único para realizar una amplia variedad de trámites y gestiones con la administración pública. Desde renovar el DNI hasta solicitar certificados o pagar impuestos, esta plataforma facilita el acceso a los servicios gubernamentales de manera rápida y sencilla, eliminando la necesidad de acudir físicamente a las oficinas.
+            
+            Además de Trámites.gob.es, se han lanzado otras plataformas especializadas que abordan necesidades específicas de los ciudadanos, como la plataforma de empleo público "Empleo Público.gob.es", que centraliza las convocatorias de oposiciones y facilita la presentación de solicitudes en línea.
+            
+            Estas iniciativas no solo simplifican los trámites burocráticos para los ciudadanos, sino que también promueven la transparencia y la eficiencia en la gestión gubernamental. Al reducir la carga administrativa y los tiempos de espera, se mejora la experiencia del usuario y se fomenta una mayor participación en los procesos democráticos.
+            
+            El avance en la digitalización de la administración pública en España es un paso importante hacia un gobierno más moderno y orientado al ciudadano. A medida que estas plataformas continúen desarrollándose y expandiéndose, se espera que contribuyan a una mayor agilidad y transparencia en la prestación de servicios públicos, mejorando así la calidad de vida de los ciudadanos españoles.',
+            'foto' => 'images/digital.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Startups españolas lideran la revolución de la movilidad urbana con soluciones innovadoras',
+            'descripcion' => 'Las startups españolas están en la vanguardia de la transformación de la movilidad urbana, ofreciendo soluciones innovadoras que abordan los desafíos de la congestión del tráfico, la contaminación y la sostenibilidad en las ciudades. ',
+            'contenido' => 'En España, un número creciente de startups están abordando los desafíos de la movilidad urbana con soluciones innovadoras que están cambiando la forma en que las personas se desplazan por las ciudades. Desde aplicaciones de movilidad compartida hasta sistemas de transporte eléctrico y plataformas de gestión de flotas, estas empresas están liderando la revolución de la movilidad urbana con tecnologías punteras y modelos de negocio disruptivos.
+
+            Una de las áreas en las que las startups españolas están destacando es en la movilidad compartida, con empresas que ofrecen servicios de bicicletas y patinetes eléctricos compartidos que están transformando la forma en que las personas se mueven por la ciudad. Estos servicios, disponibles a través de aplicaciones móviles, permiten a los usuarios desplazarse de manera rápida, económica y respetuosa con el medio ambiente, reduciendo así la congestión del tráfico y las emisiones de carbono.
+            
+            Además de la movilidad compartida, las startups españolas también están desarrollando tecnologías innovadoras en el ámbito de la gestión del tráfico y la logística urbana. Desde sistemas de gestión de flotas hasta plataformas de logística inteligente, estas empresas están utilizando la tecnología para optimizar los desplazamientos y reducir los tiempos de entrega en entornos urbanos cada vez más congestionados.
+            
+            Otro área de enfoque es la electrificación del transporte, con startups que están desarrollando soluciones de carga inteligente y redes de recarga para vehículos eléctricos. Estas iniciativas están ayudando a promover la adopción de vehículos eléctricos y a acelerar la transición hacia una movilidad más sostenible y respetuosa con el medio ambiente.
+            
+            En resumen, las startups españolas están desempeñando un papel clave en la transformación de la movilidad urbana, ofreciendo soluciones innovadoras que están contribuyendo a crear ciudades más habitables, sostenibles y eficientes. Con su enfoque en la tecnología y la innovación, estas empresas están liderando el camino hacia un futuro de movilidad urbana inteligente y sostenible.',
+            'foto' => 'images/start.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'España avanza en la adopción de la tecnología 5G: Impulso a la conectividad y la innovación',
+            'descripcion' => 'El despliegue de la tecnología 5G en España está ganando impulso, prometiendo una conectividad ultrarrápida y nuevas oportunidades para la innovación en diversos sectores.',
+            'contenido' => 'El desarrollo y despliegue de la tecnología 5G en España están alcanzando hitos significativos, impulsando la conectividad y abriendo nuevas oportunidades para la innovación en diferentes industrias y sectores. Con velocidades de conexión ultrarrápidas, baja latencia y capacidad para conectar un gran número de dispositivos de forma simultánea, el 5G está transformando la forma en que las personas interactúan con la tecnología y acceden a los servicios digitales.
+
+            Una de las áreas más destacadas es la del Internet de las cosas (IoT), donde el 5G está facilitando la interconexión de dispositivos inteligentes y la recopilación de datos en tiempo real. Desde ciudades inteligentes hasta fábricas conectadas, el despliegue de redes 5G está impulsando la adopción de soluciones IoT que mejoran la eficiencia, la seguridad y la calidad de vida de las personas.
+            
+            Además del IoT, el 5G está impulsando la adopción de tecnologías emergentes como la realidad virtual (VR) y la realidad aumentada (AR), que están encontrando aplicaciones en sectores como el entretenimiento, la educación y la medicina. Con velocidades de conexión ultra rápidas y baja latencia, el 5G está permitiendo experiencias inmersivas y colaborativas que antes eran difíciles de lograr.
+            
+            En el ámbito empresarial, el despliegue de redes 5G está abriendo nuevas oportunidades para la transformación digital y la innovación en los negocios. Desde la automatización de procesos industriales hasta la telemedicina y el comercio electrónico, el 5G está permitiendo a las empresas mejorar su eficiencia operativa, expandir su alcance global y ofrecer nuevos productos y servicios a sus clientes.
+            
+            En resumen, el avance de la tecnología 5G en España está impulsando la conectividad y la innovación en todos los ámbitos de la sociedad, desde el hogar hasta la empresa. Con su capacidad para ofrecer velocidades de conexión ultrarrápidas y baja latencia, el 5G está sentando las bases para un futuro digital más avanzado, conectado y colaborativo.',
+            'foto' => 'images/5g.jpeg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Madrid Implementa Sistema de Recogida de Residuos Inteligente con Tecnología IoT',
+            'descripcion' => 'Madrid avanza hacia una gestión más eficiente de residuos con la introducción de contenedores inteligentes equipados con tecnología IoT.',
+            'contenido' => 'Madrid, una de las ciudades más pobladas y dinámicas de España, está dando un paso adelante en la gestión de residuos con la implementación de un sistema innovador de recogida de basura inteligente. Este sistema, basado en la tecnología de Internet de las cosas (IoT), está transformando la manera en que se gestionan los desechos en la capital española, haciéndola más eficiente y sostenible.
+
+            Los contenedores inteligentes, distribuidos estratégicamente por toda la ciudad, están equipados con sensores y dispositivos de comunicación que les permiten enviar información en tiempo real sobre su capacidad y estado. Gracias a esta tecnología avanzada, los servicios de recogida de residuos pueden optimizar las rutas de recolección, identificando los contenedores que necesitan ser vaciados y programando las recogidas de manera más eficiente.
+            
+            Una de las principales ventajas de los contenedores inteligentes es su capacidad para detectar niveles de llenado en tiempo real. Los sensores instalados en los contenedores miden continuamente el nivel de residuos y envían esta información a una plataforma centralizada, que analiza los datos y genera rutas de recolección óptimas. Esto permite a los servicios de limpieza planificar las recogidas de manera más eficiente, reduciendo los costos operativos y minimizando el impacto ambiental asociado con la gestión de residuos.
+            
+            Además de mejorar la eficiencia en la recolección de basura, los contenedores inteligentes también ofrecen otras funcionalidades avanzadas, como la capacidad de detectar y reportar incidencias, como contenedores bloqueados o dañados. Esta capacidad de monitoreo en tiempo real permite una respuesta más rápida a los problemas y una mayor transparencia en la gestión de residuos en la ciudad.
+            
+            En resumen, la implementación de contenedores inteligentes en Madrid representa un avance significativo hacia una gestión de residuos más eficiente y sostenible. Con esta innovadora tecnología IoT, la ciudad está mejorando la calidad de vida de sus ciudadanos, reduciendo los costos asociados con la gestión de residuos y contribuyendo a la protección del medio ambiente.',
+            'foto' => 'images/iot.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Avances en Inteligencia Artificial: Transformando la Atención Médica a Escala Mundial',
+            'descripcion' => 'La Inteligencia Artificial (IA) está revolucionando la atención médica en todo el mundo, ofreciendo soluciones innovadoras para diagnósticos más precisos, tratamientos personalizados y una mejor gestión de la salud. ',
+            'contenido' => 'La Inteligencia Artificial (IA) ha emergido como una herramienta transformadora en el campo de la atención médica, ofreciendo una serie de beneficios que van desde diagnósticos más precisos hasta tratamientos personalizados y una gestión más eficiente de los recursos sanitarios. En todo el mundo, los sistemas de IA están siendo implementados en hospitales, clínicas y centros de atención primaria, con el objetivo de mejorar la calidad de la atención médica y reducir los costos asociados.
+
+            Una de las aplicaciones más destacadas de la IA en el ámbito de la salud es el diagnóstico asistido por ordenador, que utiliza algoritmos de aprendizaje automático para analizar imágenes médicas y detectar patrones que pueden indicar la presencia de enfermedades o condiciones médicas. Estos sistemas son capaces de identificar anomalías en radiografías, tomografías computarizadas y resonancias magnéticas con una precisión comparable o incluso superior a la de los médicos especialistas.
+            
+            Además del diagnóstico, la IA también está siendo utilizada para desarrollar tratamientos personalizados, adaptados a las necesidades individuales de cada paciente. Mediante el análisis de grandes cantidades de datos clínicos y genéticos, los sistemas de IA pueden identificar las mejores opciones terapéuticas para cada caso, optimizando la eficacia del tratamiento y minimizando los efectos secundarios.
+            
+            Otra área en la que la IA está teniendo un impacto significativo es la gestión de la salud poblacional, permitiendo a los proveedores de atención médica identificar y abordar de manera proactiva las necesidades de salud de comunidades enteras. Utilizando algoritmos de aprendizaje automático, los sistemas de IA pueden analizar datos demográficos, epidemiológicos y de salud para predecir brotes de enfermedades, identificar factores de riesgo y desarrollar estrategias de intervención efectivas.
+            
+            En resumen, la Inteligencia Artificial está desempeñando un papel cada vez más importante en la transformación de la atención médica a escala global, ofreciendo soluciones innovadoras para mejorar la precisión, la eficiencia y la accesibilidad de los servicios de salud. A medida que la tecnología continúa evolucionando, es probable que veamos un mayor uso de la IA en todos los aspectos de la atención médica, lo que promete un futuro más saludable y sostenible para millones de personas en todo el mundo.',
+            'foto' => 'images/inteligencia.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Innovación en el Transporte Urbano: Valencia Introduce Flotas de Autobuses Eléctricos',
+            'descripcion' => 'La ciudad de Valencia apuesta por la sostenibilidad y la tecnología con la incorporación de una nueva flota de autobuses eléctricos.',
+            'contenido' => 'Valencia, una de las principales ciudades de España, está liderando el camino hacia un futuro más sostenible con la introducción de una flota de autobuses eléctricos en su red de transporte público. Esta iniciativa forma parte de los esfuerzos de la ciudad por reducir su huella de carbono y promover la movilidad limpia y eficiente en el área metropolitana.
+
+            Los nuevos autobuses eléctricos, equipados con tecnología de última generación, ofrecen numerosas ventajas en comparación con los vehículos tradicionales de combustión interna. Además de ser más respetuosos con el medio ambiente al eliminar las emisiones de gases contaminantes, los autobuses eléctricos también son más silenciosos y requieren menos mantenimiento, lo que se traduce en menores costos operativos a largo plazo.
+            
+            Una de las características más destacadas de los autobuses eléctricos de Valencia es su capacidad para recargarse de forma rápida y eficiente en las estaciones de carga distribuidas por toda la ciudad. Gracias a sistemas de carga rápida, los autobuses pueden recuperar la energía necesaria para operar durante todo el día en tan solo unos minutos, lo que garantiza una disponibilidad continua del servicio sin interrupciones significativas.
+            
+            Además de los beneficios ambientales y económicos, la introducción de autobuses eléctricos también está mejorando la experiencia de viaje para los usuarios del transporte público en Valencia. Con interiores modernos y confortables, acceso Wi-Fi gratuito y sistemas de información en tiempo real, los nuevos autobuses ofrecen un nivel de comodidad y conveniencia sin precedentes, lo que contribuye a fomentar el uso del transporte público en la ciudad.
+            
+            En resumen, la incorporación de autobuses eléctricos en la red de transporte público de Valencia representa un paso importante hacia un futuro más sostenible y respetuoso con el medio ambiente. Con esta iniciativa, la ciudad está demostrando su compromiso con la innovación tecnológica y la mejora de la calidad de vida de sus ciudadanos, sentando las bases para un sistema de transporte urbano más eficiente y sostenible en el siglo XXI.',
+            'foto' => 'images/bus.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => '',
+            'descripcion' => '',
+            'contenido' => '',
+            'foto' => 'images/.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora'=>date('H:i:s'),
+            'fecha' => date('Y-m-d'),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+
 
         /**********************   NOTICIAS ECONOMIA    ************************* */
 
         //NoticiaController::crearNoticias("economica","Economía");
-        NoticiaController::crearNoticias("deporte","Deportes");
-        NoticiaController::crearNoticias("arbitro","Deportes");
+        //NoticiaController::crearNoticias("deporte","Deportes");
+        //NoticiaController::crearNoticias("arbitro","Deportes");
         //NoticiaController::crearNoticias("movil","Tecnología");
 
 

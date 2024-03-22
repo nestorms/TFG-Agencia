@@ -264,7 +264,7 @@ class NoticiaController extends Controller
     public function index()
     {
         // Llama a la función para obtener las noticias de la API
-        $noticias = Noticia::limit(20)->get();
+        $noticias = Noticia::limit(30)->get();
 
         // Pasa los datos recuperados a la vista
         return view('index', ['noticias' => $noticias]);
