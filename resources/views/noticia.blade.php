@@ -126,7 +126,7 @@
                 <!-- Botón -->
                 @auth
                 @if (auth()->user()->rol != "redactor")
-                    @if(auth()->user()->noticias_medio()->pluck('noticia_id')->contains($noticia->id))
+                    @if(auth()->user()->noticias_medio()->where('recomendada', false)->pluck('noticia_id')->contains($noticia->id))
                         <button id="guardar" onclick="unsave()" data-id="{{ $noticia->id }}" type="button" class="btn btn-dark unsaveBtn">No guardar</button>
                     @else
                         <button id="guardar" onclick="save()" data-id="{{ $noticia->id }}" type="button" class="btn btn-outline-dark saveBtn">Guardar</button>

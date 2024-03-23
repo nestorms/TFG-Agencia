@@ -66,8 +66,10 @@ return new class extends Migration
         Schema::create('user_noticia', function (Blueprint $table) {
             $table->foreignId('noticia_id')->constrained('noticias');
             $table->foreignId('user_id')->constrained('users');
+            $table->boolean('recomendada')->default(false);
             $table->timestamps();
         });
+
 
 
     }

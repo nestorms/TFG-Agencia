@@ -27,7 +27,7 @@ class NoticiaController extends Controller
     public function indexarPrincipal()
     {
         // Obtener todas las noticias
-        $noticias = Noticia::limit(20)->get();
+        $noticias = Noticia::limit(30)->get();
 
         // Eliminar el índice existente si es necesario
         $params = [
@@ -135,7 +135,7 @@ class NoticiaController extends Controller
         }
 
         // Retornar las noticias encontradas
-        return view('index', ['noticias' => $noticias]);
+        return view('index', ['noticias' => $noticias, 'busqueda' => $request->busqueda]);
     }
 
     public function indexarNoticias()
@@ -215,47 +215,74 @@ class NoticiaController extends Controller
         return response()->json(['message' => 'Noticias indexadas correctamente en Elasticsearch!!']);
     }
 
-    public function buscarPorRanking()
+    public function recomendar()
     {
         // Definir los parámetros de búsqueda
-        $params = [
-            'index' => 'noticias', // Nombre del índice en Elasticsearch
-            'body' => [
-                'query' => [
-                    "bool" => [
-                        "should" => [
-                            [
-                            "match" =>[ "titulo" => "razon"]
-                            ],
-                            [
-                            "match" => [ "descripcion" => "futbol"]
+
+        $noticias = Noticia::where('id', '>=', 31)->get();
+        UserNoticia::where('recomendada',true)->delete();
+
+
+        foreach($noticias as $noticia){
+
+            $params = [
+                'index' => 'noticias', // Nombre del índice en Elasticsearch
+                'body' => [
+                    'query' => [
+                        "bool" => [
+                            "should" => [
+                                [
+                                    "match" =>[ "titulo" => $noticia->titulo]
+                                ],
+                                [
+                                    "match" => [ "descripcion" => $noticia->descripcion]
+                                ],
+                                [
+                                    "match" =>[ "contenido" => $noticia->contenido]
+                                ],
                             ],
                         ],
                     ],
                 ],
-            ],
-        ];
-
-        // Realizar la consulta a Elasticsearch
-        $response = $this->elasticsearch->search($params);
-
-        // Obtener los resultados de la consulta
-        $hits = $response['hits']['hits'];
-
-        // Procesar los resultados según sea necesario
-        $noticias = [];
-        foreach ($hits as $hit) {
-            // Acceder a la fuente (_source) de cada documento
-            $source = $hit['_source'];
-            $score = $hit['_score'];
-            // Agregar la noticia a la lista de noticias
-            $noticias[] = [
-                'titulo' => $source['titulo'],
-                'descripcion' => $source['descripcion'],
-                'score' => $score,
-                'id_medio' => $source['id_medio'],
             ];
+    
+            // Realizar la consulta a Elasticsearch
+            $response = $this->elasticsearch->search($params);
+    
+            // Obtener los resultados de la consulta
+            $hits = $response['hits']['hits'];
+    
+            // Procesar los resultados según sea necesario
+            $noticias = [];
+            foreach ($hits as $hit) {
+                // Acceder a la fuente (_source) de cada documento
+                $source = $hit['_source'];
+                $score = $hit['_score'];
+                // Agregar la noticia a la lista de noticias
+                $noticias[] = [
+                    /*'titulo' => $source['titulo'],
+                    'descripcion' => $source['descripcion'],*/
+                    'score' => $score,
+                    'id_medio' => $source['id_medio'],
+                ];
+
+
+                $umbralBM25=5.0;
+
+                if ($score >= $umbralBM25) {
+                    // El score BM25 cumple con el umbral, almacenar la recomendación
+                    $source = $hit['_source'];
+                    $user_id = $source['id_medio'];
+    
+                    UserNoticia::create([
+                        'user_id' => $user_id,
+                        'noticia_id' => $noticia->id,
+                        'recomendada' => true,
+                    ]);
+                }
+            }
         }
+        
 
         // Retornar las noticias encontradas
         return response()->json(['noticias' => $noticias]);
@@ -275,6 +302,24 @@ class NoticiaController extends Controller
         $noticia = Noticia::findOrFail($id);
 
         return view('noticia', ['noticia' => $noticia]);
+    }
+
+    public function noticiasRecomendadas($id){
+        $noticias = [];
+
+        //Si no se ha iniciado sesión o el usuario es de tipo redactor, no podrá ver la sección de recomendadas igual que los medios
+        $usuario=User::findOrFail($id);
+        if($id == 0 || $usuario->rol == "redactor"){
+            return view('recomendadas', ['noticias' => $noticias]);
+        }
+
+        $userNoticias = UserNoticia::where('user_id', $id)->where('recomendada', true)->get();
+        
+        foreach($userNoticias as $userNoticia){
+            $noticias[]=$userNoticia->noticia;
+        }
+
+        return view('recomendadas', ['noticias' => $noticias]);
     }
 
     public function modificar($id){
@@ -400,6 +445,7 @@ class NoticiaController extends Controller
             UserNoticia::create([
                 'user_id' => $userId,
                 'noticia_id' => $id,
+                'recomendada' => false,
             ]);
             $noticia->guardados++;
             $noticia->save();
@@ -420,7 +466,7 @@ class NoticiaController extends Controller
             $noticia = Noticia::findOrFail($id);
             
             // Busco la fila en la tabla intermedia user_noticia
-            UserNoticia::where('user_id', $userId)->where('noticia_id', $id)->delete();
+            UserNoticia::where('user_id', $userId)->where('noticia_id', $id)->where('recomendada', false)->delete();
 
             $noticia->guardados--;
             $noticia->save();
@@ -441,12 +487,12 @@ class NoticiaController extends Controller
             $noticia = Noticia::findOrFail($id);
             
             // Busco la fila en la tabla intermedia user_noticia
-            UserNoticia::where('user_id', $userId)->where('noticia_id', $id)->delete();
+            UserNoticia::where('user_id', $userId)->where('noticia_id', $id)->where('recomendada', false)->delete();
 
             $noticia->guardados--;
             $noticia->save();
 
-            $personal=UserNoticia::where('user_id',$userId)->paginate(3);
+            $personal=UserNoticia::where('user_id',$userId)->where('recomendada', false)->paginate(3);
 
             return view('personal', ['personal' => $personal]);
         }

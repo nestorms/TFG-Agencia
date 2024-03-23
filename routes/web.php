@@ -19,6 +19,7 @@ use Illuminate\Auth\Events\Login;
 */
 
 Route::view('/','index');
+Route::get('/recomendadas/{id}', [NoticiaController::class,'noticiasRecomendadas']);
 
 
 /********************   INICIO DE SESIÓN ********************/
@@ -78,5 +79,5 @@ Route::post('/comentar', [CommentController::class,'store'])->name('comentar.sto
 
 Route::get('/indexar-noticias', [NoticiaController::class, 'indexarNoticias']);
 Route::get('/indexar-principal', [NoticiaController::class, 'indexarPrincipal']);
-Route::get('/recomendar', [NoticiaController::class, 'buscarPorRanking']);
+Route::get('/recomendar', [NoticiaController::class, 'recomendar']);
 Route::post('/buscadorIndex', [NoticiaController::class, 'buscadorIndex']);

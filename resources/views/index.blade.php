@@ -87,7 +87,7 @@
         </div>
     @else
     <!-- El array $noticias está vacío -->
-        <h4>No se encontraron noticias.</h4>
+        <h4>No se encontraron noticias con la búsqueda '{{$busqueda}}'.</h4>
     @endif
     
 @endsection

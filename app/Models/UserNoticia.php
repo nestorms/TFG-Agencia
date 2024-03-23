@@ -15,6 +15,7 @@ class UserNoticia extends Model
     protected $fillable = [
         'user_id',
         'noticia_id',
+        'recomendada',
         
     ];
 

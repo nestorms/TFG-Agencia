@@ -171,7 +171,7 @@ class UserController extends Controller
 
     public function personal($id){
 
-        $personal=UserNoticia::where('user_id',$id)->paginate(3);
+        $personal=UserNoticia::where('user_id',$id)->where('recomendada',false)->paginate(3);
 
         return view('personal', ['personal' => $personal]);
     }

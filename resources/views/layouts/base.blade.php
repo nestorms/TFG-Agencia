@@ -132,7 +132,13 @@
                 <a class="nav-link" href="#">MÁS RECIENTES</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">RECOMENDADAS</a>
+                @auth
+                    <a class="nav-link" href="/recomendadas/{{auth()->user()->id}}">RECOMENDADAS</a>
+                @endauth
+                @guest
+                    <a class="nav-link" href="/recomendadas/0">RECOMENDADAS</a>
+                @endguest
+                
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">CATEGORÍAS</a>
