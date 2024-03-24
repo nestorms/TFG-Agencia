@@ -141,7 +141,7 @@
                 
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">CATEGORÍAS</a>
+                <a class="nav-link" href="/categorias">CATEGORÍAS</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">CONÓCENOS</a>

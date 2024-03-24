@@ -68,6 +68,11 @@ Route::get('/personal/{id}', [UserController::class, 'personal']);
 Route::get('/noticias/{id}/unsave', [NoticiaController::class, 'unsave_personal']);
 
 
+/********************   SECCIÓN CATEGORIAS  ********************/
+Route::get('/categorias', [NoticiaController::class, 'mostrarCategorias']);
+Route::get('/categorias/{id}', [NoticiaController::class, 'mostrarNoticiasCategoria']);
+
+
 
 /********************   DESCARGA DE NOTICIAS  ********************/
 Route::get('/noticias/{id}/descargar', [NoticiaController::class, 'descargarPDF']);

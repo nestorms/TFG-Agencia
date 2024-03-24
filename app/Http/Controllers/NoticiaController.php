@@ -308,9 +308,15 @@ class NoticiaController extends Controller
         $noticias = [];
 
         //Si no se ha iniciado sesión o el usuario es de tipo redactor, no podrá ver la sección de recomendadas igual que los medios
-        $usuario=User::findOrFail($id);
-        if($id == 0 || $usuario->rol == "redactor"){
+        
+        if($id == 0 ){
             return view('recomendadas', ['noticias' => $noticias]);
+        }
+        else{
+            $usuario=User::findOrFail($id);
+            if($usuario->rol == "redactor"){
+                return view('recomendadas', ['noticias' => $noticias]);
+            }
         }
 
         $userNoticias = UserNoticia::where('user_id', $id)->where('recomendada', true)->get();
@@ -355,6 +361,38 @@ class NoticiaController extends Controller
         Noticia::findOrFail($id)->delete();
 
         return redirect()->route('administracion')->with('message',"Noticia eliminada con éxito");
+    }
+
+
+    public function mostrarCategorias()
+    {
+        // Obtengo las categorías
+        $categorias = Category::all();
+
+        // Para cada categoría, obtengo las noticias asociadas
+        $noticiasPorCategoria = [];
+        foreach ($categorias as $categoria) {
+
+            // Obtengo las noticias asociadas a la categoría actual
+            $noticias = Noticia::where('categoria_id', $categoria->id)->take(3)->get();
+            
+            // Almaceno las noticias en un array 
+            $noticiasPorCategoria[$categoria->nombre] = $noticias;
+        }
+
+        // Pasar las categorías y las noticias asociadas a la plantilla Blade
+        return view('categorias', compact('categorias', 'noticiasPorCategoria'));
+    }
+
+    public function mostrarNoticiasCategoria($id)
+    {
+        // Obtengo la categoría
+        $categoria = Category::findOrFail($id);
+
+        // Obtengo las noticias asociadas a la categoría actual
+        $noticias = Noticia::where('categoria_id', $categoria->id)->get();
+
+        return view('seccion', compact('categoria', 'noticias'));
     }
 
 

@@ -20,7 +20,7 @@
     flex-wrap: wrap;
     gap: 50px;
     justify-content: center;
-    margin-top: 10vh;
+    margin-top: 6vh;
 }
 
 
@@ -66,4 +66,8 @@
 .text-muted {
     color: #999;
     font-size: 0.875rem;
+}
+
+.btn-square {
+    border-radius: 3px !important;
 }

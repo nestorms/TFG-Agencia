@@ -147,41 +147,47 @@
         @if (session('success'))
             <span class="alert alert-success text-left">{{ session('success') }}</span> <br> <br>
         @endif
+
         <h3>Comentarios</h3>
-        
-        @foreach ($noticia->comentarios as $comment)
-            <div class="border rounded-start-2 mb-5 mt-4 p-3">
-                <div class="d-flex align-items-start justify-items-center">
-                    <div class="me-3">
-                        <img src="{{asset('images/profile_white.png')}}" class="img-fluid" style="width: 3vw;">
-                    </div>
-                    <div class="d-flex mb-3" >
-                        <div class="d-flex align-items-center mx-2">
-                            <div style="margin-right: 3vw">
-                                <p style="margin: 0; padding:0;">{{$comment->medio}}</p>
-                                <small style="margin: 0; padding:0;">{{$comment->fecha}}</small>
-                            </div>
-                            <div class="rating" style="margin: 0; padding: 0;">
-                                @php
-                                    $rating = $comment->valoracion; // Valor del usuario (3 de 5 estrellas)
-                                @endphp
-                
-                                @for ($i = 1; $i <= 5; $i++)
-                                    @if ($i <= $rating)
-                                        <span class="bi bi-star-fill text-warning"></span> <!-- Estrella rellena -->
-                                    @else
-                                        <span class="bi bi-star text-warning"></span> <!-- Estrella vacía -->
-                                    @endif
-                                @endfor
+
+        @if ($noticia->comentarios->isNotEmpty())
+            @foreach ($noticia->comentarios as $comment)
+                <div class="border rounded-start-2 mb-5 mt-4 p-3">
+                    <div class="d-flex align-items-start justify-items-center">
+                        <div class="me-3">
+                            <img src="{{asset('images/profile_white.png')}}" class="img-fluid" style="width: 3vw;">
+                        </div>
+                        <div class="d-flex mb-3" >
+                            <div class="d-flex align-items-center mx-2">
+                                <div style="margin-right: 3vw">
+                                    <p style="margin: 0; padding:0;">{{$comment->medio}}</p>
+                                    <small style="margin: 0; padding:0;">{{$comment->fecha}}</small>
+                                </div>
+                                <div class="rating" style="margin: 0; padding: 0;">
+                                    @php
+                                        $rating = $comment->valoracion; // Valor del usuario (3 de 5 estrellas)
+                                    @endphp
+                    
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $rating)
+                                            <span class="bi bi-star-fill text-warning"></span> <!-- Estrella rellena -->
+                                        @else
+                                            <span class="bi bi-star text-warning"></span> <!-- Estrella vacía -->
+                                        @endif
+                                    @endfor
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="container">
-                    <p>{{$comment->contenido}}</p>
-                </div>   
-            </div>    
-        @endforeach
+                    <div class="container">
+                        <p>{{$comment->contenido}}</p>
+                    </div>   
+                </div>    
+            @endforeach
+        @else
+            <p style="color: gray;">Aún no se ha publicado ningún comentario</p>
+        @endif
+        
         
         @auth
             <div class="container p-0">

@@ -16,6 +16,7 @@
                 <tr>
                     <th>Portada</th>
                     <th>Título</th>
+                    <th>Fecha</th>
                     
                     @if (auth()->user()->rol != "redactor")
                         <th>Redactor</th>
@@ -28,30 +29,58 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Aquí se cargarán dinámicamente los datos de los medios -->
-                @foreach ($personal as $seleccionada)
-                    <tr>
-                        <td class="align-middle"><img src="{{ asset($seleccionada->noticia->foto)}}" alt="{{ $seleccionada->noticia->titulo }}" style="max-width: 60%; max-height:30vh"></td>
-                        <td class="align-middle">{{$seleccionada->noticia->titulo}}</td>
-                        @if (auth()->user()->rol != "redactor")
-                            <td class="align-middle">{{$seleccionada->noticia->redactor->nombre}} {{$seleccionada->noticia->redactor->apellidos}}</td>
-                        
-                        @else
-                            <td class="align-middle">{{$seleccionada->noticia->category->nombre}}</td>
-                        @endif
-                        
-                        <td class="align-middle">
-                            <a href="/noticias/{{$seleccionada->noticia->id}}/descargar" download><i class="bi bi-download mx-2" style="color: black; font-size:20px;"></i></a>
-                            <a href="/noticia/{{$seleccionada->noticia->id}}"><i class="bi bi-eye mx-2" style="color: black; font-size:20px;"></i></a>
-                            <a href="/noticias/{{$seleccionada->noticia->id}}/unsave"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
-
+                @if (auth()->user()->rol != "redactor")
+                    <!-- Aquí se cargarán dinámicamente los datos de los medios -->
+                    @foreach ($personal as $seleccionada)
+                        <tr>
+                            <td class="align-middle"><img src="{{ asset($seleccionada->noticia->foto)}}" alt="{{ $seleccionada->noticia->titulo }}" style="max-width: 60%; max-height:30vh"></td>
+                            <td class="align-middle">{{$seleccionada->noticia->titulo}}</td>
+                            <td class="align-middle">{{$seleccionada->noticia->fecha}}</td>
                             @if (auth()->user()->rol != "redactor")
-                                <a href="/mensaje/{{$seleccionada->noticia->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
+                                <td class="align-middle">{{$seleccionada->noticia->redactor->nombre}} {{$seleccionada->noticia->redactor->apellidos}}</td>
+                            
+                            @else
+                                <td class="align-middle">{{$seleccionada->noticia->category->nombre}}</td>
                             @endif
                             
-                        </td>
-                    </tr>
-                @endforeach
+                            <td class="align-middle">
+                                <a href="/noticias/{{$seleccionada->noticia->id}}/descargar" download><i class="bi bi-download mx-2" style="color: black; font-size:20px;"></i></a>
+                                <a href="/noticia/{{$seleccionada->noticia->id}}"><i class="bi bi-eye mx-2" style="color: black; font-size:20px;"></i></a>
+                                <a href="/noticias/{{$seleccionada->noticia->id}}/unsave"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
+
+                                @if (auth()->user()->rol != "redactor")
+                                    <a href="/mensaje/{{$seleccionada->noticia->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
+                                @endif
+                                
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    @foreach ($personal as $seleccionada)
+                        <tr>
+                            <td class="align-middle"><img src="{{ asset($seleccionada->foto)}}" alt="{{ $seleccionada->titulo }}" style="max-width: 60%; max-height:30vh"></td>
+                            <td class="align-middle">{{$seleccionada->titulo}}</td>
+                            <td class="align-middle">{{$seleccionada->fecha}}</td>
+                            @if (auth()->user()->rol != "redactor")
+                                <td class="align-middle">{{$seleccionada->redactor->nombre}} {{$seleccionada->redactor->apellidos}}</td>
+                            
+                            @else
+                                <td class="align-middle">{{$seleccionada->category->nombre}}</td>
+                            @endif
+                            
+                            <td class="align-middle">
+                                <a href="/noticias/{{$seleccionada->id}}/descargar" download><i class="bi bi-download mx-2" style="color: black; font-size:20px;"></i></a>
+                                <a href="/noticia/{{$seleccionada->id}}"><i class="bi bi-eye mx-2" style="color: black; font-size:20px;"></i></a>
+                                <a href="/noticias/{{$seleccionada->id}}/unsave"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
+
+                                @if (auth()->user()->rol != "redactor")
+                                    <a href="/mensaje/{{$seleccionada->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
+                                @endif
+                                
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     </div>
