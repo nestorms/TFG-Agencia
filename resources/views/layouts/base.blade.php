@@ -28,7 +28,7 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Newstor Logo" style="width: auto; height: 5rem;">
                 </a>
                 <!-- Barra de búsqueda -->
-                <form method="post" action="/buscadorIndex" class="d-flex w-50 mx-auto">
+                <form method="post" action="/buscadorIndex" class="d-flex w-50 mx-auto justify-content-center">
                     @csrf
                     <button class="btn" type="submit"><i class="bi bi-search" id="search-icon"></i></button>
                     <input class="me-2 border-bottom border-dark-subtle" type="search" name="busqueda" placeholder="Deportes, economía, cultura..." aria-label="Search">
@@ -39,21 +39,37 @@
 
                         @if (auth()->user()->rol == "medio")
                         <div class="dropdown">
-                            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-light" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="{{ asset('images/bell.png') }}" alt="Notificaciones" style="width: 25px; height: 25px;">
+                                <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">
+                                    {{auth()->user()->notificaciones_medio->where('estado', 'pendiente')->where('user_id',auth()->user()->id)->count()}}
+                                    <span class="visually-hidden">unread messages</span>
+                                </span>
                             </button>
                           
-                            <ul class="dropdown-menu">
-                                <li>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start p-0">
+                                <li class="notificaciones">
                                     @php
-                                        $notificacionesPendientes = auth()->user()->notificaciones_medio->where('estado', 'pendiente')->where('user_id',auth()->user()->id);
+                                        $notificaciones = auth()->user()->notificaciones_medio->where('fecha', '>=', now()->subWeek())->where('user_id',auth()->user()->id)->sortByDesc('estado');
                                     @endphp
-                                    @foreach ($notificacionesPendientes as $notificacion)
-                                        <a class="dropdown-item" href="/noticia/{{$notificacion->noticia_id}}">{{ $notificacion->descripcion }}</a>
+                                    @foreach ($notificaciones as $notificacion)
+                                    <div class="d-flex justify-content-between">
+                                        <a class="dropdown-item" href="/noticia/{{$notificacion->noticia_id}}/notificar">{{ $notificacion->descripcion}} <br>
+                                        
+                                            @if ($notificacion->estado == "pendiente")
+                                                <small><strong>Pendiente &nbsp; &nbsp;</strong></small>
+                                            @else
+                                                <small>Leída &nbsp; &nbsp;</small> 
+                                            @endif
+                                            <small>{{ \Carbon\Carbon::parse($notificacion->fecha)->diffForHumans() }}</small>
+                                        <hr class="p-1 m-0">
+                                        </a>
+                                    </div>
+                                        
                                     @endforeach
                                 </li>
                             </ul>
-                          </div>
+                        </div>
                             
   
                         @else

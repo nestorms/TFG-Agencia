@@ -57,6 +57,14 @@ input:focus{
 a{
     text-decoration: none!important; /* Eliminar subrayado */
 }
+.dropdown-item:hover{
+    background-color: lightgray!important;
+}
+
+.notificaciones:hover{
+    background-color: white!important;
+}
+
 
 /* Media query para pantallas pequeñas */
 @media screen and (max-width: 768px) {

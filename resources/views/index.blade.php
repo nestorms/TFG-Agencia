@@ -23,33 +23,35 @@
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
-                        <div class="carousel-item active" data-bs-interval="3000" style="height: 550px;">
-                            <div class="card h-100" >
-                                <img src="{{asset('images/coparey.jpg')}}" class="card-img-top" style="height: 380px;" alt="...">
-                                <div class="card-body" style="margin-bottom: 35px;">
-                                    <h5 class="card-title">First slide label</h5>
-                                    <p class="card-text">Some representative placeholder content for the first slide.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="{{ route('noticias.show', $noticias[0]->id) }}" style="text-decoration: none";>
-                            <div class="carousel-item" data-bs-interval="3000" style="height: 550px;">
+                        <a href="{{ route('noticias.show', $noticias2[0]->id) }}" style="text-decoration: none";>
+                            <div class="carousel-item active" data-bs-interval="3000" style="height: 550px;">
                                 <div class="card h-100" >
-                                    <img src="{{asset($noticias[0]->foto)}}" class="card-img-top" style="height: 380px;" alt="...">
+                                    <img src="{{asset($noticias2[0]->foto)}}" class="card-img-top" style="height: 380px;" alt="...">
                                     <div class="card-body" style="margin-bottom: 35px;">
-                                        <h5 class="card-title">{{$noticias[0]->titulo}}</h5>
-                                        <p class="card-text">{{$noticias[0]->descripcion}}</p>
+                                        <h5 class="card-title">{{$noticias2[0]->titulo}}</h5>
+                                        <p class="card-text">{{$noticias2[0]->descripcion}}</p>
                                     </div>
                                 </div>
                             </div>
                         </a>
-                        <a href="{{ route('noticias.show', $noticias[0]->id) }}" style="text-decoration: none";>
+                        <a href="{{ route('noticias.show', $noticias2[1]->id) }}" style="text-decoration: none";>
                             <div class="carousel-item" data-bs-interval="3000" style="height: 550px;">
                                 <div class="card h-100" >
-                                    <img src="{{$noticias[0]->foto}}" class="card-img-top" style="height: 380px;" alt="...">
+                                    <img src="{{asset($noticias2[1]->foto)}}" class="card-img-top" style="height: 380px;" alt="...">
                                     <div class="card-body" style="margin-bottom: 35px;">
-                                        <h5 class="card-title">{{$noticias[0]->titulo}}</h5>
-                                        <p class="card-text">{{$noticias[0]->descripcion}}</p>
+                                        <h5 class="card-title">{{$noticias2[1]->titulo}}</h5>
+                                        <p class="card-text">{{$noticias2[1]->descripcion}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="{{ route('noticias.show', $noticias2[2]->id) }}" style="text-decoration: none";>
+                            <div class="carousel-item" data-bs-interval="3000" style="height: 550px;">
+                                <div class="card h-100" >
+                                    <img src="{{$noticias2[2]->foto}}" class="card-img-top" style="height: 380px;" alt="...">
+                                    <div class="card-body" style="margin-bottom: 35px;">
+                                        <h5 class="card-title">{{$noticias2[2]->titulo}}</h5>
+                                        <p class="card-text">{{$noticias2[2]->descripcion}}</p>
                                     </div>
                                 </div>
                             </div>

@@ -35,6 +35,7 @@ Route::get('/logout', [UserController::class,'logout']);
 /********************   NOTICIAS  ********************/
 Route::get('/', [NoticiaController::class,'index'])->name('index');
 Route::get('/noticia/{id}', [NoticiaController::class,'show'])->name('noticias.show');
+Route::get('/noticia/{id}/notificar', [NoticiaController::class,'showNotification']);
 Route::get('/crear_noticia', [NoticiaController::class,'publicar']);
 Route::post('/crear_noticia', [NoticiaController::class,'create']);
 

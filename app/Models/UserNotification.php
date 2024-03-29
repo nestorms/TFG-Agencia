@@ -13,6 +13,12 @@ class UserNotification extends Model
     protected $table = 'user_notification';
     public $timestamps = false;
 
+    // Especifica las claves primarias compuestas
+    protected $primaryKey = ['noticia_id', 'user_id'];
+
+    // Indica a Laravel que las claves primarias no son autoincrementales
+    public $incrementing = false;
+
     protected $fillable = [
         'user_id',
         'noticia_id',

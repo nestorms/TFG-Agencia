@@ -9,6 +9,7 @@
     <div class="container mt-4">
         @auth
             @if (auth()->user()->rol != "redactor")
+            <h2 class="m-4" style="text-decoration: underline; text-align:center;">Mis noticias recomendadas</h2>
                 @if($noticias)
                     <div class="carta">
                         @foreach ($noticias as $noticia)
