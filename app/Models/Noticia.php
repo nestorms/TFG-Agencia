@@ -27,6 +27,9 @@ class Noticia extends Model
         'palabras_clave',
         'fecha',
         'hora',
+        'redactor_id',
+        'categoria_id',
+        'guardados',
 
     ];
 
@@ -48,5 +51,10 @@ class Noticia extends Model
     public function seleccionadas()
     {
         return $this->hasMany(UserNoticia::class);
+    }
+
+    public function notificadas()
+    {
+        return $this->hasMany(UserNotification::class);
     }
 }

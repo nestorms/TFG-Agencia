@@ -38,22 +38,34 @@
                     <div class="d-flex justify-content-end align-items-center">
 
                         @if (auth()->user()->rol == "medio")
-                            <div class="mx-3">  
-                                <button type="button" class="btn rounded-circle" data-html="true" data-toggle="popover" data-placement="bottom" data-content="Nueva noticia deportes! <br> Nueva noticia local! ">
-                                    <img src="{{ asset('images/bell.png') }}" alt="Notificaciones" class="img-fluid" style="width: auto; height: 25px;">
-                                </button>
-                            </div>
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{{ asset('images/bell.png') }}" alt="Notificaciones" style="width: 25px; height: 25px;">
+                            </button>
+                          
+                            <ul class="dropdown-menu">
+                                <li>
+                                    @php
+                                        $notificacionesPendientes = auth()->user()->notificaciones_medio->where('estado', 'pendiente')->where('user_id',auth()->user()->id);
+                                    @endphp
+                                    @foreach ($notificacionesPendientes as $notificacion)
+                                        <a class="dropdown-item" href="/noticia/{{$notificacion->noticia_id}}">{{ $notificacion->descripcion }}</a>
+                                    @endforeach
+                                </li>
+                            </ul>
+                          </div>
+                            
   
                         @else
                             <div class="mx-3">  
                                 @if (auth()->user()->rol == "admin")
                                     <a href="/administracion">
-                                        <img src="{{ asset('images/llave.png') }}" alt="Notificaciones" class="img-fluid" style="width: auto; height: 25px;">
+                                        <img src="{{ asset('images/llave.png') }}" alt="Administración" class="img-fluid" style="width: auto; height: 25px;">
                                     </a>
 
                                 @elseif(auth()->user()->rol == "redactor")
-                                    <a href="/publicar">
-                                        <img src="{{ asset('images/llave.png') }}" alt="Notificaciones" class="img-fluid" style="width: auto; height: 25px;">
+                                    <a href="/crear_noticia">
+                                        <img src="{{ asset('images/lapiz.png') }}" alt="Publicar" class="img-fluid" style="width: auto; height: 25px;">
                                     </a>
                                 @endif
                                 

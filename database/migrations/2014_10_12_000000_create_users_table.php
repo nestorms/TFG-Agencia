@@ -70,6 +70,15 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('user_notification', function (Blueprint $table) {
+            $table->foreignId('noticia_id')->constrained('noticias');
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('estado');
+            $table->date('fecha');
+            $table->text('descripcion');
+            $table->timestamps();
+        });
+
 
 
     }

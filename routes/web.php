@@ -35,6 +35,8 @@ Route::get('/logout', [UserController::class,'logout']);
 /********************   NOTICIAS  ********************/
 Route::get('/', [NoticiaController::class,'index'])->name('index');
 Route::get('/noticia/{id}', [NoticiaController::class,'show'])->name('noticias.show');
+Route::get('/crear_noticia', [NoticiaController::class,'publicar']);
+Route::post('/crear_noticia', [NoticiaController::class,'create']);
 
 Route::post('/noticias/{id}/like', [NoticiaController::class, 'like'])->name('noticias.like');
 Route::post('/noticias/{id}/unlike', [NoticiaController::class, 'unlike'])->name('noticias.unlike');
@@ -82,6 +84,8 @@ Route::get('/noticias/{id}/descargar', [NoticiaController::class, 'descargarPDF'
 Route::post('/comentar', [CommentController::class,'store'])->name('comentar.store');
 
 
+
+/********************   INDEXACION  ********************/
 Route::get('/indexar-noticias', [NoticiaController::class, 'indexarNoticias']);
 Route::get('/indexar-principal', [NoticiaController::class, 'indexarPrincipal']);
 Route::get('/recomendar', [NoticiaController::class, 'recomendar']);

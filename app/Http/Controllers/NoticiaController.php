@@ -7,7 +7,7 @@ use App\Models\Noticia;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\UserNoticia;
-
+use App\Models\UserNotification;
 use Elastic\Elasticsearch\Client;
 
 use Dompdf\Dompdf;
@@ -279,6 +279,14 @@ class NoticiaController extends Controller
                         'noticia_id' => $noticia->id,
                         'recomendada' => true,
                     ]);
+
+                    UserNotification::create([
+                        'user_id' => $user_id,
+                        'noticia_id' => $noticia->id,
+                        'estado' => 'pendiente',
+                        'descripcion' => "Tienes una nueva noticia recomendada de " . $noticia->category->nombre,
+                        'fecha' => date('Y-m-d'),
+                    ]);
                 }
             }
         }
@@ -336,11 +344,56 @@ class NoticiaController extends Controller
         return view('modificar_noticia', ['noticia' => $noticia, 'categorias' => $categorias]);
     }
 
+    public function publicar(){
+        
+        $categorias = Category::all();
+
+        return view('crear_noticia', ['categorias' => $categorias]);
+    }
+
+    public function create(Request $request){
+        $noticia = $request->validate([
+            'titulo' => 'required|min:2',
+            'descripcion' => 'required|min:2',
+            'contenido' => 'required||min:7',
+            'categoria_id' => 'required',
+            'palabras_clave',
+            'fecha' => 'required'],
+            [
+                'titulo.required' => 'El campo titulo es obligatorio',
+                'titulo.min' => 'Longitud mínima de 2 caracteres',
+                'descripcion.required' => 'El campo descripcion es obligatorio',
+                'descripcion.min' => 'Longitud mínima de 2 caracteres',
+                'categoria_id.required' => 'El campo categoria es obligatorio',
+                'contenido.required' => 'El campo contenido es obligatorio',
+                'contenido.min' => 'Longitud mínima de 7 caracteres',
+                'fecha.required' => 'El campo fecha es obligatorio',                
+            ]);
+
+        // Guardar la imagen en el sistema de archivos
+        if($request->filled('foto')){
+
+            $imagenPath = "images/" . $request['foto'] ;
+            $noticia['foto'] = $imagenPath;
+        }
+
+        $noticia['likes']=random_int(10,150);
+        $noticia['redactor_id']=auth()->user()->id;
+        $noticia['guardados']=random_int(10,150);
+        $noticia['hora']=date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59')));
+
+        
+        Noticia::create($noticia);
+
+
+        return redirect('/')->with('message', 'Se ha creado la noticia con éxito');
+    }
+
     public function update(Request $request, $id){
 
         $noticia = Noticia::findOrFail($id);
 
-        $datos = $request->only(['titulo', 'descripcion', 'palabras_clave', 'fecha', 'contenido']);
+        $datos = $request->only(['titulo', 'descripcion', 'palabras_clave', 'fecha', 'contenido', 'categoria_id']);
 
         // Guardar la imagen en el sistema de archivos
         if($request->filled('foto')){
@@ -349,6 +402,7 @@ class NoticiaController extends Controller
             $noticia->foto = $imagenPath;
         }
 
+        $noticia->hora = date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59')));
 
         $noticia->fill($datos);
         $noticia->save();

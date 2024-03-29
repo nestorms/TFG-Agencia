@@ -44,6 +44,12 @@ class User extends Authenticatable
         return $this->hasMany(UserNoticia::class);
     }
 
+    //Los medios pueden tener asociadas muchas notificaciones
+    public function notificaciones_medio()
+    {
+        return $this->hasMany(UserNotification::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -8,6 +8,11 @@
 
 
 <div class="container mt-4">
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
     @if($noticias)
         <div class="row justify-content-center">
             <div class="col-8"> <!-- Definir el ancho deseado, por ejemplo, col-8 para ocupar 8 columnas del grid -->
