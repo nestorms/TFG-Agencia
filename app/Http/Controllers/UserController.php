@@ -184,4 +184,30 @@ class UserController extends Controller
 
         return view('personal', ['personal' => $personal]);
     }
+
+    public function config($id){
+
+        $usuario=User::findOrFail($id);
+
+        return view('config', ['usuario' => $usuario, 'message' => null]);
+    }
+
+    public function modificarPerfil(Request $request, $id){
+
+        $usuario = User::findOrFail($id);
+
+        $datos = $request->only(['nombre', 'apellidos', 'enlace', 'empresa', 'telefono', 'email']); //La contraseña no, ya que debo hashearla antes de meterla en la BD
+
+        if ($request->filled('password')) {
+            // Hasheo la nueva contraseña
+            $passwordEncriptada = bcrypt($request->password);
+            // Actualizo la contraseña del usuario
+            $usuario->password = $passwordEncriptada;
+        }
+    
+        $usuario->fill($datos);
+        $usuario->save();
+
+        return view('config', ['usuario' => $usuario, 'message' => 'Perfil modificado con éxito']);
+    }
 }

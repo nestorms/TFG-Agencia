@@ -53,7 +53,7 @@
                                         $notificaciones = auth()->user()->notificaciones_medio->where('fecha', '>=', now()->subWeek())->where('user_id',auth()->user()->id)->sortByDesc('estado');
                                     @endphp
                                     @foreach ($notificaciones as $notificacion)
-                                    <div class="d-flex justify-content-between">
+                                    <div class="d-flex flex-column">
                                         <a class="dropdown-item" href="/noticia/{{$notificacion->noticia_id}}/notificar">{{ $notificacion->descripcion}} <br>
                                         
                                             @if ($notificacion->estado == "pendiente")
@@ -62,8 +62,12 @@
                                                 <small>Leída &nbsp; &nbsp;</small> 
                                             @endif
                                             <small>{{ \Carbon\Carbon::parse($notificacion->fecha)->diffForHumans() }}</small>
-                                        <hr class="p-1 m-0">
+
+                                            <a class="link-danger" style="font-size: 12px;" href="/eliminar_notificacion/{{$notificacion->noticia_id}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eliminar</a>
+                                            <hr class="p-1 m-0">
                                         </a>
+                                        
+                                        
                                     </div>
                                         
                                     @endforeach
@@ -119,13 +123,13 @@
                             @endif
                             @if (auth()->user()->rol == "redactor")
                                 <li><a class="dropdown-item" href="/personal/{{auth()->user()->id}}">Mis publicaciones</a></li>
-                                <li><a class="dropdown-item" href="/config">Configuración</a></li>
+                                <li><a class="dropdown-item" href="/config/{{auth()->user()->id}}">Configuración</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
                             @endif
                             @if (auth()->user()->rol == "medio")
                                 <li><a class="dropdown-item" href="/personal/{{auth()->user()->id}}">Mis noticias</a></li>
-                                <li><a class="dropdown-item" href="/config">Configuración</a></li>
+                                <li><a class="dropdown-item" href="/config/{{auth()->user()->id}}">Configuración</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
                             @endif

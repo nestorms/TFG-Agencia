@@ -82,7 +82,7 @@
         </div>
         
         <div class="d-flex justify-content-center mb-4">
-            <button type="submit" class="btn btn-lg btn-dark w-25 p-3">Publicar noticia</button>
+            <button type="submit" class="btn btn-lg btn-dark w-25 p-3">Publicar</button>
         </div>
     </form>
 

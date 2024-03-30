@@ -209,6 +209,18 @@ class DatabaseSeeder extends Seeder
             'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
         ]);
 
+        Category::create([
+            'nombre' => 'Arte',
+            'descripcion' => 'Noticias sobre el arte histórico y contemporáneo',
+            'palabras_clave' => 'arte, historia, cultura, artista',
+        ]);
+
+        Category::create([
+            'nombre' => 'Política',
+            'descripcion' => 'Noticias sobre el entorno político de España e internacional',
+            'palabras_clave' => 'politica, gobierno, estado, leyes',
+        ]);
+        
 
 
         $usuarioMedio = User::where('rol', 'medio')->get()->random();
@@ -222,12 +234,11 @@ class DatabaseSeeder extends Seeder
 
 
 
-
         Noticia::create([
             'titulo' => 'El Athletic tiene un color especial',
             'descripcion' => 'Enfila la final de Sevilla convirtiéndose en el primer equipo que toma esta temporada el Metropolitano, gracias a un penalti transformado por Berenguer tras grave error de Reinildo',
             'contenido' => 'El Cholo avisó de que este partido dura 180 minutos, con los 90 del Metropolitano no iba a llegar, pero el Athletic se plantará en los que aún han de jugarse con evidente ventaja, la que conceden el gol de Berenguer para convertirse en el primer equipo que toma esta temporada el Metropolitano y que vaya a ser San Mamés en tres semanas quien tenga la última palabra. Señor equipo el de Valverde, porque hay que serlo para doblegar a señor equipo el de Simeone. Entre tanto acierto podía valer con un error... y el que lo cometió fue Reinildo. Luego no hubo forma humana de meter cuchara en el área visitante.
-                            En un lado de la balanza, su velocidad para neutralizar la de Iñaki y su posición para dar carrete a Lino por la banda; en el otro, su exceso de energía, su trato con la pelota y los escasos minutos que ha jugado con la rojiblanca desde la lesión. Al del traje negro le pareció que el aparato se inclinaba en todo caso hacia las primeras referencias y envidó con Reinildo en la alineación. Salió cruz. En el ecuador del primer acto, y con el partido equilibrado, el mozambiqueño se aturulló en la salida y estuvo a punto de regalarla. Pero no quedó ahí la cosa: asustado quizás por lo que pudo ser, en la continuación de la jugada hizo una entrada infame a Prados justo cuando éste superaba la línea del área.',
+            En un lado de la balanza, su velocidad para neutralizar la de Iñaki y su posición para dar carrete a Lino por la banda; en el otro, su exceso de energía, su trato con la pelota y los escasos minutos que ha jugado con la rojiblanca desde la lesión. Al del traje negro le pareció que el aparato se inclinaba en todo caso hacia las primeras referencias y envidó con Reinildo en la alineación. Salió cruz. En el ecuador del primer acto, y con el partido equilibrado, el mozambiqueño se aturulló en la salida y estuvo a punto de regalarla. Pero no quedó ahí la cosa: asustado quizás por lo que pudo ser, en la continuación de la jugada hizo una entrada infame a Prados justo cuando éste superaba la línea del área.',
             'foto' => 'images/coparey.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
@@ -236,7 +247,7 @@ class DatabaseSeeder extends Seeder
             'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-            ]);
+        ]);
 
         Noticia::create([
             'titulo' => 'Los aspectos del juego que debe mejorar el Granada CF de José Ramón Sandoval',
@@ -865,6 +876,245 @@ class DatabaseSeeder extends Seeder
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
 
+
+
+
+
+        /********************************************       ARTE        ************************************************  */
+        
+        Noticia::create([
+            'titulo' => 'Nueva exposición de arte contemporáneo en el Museo de Arte Moderno de Nueva York',
+            'descripcion' => 'El Museo de Arte Moderno de Nueva York ha inaugurado una emocionante exposición que presenta obras de algunos de los artistas contemporáneos más innovadores del mundo.',
+            'contenido' => 'La exposición "Vanguardia en el Siglo XXI" ha llegado al Museo de Arte Moderno de Nueva York con un despliegue de creatividad y expresión que ha cautivado a críticos de arte y visitantes por igual. Este evento, que marca un hito en la escena cultural de la ciudad, reúne una colección ecléctica de obras que desafían las convenciones y exploran nuevas fronteras en el arte contemporáneo.
+            Desde pinturas abstractas hasta instalaciones multimedia, la exposición ofrece una amplia gama de estilos y técnicas que reflejan la diversidad y la vitalidad del panorama artístico actual. Los visitantes pueden sumergirse en un mundo de colores vibrantes, formas intrincadas y narrativas provocativas mientras recorren las galerías del museo.
+            Entre las obras destacadas se encuentran piezas de artistas emergentes que están dando forma al futuro del arte contemporáneo, junto con obras icónicas de figuras establecidas en la escena artística mundial. Los temas explorados son igualmente diversos, desde reflexiones sobre la identidad y la cultura hasta exploraciones de la tecnología y el medio ambiente.
+            La exposición no solo celebra la creatividad individual de cada artista, sino que también destaca las conexiones y diálogos entre las obras expuestas. Los visitantes son invitados a reflexionar sobre las intersecciones entre diferentes estilos y corrientes artísticas, así como a considerar el papel del arte en la sociedad contemporánea.
+            Además de las obras en exhibición, la exposición también incluye una serie de eventos complementarios, como charlas de artistas, visitas guiadas y talleres interactivos. Estas actividades ofrecen a los visitantes la oportunidad de involucrarse más profundamente con el arte y ampliar su comprensión de las obras y los procesos creativos detrás de ellas.
+            "Vanguardia en el Siglo XXI" estará abierta al público durante los próximos tres meses, brindando a los amantes del arte la oportunidad de explorar nuevas perspectivas y reflexionar sobre el papel del arte en el mundo moderno. La exposición promete ser un punto culminante en el calendario cultural de la ciudad de Nueva York y una experiencia imperdible para todos los aficionados al arte.
+            Este contenido más extenso ofrece una visión más detallada y envolvente de la exposición de arte contemporáneo, brindando al lector una experiencia más inmersiva y enriquecedora.',
+            'foto' => 'images/museo.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+        
+
+        Noticia::create([
+            'titulo' => 'Descubren una nueva obra perdida de un maestro renacentista en una mansión italiana',
+            'descripcion' => 'En una emocionante revelación para el mundo del arte, arqueólogos italianos han descubierto una pintura perdida del renombrado maestro renacentista Leonardo da Vinci en una antigua mansión en el corazón de Florencia.',
+            'contenido' => 'El mundo del arte está abuzz con la noticia del descubrimiento de una pintura perdida que se cree que es obra del legendario Leonardo da Vinci. El emocionante hallazgo se produjo durante una excavación arqueológica en una histórica mansión en las afueras de Florencia, Italia.
+            Los arqueólogos, que estaban investigando los restos de la mansión, quedaron asombrados al descubrir una habitación secreta oculta detrás de una pared de yeso. En el interior, entre una colección de artefactos antiguos y polvo acumulado, encontraron una pintura cubierta de suciedad y desgaste, pero claramente identificable como una obra del genio renacentista.
+            La pintura, que muestra una figura misteriosa en un paisaje bucólico, presenta la firma característica de Leonardo da Vinci en la esquina inferior derecha. Los expertos están emocionados por la posibilidad de que esta sea una obra previamente desconocida del maestro italiano, cuya obra ya es venerada en todo el mundo.
+            Los análisis preliminares de la pintura y los materiales utilizados sugieren que la obra data del siglo XVI y coincide con el período en que Leonardo da Vinci estaba activo en la región de Florencia. Sin embargo, se necesitarán análisis más detallados y pruebas científicas para confirmar definitivamente la autenticidad de la obra.
+            El descubrimiento ha generado un gran interés tanto en la comunidad artística como en el público en general, con muchas personas ansiosas por ver la pintura y aprender más sobre su origen y significado. La posibilidad de añadir una nueva obra maestra de Leonardo da Vinci al canon del arte renacentista ha provocado un renovado entusiasmo por el legado del famoso pintor y científico.
+            Los arqueólogos y expertos en arte continúan trabajando para investigar la historia de la mansión y descubrir cómo esta pintura perdida llegó a estar oculta durante siglos. Mientras tanto, la expectación y la emoción en torno al descubrimiento siguen creciendo, con la esperanza de que esta obra pueda arrojar nueva luz sobre la vida y el trabajo de uno de los artistas más influyentes de la historia.
+            Este emocionante descubrimiento nos recuerda la capacidad duradera del arte para sorprendernos y cautivarnos, incluso siglos después de haber sido creado. La posibilidad de descubrir una nueva obra de un maestro como Leonardo da Vinci es un recordatorio de la importancia de preservar y explorar nuestro patrimonio cultural para las generaciones futuras.',
+            'foto' => 'images/obra.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Instalación de una monumental escultura contemporánea en el centro de Londres sorprende a los transeúntes',
+            'descripcion' => 'Una imponente escultura de arte contemporáneo, titulada "Reflexiones Urbanas", ha sido erigida en el corazón de Londres, generando sorpresa y admiración entre los residentes y visitantes de la ciudad.',
+            'contenido' => 'En un giro inesperado, el paisaje urbano de Londres ha sido transformado por la reciente instalación de una escultura contemporánea de proporciones monumentales. La obra, titulada "Reflexiones Urbanas", es una creación del aclamado artista británico David Smith y ha sido colocada en un lugar destacado en el centro de la ciudad.
+            La escultura, que se eleva majestuosamente sobre el pavimento, presenta una composición abstracta de formas geométricas y líneas fluidas que evocan la energía y el movimiento de la vida urbana. Construida en acero corten, la obra destaca por su imponente presencia y su capacidad para interactuar con su entorno circundante.
+            Desde su instalación, "Reflexiones Urbanas" ha atraído la atención de los transeúntes y ha generado un intenso debate en la comunidad artística y en la opinión pública. Algunos elogian la audacia y la innovación de la escultura, mientras que otros expresan reservas sobre su idoneidad para el entorno urbano.
+            La obra de Smith se ha convertido rápidamente en un punto focal en el paisaje urbano de Londres, atrayendo a numerosos curiosos que se detienen a contemplar su impactante presencia. La escultura también ha generado interés en las redes sociales, donde las imágenes y opiniones sobre la obra se han compartido ampliamente.
+            El artista, David Smith, ha expresado su esperanza de que "Reflexiones Urbanas" sirva como una invitación a la reflexión sobre la relación entre el arte y el espacio público, y como una celebración de la diversidad y vitalidad de la vida urbana. La escultura está programada para permanecer en su ubicación actual durante varios meses, durante los cuales se espera que continúe inspirando y provocando la imaginación de quienes la contemplen.
+            El impacto de "Reflexiones Urbanas" en el centro de Londres subraya el poder del arte para transformar y enriquecer nuestro entorno cotidiano, así como la importancia de fomentar la creatividad y la innovación en el ámbito público. A medida que la escultura se convierte en parte integral del tejido urbano de la ciudad, queda claro que el arte contemporáneo sigue siendo una fuerza vibrante y relevante en el mundo moderno.',
+            'foto' => 'images/esc1.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Instalación de esculturas cinéticas transforma un parque urbano en una experiencia interactiva de arte',
+            'descripcion' => 'Un parque urbano en la ciudad de Barcelona ha sido transformado por la instalación de una serie de esculturas cinéticas que invitan a los visitantes a explorar el arte en movimiento y experimentar una nueva forma de interacción con el entorno urbano.',
+            'contenido' => 'En una iniciativa innovadora que busca fusionar el arte contemporáneo con el espacio público, un parque urbano emblemático en Barcelona ha sido el escenario de la instalación de una serie de esculturas cinéticas únicas. Estas obras de arte, creadas por el reconocido escultor español Carlos Gómez, están diseñadas para capturar la imaginación y estimular los sentidos de quienes las experimentan.
+            Cada escultura cinética es una exploración de la relación entre el movimiento y la forma, con elementos que giran, oscilan y cambian de posición en respuesta al viento y al movimiento de los espectadores. Fabricadas en materiales ligeros y resistentes, las obras de Gómez desafían las convenciones tradicionales de la escultura estática y ofrecen una experiencia dinámica y participativa.
+            Los visitantes del parque urbano son invitados a recorrer un sendero sinuoso que serpentinea entre las esculturas, permitiéndoles interactuar de cerca con cada obra y descubrir los matices de su movimiento y diseño. Desde grandes estructuras que se balancean suavemente en el viento hasta intrincadas formas que giran y se entrelazan en un ballet cinético, las esculturas de Gómez ofrecen una experiencia multisensorial única.
+            La instalación de las esculturas cinéticas ha generado un renovado interés en el parque urbano, atrayendo a una amplia gama de visitantes, desde aficionados al arte hasta familias y turistas. La interacción entre el público y las obras de arte ha enriquecido el ambiente del parque, convirtiéndolo en un espacio vibrante y dinámico donde la creatividad y la expresión artística están en constante evolución.
+            Carlos Gómez, el artista detrás de esta innovadora instalación, ha expresado su satisfacción por la respuesta positiva del público y su esperanza de que las esculturas cinéticas inspiren a otros artistas a explorar nuevas formas de arte en el espacio público. Con su enfoque audaz y su visión vanguardista, Gómez ha demostrado que el arte contemporáneo puede transformar no solo los espacios físicos, sino también la forma en que experimentamos y percibimos nuestro entorno urbano.',
+            'foto' => 'images/esc2.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Festival de Arte Urbano celebra la creatividad y la diversidad cultural en las calles de Nueva York',
+            'descripcion' => 'El Festival de Arte Urbano de Nueva York ha reunido a artistas de todo el mundo para transformar los espacios públicos de la ciudad en lienzos vivientes, llenando las calles con una explosión de colores, formas y mensajes inspiradores.',
+            'contenido' => 'Durante una semana emocionante, la ciudad de Nueva York se ha convertido en el escenario de un espectáculo de arte sin precedentes, con el Festival de Arte Urbano atrayendo a artistas y entusiastas del arte de todos los rincones del mundo. Desde grafitis impresionantes hasta murales monumentales, el festival ha celebrado la diversidad cultural y la expresión creativa en todas sus formas.
+            Las calles de barrios emblemáticos como Brooklyn, Queens y el Bronx se han convertido en galerías al aire libre, con artistas trabajando en vivo para crear obras de arte que reflejen la rica historia y el espíritu vibrante de la ciudad. Los temas variados abarcan desde la justicia social y la igualdad hasta la naturaleza y la identidad cultural, dando voz a una amplia gama de perspectivas y experiencias.
+            Los visitantes del festival tienen la oportunidad de interactuar con los artistas mientras trabajan en sus creaciones, presenciando el proceso creativo en acción y participando en conversaciones significativas sobre arte, comunidad y activismo. Además de las obras de arte en las calles, el festival incluye una serie de eventos complementarios, como charlas, talleres y proyecciones de películas, que profundizan en los temas explorados por los artistas.
+            El Festival de Arte Urbano de Nueva York no solo celebra la creatividad individual, sino que también fomenta el diálogo y la conexión entre personas de diferentes culturas y antecedentes. Al transformar los espacios públicos en lugares de encuentro y expresión, el festival promueve la inclusión y la diversidad, inspirando a los neoyorquinos y a visitantes de todo el mundo a apreciar la belleza y el poder del arte urbano.',
+            'foto' => 'images/fest.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Arte y Cultura Florecen en las Calles de Barcelona: El Renacimiento del Grafiti en el Barrio Gótico',
+            'descripcion' => 'El Barrio Gótico de Barcelona se convierte en un lienzo viviente con el resurgimiento del arte callejero y el grafiti, atrayendo a artistas locales y visitantes por igual para explorar las nuevas expresiones de creatividad en las estrechas callejuelas y plazas históricas.',
+            'contenido' => 'En el corazón de Barcelona, el Barrio Gótico ha experimentado un renacimiento cultural con la proliferación del arte callejero y el grafiti como formas de expresión vibrantes y auténticas. Lo que alguna vez fue considerado vandalismo, ahora se celebra como una manifestación legítima de creatividad y resistencia, con las calles estrechas y los muros antiguos sirviendo como telón de fondo para una explosión de colores y formas.
+            Los artistas locales han abrazado el espíritu del grafiti, infundiendo las calles adoquinadas con nuevas energías y narrativas visuales. Desde obras abstractas y surrealistas hasta retratos realistas y mensajes políticos, cada pieza cuenta una historia única y refleja la diversidad cultural y las complejidades de la vida urbana en Barcelona.
+            Los residentes y visitantes por igual se ven atraídos por el aura creativa del Barrio Gótico, explorando sus callejones ocultos y plazas pintorescas en busca de las últimas obras de arte callejero. Tours guiados y eventos culturales ofrecen una visión más profunda del movimiento artístico en evolución, proporcionando contexto histórico y destacando el papel del arte en la comunidad.
+            El resurgimiento del grafiti en el Barrio Gótico no solo ha transformado el paisaje urbano, sino que también ha revitalizado el sentido de identidad y orgullo entre los residentes locales. Al celebrar la diversidad y la expresión creativa, el arte callejero se ha convertido en una parte integral del tejido cultural de Barcelona, ​​inspirando a las generaciones futuras de artistas a dejar su huella en la ciudad y en el mundo del arte contemporáneo.',
+            'foto' => 'images/barcelona.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Arte Efímero: Explorando la Belleza Temporal en Instalaciones Artísticas',
+            'descripcion' => 'El arte efímero, representado en instalaciones temporales, desafía las convenciones tradicionales al ofrecer una experiencia única y fugaz. Estas obras, creadas con materiales perecederos o transformables, invitan al espectador a reflexionar sobre la naturaleza transitoria de la vida y el arte.',
+            'contenido' => 'El arte efímero, a diferencia de las obras tradicionales de larga duración, tiene la capacidad de cautivar y sorprender al espectador con su belleza transitoria y su carácter temporal. Estas instalaciones artísticas, creadas con materiales perecederos como flores, arena, hielo o luz, desafían las expectativas convencionales y exploran nuevos territorios en la expresión artística.
+            Una de las características más intrigantes del arte efímero es su capacidad para transformar el espacio y crear una experiencia inmersiva para el espectador. Estas instalaciones pueden ocupar desde galerías de arte hasta espacios al aire libre, invitando al público a explorar y participar en la obra de formas sorprendentes y creativas.
+            Además de su impacto estético, el arte efímero también plantea preguntas sobre la naturaleza del tiempo, la impermanencia y la fugacidad de la vida. Al experimentar estas obras temporales, el espectador se enfrenta a la realidad de que todas las cosas eventualmente pasan, lo que lleva a una reflexión más profunda sobre el significado y la trascendencia del arte.
+            Las instalaciones efímeras, al ser temporales por naturaleza, también desafían los conceptos tradicionales de propiedad y permanencia en el mundo del arte. A menudo, estas obras no pueden conservarse o poseerse en el sentido convencional, lo que las convierte en experiencias únicas y exclusivas para aquellos que tienen la oportunidad de presenciarlas.
+            En resumen, el arte efímero ofrece una ventana fascinante hacia nuevas formas de expresión artística y una invitación a contemplar la belleza en su forma más fugaz y efímera. A través de instalaciones temporales y experiencias únicas, estas obras desafían las nociones convencionales de lo que constituye el arte y nos recuerdan la importancia de apreciar el momento presente.',
+            'foto' => 'images/efimero.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'El Festival de Teatro de Sevilla Regresa con una Explosión de Creatividad y Emoción',
+            'descripcion' => 'El Festival de Teatro de Sevilla vuelve a iluminar las calles y escenarios de la ciudad, ofreciendo una ecléctica programación de actuaciones teatrales que van desde clásicos reinventados hasta producciones vanguardistas, brindando una experiencia cultural única para residentes y visitantes por igual.',
+            'contenido' => 'El Festival de Teatro de Sevilla, un evento emblemático en el calendario cultural de la ciudad, ha regresado con una nueva edición que promete deleitar y emocionar a los amantes del teatro de todas las edades. Durante semanas, las calles adoquinadas y los teatros históricos de Sevilla se llenarán de vida con una ecléctica programación de actuaciones, talleres y eventos relacionados con el arte escénico.
+            Desde producciones clásicas reinventadas hasta obras contemporáneas innovadoras, el festival ofrece algo para todos los gustos y sensibilidades teatrales. Los espectadores pueden disfrutar de actuaciones al aire libre en plazas y parques, así como de producciones íntimas en teatros emblemáticos y salas de actuación alternativas repartidas por toda la ciudad.
+            El festival es una celebración de la diversidad y la creatividad en el mundo del teatro, con compañías locales, nacionales e internacionales presentando una amplia gama de géneros y estilos. Desde el drama y la comedia hasta la danza y el teatro experimental, cada actuación ofrece una experiencia única que invita a reflexionar, emocionar y entretener.
+            Además de las representaciones teatrales, el festival incluye una variedad de actividades complementarias, como charlas con artistas, talleres de actuación, proyecciones de películas relacionadas con el teatro y eventos especiales para niños y familias. Estas iniciativas buscan fomentar la participación del público y enriquecer la experiencia teatral de manera inclusiva y accesible.
+            El Festival de Teatro de Sevilla es más que un evento cultural; es un tributo a la pasión y el talento de los artistas escénicos, así como un homenaje a la rica herencia teatral de la ciudad. Con su diversa y emocionante programación, el festival continúa siendo un punto de encuentro para la comunidad teatral y un escaparate de la vitalidad cultural de Sevilla.',
+            'foto' => 'images/sevilla.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'El Renacimiento del Arte Urbano: Murales que Transforman Paisajes Urbanos',
+            'descripcion' => 'El arte urbano está experimentando un renacimiento en ciudades de todo el mundo, con murales vibrantes y expresivos que transforman los paisajes urbanos en galerías al aire libre. Desde metrópolis hasta pueblos pequeños, el arte callejero está revitalizando espacios públicos y dando voz a diversas comunidades.',
+            'contenido' => 'El arte urbano, una forma de expresión cultural que ha existido durante décadas, está experimentando un emocionante renacimiento en la actualidad. En ciudades de todo el mundo, artistas locales e internacionales están llenando los muros y edificios con murales coloridos y provocativos que capturan la esencia de la vida urbana y abordan una variedad de temas sociales, políticos y culturales.
+            Lo que comenzó como una forma de expresión clandestina y subversiva ha evolucionado hasta convertirse en una poderosa herramienta de transformación urbana y revitalización comunitaria. Los murales no solo embellecen espacios públicos, sino que también pueden servir como medio para contar historias, celebrar la diversidad cultural y promover el diálogo social.
+            En muchas ciudades, los murales se han convertido en atracciones turísticas por derecho propio, atrayendo a visitantes de todo el mundo que desean explorar las vibrantes escenas artísticas locales. Los recorridos de arte callejero se han vuelto populares, brindando a los residentes y visitantes la oportunidad de descubrir nuevas obras de arte y aprender sobre los artistas que las crearon.
+            Además de embellecer el entorno urbano, el arte callejero también puede tener un impacto positivo en las comunidades locales al proporcionar oportunidades económicas para los artistas y fomentar un sentido de orgullo y pertenencia entre los residentes. Los murales a menudo reflejan la identidad y la historia de un lugar, convirtiéndose en símbolos de la comunidad y en puntos de referencia culturales.
+            A medida que el arte urbano continúa ganando reconocimiento y aceptación en el ámbito mainstream, es importante reconocer su poder para inspirar, provocar y unir a las personas en torno a una visión compartida de un mundo más colorido y creativo. Los murales que adornan nuestros paisajes urbanos son mucho más que simples obras de arte; son testimonios de la creatividad humana y la capacidad del arte para transformar el mundo que nos rodea.',
+            'foto' => 'images/urban.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'La Escultura Monumental: Explorando la Grandeza en el Arte Público',
+            'descripcion' => 'La escultura monumental ha dejado una huella indeleble en la historia del arte, desde las antiguas civilizaciones hasta la actualidad. Estas imponentes obras maestras adornan plazas, parques y espacios públicos, inspirando admiración y reflexión en quienes las contemplan.',
+            'contenido' => 'La escultura monumental, a lo largo de la historia, ha sido una forma de arte que ha deslumbrado y asombrado a las generaciones con su grandeza y majestuosidad. Desde las colosales estatuas de la Antigüedad hasta las modernas esculturas contemporáneas, estas obras maestras han dejado una marca perdurable en la historia del arte.
+            Las esculturas monumentales, por su tamaño imponente y su ubicación en espacios públicos, tienen el poder de transformar su entorno y crear un impacto duradero en quienes las observan. Estas obras a menudo se erigen como símbolos de identidad nacional, conmemorando eventos históricos, figuras destacadas o valores culturales.
+            Una de las características más fascinantes de la escultura monumental es su capacidad para comunicar ideas y emociones a través de formas tridimensionales. Desde la serenidad de una figura humana hasta la dinámica de una composición abstracta, las esculturas monumentales ofrecen una experiencia estética única que despierta la imaginación y la contemplación.
+            Además de su valor artístico, las esculturas monumentales también cumplen funciones prácticas, sirviendo como puntos de referencia en el paisaje urbano y como lugares de encuentro e interacción social. Al ocupar un lugar prominente en el espacio público, estas obras invitan a la reflexión y la participación activa del espectador.
+            En resumen, la escultura monumental representa una manifestación sublime del ingenio humano y una celebración de la creatividad en su forma más grandiosa. A través de su belleza y su magnificencia, estas obras continúan inspirando admiración y asombro en las generaciones presentes y futuras.',
+            'foto' => 'images/monumental.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Explorando las Vanguardias Artísticas: El Arte Conceptual en el Siglo XXI',
+            'descripcion' => 'El arte conceptual, una corriente vanguardista que desafía las convenciones tradicionales del arte visual, continúa inspirando a artistas contemporáneos en el siglo XXI. A través de su enfoque en las ideas y conceptos sobre la ejecución técnica, el arte conceptual invita a los espectadores a reflexionar sobre temas profundos y abstractos de la vida moderna.',
+            'contenido' => 'El arte conceptual ha sido una fuerza impulsora en el mundo del arte desde su surgimiento en la década de 1960, desafiando las nociones convencionales de estética y técnica. A diferencia de las formas de arte tradicionales que se centran en la habilidad técnica y la representación visual, el arte conceptual prioriza el concepto o la idea detrás de una obra, a menudo relegando la ejecución técnica a un segundo plano.
+            En el siglo XXI, el arte conceptual continúa floreciendo, con artistas de todo el mundo explorando una amplia gama de temas y conceptos a través de diversos medios y formas de expresión. Desde instalaciones de gran escala hasta obras multimedia y performances, el arte conceptual ofrece un lienzo infinito para la experimentación y la innovación artística.
+            Lo que distingue al arte conceptual es su enfoque en la conceptualización y la teoría sobre la habilidad técnica o la estética visual. Las obras conceptuales a menudo desafían las expectativas del espectador y lo invitan a reflexionar sobre temas filosóficos, políticos, sociales o existenciales de una manera nueva y provocativa.
+            A través de su énfasis en las ideas sobre la forma, el arte conceptual cuestiona las normas establecidas del arte y desafía al espectador a reconsiderar su comprensión de lo que constituye una obra de arte. En lugar de centrarse en la belleza estética o la representación figurativa, el arte conceptual busca estimular la mente y el intelecto del espectador.
+            En última instancia, el arte conceptual ofrece una oportunidad para la exploración y la experimentación creativa sin límites, invitando a artistas y espectadores por igual a participar en un diálogo en constante evolución sobre el significado y la naturaleza del arte en el mundo contemporáneo.',
+            'foto' => 'images/arte.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+
+
+
+
+
+        /********************************************       POLITICA        ************************************************  */
+
+        Noticia::create([
+            'titulo' => 'Catalá se lleva a la Alcaldía a la gerente de la fundación Valencia Activa tras los últimos choques con Vox',
+            'descripcion' => 'La oposición, Compromís y PSPV, advierte que el cambio obedece a la crisis de gobierno entre PP y su socio ultra y despeja el camino al segundo teniente de alcalde Juanma Badenas',
+            'contenido' => 'Los grupos de la oposición en el Ayuntamiento de Valencia, Compromís y PSPV-PSOE, han criticado el nombramiento de Isabel Rubio León como directora general de Relaciones Institucionales de la alcaldesa de Valencia, María José Catalá, del PP, apenas seis meses después de haberla puesto al frente de la fundación de empleo Valencia Activa, un departamento que ahora dirige Vox, su socio de gobierno. Compromís denuncia que es el octavo cargo nombrado a dedo por el PP desde que gobierna el consistorio y el PSPV añade que el cambio despeja el camino al segundo teniente de alcalde, Juan Manuel Badenas, para “convertirlo en un chiringuito” de Vox.
+            El grupo valencianista ha indicado que “Catalá ha vuelto a aprobar a escondidas y en la previa de un día festivo, una cuestión tan polémica como la creación de un nuevo cargo directivo para Alcaldía”, al tiempo que ha expuesto que “en total, los ocho cargos creados por la primera edil desde su llegada al gobierno ya suponen un coste para las arcas públicas de 651.069,92 euros”.
+            Ferran Puchades, edil de Compromís, considera que el nombramiento de la que fuera gerente de la Fundación Valencia Activa “demuestra que estamos ante una operación para dejar el campo libre al segundo teniente de alcalde, también responsable de Empleo y portavoz de Vox, para que pueda designar a la persona que quiera para encabezar y dirigir sin escrúpulos su agenda ultra”.
+            Compromís ha aseverado que Isabel Rubio León, que ha trabajado como asesora para los expresidentes de la Generalitat Francisco Camps y Eduardo Zaplana, fue nombrada por el PP gerente de Valencia Activa el pasado 20 de septiembre mientras que Badenas accedió al control de la entidad el pasado 23 de octubre tras el pacto de gobierno entre PP —al que le faltaban cuatro votos para la mayoría absoluta— y Vox.
+            Para el concejal socialista en el Ayuntamiento de Valencia Javier Mateo, la adscripción a Alcaldía de Isabel Rubio es una “confirmación de la crisis de Gobierno de Catalá y Vox, donde la primera está claramente subordinada a los dictados de los ultras”.
+            Según Mateo, “Catalá se ha tenido que llevar a la Alcaldía a la hasta ayer gerente de Valencia Activa, puesta por el PP y persona de su máxima confianza” por la mala relación entre ambos socios. El edil socialista advierte que con este “rescate” la alcaldesa “despeja el camino para que Vox tenga vía libre para hacer un nuevo nombramiento y seguir ahondando en el irreparable daño a la Fundación Valencia Activa”. “Está permitiendo que Vox convierta una entidad de reconocido prestigio en materia laboral en un chiringuito en el que dar mítines y eliminar a la mujer de las políticas laborales”, ha denunciado.
+            Las tensiones entre PP y Vox desde que cerraron el pasado octubre un acuerdo en gobierno han aflorado públicamente en varias ocasiones. El último episodio se produjo en el pleno municipal de marzo, cuando la oposición interpeló a la alcaldesa sobre los cambios en los estatutos de la fundación de empleo Valencia Activa, de los que PP y Vox eliminaron la mención expresa a las mujeres. Badenas exigió responder a la oposición, en su calidad de responsable de Empleo, pero la alcaldesa María José Catalá le dio la palabra al portavoz del PP, Juan Carlos Caballero, lo que provocó que los cuatro ediles del grupo ultra abandonaran el pleno en protesta y quedasen sin aprobar varias medidas previstas por el equipo de gobierno local. Fuentes municipales han precisado, en respuesta a la denuncia de la oposición, que frente a los ocho altos cargos que ha nombrado Catalá desde su llegada a la alcaldía en junio, Compromís y PSOE llegaron a tener 14 altos cargos cuando gobernaban el Ayuntamiento. Las mismas fuentes apuntaron, en referencia al sueldo de la nueva directora de Relaciones Internacionales de la Alcaldía, que todos los directores generales tienen la misma retribución, tanto en esta legislatura como en la anterior, y está equiparada a la jefatura de servicio”, remarcaron.
+            ',
+            'foto' => 'images/catala.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+
         Noticia::create([
             'titulo' => '',
             'descripcion' => '',
@@ -872,12 +1122,157 @@ class DatabaseSeeder extends Seeder
             'foto' => 'images/.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
-            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
             'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>1,
+            'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
+
+        Noticia::create([
+            'titulo' => '',
+            'descripcion' => '',
+            'contenido' => '',
+            'foto' => 'images/.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => '',
+            'descripcion' => '',
+            'contenido' => '',
+            'foto' => 'images/.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => '',
+            'descripcion' => '',
+            'contenido' => '',
+            'foto' => 'images/.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => '',
+            'descripcion' => '',
+            'contenido' => '',
+            'foto' => 'images/.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => '',
+            'descripcion' => '',
+            'contenido' => '',
+            'foto' => 'images/.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => '',
+            'descripcion' => '',
+            'contenido' => '',
+            'foto' => 'images/.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => '',
+            'descripcion' => '',
+            'contenido' => '',
+            'foto' => 'images/.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => '',
+            'descripcion' => '',
+            'contenido' => '',
+            'foto' => 'images/.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => '',
+            'descripcion' => '',
+            'contenido' => '',
+            'foto' => 'images/.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+        /********************************************       OTRA        ************************************************  */
+
+        Noticia::create([
+            'titulo' => '',
+            'descripcion' => '',
+            'contenido' => '',
+            'foto' => 'images/.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        
 
 
 
@@ -885,7 +1280,7 @@ class DatabaseSeeder extends Seeder
         /**********************   NOTICIAS ECONOMIA    ************************* */
 
         NoticiaController::crearNoticias("economica","Economía");
-        NoticiaController::crearNoticias("deporte","Deportes");
+        //NoticiaController::crearNoticias("deporte","Deportes");
         //NoticiaController::crearNoticias("arbitro","Deportes");
         //NoticiaController::crearNoticias("movil","Tecnología");
 

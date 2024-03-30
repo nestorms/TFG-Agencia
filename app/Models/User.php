@@ -35,7 +35,7 @@ class User extends Authenticatable
     //Los redactores pueden tener varias noticias asociadas
     public function noticias_redactor()
     {
-        return $this->hasMany(Noticia::class);
+        return $this->hasMany(Noticia::class, 'redactor_id');
     }
 
     //Los medios pueden tener seleccionadas muchas noticias

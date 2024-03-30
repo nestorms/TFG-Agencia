@@ -221,7 +221,10 @@ class NoticiaController extends Controller
 
         $noticias = Noticia::where('id', '>=', 31)->get();
         UserNoticia::where('recomendada',true)->delete();
-        UserNotification::all()->delete();
+
+        if (UserNotification::count() > 0) {
+            UserNotification::truncate();
+        }
 
 
         foreach($noticias as $noticia){
@@ -300,7 +303,7 @@ class NoticiaController extends Controller
     public function index()
     {
         // Llama a la función para obtener las noticias de la API
-        $noticias = Noticia::limit(30)->get();
+        $noticias = Noticia::limit(41)->get();
         $noticias2 = Noticia::orderByDesc('likes')->limit(3)->get();
 
         // Pasa los datos recuperados a la vista
@@ -328,6 +331,20 @@ class NoticiaController extends Controller
 
 
         return view('noticia', ['noticia' => $noticia]);
+    }
+
+    public function deleteNotification($id){
+
+        $noticia = Noticia::findOrFail($id);
+        $notificacion = UserNotification::where('user_id',auth()->user()->id)->where('noticia_id',$id)->first();;
+
+        if ($notificacion) {
+            UserNotification::where('user_id', auth()->user()->id)
+            ->where('noticia_id', $id)
+            ->delete(); 
+        }
+
+        return back();
     }
 
     public function noticiasRecomendadas($id){
