@@ -93,7 +93,7 @@
                         @endif
 
                         <div class="mx-3">
-                            <a href="/mensajes">
+                            <a href="/mensajes/{{auth()->user()->id}}">
                                 <img src="{{ asset('images/message.png') }}" alt="Mensajes" class="img-fluid" style="width: auto; height: 30px;">
                             </a>
                         </div>

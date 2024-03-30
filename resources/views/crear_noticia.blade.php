@@ -40,17 +40,17 @@
                 <label for="inputArchivo" class="form-label">Foto de portada</label>
                 <div class="input-group mb-3">
                     <input type="file" name="foto" class="form-control" id="inputArchivo">
+                    @if ($errors->has('foto'))
+                        <span class="text-danger text-left">{{ $errors->first('foto') }}</span>
+                    @endif
                 </div>
-                @if ($errors->has('foto'))
-                    <span class="text-danger text-left">{{ $errors->first('foto') }}</span>
-                @endif
+                
             </div>
             
             
             <div class="box desplegable">
                 <label for="opciones" class="form-label">Categoría</label>
                 <select id="opciones" class="form-select mb-3" name="categoria_id">
-                    <option selected>Selecciona una opción</option>
 
                     @foreach ($categorias as $categoria)
                         <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>

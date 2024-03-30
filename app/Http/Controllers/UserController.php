@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Noticia;
 use App\Models\UserNoticia;
+use App\Models\Chat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -209,5 +210,31 @@ class UserController extends Controller
         $usuario->save();
 
         return view('config', ['usuario' => $usuario, 'message' => 'Perfil modificado con éxito']);
+    }
+
+
+    public function showMensajes($id){
+
+        $chats="";
+
+        if(auth()->user()->rol != "redactor"){
+            //$chats = Chat::where('medio_id', $id)->paginate(4);
+
+            $chats = Chat::selectRaw('*, MAX(hora) as hora_reciente')
+             ->where('medio_id', $id)
+             ->groupBy('medio_id', 'redactor_id','mensaje', 'fecha', 'hora','created_at','updated_at')
+             ->paginate(4);
+        }
+        else{
+            //$chats = Chat::where('redactor_id', $id)->paginate(4);
+
+            $chats = Chat::selectRaw('*, MAX(hora) as hora_reciente')
+             ->where('redactor_id', $id)
+             ->groupBy('medio_id', 'redactor_id','mensaje', 'fecha', 'hora','created_at','updated_at')
+             ->paginate(4);
+        }
+
+        return view('mensajes', ['chats' => $chats]);
+        
     }
 }

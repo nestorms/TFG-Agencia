@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use jcobhams\NewsApi\NewsApi;
+use Illuminate\Support\Facades\Response;
 use App\Models\Noticia;
 use App\Models\User;
 use App\Models\Category;
@@ -271,7 +272,7 @@ class NoticiaController extends Controller
                 ];
 
 
-                $umbralBM25=5.0;
+                $umbralBM25=20.0;
 
                 if ($score >= $umbralBM25) {
                     // El score BM25 cumple con el umbral, almacenar la recomendación
@@ -392,6 +393,7 @@ class NoticiaController extends Controller
             'descripcion' => 'required|min:2',
             'contenido' => 'required||min:7',
             'categoria_id' => 'required',
+            'foto' => 'required',
             'palabras_clave',
             'fecha' => 'required'],
             [
@@ -402,7 +404,8 @@ class NoticiaController extends Controller
                 'categoria_id.required' => 'El campo categoria es obligatorio',
                 'contenido.required' => 'El campo contenido es obligatorio',
                 'contenido.min' => 'Longitud mínima de 7 caracteres',
-                'fecha.required' => 'El campo fecha es obligatorio',                
+                'fecha.required' => 'El campo fecha es obligatorio', 
+                'foto.required' => 'El campo foto es obligatorio'               
             ]);
 
         // Guardar la imagen en el sistema de archivos
@@ -642,12 +645,26 @@ class NoticiaController extends Controller
         
         $pdf->loadHtml(view('noticia_pdf', ['noticia' => $noticia])->render());
 
-        // Renderizar el PDF
+        // Renderizar el PDF 
         $pdf->render();
 
         // Descargar el PDF
         return $pdf->stream('noticia.pdf');
     }
+
+    public function descargarJSON($id)
+{
+        $noticia = Noticia::findOrFail($id);
+
+        // Convierto los datos de la noticia a formato JSON
+        $noticiaJson = $noticia->toJson();
+
+        // Devuelvo la respuesta HTTP con el contenido 
+        return Response::make($noticiaJson, 200, [
+            'Content-Type' => 'application/json',
+            'Content-Disposition' => 'attachment; filename="noticia.json"',
+        ]);
+}
 
     
 }

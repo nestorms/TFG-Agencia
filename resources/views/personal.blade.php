@@ -43,13 +43,21 @@
                                 <td class="align-middle">{{$seleccionada->noticia->category->nombre}}</td>
                             @endif
                             
-                            <td class="align-middle">
-                                <a href="/noticias/{{$seleccionada->noticia->id}}/descargar" download><i class="bi bi-download mx-2" style="color: black; font-size:20px;"></i></a>
-                                <a href="/noticia/{{$seleccionada->noticia->id}}"><i class="bi bi-eye mx-2" style="color: black; font-size:20px;"></i></a>
-                                <a href="/noticias/{{$seleccionada->noticia->id}}/unsave"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
+                            <td class="align-middle column">
+                                <div class="dropdown" style="display: inline-block;">
+                                    <button class="btn btn-light p-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-download" style="color: black; font-size:20px;"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/noticias/{{$seleccionada->noticia->id}}/descargarPDF" download>Descargar PDF</a>
+                                        <a class="dropdown-item" href="/noticias/{{$seleccionada->noticia->id}}/descargarJSON" download>Descargar JSON</a>
+                                    </div>
+                                </div>
+                                <a class="btn btn-light p-0" href="/noticia/{{$seleccionada->noticia->id}}"><i class="bi bi-eye mx-2" style="color: black; font-size:20px;"></i></a>
+                                <a class="btn btn-light p-0" href="/noticias/{{$seleccionada->noticia->id}}/unsave"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
 
                                 @if (auth()->user()->rol != "redactor")
-                                    <a href="/mensaje/{{$seleccionada->noticia->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
+                                    <a class="btn btn-light p-0" href="/mensaje/{{$seleccionada->noticia->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
                                 @endif
                                 
                             </td>
@@ -69,12 +77,20 @@
                             @endif
                             
                             <td class="align-middle">
-                                <a href="/noticias/{{$seleccionada->id}}/descargar" download><i class="bi bi-download mx-2" style="color: black; font-size:20px;"></i></a>
-                                <a href="/noticia/{{$seleccionada->id}}"><i class="bi bi-eye mx-2" style="color: black; font-size:20px;"></i></a>
-                                <a href="/noticias/{{$seleccionada->id}}/unsave"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
+                                <div class="dropdown" style="display: inline-block;">
+                                    <button class="btn btn-light p-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-download" style="color: black; font-size:20px;"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/noticias/{{$seleccionada->id}}/descargarPDF" download>Descargar PDF</a>
+                                        <a class="dropdown-item" href="/noticias/{{$seleccionada->id}}/descargarJSON" download>Descargar JSON</a>
+                                    </div>
+                                </div>
+                                <a class="btn btn-light p-0" href="/noticia/{{$seleccionada->id}}"><i class="bi bi-eye mx-2" style="color: black; font-size:20px;"></i></a>
+                                <a class="btn btn-light p-0" href="/noticias/{{$seleccionada->id}}/unsave"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
 
                                 @if (auth()->user()->rol != "redactor")
-                                    <a href="/mensaje/{{$seleccionada->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
+                                    <a class="btn btn-light p-0" href="/mensaje/{{$seleccionada->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
                                 @endif
                                 
                             </td>

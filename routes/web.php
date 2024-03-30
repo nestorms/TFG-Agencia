@@ -82,7 +82,8 @@ Route::get('/categorias/{id}', [NoticiaController::class, 'mostrarNoticiasCatego
 
 
 /********************   DESCARGA DE NOTICIAS  ********************/
-Route::get('/noticias/{id}/descargar', [NoticiaController::class, 'descargarPDF']);
+Route::get('/noticias/{id}/descargarPDF', [NoticiaController::class, 'descargarPDF']);
+Route::get('/noticias/{id}/descargarJSON', [NoticiaController::class, 'descargarJSON']);
 
 
 /********************   COMENTARIOS  ********************/
@@ -95,3 +96,9 @@ Route::get('/indexar-noticias', [NoticiaController::class, 'indexarNoticias']);
 Route::get('/indexar-principal', [NoticiaController::class, 'indexarPrincipal']);
 Route::get('/recomendar', [NoticiaController::class, 'recomendar']);
 Route::post('/buscadorIndex', [NoticiaController::class, 'buscadorIndex']);
+
+
+
+
+/********************   CHATS Y MENSAJES  ********************/
+Route::get('/mensajes/{id}', [UserController::class, 'showMensajes']);

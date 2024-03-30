@@ -79,6 +79,15 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('chats', function (Blueprint $table) {
+            $table->foreignId('medio_id')->constrained('users');
+            $table->foreignId('redactor_id')->constrained('users');
+            $table->date('hora');
+            $table->date('fecha');
+            $table->text('mensaje');
+            $table->timestamps();
+        });
+
 
 
     }

@@ -406,22 +406,92 @@ class DatabaseSeeder extends Seeder
             'descripcion' => 'Carlos Sainz reapareció el viernes en el GP de Australia 2024 de F1 tras perderse Yeda por apendicitis y, aunque aún no está al 100%, ya piensa en la pole.',
             'contenido' => 'Después de haberse perdido el Gran Premio de Arabia Saudí al tener que ser operado de urgencia por apendicitis, el madrileño ha vuelto este viernes a subirse al monoplaza sólo dos semanas después y, debido a ello, asegura que sus tiempos no lucieron tanto como los de su compañero de equipo, que terminó la jornada como líder con un crono de 1:17.227.
             Nada más bajarse de su coche con el tercer mejor tiempo en la FP2, Carlos Sainz habló sobre su estado de salud y fue sincero al reconocer que todavía no se siente al 100%, aunque reconoció que el hecho de haber podido completar la FP1 y la FP2 sin problemas ya era un gran motivo de satisfacción.
-
             "Me siento bien, obviamente estoy cansado después de los entrenamientos y no me he sentido al 100% físicamente, pero creo que he tenido un buen día. Y si me hubieras dicho hace una semana que podía completar las dos sesiones sin problemas, habría sido difícil de creer, así que estoy muy contento".
-
             "Ahora necesito dormir bien y recuperarme lo mejor posible para mañana. Me siento bien", añadió.
-
             Pese a que Charles Leclerc marcó el ritmo y fue la referencia para Ferrari y para toda la parrilla este viernes, el español cree que será mucho más competitivo a medida que avance el fin de semana.
-
             "Creo que Charles ha sido muy rápido hoy. Por mi parte, obviamente, he ido paso a paso y he ido a un ritmo que no estaba en el límite del coche y tampoco en mi límite personal, pero creo que con más vueltas y un poco más de confianza seré más rápido mañana", aseguró.
-
             Aunque físicamente todavía está algo mermado por su reciente operación de apendicitis, Carlos Sainz tiene muy claro que a partir del sábado tiene luchar por lo máximo con su SF-24 en el Gran Premio de Australia, por lo que se pone como objetivo la pole position.
-
             "Espero luchar por la pole position con él [Leclerc] y contra todos los demás, porque creo que va a estar muy apretado todo, lo vimos en la FP1, creo que en la FP2 dimos un buen paso adelante, pero sí, creo que la clasificación de mañana va a ser algo más parecido a la FP1", concluyó el madrileño en Albert Park.',
             'foto' => 'images/sainz.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
             'palabras_clave' => 'futbol,deporte,baloncesto,tenis,partido,entrenador',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>2,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+        Noticia::create([
+            'titulo' => 'Dimitrov y Sinner, de momento a momento',
+            'descripcion' => 'El búlgaro reafirma su estado de gracia ante Zverev (6-4, 6-7(4) y 6-4) y se medirá el domingo por el título con Sinner, lanzado e implacable contra Medvedev (6-1 y 6-2)',
+            'contenido' => 'A falta del episodio final, este Masters de Miami queda traducido a una cuestión de momentos. Más concentrado uno, más prolongado el otro. Descabalgado Carlos Alcaraz de la pelea, el cartel definitivo muestra los nombres de Jannik Sinner y Grigor Dimitrov, dos tenistas en estado de gracia. Poca novedad, en el caso del primero; fantástica noticia lo del segundo. Hasta hace no mucho, pocos hubieran apostado por el renacimiento del búlgaro, al que de alguna manera se daba por amortizado, teniendo en cuenta que ya ha superado la treintena y que su mejor momento se remonta a siete años atrás, cuando conquistó la Copa de Maestros en Londres. Ahora, de vuelta, desafiará este domingo (21.00, Movistar) al italiano, que contabiliza todos los partidos de este año por victorias, a excepción del zarpazo que le dio Alcaraz en las semifinales de Indian Wells.
+            En estos momentos, Sinner sigue erigiéndose como el más regular y el más poderoso. Campeón en Australia y Róterdam, y montado sobre una impresionante racha de 21 victorias en 22 encuentros, barrió este viernes a Daniil Medvedev, que cedió en 1h 09m: 6-1 y 6-2. El ruso, irreconocible por la fragilidad de su juego y su orgullo anestesiado, fue incapaz de hacerle frente y se dejó ir, recordando quizá la dolorosa derrota de enero en Melbourne, cuando el pelirrojo le levantó dos sets en la gran final. Selló la tarde con 22 errores no forzados y tan solo siete golpes ganadores, mientras del otro lado ni siquiera se llegó a pisar el acelerador de verdad. El de San Cándido neutralizó las tres bolas de rotura en contra que hubo de defender, y la inercia le condujo a firmar una tarjeta con 17 winners y solo tres errores.
+            De este modo, Sinner disputará su tercera final en Miami —tras las de 2021 y 2023— y aspira a celebrar su segundo Masters 1000, tras el éxito del curso pasado en Toronto. “Estoy sorprendido conmigo mismo”, admite. “Pero me concentro en el día a día, porque ahora los rivales me conocen mejor y quieren ganarme, así que debo estar preparado”, continúa el italiano, que tiene ante sí también la oportunidad de desbancar a Alcaraz en el segundo peldaño de la ATP; de vencer lo conseguiría, a la par que alcanzaría el mejor ranking de su carrera. En cualquier paso, enfrente tendrá a un adversario que ha revertido la dinámica a la baja de los últimos años y que se ha filtrado de nuevo entre los más fuertes del circuito, con la confianza disparada. De momento, el triunfo contra Zverev (6-4, 6-7(4) y 6-4, en 2h 37m) le concede a Dimitrov la novena plaza.
+            “Ahora lucho mis propias batallas. Corro mi propia carrera. Estoy en un camino muy diferente en mi vida, en mi carrera. Es mucho lo que se ha hecho, mucho el trabajo, mucho todo lo que hay detrás. Seguí creyendo, seguí prosperando, seguí teniendo fe en mí mismo...”, argumenta el de Jaskovo, hasta hace no demasiado un competidor tristón y decaído, lastrado por esa dañina comparación con Roger Federer —Baby Federer, por el paralelismo estético— que por fin ha dejado atrás para ir descubriéndose a sí mismo. Soberbio ante Alcaraz, supo manejar los instantes delicados del pulso con Zverev, que le había vencido siete veces consecutivas, y saboreará su tercera final de un mil. Dilata así el acelerón que dio en el otoño —otro triunfo contra Alcaraz y final en París-Bercy— y que mantiene esta campaña, en la que ya ha engarzado el título de Brisbane.
+            No figuraba en el top-10 desde 2018. No ganaba un trofeo desde 2017. No conseguía levantar cabeza. Pero aquí está otra vez Dimitrov, y el tenis lo celebra. Solo queda por ver si la respuesta física y anímica ante Sinner está a la altura. El italiano domina el cara a cara por 2-1, con dos victorias (Miami y Pekín) en 2023.',
+            'foto' => 'images/dimitrov.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'futbol,baloncesto,tenis,partido',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>2,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Osasuna regala a Arrasate su mejor versión',
+            'descripcion' => 'Los rojillos hacen el mejor regalo posible a su míster tras anunciar su adiós',
+            'contenido' => 'Pintaba a semana complicada para Osasuna tras anuciar Arrasate el final de su etapa en el banquillo rojillo. Visitaba al renacido Almería de Pepe Mel. Ni dos minutos tardó en esfurmase el subidón rojiblanco. Los que tardó en encontrar Moncayola la espalda de Centelles y Arribas para que Areso cediese atrás, en el famoso pase de la muerte, y Arnaiz la mandase a la jaula. Acción al más puro estilo Arrasate.
+            Sin tiempo apenas para celebrar, un regalo de Maximiano dejó herido de muerte al Almería. Cedió Radovanocic un balón que no lo querría ni su peor enemigo, pero el meta almeriense en el intento de evitar un córner, regaló un gol. Su despeje acabó en los pies de Moncayola que de primeras cedió a un Budimir que solo tuvo que empujar la pelota al fondo de la red. En menos de diez minutos, Osasuna ya había dejado claro que no tiene intención de dejarse ir en este final de curso pese a la despedida de Arrasate. No merece un mal final el técnico rojillo y no parece que sus jugadores se lo vayan a dar.
+            Volviendo al Almería, los de Mel, que venían de ganar en Las Palmas, regresaron a las pesadillas que llevan sufriendo todo el curso. Dos regalos, dos goles en contra. Bien es cierto que el segundo tanto tuvo su dosis de polémica. El balón pudo haber salido por línea de fondo antes de que Maximiano lo despejase. No parece poca cosa cambiar un córner por un gol. Pero eso pudo pensarlo también el portero antes de ceder a Moncayola.
+            Reaccionaron pese a todo y acabaron el primer tiempo con asedio a la portería navarra. Pocas ocasiones, pero al menos con la sensación de querer agarrarse al partido. Y así comenzó el segundo tiempo. Con un Almería en busca de gol que le enganchase al choque. Varias llegadas rojiblancas acabaron en gol de Osasuna. Demasiado castigo para un equipo que cada vez ve más cerca el pozo de la Segunda.
+            Iker Muñoz con una gran volea en el área liquidó el choque. El primer partido tras el anuncio del final de la etapa de Arrasate fue un regalo para el técnico. Su equipo volvió a enseñar su versión más fiel. Velocidad y verticalidad made in Arrasate. De regalos fue la tarde.',
+            'foto' => 'images/osasuna.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'futbol,baloncesto,tenis,partido',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>2,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Luis Enrique: "Me gustó que la afición del Madrid aplaudiera a Yamal"',
+            'descripcion' => 'El entrenador del PSG valoró el gesto del Bernabéu con el futbolista del Barcelona',
+            'contenido' => 'Luis Enrique Martínez, técnico del PSG, ha asegurado que le gustó que el Santiago Bernabéu ovacionara al culé Lamine Yamal en el España-Brasil (3-3), en una rueda de prensa previa al clásico francés que enfrentará mañana a su equipo con el Olympique Marsella.
+            "Me gustó que la afición del Madrid aplaudiera a un jugador del Barça jugando con la selección española, me pareció un detalle muy bonito, y que un jugador de 16 años pueda salir del estadio del eterno rival aplaudido. Un detalle muy bonito y esperanzador", opinó el entrenador del PSG.
+            Luis Enrique indicó, respecto al duelo liguero de alto voltaje que tendrá lugar mañana en Marsella, que es "consciente" de la importancia del clásico para la afición parisina y que el objetivo es ganar todos los partidos de aquí al final de temporada, para asegurarse todos los títulos posibles.
+            Consultado sobre la posible titularidad de Kylian Mbappé, Luis Enrique se limitó a afirmar que "todo es posible en la vida" y dijo que todos los jugadores deben estar siempre preparados para jugar. "Prácticamente todos los jugadores están a disposición. Ya veréis la lista de convocados", precisó.,
+            El entrenador español también se pronunció sobre la participación de jugadores en los Juegos Olímpicos de este verano, que se celebrarán en París, y apuntó que él es "abierto y laxo", además de recordar que él mismo pudo ganar una medalla de oro en Barcelona92.
+            No obstante, puntualizó que es una decisión del club y que su deber es defender los intereses de la entidad. "Hay que analizar cada caso en particular", dijo.',
+            'foto' => 'images/enrique.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'futbol,baloncesto,tenis,partido',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>2,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'El infierno de Kick Sauber con las paradas',
+            'descripcion' => 'Han tenido cuatro pit stops de más de 20 segundos en las tres primeras carreras de la temporada',
+            'contenido' => 'Sumar puntos es cada día más difícil. La zona baja de la parrilla de Fórmula 1 está muy apretada y cada error cuenta. Muchas de las batallas se pierden, ya que la realización se suele centrar en los equipos de adelante, ya que generan más interés. Sin embargo, en este inicio de temporada se ha podido ver repetidas veces un claro error en una de las escuderías.
+            Kick Sauber es uno de los tres equipos que no ha sumado ningún punto en este 2024. Su rendimiento ha sido peor de lo esperado, pero aunque hayan tenido opciones de quedar entre los diez primeros, han cometido muchos errores en las paradas a boxes, siendo el equipo que las hace peor de toda la parrilla.
+            Sus pilotos han perdido mucho tiempo en el pit lane esta temporada. Valtteri Bottas tiene un récord este año, aunque malo. Ha tenido la parada más larga, en el Gran Premio de Bahrein, de 52 segundos. El finlandés nunca ha tenido la mejor de las suertes con los pit stops, ya que en Mercedes, un equipo que no suele fallar, tuvo la parada más larga de la historia de la F1, en Mónaco.
+            Mientras la media de tiempo en las paradas en la F1 actual está sobre los tres segundos, donde la gran mayoría bajan de esa cifra, Kick Sauber está muy por encima y en esta estadística se puede ver realmente todo el tiempo que han podido perder con sus rivales.
+            No parece que sea falta de entrenamiento o experiencia en los mecánicos, ya que las paradas que hacen bien, están sobre los tiempos habituales. Pero sus errores se deben más a despistes, como perder arandelas, un mal uso de la pistola etc. Con todas estas equivocaciones, la media de tiempo en paradas del equipo es de 14 segundos.
+            Además, han tenido fallos en todos los circuitos. En Bahrein, en la vuelta 30, Valtteri Bottas tuvo un pit stop de 52,44 segundos, ya que no conseguían quitar una de las ruedas. El mismo error les ocurrió en Jeddah, pero esa vez con Guanyu Zhou, que tuvo que estar en el pit lane 28,71 segundos.
+            En Melbourne, ya no quisieron hacer diferencias y tuvieron errores con ambos pilotos, confirmando que el equipo tiene problemas en general, que debe mejorar si quieren tener opciones a liderar esa zona baja de la tabla. Bottas tuvo una parada de 31,18 segundos y el chino de 20,20. Todos estos errores hacen que la escudería, que será Audi en 2026, tenga una media superior al tiempo de media de paradas con cambios de alerón.',
+            'foto' => 'images/sauber.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'futbol,baloncesto,tenis,partido',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
             'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
             'categoria_id'=>2,
@@ -1116,10 +1186,14 @@ class DatabaseSeeder extends Seeder
 
 
         Noticia::create([
-            'titulo' => '',
-            'descripcion' => '',
-            'contenido' => '',
-            'foto' => 'images/.jpg',
+            'titulo' => 'Elecciones Locales: Un Cambio de Rumbo en la Política Municipal',
+            'descripcion' => 'Las elecciones locales marcan un punto crucial en la política de una comunidad, donde los ciudadanos ejercen su poder para elegir líderes que representen sus intereses y necesidades a nivel municipal. Estos comicios no solo moldean el futuro de una ciudad, sino que también reflejan las tendencias políticas y sociales más amplias en juego.',
+            'contenido' => 'Las elecciones locales son un pilar fundamental de la democracia, ya que permiten que los ciudadanos participen activamente en el proceso político y contribuyan a la toma de decisiones que afectan directamente a sus comunidades. A nivel municipal, los votantes eligen alcaldes, concejales y otros funcionarios locales que serán responsables de abordar una amplia gama de cuestiones, desde infraestructura y servicios públicos hasta desarrollo económico y políticas sociales.
+            Estas elecciones suelen reflejar no solo las preocupaciones locales, sino también las tendencias políticas más amplias que están en juego a nivel nacional e incluso internacional. Los resultados de las elecciones locales pueden interpretarse como indicadores tempranos de cambios en el panorama político, así como de la confianza del electorado en los partidos y líderes individuales.
+            Además, las elecciones locales ofrecen una plataforma importante para la participación ciudadana y el activismo político a nivel comunitario. Los candidatos locales suelen estar más cerca de los votantes y tienen la oportunidad de abordar problemas específicos que afectan directamente a la vida diaria de las personas en sus comunidades.
+            En muchos casos, las elecciones locales también son un reflejo de la diversidad y la inclusión en la política, ya que pueden dar voz a grupos minoritarios y marginados que a menudo están subrepresentados en otros niveles de gobierno. La elección de líderes locales de diversos orígenes étnicos, culturales y socioeconómicos puede contribuir a una mayor representatividad y equidad en la toma de decisiones.
+            En resumen, las elecciones locales son un componente vital de la vida política de una comunidad, donde los ciudadanos tienen la oportunidad de influir en el futuro de su ciudad y expresar sus valores y preferencias a través del voto. Estos comicios no solo moldean el rumbo de una ciudad, sino que también reflejan las dinámicas políticas y sociales más amplias en juego a nivel local, nacional e incluso global.',
+            'foto' => 'images/local.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
@@ -1130,10 +1204,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Noticia::create([
-            'titulo' => '',
-            'descripcion' => '',
-            'contenido' => '',
-            'foto' => 'images/.jpg',
+            'titulo' => 'Tensiones Internacionales: Desafíos Diplomáticos en el Escenario Global',
+            'descripcion' => 'Las tensiones internacionales están en aumento, desafiando los cimientos de la diplomacia y la cooperación entre naciones. Desde disputas territoriales hasta conflictos ideológicos, el panorama geopolítico actual presenta una serie de desafíos que requieren un enfoque diplomático cuidadoso y estratégico.',
+            'contenido' => 'Las tensiones internacionales se han intensificado en los últimos años, con una serie de factores que contribuyen a la creciente discordia entre naciones. Disputas territoriales en regiones como el Mar del Sur de China y el Medio Oriente han generado conflictos prolongados y una competencia por recursos estratégicos, aumentando las tensiones entre potencias regionales e internacionales.
+            Además de las disputas territoriales, los conflictos ideológicos y políticos también están contribuyendo a la inestabilidad geopolítica. La rivalidad entre potencias como Estados Unidos, China y Rusia ha generado una competencia feroz por la influencia global, exacerbando las divisiones y dificultando la cooperación en temas de seguridad, comercio y gobernanza mundial.
+            El surgimiento de nuevas amenazas transnacionales, como el cambio climático, el terrorismo y la pandemia de COVID-19, ha añadido una capa adicional de complejidad a las relaciones internacionales. Estos desafíos globales requieren una respuesta coordinada y colaborativa por parte de la comunidad internacional, pero las divergencias políticas y estratégicas obstaculizan los esfuerzos de cooperación.
+            En este contexto, la diplomacia se vuelve más crucial que nunca como medio para abordar las diferencias y buscar soluciones pacíficas a los conflictos internacionales. Los esfuerzos diplomáticos deben centrarse en el diálogo constructivo, la negociación de acuerdos mutuamente beneficiosos y el fortalecimiento de los mecanismos de gobernanza global para abordar los desafíos comunes de manera efectiva.
+            En resumen, las tensiones internacionales representan uno de los principales desafíos de nuestro tiempo, con implicaciones significativas para la estabilidad y la seguridad mundial. La diplomacia desempeña un papel fundamental en la gestión de estas tensiones y en la promoción de un orden mundial basado en la cooperación, el respeto mutuo y la paz duradera.',
+            'foto' => 'images/tension.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
@@ -1144,10 +1222,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Noticia::create([
-            'titulo' => '',
-            'descripcion' => '',
-            'contenido' => '',
-            'foto' => 'images/.jpg',
+            'titulo' => 'El Debate sobre la Gestión del Gobierno de Sánchez',
+            'descripcion' => 'La tensión política en España se intensifica a medida que el gobierno de Pedro Sánchez enfrenta críticas de la oposición y desafíos internos que ponen a prueba su capacidad de liderazgo y gestión.',
+            'contenido' => 'El gobierno de Pedro Sánchez se encuentra bajo escrutinio público y críticas constantes por parte de la oposición y diversos sectores de la sociedad española. Las tensiones políticas se han agudizado en medio de la crisis económica, la pandemia de COVID-19 y los conflictos territoriales, lo que ha generado un clima de incertidumbre y polarización en el país.
+            La gestión de la crisis sanitaria y económica ha sido objeto de controversia, con acusaciones de falta de transparencia, improvisación y falta de coordinación por parte del gobierno. La oposición ha cuestionado las medidas adoptadas y ha exigido una rendición de cuentas más rigurosa sobre el manejo de la pandemia y la distribución de los fondos de recuperación.
+            Además, las tensiones se han exacerbado por la situación en Cataluña y el desafío independentista, con divisiones políticas cada vez más profundas sobre el enfoque adecuado para abordar este conflicto. La polarización ideológica y la falta de consenso político han dificultado la búsqueda de soluciones duraderas y han alimentado la inestabilidad política en el país.
+            En este contexto, la capacidad de liderazgo y negociación de Pedro Sánchez se ha puesto a prueba, enfrentándose a críticas tanto dentro de su propio partido como de la oposición. La necesidad de construir puentes de diálogo y consenso se vuelve cada vez más urgente para superar las divisiones y encontrar soluciones viables a los desafíos que enfrenta España en la actualidad.
+            En resumen, la tensión política en España refleja un panorama complejo y desafiante, caracterizado por la polarización, la confrontación y la falta de consenso. La capacidad del gobierno de Pedro Sánchez para gestionar esta situación y avanzar hacia una agenda de reformas y reconciliación nacional será determinante para el futuro del país.',
+            'foto' => 'images/sanchez.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
@@ -1158,10 +1240,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Noticia::create([
-            'titulo' => '',
-            'descripcion' => '',
-            'contenido' => '',
-            'foto' => 'images/.jpg',
+            'titulo' => 'Crisis Migratoria: Desafíos Humanitarios en la Frontera Sur',
+            'descripcion' => 'La crisis migratoria en la frontera sur está alcanzando proporciones críticas, desencadenando desafíos humanitarios urgentes que requieren respuestas efectivas por parte de las autoridades gubernamentales y la comunidad internacional.',
+            'contenido' => 'La frontera sur se enfrenta a una creciente afluencia de migrantes y solicitantes de asilo, muchos de los cuales huyen de la violencia, la pobreza y la inestabilidad en sus países de origen. Esta situación ha generado una crisis humanitaria con miles de personas que buscan refugio y protección en la frontera, enfrentándose a condiciones extremas y riesgos significativos en su búsqueda de una vida mejor.
+            Las capacidades de recepción y procesamiento en los puntos fronterizos se ven abrumadas por el flujo constante de migrantes, lo que genera tensiones y desafíos logísticos para las autoridades locales y nacionales. La falta de recursos y la capacidad limitada para gestionar la llegada masiva de personas están exacerbando la situación humanitaria y planteando interrogantes sobre la capacidad de respuesta del sistema.
+            Además de los desafíos logísticos, la crisis migratoria también plantea cuestiones éticas y legales relacionadas con los derechos humanos y la protección de los más vulnerables. La necesidad de garantizar un trato humano y digno para los migrantes, especialmente niños y familias, es una prioridad urgente que requiere un enfoque coordinado y solidario por parte de las autoridades y la sociedad en su conjunto.
+            En este contexto, es fundamental fortalecer la cooperación internacional y regional para abordar las causas subyacentes de la migración y promover soluciones sostenibles a largo plazo. Esto implica abordar las inequidades económicas, sociales y políticas que impulsan la migración forzada, así como mejorar los mecanismos de protección y asistencia para los migrantes en tránsito y destino.
+            En resumen, la crisis migratoria en la frontera sur representa un desafío humanitario de proporciones alarmantes que requiere una respuesta integral y solidaria. Es fundamental adoptar medidas urgentes para garantizar la protección y el bienestar de los migrantes y buscar soluciones efectivas y sostenibles para abordar las causas fundamentales de la migración.',
+            'foto' => 'images/migra.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
@@ -1172,10 +1258,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Noticia::create([
-            'titulo' => '',
-            'descripcion' => '',
-            'contenido' => '',
-            'foto' => 'images/.jpg',
+            'titulo' => 'Elecciones Autonómicas en Cataluña',
+            'descripcion' => 'Las elecciones autonómicas en Cataluña generan expectativas y especulaciones sobre el futuro político de la región, mientras los partidos se preparan para una contienda marcada por la incertidumbre.',
+            'contenido' => 'Las elecciones autonómicas en Cataluña se presentan como un hito crucial en el panorama político de la región, con repercusiones que pueden trascender las fronteras catalanas y afectar la estabilidad del gobierno central en Madrid. En medio de la polarización política y el desafío independentista, los comicios adquieren una relevancia especial y despiertan un interés generalizado tanto dentro como fuera de Cataluña.
+            El contexto político en Cataluña es complejo, con una sociedad dividida entre aquellos que abogan por la independencia y los que defienden la unidad de España. La crisis económica, la gestión de la pandemia y las tensiones sociales han añadido un elemento de incertidumbre a estas elecciones, con un panorama electoral fragmentado y una multiplicidad de actores políticos que dificultan la formación de mayorías estables.
+            Los principales partidos políticos en Cataluña se preparan para una contienda electoral marcada por la competencia feroz y la lucha por el poder. Desde los partidos independentistas como Esquerra Republicana de Catalunya (ERC) y Junts per Catalunya, hasta los partidos constitucionalistas como el Partido Socialista de Cataluña (PSC) y Ciudadanos, cada formación busca posicionarse como la opción preferida para liderar el futuro de la región.
+            Sin embargo, la incertidumbre sobre los resultados y la posibilidad de un escenario de bloqueo político plantean desafíos adicionales para la estabilidad política y la gobernabilidad en Cataluña. Las negociaciones postelectorales y la capacidad de los partidos para alcanzar acuerdos y coaliciones determinarán en gran medida el rumbo político de la región en los próximos años.
+            En conclusión, las elecciones autonómicas en Cataluña representan un momento crucial para el futuro político de la región y para el conjunto de España. Con un panorama marcado por la incertidumbre y las expectativas, los ciudadanos catalanes se preparan para ejercer su derecho al voto y para definir el rumbo de la política regional en un contexto de profundos desafíos y complejidades.',
+            'foto' => 'images/elecciones.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
@@ -1186,10 +1276,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Noticia::create([
-            'titulo' => '',
-            'descripcion' => '',
-            'contenido' => '',
-            'foto' => 'images/.jpg',
+            'titulo' => 'El Conflicto entre Rusia y Ucrania',
+            'descripcion' => 'Las tensiones entre Rusia y Ucrania alcanzan un nuevo punto crítico, desatando preocupaciones sobre un posible conflicto armado en la región y sus repercusiones a nivel internacional.',
+            'contenido' => 'Las tensiones entre Rusia y Ucrania han llegado a un punto álgido en medio de una escalada de incidentes militares y diplomáticos en la región del Donbás. Con el despliegue de tropas rusas en la frontera y la anexión de Crimea en 2014 aún presente en la memoria, las preocupaciones sobre un posible conflicto armado entre ambos países han aumentado significativamente en las últimas semanas.
+            La crisis en el este de Ucrania, donde fuerzas separatistas respaldadas por Rusia han estado combatiendo al gobierno ucraniano desde 2014, ha sido un foco de tensión constante entre Moscú y Kiev. La reciente escalada de violencia y la concentración de tropas rusas en la frontera han generado temores de una invasión rusa a gran escala, lo que podría desencadenar un conflicto de consecuencias impredecibles para la estabilidad regional y global.
+            Las potencias occidentales, incluidos Estados Unidos y varios países de la Unión Europea, han expresado su preocupación por la situación y han instado a Rusia a reducir la tensión y buscar una solución pacífica al conflicto en el este de Ucrania. Sin embargo, las relaciones entre Rusia y Occidente se han deteriorado en los últimos años, con sanciones económicas y diplomáticas que han exacerbado aún más las tensiones.
+            En este contexto, la comunidad internacional observa con aprensión el desarrollo de los acontecimientos en la región, consciente de las implicaciones geopolíticas y humanitarias de un conflicto armado entre Rusia y Ucrania. Mientras tanto, tanto Moscú como Kiev parecen estar comprometidos con una postura de confrontación, lo que aumenta el riesgo de un desenlace violento que podría desencadenar una crisis de proporciones catastróficas.',
+            'foto' => 'images/rusia.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
@@ -1200,10 +1293,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Noticia::create([
-            'titulo' => '',
-            'descripcion' => '',
-            'contenido' => '',
-            'foto' => 'images/.jpg',
+            'titulo' => 'Crisis de Gobierno en España, sus desafíos y perspectivas',
+            'descripcion' => 'La situación política en España enfrenta una crisis sin precedentes, con el gobierno de coalición liderado por Pedro Sánchez enfrentando desafíos internos y externos que amenazan su estabilidad y eficacia.',
+            'contenido' => 'El gobierno de coalición liderado por el Partido Socialista Obrero Español (PSOE) y Unidas Podemos se encuentra en medio de una profunda crisis política, marcada por tensiones internas y externas que ponen en peligro su continuidad y capacidad de gobernar. Desde su formación en enero de 2020, el ejecutivo de Pedro Sánchez ha enfrentado una serie de desafíos que han debilitado su posición y generaron incertidumbre sobre su futuro.
+            Internamente, la coalición entre el PSOE y Unidas Podemos ha sido objeto de tensiones constantes, con diferencias ideológicas y estratégicas que han dificultado la adopción de políticas coherentes y eficaces. Disputas sobre cuestiones clave, como la política económica, la reforma laboral y el enfoque hacia la crisis catalana, han exacerbado las divisiones dentro del gobierno y debilitado su capacidad para implementar su agenda política.
+            Externamente, el gobierno de Sánchez ha enfrentado críticas y presiones de diversos actores, incluidos partidos de la oposición, organismos internacionales y medios de comunicación, que cuestionan su gestión de crisis como la pandemia de COVID-19, la crisis migratoria en Ceuta y Melilla, y el conflicto con Marruecos por el Sáhara Occidental.
+            En este contexto, la estabilidad del gobierno de coalición se ha vuelto cada vez más frágil, con especulaciones sobre la posibilidad de elecciones anticipadas y la necesidad de reconfigurar el equilibrio de poder dentro del ejecutivo. Mientras tanto, el PSOE y Unidas Podemos buscan mantener la cohesión interna y abordar los desafíos pendientes, conscientes de la importancia de preservar la estabilidad política y social en un momento de gran incertidumbre y transformación.',
+            'foto' => 'images/crisis.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
@@ -1214,10 +1310,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Noticia::create([
-            'titulo' => '',
-            'descripcion' => '',
-            'contenido' => '',
-            'foto' => 'images/.jpg',
+            'titulo' => 'Desafíos Políticos en Madrid: La Gestión de una Ciudad Diversa y Dinámica',
+            'descripcion' => 'La política madrileña enfrenta una serie de desafíos que van desde la gestión de la movilidad urbana hasta la respuesta a las demandas sociales y la convivencia en una ciudad marcada por la diversidad y la complejidad.',
+            'contenido' => 'Madrid, la capital de España, se presenta como un escenario político vibrante y dinámico, donde convergen una gran diversidad de intereses y demandas. La gestión de una ciudad tan compleja y heterogénea plantea una serie de desafíos para los líderes políticos, que deben abordar cuestiones que van desde la movilidad urbana hasta la vivienda, pasando por la seguridad y la calidad de vida de los ciudadanos.
+            En materia de movilidad, Madrid se enfrenta al reto de mejorar la accesibilidad y la eficiencia del transporte público, al tiempo que se promueven alternativas sostenibles y se reducen las emisiones contaminantes. La congestión del tráfico y la contaminación atmosférica son problemas urgentes que requieren soluciones innovadoras y un enfoque integral que combine medidas regulatorias con inversiones en infraestructuras y servicios.
+            Por otro lado, la ciudad de Madrid es también un reflejo de la diversidad social y cultural de España, con una población multicultural y multilingüe que convive en un espacio común. La integración de comunidades migrantes, la promoción de la igualdad de género y la protección de los derechos LGTBI son temas prioritarios en la agenda política, que requieren un compromiso firme con los valores democráticos y los derechos humanos.
+            En este contexto, los líderes políticos de Madrid se enfrentan al desafío de construir una ciudad inclusiva y solidaria, donde todos los ciudadanos puedan disfrutar de una vida digna y participar plenamente en la vida pública. La colaboración entre el gobierno local, las organizaciones civiles y la ciudadanía en su conjunto es esencial para superar los obstáculos y construir juntos un futuro más justo y próspero para todos.',
+            'foto' => 'images/madrid.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
@@ -1228,10 +1327,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Noticia::create([
-            'titulo' => '',
-            'descripcion' => '',
-            'contenido' => '',
-            'foto' => 'images/.jpg',
+            'titulo' => 'Joe Biden recauda 25 millones de dólares, cifra récord de un evento político, en un acto de campaña en Nueva York',
+            'descripcion' => 'Acompañado por Bill Clinton y Barack Obama, el candidato demócrata protagoniza un multitudinario encuentro con donantes en el que las entradas costaban a partir de 225 hasta 500.00 dólares',
+            'contenido' => 'Joe Biden se ha dado este jueves un selecto baño de multitudes como candidato a la reelección en noviembre. Acompañado por sus predecesores demócratas en la Casa Blanca Bil Cllinton y Barack Obama, el actual presidente de EE UU es el gran protagonista de un acto de recaudación de fondos en Nueva York con hechuras de superproducción de Hollywood. Una cifra récord de recaudación, 25 millones de dólares según su campaña, más que todo lo recaudado por su rival republicano, Donald Trump, en el mes de febrero. Un espectáculo de masas, para miles de personas y celebrado en el histórico Radio City Hall de Manhattan, pero limitado a quienes estuvieran dispuestos a pagar 225 dólares por la entrada más barata. Con actuaciones musicales, tarifas premium para hacerse una foto con los tres mandatarios o, en fin, una fiesta posterior con la primera dama, Jill Biden, de anfitriona, para un exclusivo grupo de 500 invitados. El otro gran espectáculo estadounidense, el que generan unas elecciones, nunca defrauda.
+            Tres décadas de liderazgo demócrata se han dado cita este jueves en el histórico local de la Sexta Avenida de Manhattan, en un día empapado por la lluvia. Que Nueva York es una ciudad demócrata hasta la médula es bien sabido: Biden ya hizo triplete en febrero con tres actos de recaudación en un solo día, que paralizaron Manhattan por los cortes de tráfico de la caravana presidencial, pero, a diferencia del evento de hoy, aquellos se celebraron en las residencias particulares de grandes donantes. Cifras al margen -los 25 millones de recaudación son un récord en un evento político, según la campaña del actual mandatario-, lo más significativo del acto ha sido la presencia de Obama y Clinton junto a Biden. Ello demuestra que los demócratas han activado el botón de pánico a siete meses de las elecciones presidenciales por la ventaja que el candidato republicano, Donald Trump, saca en muchos sondeos. También, según las encuestas, en los seis estados bisagra o basculantes, en los que un puñado de votos puede decidir la suerte de la votación.
+            La cifra de 25 millones de dólares recaudados según la campaña en el acto de Nueva York incluye el dinero de los simpatizantes que entregaron efectivo en las semanas previas para asegurar su asistencia. La recaudación, que supera en cinco millones de dólares el total obtenido por Trump a lo largo del mes de febrero, connota un importante respaldo demócrata a Biden ante encuestas persistentemente bajas. Justo el panorama contrario al de su rival, Trump, al alza en los sondeos y a la zaga del demócrata en recaudación, y cuyos gastos legales, de unos 100 millones de dólares, han drenado buena parte de lo cosechado por sus comités de campaña.
+            Pero Trump ya demostró con su victoria de 2016 sobre la demócrata Hillary Clinton que no necesitaba recaudar una mayor cantidad de dinero para hacerse con la presidencia. Aunque Biden tenía 155 millones de dólares en efectivo a finales de febrero, frente a los 37 millones de Trump y su comité de acción política Save America, la reciente entrada en campaña de Obama, que hoy ha viajado con Biden desde Washington a bordo del Air Force One, el avión presidencial, indica que la inquietud en las filas demócratas va camino de convertirse en pánico. Clinton se unió a ellos en Nueva York.
+            El acto en la histórica sala de conciertos de la Sexta Avenida de Manhattan, ante la que se congregó un nutrido grupo de manifestantes en demanda de un alto el fuego en Gaza -una constante en todas las salidas públicas de Biden-, es un golpe de efecto, casi psicológico, para remontar el desánimo demócrata ante los sondeos, y pone el broche de oro a una frenética serie de viajes de la campaña presidencial en las últimas tres semanas, las transcurridas desde que su discurso sobre el Estado de la Unión diera el pistoletazo de salida de la carrera electoral y tranquilizara a los demócratas por la energía manifestada en su alocución. Biden ha visitado en este lapso varios campos de batalla electoral, muy en especial circunscripciones disputadas en los Estados del medio Oeste que en 2016 votaron a Trump y en 2020 al demócrata. Casi a razón de un viaje por día, una agenda muy exigente para demostrar al votante que el “anciano con mala memoria” descrito por el fiscal del caso de los papeles clasificados está dispuesto a pelear como un chaval.',
+            'foto' => 'images/biden.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
@@ -1242,10 +1345,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Noticia::create([
-            'titulo' => '',
-            'descripcion' => '',
-            'contenido' => '',
-            'foto' => 'images/.jpg',
+            'titulo' => 'Milei carga contra el presidente mexicano: “Que un ignorante como López Obrador hable mal de mí me enaltece”',
+            'descripcion' => 'El presidente argentino, en entrevista con la CNN, critica a sus homólogos mexicano y colombiano, y respalda a Israel en la guerra en Gaza',
+            'contenido' => 'Que Javier Milei tiene mala relación con los gobiernos de izquierda de América Latina, no es sorpresa para nadie. Pero sus tajantes definiciones sí continúan generando asombro. Esta vez lo hizo en una entrevista con la CNN en Español que se publicará el próximo domingo, aunque los adelantos ya han dado de qué hablar. En los videos que circularon, el conductor del programa, Andrés Oppenheimer, le pregunta puntualmente sobre la relación con su homólogo mexicano, quien ha criticado la elección de Milei como presidente. “Es un halago. Que un ignorante como López Obrador hable mal de mí, me enaltece”, lanzó. El periodista le insiste, esta vez con las palabras de la candidata presidencial Claudia Sheinbaum, del Movimiento de Regeneración Nacional (Morena), que consideró la victoria del ultraderechista como un retroceso para Argentina. “El populismo que ellos tanto ponderan, el socialismo del siglo XXI, a los argentinos les costó 80% de sus ingresos”, respondió.
+                Mientras que las palabras de Milei para referirse al mexicano siempre fueron mucho más duras. En una entrevista en el marco de las elecciones presidenciales de Colombia en 2022, el líder de La Libertad Avanza acusó al mandatario norteamericano de ser “patético, lamentable, repugnante” por apoyar a Gustavo Petro. Le criticó y le señaló por ser un representante de “la izquierda radical”. En la nueva entrevista para el canal estadounidense, ahora apunta contra López Obrador y Sheinbaum por no saber de números, después de lanzar su teoría sobre cómo el kirchnerismo sumergió al 10% de los argentinos en la indigencia. “Yo no sé si los socialistas odian más la evidencia empírica o el agua”.
+                Sheinbaum le ha respondido este miércoles al presidente argentino y le ha pedido que tenga respeto a López Obrador. “Son proyectos distintos, el pueblo de México decidió echar para atrás el neoliberalismo, y entrar a un nuevo proceso único en México, porque no está copiado en ningún otro lugar. Nosotros reivindicamos el libre mercado, la inversión privada, el papel de los empresarios, estamos en contra de la corrupción, pero también reivindicamos el papel del Estado, en términos del Estado de bienestar”, ha dicho la candidata en un mitin en Oaxaca.
+                El presidente argentino también cargó contra Petro, a quien anteriormente ha descalificado en varias ocasiones, tanto que la Embajada de Colombia en Buenos Aires había emitido un comunicado para rechazar “las irrespetuosas declaraciones” del ultra. En el adelanto que ha publicado la CNN, señalan que Milei volvió a descalificar al colombiano por su pasado guerrillero: “Mucho no se puede esperar de alguien que era un asesino terrorista”. En respuesta, el Gobierno colombiano expulsó este miércoles a los diplomáticos argentinos de Bogotá.
+                Finalmente, el argentino salió a respaldar a Israel ante la guerra en Gaza y aseguró: “Todo lo que está haciendo lo está haciendo dentro de las reglas de juego, Israel no está cometiendo ni un solo exceso”.
+                La victoria de Milei en noviembre pasado representó un enorme golpe, no solo para el peronismo en Argentina, sino para la izquierda latinoamericana. López Obrador, que normalmente tiende a no meterse en política exterior, no pudo ocultar su disgusto y comentó sobre el triunfo del ultraderechista: “Fue un autogol”. Aunque aseguró que respetaban la elección del pueblo argentino, señaló: “Es algo que consideramos no les va a ayudar”. Posteriormente fue consultado en varias ocasiones sobre las medidas que el presidente argentino había tomado, pero no volvió a referirse de manera puntual a su homólogo. Solo lo hizo de manera general, para defender la presencia del Estado y criticar el neoliberalismo. “Es un modelo fracasado”.',
+            'foto' => 'images/milei.jpg',
             'likes' => random_int(10,150),
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
@@ -1279,7 +1387,7 @@ class DatabaseSeeder extends Seeder
 
         /**********************   NOTICIAS ECONOMIA    ************************* */
 
-        NoticiaController::crearNoticias("economica","Economía");
+        //NoticiaController::crearNoticias("economica","Economía");
         //NoticiaController::crearNoticias("deporte","Deportes");
         //NoticiaController::crearNoticias("arbitro","Deportes");
         //NoticiaController::crearNoticias("movil","Tecnología");

@@ -50,6 +50,11 @@ class User extends Authenticatable
         return $this->hasMany(UserNotification::class);
     }
 
+    public function chats()
+    {
+        return $this->hasMany(Chat::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
