@@ -102,3 +102,5 @@ Route::post('/buscadorIndex', [NoticiaController::class, 'buscadorIndex']);
 
 /********************   CHATS Y MENSAJES  ********************/
 Route::get('/mensajes/{id}', [UserController::class, 'showMensajes']);
+Route::get('/chat/{id}', [UserController::class, 'showChat'])->name('chat');
+Route::post('/chat/{id}', [UserController::class, 'enviarMensaje']);

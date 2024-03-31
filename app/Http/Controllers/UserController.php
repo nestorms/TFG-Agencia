@@ -222,7 +222,7 @@ class UserController extends Controller
 
             $chats = Chat::selectRaw('*, MAX(hora) as hora_reciente')
              ->where('medio_id', $id)
-             ->groupBy('medio_id', 'redactor_id','mensaje', 'fecha', 'hora','created_at','updated_at')
+             ->groupBy('redactor_id', 'medio_id','mensaje', 'fecha', 'hora','created_at','updated_at','remitente_id')
              ->paginate(4);
         }
         else{
@@ -230,11 +230,86 @@ class UserController extends Controller
 
             $chats = Chat::selectRaw('*, MAX(hora) as hora_reciente')
              ->where('redactor_id', $id)
-             ->groupBy('medio_id', 'redactor_id','mensaje', 'fecha', 'hora','created_at','updated_at')
+             ->groupBy('redactor_id', 'medio_id','mensaje', 'fecha', 'hora','created_at','updated_at','remitente_id')
              ->paginate(4);
         }
 
+        $uniqueChats = [];
+
+        //Bucle para crear un par clave-valor y almacenar los chats sin repetir ID de usuarios. Se restan los ID para poner el key del array
+        foreach ($chats as $chat) {
+            $key = $chat->medio_id < $chat->redactor_id ? $chat->medio_id . '-' . $chat->redactor_id : $chat->redactor_id . '-' . $chat->medio_id;
+
+            //Si no existe aun el par clave-valor o si la fecha y hora del mensaje es más reciente, se introduce el chat en el array
+            if (!array_key_exists($key, $uniqueChats) || $chat->fecha . ' ' . $chat->hora > $uniqueChats[$key]->fecha . ' ' . $uniqueChats[$key]->hora) {
+                $uniqueChats[$key] = $chat;
+            }
+        }
+
+        //Se pasa a colección para la vista
+        $chats = collect($uniqueChats);
+
         return view('mensajes', ['chats' => $chats]);
+        
+    }
+
+    public function showChat($id){
+
+        $chats="";
+
+        $destinatario = User::findOrFail($id);
+
+        if(auth()->user()->rol != "redactor"){
+
+             $chats = Chat::where('medio_id', auth()->user()->id)
+             ->where('redactor_id', $id)
+             ->orderBy('fecha', 'asc')
+             ->orderBy('hora', 'asc')
+             ->get();
+        }
+        else{
+
+             $chats = Chat::where('redactor_id', auth()->user()->id)
+             ->where('medio_id', $id)
+             ->orderBy('fecha', 'asc')
+             ->orderBy('hora', 'asc')
+             ->get();
+        }
+
+        return view('chat', ['chats' => $chats, 'destinatario' => $destinatario]);
+        
+    }
+
+    public function enviarMensaje(Request $request, $id){
+
+        $chats="";
+
+        if(auth()->user()->rol != "redactor"){
+
+            Chat::create([
+                'redactor_id' => $id,
+                'remitente_id' => auth()->user()->id,
+                'medio_id' => auth()->user()->id,
+                'mensaje' => $request->mensaje,
+                'fecha' => date('Y-m-d'),
+                'hora' => date('H:i:s'),
+
+            ]);
+        }
+        else{
+
+            Chat::create([
+                'medio_id' => $id,
+                'remitente_id' => auth()->user()->id,
+                'redactor_id' => auth()->user()->id,
+                'mensaje' => $request->mensaje,
+                'fecha' => date('Y-m-d'),
+                'hora' => date('H:i:s'),
+
+            ]);
+        }
+
+        return redirect()->route('chat',$id);
         
     }
 }

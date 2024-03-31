@@ -28,9 +28,9 @@
                     @foreach ($chats as $chat)
                         <tr>
                             @if (auth()->user()->rol != "redactor")
-                                <td class="align-middle">{{$chat->redactor->nombre}} . {{$chat->redactor->apellidos}}</td>
+                                <td class="align-middle">{{$chat->redactor->nombre}} {{$chat->redactor->apellidos}}</td>
                                 <td class="align-middle">{{$chat->redactor->email}}</td>
-                                <td class="align-middle">{{$chat->redactor->mensaje}}</td>
+                                <td class="align-middle">{{$chat->mensaje}}</td>
                                 <td class="align-middle">
                                     <a class="btn btn-light p-0" href="/chat/{{$chat->redactor->id}}"><i class="bi bi-eye mx-2" style="color: black; font-size:20px;"></i></a>
                                     <a class="btn btn-light p-0" href="/eliminar_chat/{{$chat->redactor->id}}"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            {{ $chats->links() }}
+            
         </div>
     @endif
 </div>

@@ -25,6 +25,7 @@ class Chat extends Model
     protected $fillable = [
         'medio_id',
         'redactor_id',
+        'remitente_id',
         'mensaje',
         'hora',
         'fecha',
@@ -32,7 +33,7 @@ class Chat extends Model
 
     public function redactor()
     {
-        return $this->hasMany(User::class, 'redactor_id');
+        return $this->belongsTo(User::class, 'redactor_id');
     }
 
     public function medio()
