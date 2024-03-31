@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container mb-4">
     <h2 class="m-4">Mi sección personal</h2>
 
 
@@ -57,7 +57,7 @@
                                 <a class="btn btn-light p-0" href="/noticias/{{$seleccionada->noticia->id}}/unsave"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
 
                                 @if (auth()->user()->rol != "redactor")
-                                    <a class="btn btn-light p-0" href="/mensaje/{{$seleccionada->noticia->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
+                                    <a class="btn btn-light p-0" href="/chat/{{$seleccionada->noticia->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
                                 @endif
                                 
                             </td>
@@ -90,7 +90,7 @@
                                 <a class="btn btn-light p-0" href="/noticias/{{$seleccionada->id}}/unsave"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
 
                                 @if (auth()->user()->rol != "redactor")
-                                    <a class="btn btn-light p-0" href="/mensaje/{{$seleccionada->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
+                                    <a class="btn btn-light p-0" href="/chat/{{$seleccionada->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
                                 @endif
                                 
                             </td>

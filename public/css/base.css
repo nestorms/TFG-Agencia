@@ -48,9 +48,10 @@ input:focus{
 .login{
     margin-bottom: 0!important;
     font-size: 15px!important;
+    font-weight: bold;
 }
 .login:hover{
-    color: gray;
+    color: #979190;
     transition: 300ms;
 }
 
@@ -98,3 +99,7 @@ a{
     background-color: #555; /* Cambia el color de fondo al pasar el ratón por encima 
     border-radius: 10px;
 }*/
+
+footer{
+    background-color: #efe8e7!important;
+}

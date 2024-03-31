@@ -16,7 +16,7 @@
     @endif
     
 
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-md-3">
             <!-- Botones verticales -->
             <div class="btn-group-vertical p-2">

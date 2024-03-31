@@ -6,14 +6,16 @@
 
 
     .messages-container {
-        max-height: 500px;
+        max-height: 400px;
+        min-height: 400px;
         overflow-y: auto;
         width: 100%;
     }
 
     .col-md-8{
         min-width: 60vw;
-        max-height: 700px;
+        max-height: 600px;
+        min-height: 400px;
     }
 
     .message {
@@ -53,6 +55,17 @@
         width: 50px; /* Tamaño del icono */
         height: 50px;
     }
+
+    #message{
+        border: none!important;
+        width: 93%!important;
+    }
+
+    #message:focus{
+        outline: none!important;
+        border-color: black!important;
+        transition: 1000ms!important;
+    }
 </style>
 
 
@@ -65,7 +78,7 @@
     <h2 class="m-4">Chat con {{$destinatario->nombre}} {{$destinatario->apellidos}} </h2>
 
     <div class="row justify-content-center m-5" >
-        <div class="col-md-8 border border-dark">
+        <div class="col-md-8 border border-dark p-1">
             <div class="messages-container">
 
                 @foreach ($chats as $chat)
@@ -90,7 +103,7 @@
 
                                 </div>
                                 <div class="speech-bubble-left">
-                                    <p class="m-0">{{$destinatario->nombre}}</p>
+                                    <p class="m-0">{{$destinatario->nombre}} <small>({{$destinatario->empresa}})</small></p>
                                     <small>{{$chat->mensaje}}</small>
                                     
                                 </div>
@@ -103,18 +116,35 @@
 
                 
             </div>
-            <div class="text-center">
+            <div class="text-center border-top border-dark-subtle">
                 <form action="/chat/{{$destinatario->id}}" method="post">
                     @csrf
-                    <div class="input-group">
-                        <input type="text" class="form-control border border-dark" placeholder="Escribe tu mensaje..." name="mensaje">
-                        <button type="submit" class="btn btn-light border border-dark"><i class="bi bi-send mx-2"></i></button>
+                    <div class="input-group mx-1">
+                        <input id="message" type="text" class="" placeholder="Escribe tu mensaje..." name="mensaje">
+                        <button type="submit" class="btn btn-light"><i class="bi bi-send m-2" style="color: black; font-size:20px;"></i></button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <div style="margin-bottom: 150px"></div>
     
 </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    // Función para desplazar el contenedor de mensajes hacia abajo
+    function scrollToBottom() {
+        var container = $('.messages-container');
+        container.scrollTop(container[0].scrollHeight);
+    }
+
+    // Llamar a la función después de cargar la página
+    $(document).ready(function() {
+        scrollToBottom();
+    });
+</script>
 
 @endsection

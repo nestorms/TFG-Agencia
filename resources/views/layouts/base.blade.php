@@ -41,10 +41,13 @@
                         <div class="dropdown">
                             <button class="btn btn-light" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="{{ asset('images/bell.png') }}" alt="Notificaciones" style="width: 25px; height: 25px;">
-                                <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">
-                                    {{auth()->user()->notificaciones_medio->where('estado', 'pendiente')->where('user_id',auth()->user()->id)->count()}}
-                                    <span class="visually-hidden">unread messages</span>
-                                </span>
+                                @if (auth()->user()->notificaciones_medio->where('estado', 'pendiente')->where('user_id', auth()->user()->id)->count() > 0)
+                                    <span class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">
+                                        {{auth()->user()->notificaciones_medio->where('estado', 'pendiente')->where('user_id',auth()->user()->id)->count()}}
+                                        <span class="visually-hidden">unread messages</span>
+                                    </span>
+                                @endif
+                                
                             </button>
                           
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start p-0">
@@ -52,39 +55,46 @@
                                     @php
                                         $notificaciones = auth()->user()->notificaciones_medio->where('fecha', '>=', now()->subWeek())->where('user_id',auth()->user()->id)->sortByDesc('estado');
                                     @endphp
-                                    @foreach ($notificaciones as $notificacion)
-                                    <div class="d-flex flex-column">
-                                        <a class="dropdown-item" href="/noticia/{{$notificacion->noticia_id}}/notificar">{{ $notificacion->descripcion}} <br>
-                                        
-                                            @if ($notificacion->estado == "pendiente")
-                                                <small><strong>Pendiente &nbsp; &nbsp;</strong></small>
-                                            @else
-                                                <small>Leída &nbsp; &nbsp;</small> 
-                                            @endif
-                                            <small>{{ \Carbon\Carbon::parse($notificacion->fecha)->diffForHumans() }}</small>
+                                    @if (auth()->user()->notificaciones_medio->where('estado', 'pendiente')->where('user_id', auth()->user()->id)->count() > 0)
+                                        @foreach ($notificaciones as $notificacion)
+                                        <div class="d-flex flex-column">
+                                            <a class="dropdown-item" href="/noticia/{{$notificacion->noticia_id}}/notificar">{{ $notificacion->descripcion}} <br>
+                                            
+                                                @if ($notificacion->estado == "pendiente")
+                                                    <small><strong>Pendiente &nbsp; &nbsp;</strong></small>
+                                                @else
+                                                    <small>Leída &nbsp; &nbsp;</small> 
+                                                @endif
+                                                <small>{{ \Carbon\Carbon::parse($notificacion->fecha)->diffForHumans() }}</small>
 
-                                            <a class="link-danger" style="font-size: 12px;" href="/eliminar_notificacion/{{$notificacion->noticia_id}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eliminar</a>
-                                            <hr class="p-1 m-0">
-                                        </a>
-                                        
-                                        
+                                                <a class="link-danger" style="font-size: 12px;" href="/eliminar_notificacion/{{$notificacion->noticia_id}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eliminar</a>
+                                                <hr class="p-1 m-0">
+                                            </a>
+                                            
+                                            
+                                        </div>
+                                            
+                                        @endforeach
+                                    
+                                    @else
+                                    <div class="d-flex flex-column">
+                                        <a class="dropdown-item p-2" href="">No tienes ninguna notificación</a>
                                     </div>
-                                        
-                                    @endforeach
+                                    @endif
                                 </li>
                             </ul>
                         </div>
                             
   
                         @else
-                            <div class="mx-3">  
+                            <div class="mx-1">  
                                 @if (auth()->user()->rol == "admin")
-                                    <a href="/administracion">
+                                    <a class="btn btn-light" href="/administracion">
                                         <img src="{{ asset('images/llave.png') }}" alt="Administración" class="img-fluid" style="width: auto; height: 25px;">
                                     </a>
 
                                 @elseif(auth()->user()->rol == "redactor")
-                                    <a href="/crear_noticia">
+                                    <a class="btn btn-light" href="/crear_noticia">
                                         <img src="{{ asset('images/lapiz.png') }}" alt="Publicar" class="img-fluid" style="width: auto; height: 25px;">
                                     </a>
                                 @endif
@@ -92,23 +102,24 @@
                             </div>
                         @endif
 
-                        <div class="mx-3">
-                            <a href="/mensajes/{{auth()->user()->id}}">
+                        <div class="mx-1">
+                            <a class="btn btn-light" href="/mensajes/{{auth()->user()->id}}">
                                 <img src="{{ asset('images/message.png') }}" alt="Mensajes" class="img-fluid" style="width: auto; height: 30px;">
                             </a>
                         </div>
                     </div>
-                    <div class="dropdown" style="color: black; margin-left:7rem;">
+                    <button class="dropdown btn btn-light p-2" style="color: black; margin-left:7rem;">
                         
-                        <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="align-items-center" style="color:black;">
                                 <img src="{{ asset('images/profile.png') }}" alt="Perfil" class="img-fluid" style="width: auto; height: 3rem;">
-                                <i class="bi bi-caret-down-fill"></i> <!-- Flecha -->
+                                
                                 @if (auth()->user()->rol == "admin")
-                                    <p>Administrador</p>
+                                    <i class="bi bi-caret-down-fill"></i>
+                                    <p class="m-0 p-0">Administrador </p>
                                 
                                 @else
-                                    <p>{{auth()->user()->nombre}}</p> 
+                                    <p class="m-0 p-0">{{auth()->user()->nombre}} <i class="bi bi-caret-down-fill"></i></p> 
                                 @endif
                                 
                             </div>
@@ -138,14 +149,14 @@
                         </ul>
                 @endauth
                     @guest
-                    <a class="badge badge-info" href="/login" id="login" role="button">
+                    <a class="btn" href="/login" id="login" role="button">
                         <div class="align-items-center" style="color:black;">
                             <img src="{{ asset('images/profile.png') }}" alt="Perfil" class="img-fluid" style="width: auto; height: 3rem;">
                             <p class="login">Iniciar sesión</p>
                         </div>
                     </a>
                     @endguest                    
-                    </div>
+                    </button>
             </div>
         </nav>
 
@@ -186,6 +197,22 @@
 
         @yield('content')
 
+
+        
+        <footer class="d-flex flex-wrap justify-content-between align-items-center p-3 border-top border-black m-0">
+            <p class="col-md-4 mb-0 text-body-secondary">&copy; 2024 Newstor, Inc</p>
+        
+            <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img src="{{ asset('images/logo.png') }}" alt="Newstor Logo" style="width: auto; height: 3rem;">
+            </a>
+        
+            <ul class="nav col-md-4 justify-content-end">
+              <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Inicio</a></li>
+              <li class="nav-item"><a href="/categorias" class="nav-link px-2 text-body-secondary">Categorías</a></li>
+              <li class="nav-item"><a href="/recientes" class="nav-link px-2 text-body-secondary">Novedades</a></li>
+              <li class="nav-item"><a href="/conocenos" class="nav-link px-2 text-body-secondary">Sobre nosotros</a></li>
+            </ul>
+          </footer>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
    

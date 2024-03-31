@@ -218,20 +218,12 @@ class UserController extends Controller
         $chats="";
 
         if(auth()->user()->rol != "redactor"){
-            //$chats = Chat::where('medio_id', $id)->paginate(4);
 
-            $chats = Chat::selectRaw('*, MAX(hora) as hora_reciente')
-             ->where('medio_id', $id)
-             ->groupBy('redactor_id', 'medio_id','mensaje', 'fecha', 'hora','created_at','updated_at','remitente_id')
-             ->paginate(4);
+            $chats = Chat::where('medio_id', $id)->get();
         }
         else{
-            //$chats = Chat::where('redactor_id', $id)->paginate(4);
 
-            $chats = Chat::selectRaw('*, MAX(hora) as hora_reciente')
-             ->where('redactor_id', $id)
-             ->groupBy('redactor_id', 'medio_id','mensaje', 'fecha', 'hora','created_at','updated_at','remitente_id')
-             ->paginate(4);
+            $chats = Chat::where('redactor_id', $id)->get();
         }
 
         $uniqueChats = [];

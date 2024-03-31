@@ -28,7 +28,7 @@ class NoticiaController extends Controller
     public function indexarPrincipal()
     {
         // Obtener todas las noticias
-        $noticias = Noticia::limit(30)->get();
+        $noticias = Noticia::all();
 
         // Eliminar el índice existente si es necesario
         $params = [
@@ -136,7 +136,7 @@ class NoticiaController extends Controller
         }
 
         // Retornar las noticias encontradas
-        return view('index', ['noticias' => $noticias, 'busqueda' => $request->busqueda]);
+        return view('buscador', ['noticias' => $noticias, 'busqueda' => $request->busqueda]);
     }
 
     public function indexarNoticias()
@@ -227,7 +227,7 @@ class NoticiaController extends Controller
             UserNotification::truncate();
         }
 
-
+        $noticias2 = [];
         foreach($noticias as $noticia){
 
             $params = [
@@ -235,7 +235,7 @@ class NoticiaController extends Controller
                 'body' => [
                     'query' => [
                         "bool" => [
-                            "should" => [
+                            "must" => [
                                 [
                                     "match" =>[ "titulo" => $noticia->titulo]
                                 ],
@@ -258,13 +258,13 @@ class NoticiaController extends Controller
             $hits = $response['hits']['hits'];
     
             // Procesar los resultados según sea necesario
-            $noticias = [];
+            
             foreach ($hits as $hit) {
                 // Acceder a la fuente (_source) de cada documento
                 $source = $hit['_source'];
                 $score = $hit['_score'];
                 // Agregar la noticia a la lista de noticias
-                $noticias[] = [
+                $noticias2[] = [
                     /*'titulo' => $source['titulo'],
                     'descripcion' => $source['descripcion'],*/
                     'score' => $score,
@@ -295,10 +295,9 @@ class NoticiaController extends Controller
                 }
             }
         }
-        
 
         // Retornar las noticias encontradas
-        return response()->json(['noticias' => $noticias]);
+        return response()->json(['noticias2' => $noticias2]);
     }
 
     public function index()

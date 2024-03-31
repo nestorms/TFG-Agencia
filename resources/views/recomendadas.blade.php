@@ -6,16 +6,16 @@
 
 @section('content')
 
-    <div class="container mt-4">
+    <div class="container mt-4 mb-5">
         @auth
             @if (auth()->user()->rol != "redactor")
-            <h2 class="m-4" style="text-decoration: underline; text-align:center;">Mis noticias recomendadas</h2>
+            <h2 class="m-4" style="text-decoration: underline; text-align:center;">Noticias para ti</h2>
                 @if($noticias)
                     <div class="carta">
                         @foreach ($noticias as $noticia)
                                 <a href="{{ route('noticias.show', $noticia->id) }}">
                                     <div class="card news-card h-100">
-                                        <img src="{{ $noticia->foto }}" class="card-img-top" alt="Imagen de la noticia">
+                                        <img src="{{ asset($noticia->foto) }}" class="card-img-top" alt="Imagen de la noticia">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $noticia->titulo }}</h5>
                                             <p class="card-text author-info">Publicado por <span class="author-name">{{ $noticia->redactor->nombre }} {{ $noticia->redactor->apellidos }}</span></p>

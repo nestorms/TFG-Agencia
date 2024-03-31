@@ -11,14 +11,17 @@
 
     @if ($chats->isEmpty())
         <h4>En este momento no tienes ningún mensaje</h4>
+        <div style="margin-bottom: 370px;">
+
+        </div>
     
     @else
-        <div id="grid">
+        <div id="grid" style="margin-bottom: 250px;">
             <table class="table table-spaced">
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Correo</th>
+                        <th>Empresa</th>
                         <th>Último mensaje</th>                    
                         <th>Acciones</th>
                     </tr>
@@ -29,7 +32,7 @@
                         <tr>
                             @if (auth()->user()->rol != "redactor")
                                 <td class="align-middle">{{$chat->redactor->nombre}} {{$chat->redactor->apellidos}}</td>
-                                <td class="align-middle">{{$chat->redactor->email}}</td>
+                                <td class="align-middle">{{$chat->redactor->empresa}}</td>
                                 <td class="align-middle">{{$chat->mensaje}}</td>
                                 <td class="align-middle">
                                     <a class="btn btn-light p-0" href="/chat/{{$chat->redactor->id}}"><i class="bi bi-eye mx-2" style="color: black; font-size:20px;"></i></a>
@@ -37,7 +40,7 @@
                                 </td>
                             @else
                                 <td class="align-middle">{{$chat->medio->nombre}} {{$chat->medio->apellidos}}</td>
-                                <td class="align-middle">{{$chat->medio->email}}</td>
+                                <td class="align-middle">{{$chat->medio->empresa}}</td>
                                 <td class="align-middle">{{$chat->mensaje}}</td>
                                 <td class="align-middle">
                                     <a class="btn btn-light p-0" href="/chat/{{$chat->medio->id}}"><i class="bi bi-eye mx-2" style="color: black; font-size:20px;"></i></a>
@@ -50,10 +53,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
-
-        <div class="d-flex justify-content-center">
-            
         </div>
     @endif
 </div>

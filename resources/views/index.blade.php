@@ -24,7 +24,7 @@
                     </div>
                     <div class="carousel-inner">
                         <a href="{{ route('noticias.show', $noticias2[0]->id) }}" style="text-decoration: none";>
-                            <div class="carousel-item active" data-bs-interval="3000" style="height: 550px;">
+                            <div class="carousel-item active" data-bs-interval="6000" style="height: 550px;">
                                 <div class="card h-100" >
                                     <img src="{{asset($noticias2[0]->foto)}}" class="card-img-top" style="height: 380px;" alt="...">
                                     <div class="card-body" style="margin-bottom: 35px;">
@@ -35,7 +35,7 @@
                             </div>
                         </a>
                         <a href="{{ route('noticias.show', $noticias2[1]->id) }}" style="text-decoration: none";>
-                            <div class="carousel-item" data-bs-interval="3000" style="height: 550px;">
+                            <div class="carousel-item" data-bs-interval="6000" style="height: 550px;">
                                 <div class="card h-100" >
                                     <img src="{{asset($noticias2[1]->foto)}}" class="card-img-top" style="height: 380px;" alt="...">
                                     <div class="card-body" style="margin-bottom: 35px;">
@@ -46,7 +46,7 @@
                             </div>
                         </a>
                         <a href="{{ route('noticias.show', $noticias2[2]->id) }}" style="text-decoration: none";>
-                            <div class="carousel-item" data-bs-interval="3000" style="height: 550px;">
+                            <div class="carousel-item" data-bs-interval="6000" style="height: 550px;">
                                 <div class="card h-100" >
                                     <img src="{{$noticias2[2]->foto}}" class="card-img-top" style="height: 380px;" alt="...">
                                     <div class="card-body" style="margin-bottom: 35px;">
@@ -74,7 +74,7 @@
 
 
 
-        <div class="container mt-4">
+        <div class="container mt-4 mb-5">
             <div class="carta">
                 @foreach ($noticias as $noticia)
                         <a href="{{ route('noticias.show', $noticia->id) }}">
