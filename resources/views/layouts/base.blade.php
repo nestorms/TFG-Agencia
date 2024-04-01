@@ -172,7 +172,7 @@
                 <a class="nav-link" href="/">INICIO</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">MÁS RECIENTES</a>
+                <a class="nav-link" href="/recientes">MÁS RECIENTES</a>
             </li>
             <li class="nav-item">
                 @auth

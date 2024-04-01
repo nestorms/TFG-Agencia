@@ -112,19 +112,19 @@ class NoticiaController extends Controller
             ],
         ];
 
-        // Realizar la consulta a Elasticsearch
+        // Realizo la consulta a Elasticsearch
         $response = $this->elasticsearch->search($params);
 
-        // Obtener los resultados de la consulta
+        // Obtengo los resultados de la consulta
         $hits = $response['hits']['hits'];
 
-        // Procesar los resultados según sea necesario
+        // Procesar los resultados 
         $noticias = [];
         foreach ($hits as $hit) {
-            // Acceder a la fuente (_source) de cada documento
+            // Accedo a la fuente (_source) de cada documento
             $source = $hit['_source'];
             $score = $hit['_score'];
-            // Agregar la noticia a la lista de noticias
+            // Agrego la noticia a la lista de noticias
             $noticias[] = Noticia::findOrFail($source['id']);
 
             /*$noticias[] = [
@@ -220,7 +220,7 @@ class NoticiaController extends Controller
     {
         // Definir los parámetros de búsqueda
 
-        $noticias = Noticia::where('id', '>=', 31)->get();
+        $noticias = Noticia::where('id', '>=', 25)->get();
         UserNoticia::where('recomendada',true)->delete();
 
         if (UserNotification::count() > 0) {
@@ -250,6 +250,7 @@ class NoticiaController extends Controller
                     ],
                 ],
             ];
+
     
             // Realizar la consulta a Elasticsearch
             $response = $this->elasticsearch->search($params);
@@ -272,7 +273,7 @@ class NoticiaController extends Controller
                 ];
 
 
-                $umbralBM25=20.0;
+                $umbralBM25=10.0;
 
                 if ($score >= $umbralBM25) {
                     // El score BM25 cumple con el umbral, almacenar la recomendación
@@ -302,12 +303,21 @@ class NoticiaController extends Controller
 
     public function index()
     {
-        // Llama a la función para obtener las noticias de la API
+        // Llama a la función para obtener las noticias 
         $noticias = Noticia::limit(41)->get();
         $noticias2 = Noticia::orderByDesc('likes')->limit(3)->get();
 
         // Pasa los datos recuperados a la vista
         return view('index', ['noticias' => $noticias, 'noticias2' => $noticias2]);
+    }
+
+    public function noticiasRecientes()
+    {
+        // Llama a la función para obtener las noticias mas recientes
+        $noticias = Noticia::orderByDesc('fecha')->limit(15)->get();
+
+        // Pasa los datos recuperados a la vista
+        return view('recientes', ['noticias' => $noticias]);
     }
 
     public function show($id){

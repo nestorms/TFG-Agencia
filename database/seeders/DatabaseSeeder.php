@@ -227,12 +227,7 @@ class DatabaseSeeder extends Seeder
         $usuarioRedactor = User::where('rol', 'redactor')->get()->random();
 
 
-
-
-
-        /********************************************       DEPORTES        ************************************************  */
-
-
+        /********************************************       PRIMERAS NOTICIAS        ************************************************  */
 
         Noticia::create([
             'titulo' => 'El Athletic tiene un color especial',
@@ -371,6 +366,405 @@ class DatabaseSeeder extends Seeder
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
 
+
+
+
+        Noticia::create([
+            'titulo' => 'La transformación digital: clave para la competitividad de las empresas españolas',
+            'descripcion' => 'La transformación digital es un proceso imparable que está redefiniendo todos los sectores de la economía. Las empresas españolas que no se adapten a esta nueva realidad corren el riesgo de quedarse atrás en un mercado cada vez más competitivo.',
+            'contenido' => 'a transformación digital es un proceso imparable que está redefiniendo todos los sectores de la economía. Las empresas españolas que no se adapten a esta nueva realidad corren el riesgo de quedarse atrás en un mercado cada vez más competitivo.
+            La digitalización de los procesos permite a las empresas ahorrar tiempo y costes, mejorar la calidad de sus productos y servicios, crear nuevos modelos de negocio y llegar a nuevos clientes. En definitiva, las empresas que se digitalizan son más competitivas en el mercado global.
+            Sin embargo, la transformación digital también presenta algunos retos. La falta de inversión, la escasez de talento digital y la resistencia al cambio cultural son algunos de los principales obstáculos que las empresas deben superar.
+            Para tener éxito en la transformación digital, es necesario definir una estrategia clara que se alinee con los objetivos de la empresa, contar con un liderazgo comprometido, crear una cultura de innovación y formación, e invertir en la formación de los empleados.
+            La transformación digital es clave para el futuro de la economía española. Las empresas que se adapten a esta nueva realidad estarán mejor posicionadas para competir en el mercado global y contribuir al crecimiento económico del país.
+            El gobierno español tiene un papel importante que jugar en la promoción de la transformación digital de las empresas. Es necesario crear un marco regulatorio favorable a la innovación, facilitar el acceso a la financiación y a la formación, y fomentar la colaboración entre las empresas, el gobierno y la sociedad civil.
+            En definitiva, la transformación digital es una oportunidad para que las empresas españolas sean más competitivas en el mercado global. Es un esfuerzo que requiere la colaboración de todos los actores para que España aproveche al máximo esta oportunidad.',
+            'foto' => 'images/digital.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Los bancos centrales endurecen su política monetaria para combatir la inflación',
+            'descripcion' => 'Subida de tipos de interés, reducción de la compra de activos y control de la inflación: las medidas que están tomando los bancos centrales para contener la subida de precios',
+            'contenido' => 'Los bancos centrales de todo el mundo están endureciendo su política monetaria en un intento de contener la inflación. La Reserva Federal de Estados Unidos (Fed), el Banco Central Europeo (BCE) y el Banco de Inglaterra (BoE) han anunciado subidas de los tipos de interés, mientras que otros bancos centrales, como el Banco de Japón (BoJ), están empezando a reducir sus programas de compra de activos.
+            Controlar la inflación: La principal razón del endurecimiento monetario es la necesidad de controlar la inflación, que se encuentra en niveles muy altos en la mayoría de las economías desarrolladas.
+            Evitar una espiral inflacionaria: Los bancos centrales temen que la inflación se descontrole y se convierta en una espiral inflacionaria, lo que sería muy negativo para la economía.
+            Anclar las expectativas de inflación: Los bancos centrales también quieren anclar las expectativas de inflación, es decir, que los agentes económicos esperen que la inflación se mantenga en niveles controlados en el futuro.
+            Subida de tipos de interés: La medida más común que están tomando los bancos centrales es la subida de los tipos de interés. Esto encarece el crédito y reduce la demanda agregada, lo que a su vez ayuda a contener la inflación.
+            Reducción de la compra de activos: Los bancos centrales también están reduciendo sus programas de compra de activos, que habían puesto en marcha durante la pandemia para estimular la economía.
+            Control de la curva de tipos: Algunos bancos centrales, como la Fed, también están utilizando herramientas de control de la curva de tipos para mantener los tipos de interés a largo plazo en niveles bajos.
+            El endurecimiento monetario también tiene algunos riesgos. Una subida de los tipos de interés puede ralentizar el crecimiento económico e incluso provocar una recesión. Además, el endurecimiento monetario puede tener un impacto negativo en los mercados financieros. 
+            El endurecimiento monetario ya está empezando a tener algunos efectos en la economía. Los tipos de interés a largo plazo han subido y el crecimiento económico se ha ralentizado en algunos países. Sin embargo, todavía es pronto para saber si el endurecimiento monetario será suficiente para contener la inflación sin provocar una recesión.
+            En definitiva, los bancos centrales están tomando medidas para contener la inflación, pero estas medidas también tienen algunos riesgos. Es importante que los bancos centrales calibres cuidadosamente su política monetaria para evitar una recesión.',
+            'foto' => 'images/banco.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'El paro registrado en España baja en febrero por quinto mes consecutivo',
+            'descripcion' => 'l paro registrado en España ha bajado en febrero por quinto mes consecutivo, situándose en 2,89 millones de personas. La tasa de paro se ha reducido al 12,6%, la más baja desde 2008.',
+            'contenido' => 'El Ministerio de Trabajo y Economía Social ha publicado este martes los datos del paro correspondientes al mes de febrero, que muestran una nueva caída del desempleo en España. En concreto, el paro registrado se ha reducido en 70.744 personas en el último mes, lo que supone un descenso del 2,4%.
+            Esta bajada del paro se ha producido en todos los sectores de actividad, con especial incidencia en el sector servicios, que ha registrado una reducción del desempleo del 3,1%. También se ha producido una bajada significativa del paro en la agricultura (-2,8%) y en la industria (-2,2%).
+            La tasa de paro se ha situado en el 12,6%, lo que supone una décima menos que en el mes anterior y la tasa más baja desde abril de 2008. La tasa de paro entre los jóvenes también ha bajado, situándose en el 32,2%.
+            El número de afiliados a la Seguridad Social también ha aumentado en febrero, en 204.344 personas, lo que supone un crecimiento del 1,1%. El número total de afiliados se sitúa ya en 19.224.112 personas.
+            La buena evolución del mercado laboral español se produce en un contexto de recuperación económica tras la pandemia de COVID-19. El crecimiento del PIB en 2022 fue del 5,5%, y se espera que siga creciendo en 2023.
+            La bajada del paro y el aumento de la afiliación a la Seguridad Social son buenas noticias para la economía española. Estas cifras indican que la recuperación económica está creando empleo y que el mercado laboral español está mejorando.
+            A pesar de la buena evolución del mercado laboral, todavía hay algunos retos que afrontar. Uno de los principales retos es la alta tasa de paro juvenil.
+            Se espera que el mercado laboral español siga mejorando en los próximos meses. El Gobierno español ha puesto en marcha una serie de medidas para fomentar la creación de empleo, como la reforma laboral y el plan de recuperación económica.
+            La bajada del paro en febrero es una buena noticia para la economía española. Es un indicador de que la recuperación económica está en marcha y que el mercado laboral está mejorando. Sin embargo, todavía hay algunos retos que afrontar, como la alta tasa de paro juvenil.',
+            'foto' => 'images/paro.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'La Reserva Federal de EE.UU. sube los tipos de interés 0,25 puntos, anticipando nuevas subidas',
+            'descripcion' => 'La Reserva Federal de EE.UU. ha elevado los tipos de interés en 0,25 puntos, la primera subida desde 2018. Se espera que otros bancos centrales, como el Banco Central Europeo (BCE), tomen medidas similares en los próximos meses para combatir la inflación.',
+            'contenido' => 'La Reserva Federal de EE.UU. ha decidido subir los tipos de interés en un 0,25%, la primera subida desde diciembre de 2018. La decisión se ha tomado en un contexto de elevada inflación en EE.UU., que se situó en el 7,5% en febrero.
+            Se espera que otros bancos centrales, como el Banco Central Europeo (BCE), tomen medidas similares en los próximos meses. El BCE ha anunciado que comenzará a reducir su programa de compra de activos en marzo, lo que podría ser un primer paso hacia la subida de los tipos de interés.
+            La subida de los tipos de interés tiene como objetivo combatir la inflación. Los bancos centrales consideran que la inflación es demasiado alta y que es necesario tomar medidas para controlarla.
+            La subida de los tipos de interés tendrá un impacto en la economía global. Se espera que frene el crecimiento económico, pero también podría ayudar a contener la inflación. Los bancos centrales están tratando de encontrar un equilibrio entre el crecimiento económico y la estabilidad de precios.
+            Se espera que los bancos centrales continúen subiendo los tipos de interés en los próximos meses. El ritmo de las subidas dependerá de la evolución de la inflación.
+            La subida de los tipos de interés tendrá un impacto en los hogares y las empresas. Los hogares tendrán que pagar más por sus hipotecas y préstamos, y las empresas tendrán que pagar más por sus créditos.
+            Existe un debate sobre si la subida de los tipos de interés es la mejor manera de combatir la inflación. Algunos economistas consideran que la subida de los tipos de interés podría ser contraproducente y podría frenar el crecimiento económico.
+            La subida de los tipos de interés es una medida importante que tendrá un impacto en la economía global. Es importante que los bancos centrales sean prudentes y que monitoricen la evolución de la inflación para tomar las medidas adecuadas.',
+            'foto' => 'images/tipo.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'La inflación en España se dispara al 6,0% en enero, la tasa más alta desde 1992',
+            'descripcion' => 'El Índice de Precios al Consumidor (IPC) de enero en España se ha situado en el 6,0%, una tasa interanual que supone la más alta desde diciembre de 1992. La energía sigue siendo el principal componente del alza de precios, con una subida del 29,3%.',
+            'contenido' => 'El dato del IPC de enero en España confirma la tendencia al alza de la inflación en los últimos meses. La tasa de inflación se ha duplicado en el último año, pasando del 3,0% en enero de 2022 al 6,0% en enero de 2023.
+            La energía es el principal factor que impulsa la inflación, con una subida del 29,3% en enero. Los alimentos también experimentaron un alza significativa, con un aumento del 5,5%.
+            El resto de los componentes del IPC también registraron subidas, aunque en menor medida. Los precios de los bienes no energéticos subieron un 2,4%, mientras que los precios de los servicios subieron un 2,1%.
+            La elevada inflación está teniendo un impacto negativo en el poder adquisitivo de los hogares españoles. El gobierno ha implementado algunas medidas para paliar sus efectos, como la bonificación de 20 céntimos por litro de combustible, pero los expertos consideran que se necesitan medidas adicionales.
+            Se espera que la inflación se mantenga en niveles altos en los próximos meses, aunque es probable que comience a moderarse a partir de la segunda mitad del año. El Banco Central Europeo (BCE) ha anunciado que subirá los tipos de interés en julio, lo que podría ayudar a contener la inflación.
+            El gobierno español ha implementado algunas medidas para paliar los efectos de la inflación, como la bonificación de 20 céntimos por litro de combustible, la ampliación del bono social eléctrico y la subida del Salario Mínimo Interprofesional (SMI).
+            Las reacciones a la subida del IPC han sido variadas. Los sindicatos han pedido medidas más contundentes para proteger a los trabajadores, mientras que las empresas han advertido que la subida de los precios podría afectar a la competitividad de la economía española.',
+            'foto' => 'images/inflacion.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>1,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+
+
+        Noticia::create([
+            'titulo' => 'Nueva tecnología de realidad aumentada revoluciona la experiencia de compra en línea',
+            'descripcion' => 'Una innovadora tecnología de realidad aumentada está cambiando la forma en que las personas compran en línea, ofreciendo una experiencia de compra más inmersiva y personalizada. ',
+            'contenido' => 'La realidad aumentada (RA) está transformando la industria del comercio electrónico al brindar una experiencia de compra completamente nueva y envolvente. Esta tecnología permite a los usuarios visualizar productos en su entorno real a través de dispositivos como teléfonos inteligentes y tabletas, utilizando la cámara para superponer imágenes virtuales sobre el mundo físico.
+            Una de las aplicaciones más impactantes de la realidad aumentada en el comercio electrónico es la capacidad de "probar" productos antes de comprarlos. Por ejemplo, los consumidores pueden ver cómo se vería un mueble en su sala de estar, cómo quedaría un par de gafas de sol en su rostro, o incluso cómo se vería un nuevo color de pintura en sus paredes. Esta experiencia inmersiva no solo ayuda a los clientes a tomar decisiones más informadas, sino que también aumenta la confianza en sus compras, lo que reduce las devoluciones y aumenta la satisfacción del cliente.
+            Además de mejorar la experiencia de compra para los consumidores, la realidad aumentada también beneficia a los minoristas al aumentar las tasas de conversión y las ventas. Al ofrecer una vista previa virtual de los productos, las marcas pueden atraer y retener a los clientes de manera más efectiva, convirtiendo las visitas a sus sitios web en transacciones exitosas. Esto se traduce en un aumento en los ingresos y una mayor fidelidad del cliente a largo plazo.
+            A medida que la tecnología de realidad aumentada continúa mejorando y volviéndose más accesible, se espera que su adopción en el comercio electrónico siga creciendo. Los minoristas que inviertan en esta innovadora tecnología estarán mejor posicionados para destacarse en un mercado cada vez más competitivo y brindar experiencias de compra excepcionales a sus clientes.',
+            'foto' => 'images/real.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Desarrollan nueva tecnología de inteligencia artificial para detectar enfermedades cardíacas',
+            'descripcion' => 'Un equipo de investigadores ha desarrollado una innovadora tecnología de inteligencia artificial capaz de diagnosticar enfermedades cardíacas con una precisión sin precedentes. Esta noticia explora cómo esta tecnología podría revolucionar el diagnóstico y tratamiento de enfermedades cardiovasculares en el futuro cercano.',
+            'contenido' => 'La enfermedad cardiovascular es una de las principales causas de muerte en todo el mundo, y su detección temprana es crucial para un tratamiento efectivo y una mejor atención al paciente. En este contexto, los avances en inteligencia artificial están demostrando ser herramientas prometedoras para mejorar el diagnóstico y la prevención de enfermedades cardíacas.
+            El equipo de investigadores ha desarrollado un algoritmo de inteligencia artificial entrenado con miles de imágenes médicas de ecocardiogramas, resonancias magnéticas y otras pruebas cardíacas. Este algoritmo utiliza técnicas de aprendizaje profundo para analizar las imágenes y detectar patrones sutiles asociados con diversas enfermedades cardíacas, incluyendo la enfermedad coronaria, la insuficiencia cardíaca y las anomalías estructurales del corazón.
+            Lo más destacado de esta tecnología es su capacidad para identificar anomalías cardiacas con una precisión y rapidez excepcionales, superando incluso a los expertos médicos en algunos casos. Además, la tecnología es no invasiva y puede integrarse fácilmente en la práctica clínica existente, lo que la hace accesible para un amplio espectro de profesionales de la salud y pacientes.
+            Se espera que esta nueva tecnología de inteligencia artificial tenga un impacto significativo en el campo de la cardiología al mejorar la detección temprana de enfermedades cardíacas, permitiendo tratamientos más efectivos y personalizados, y reduciendo la carga sobre los sistemas de salud. Además, abre nuevas oportunidades para la investigación en el campo de la medicina cardiovascular y promueve la colaboración entre científicos, médicos y expertos en inteligencia artificial.
+            En resumen, el desarrollo de esta tecnología de inteligencia artificial marca un hito importante en el campo de la salud cardiovascular y ejemplifica el potencial transformador de la inteligencia artificial en el diagnóstico y tratamiento de enfermedades críticas. Con el tiempo, se espera que estas innovaciones mejoren significativamente la calidad de vida de millones de personas en todo el mundo.',
+            'foto' => 'images/ia.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Google anuncia avances en la tecnología de realidad aumentada para facilitar la navegación urbana',
+            'descripcion' => 'Google ha revelado nuevos avances en su tecnología de realidad aumentada, destinados a mejorar la experiencia de navegación urbana para los usuarios de Google Maps. Esta noticia destaca cómo la realidad aumentada está siendo utilizada para proporcionar indicaciones más precisas y visuales mientras se navega por entornos urbanos complejos.',
+            'contenido' => 'La navegación en entornos urbanos puede ser desafiante, con calles congestionadas, edificios altos y múltiples puntos de referencia que pueden confundir a los usuarios. En respuesta a estos desafíos, Google ha estado desarrollando su tecnología de realidad aumentada para ofrecer una experiencia de navegación más intuitiva y precisa.
+            La última actualización de Google Maps presenta una función de realidad aumentada mejorada que utiliza la cámara del teléfono inteligente del usuario para superponer indicaciones visuales en tiempo real sobre el mundo real. Al apuntar la cámara hacia adelante, los usuarios pueden ver señales digitales superpuestas en la pantalla que indican direcciones, giros y destinos, lo que facilita la orientación y la toma de decisiones durante la navegación.
+            Esta tecnología utiliza algoritmos avanzados de visión por computadora y mapeo 3D para identificar con precisión la ubicación del usuario y los elementos circundantes en el entorno urbano. Además, se integra con datos en tiempo real de Google Maps, lo que permite a los usuarios recibir actualizaciones sobre el tráfico, la construcción de carreteras y otros eventos relevantes mientras navegan por la ciudad.
+            La realidad aumentada se ha convertido en una herramienta valiosa para mejorar la experiencia de navegación, especialmente en entornos urbanos densos y complejos. Al proporcionar indicaciones visuales claras y contextualizadas, esta tecnología ayuda a los usuarios a tomar decisiones más informadas y a llegar a su destino de manera más eficiente.
+            Google continúa invirtiendo en el desarrollo de la realidad aumentada y su integración en productos como Google Maps, con el objetivo de ofrecer una experiencia de navegación más intuitiva y personalizada para millones de usuarios en todo el mundo. Este avance marca un paso significativo hacia el futuro de la navegación urbana y demuestra el potencial transformador de la realidad aumentada en nuestra vida diaria.',
+            'foto' => 'images/google.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Tesla anuncia avances en su tecnología de conducción autónoma con la introducción de Tesla Vision',
+            'descripcion' => 'Tesla ha dado un paso adelante en su búsqueda de la conducción autónoma al anunciar Tesla Vision, una nueva tecnología de visión por computadora diseñada para mejorar la seguridad y la eficiencia de sus vehículos eléctricos. Esta noticia destaca cómo Tesla está avanzando hacia un futuro de conducción totalmente autónoma mediante el desarrollo de sistemas de percepción visual más sofisticados.',
+            'contenido' => 'La visión por computadora desempeña un papel fundamental en el desarrollo de vehículos autónomos, permitiendo que los sistemas de conducción interpreten y comprendan su entorno circundante de manera similar a como lo haría un conductor humano. Tesla ha estado a la vanguardia de la tecnología de conducción autónoma, y su último avance, Tesla Vision, promete llevar esta capacidad un paso más allá.
+            Tesla Vision es una solución de visión por computadora basada en redes neuronales que utiliza cámaras integradas en los vehículos Tesla para capturar y procesar imágenes en tiempo real del entorno circundante. Estas cámaras, ubicadas estratégicamente en diferentes partes del automóvil, permiten una visión de 360 grados que abarca tanto la carretera como los objetos y peatones cercanos.
+            Lo que distingue a Tesla Vision es su capacidad para prescindir de los sensores LiDAR tradicionales, que utilizan láseres para mapear el entorno en 3D. En su lugar, Tesla confía en la inteligencia artificial y el aprendizaje automático para interpretar y analizar datos visuales, lo que permite una conducción autónoma más precisa y eficiente.
+            Al eliminar la dependencia de los costosos sensores LiDAR, Tesla puede reducir significativamente el costo de producción de sus vehículos autónomos, lo que los hace más accesibles para los consumidores. Además, al confiar en la visión por computadora, Tesla puede mejorar la robustez y la fiabilidad de sus sistemas de conducción autónoma en una variedad de condiciones climáticas y de iluminación.
+            Tesla Vision representa un paso importante hacia el objetivo final de Tesla de lograr la conducción completamente autónoma. Si bien aún queda trabajo por hacer para perfeccionar esta tecnología y superar los desafíos regulatorios y de seguridad, su introducción marca un hito significativo en el camino hacia un futuro de transporte más seguro, eficiente y sostenible.',
+            'foto' => 'images/tesla.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Google presenta su nuevo chip Tensor para potenciar la inteligencia artificial en dispositivos móviles',
+            'descripcion' => 'Google ha revelado su último avance en tecnología de inteligencia artificial con el lanzamiento del chip Tensor, diseñado específicamente para impulsar el rendimiento de la IA en dispositivos móviles.',
+            'contenido' => 'El chip Tensor de Google marca un hito significativo en la evolución de la inteligencia artificial en dispositivos móviles. Diseñado internamente por los ingenieros de Google, este chip ofrece un rendimiento excepcional en tareas de aprendizaje automático y procesamiento de datos, lo que permite una amplia gama de aplicaciones innovadoras en dispositivos portátiles.
+            Una de las características más destacadas del chip Tensor es su capacidad para ejecutar modelos de inteligencia artificial directamente en el dispositivo, sin necesidad de depender de una conexión a la nube. Esto significa que los dispositivos equipados con el chip Tensor pueden realizar tareas de IA de manera más rápida y eficiente, incluso cuando están fuera de línea o tienen una conexión de datos limitada.
+            El chip Tensor está optimizado para una variedad de aplicaciones de inteligencia artificial, desde reconocimiento de voz y traducción en tiempo real hasta análisis de imágenes y asistencia personalizada. Con su arquitectura altamente eficiente y su capacidad para procesar grandes volúmenes de datos en tiempo real, el chip Tensor proporciona una experiencia de usuario más fluida y receptiva en dispositivos móviles.
+            Google ha anunciado que el chip Tensor debutará en su próxima línea de teléfonos inteligentes Pixel, pero también tiene planes de llevar esta tecnología a otros dispositivos, como tabletas, dispositivos portátiles y dispositivos domésticos inteligentes. Al integrar capacidades avanzadas de inteligencia artificial en una amplia gama de productos, Google busca mejorar la vida cotidiana de las personas y proporcionar soluciones innovadoras a los desafíos del mundo real.',
+            'foto' => 'images/tensor.jpeg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>3,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+
+
+
+        Noticia::create([
+            'titulo' => 'Nueva exposición de arte contemporáneo en el Museo de Arte Moderno de Nueva York',
+            'descripcion' => 'El Museo de Arte Moderno de Nueva York ha inaugurado una emocionante exposición que presenta obras de algunos de los artistas contemporáneos más innovadores del mundo.',
+            'contenido' => 'La exposición "Vanguardia en el Siglo XXI" ha llegado al Museo de Arte Moderno de Nueva York con un despliegue de creatividad y expresión que ha cautivado a críticos de arte y visitantes por igual. Este evento, que marca un hito en la escena cultural de la ciudad, reúne una colección ecléctica de obras que desafían las convenciones y exploran nuevas fronteras en el arte contemporáneo.
+            Desde pinturas abstractas hasta instalaciones multimedia, la exposición ofrece una amplia gama de estilos y técnicas que reflejan la diversidad y la vitalidad del panorama artístico actual. Los visitantes pueden sumergirse en un mundo de colores vibrantes, formas intrincadas y narrativas provocativas mientras recorren las galerías del museo.
+            Entre las obras destacadas se encuentran piezas de artistas emergentes que están dando forma al futuro del arte contemporáneo, junto con obras icónicas de figuras establecidas en la escena artística mundial. Los temas explorados son igualmente diversos, desde reflexiones sobre la identidad y la cultura hasta exploraciones de la tecnología y el medio ambiente.
+            La exposición no solo celebra la creatividad individual de cada artista, sino que también destaca las conexiones y diálogos entre las obras expuestas. Los visitantes son invitados a reflexionar sobre las intersecciones entre diferentes estilos y corrientes artísticas, así como a considerar el papel del arte en la sociedad contemporánea.
+            Además de las obras en exhibición, la exposición también incluye una serie de eventos complementarios, como charlas de artistas, visitas guiadas y talleres interactivos. Estas actividades ofrecen a los visitantes la oportunidad de involucrarse más profundamente con el arte y ampliar su comprensión de las obras y los procesos creativos detrás de ellas.
+            "Vanguardia en el Siglo XXI" estará abierta al público durante los próximos tres meses, brindando a los amantes del arte la oportunidad de explorar nuevas perspectivas y reflexionar sobre el papel del arte en el mundo moderno. La exposición promete ser un punto culminante en el calendario cultural de la ciudad de Nueva York y una experiencia imperdible para todos los aficionados al arte.
+            Este contenido más extenso ofrece una visión más detallada y envolvente de la exposición de arte contemporáneo, brindando al lector una experiencia más inmersiva y enriquecedora.',
+            'foto' => 'images/museo.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+        
+        Noticia::create([
+            'titulo' => 'Descubren una nueva obra perdida de un maestro renacentista en una mansión italiana',
+            'descripcion' => 'En una emocionante revelación para el mundo del arte, arqueólogos italianos han descubierto una pintura perdida del renombrado maestro renacentista Leonardo da Vinci en una antigua mansión en el corazón de Florencia.',
+            'contenido' => 'El mundo del arte está abuzz con la noticia del descubrimiento de una pintura perdida que se cree que es obra del legendario Leonardo da Vinci. El emocionante hallazgo se produjo durante una excavación arqueológica en una histórica mansión en las afueras de Florencia, Italia.
+            Los arqueólogos, que estaban investigando los restos de la mansión, quedaron asombrados al descubrir una habitación secreta oculta detrás de una pared de yeso. En el interior, entre una colección de artefactos antiguos y polvo acumulado, encontraron una pintura cubierta de suciedad y desgaste, pero claramente identificable como una obra del genio renacentista.
+            La pintura, que muestra una figura misteriosa en un paisaje bucólico, presenta la firma característica de Leonardo da Vinci en la esquina inferior derecha. Los expertos están emocionados por la posibilidad de que esta sea una obra previamente desconocida del maestro italiano, cuya obra ya es venerada en todo el mundo.
+            Los análisis preliminares de la pintura y los materiales utilizados sugieren que la obra data del siglo XVI y coincide con el período en que Leonardo da Vinci estaba activo en la región de Florencia. Sin embargo, se necesitarán análisis más detallados y pruebas científicas para confirmar definitivamente la autenticidad de la obra.
+            El descubrimiento ha generado un gran interés tanto en la comunidad artística como en el público en general, con muchas personas ansiosas por ver la pintura y aprender más sobre su origen y significado. La posibilidad de añadir una nueva obra maestra de Leonardo da Vinci al canon del arte renacentista ha provocado un renovado entusiasmo por el legado del famoso pintor y científico.
+            Los arqueólogos y expertos en arte continúan trabajando para investigar la historia de la mansión y descubrir cómo esta pintura perdida llegó a estar oculta durante siglos. Mientras tanto, la expectación y la emoción en torno al descubrimiento siguen creciendo, con la esperanza de que esta obra pueda arrojar nueva luz sobre la vida y el trabajo de uno de los artistas más influyentes de la historia.
+            Este emocionante descubrimiento nos recuerda la capacidad duradera del arte para sorprendernos y cautivarnos, incluso siglos después de haber sido creado. La posibilidad de descubrir una nueva obra de un maestro como Leonardo da Vinci es un recordatorio de la importancia de preservar y explorar nuestro patrimonio cultural para las generaciones futuras.',
+            'foto' => 'images/obra.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Instalación de una monumental escultura contemporánea en el centro de Londres sorprende a los transeúntes',
+            'descripcion' => 'Una imponente escultura de arte contemporáneo, titulada "Reflexiones Urbanas", ha sido erigida en el corazón de Londres, generando sorpresa y admiración entre los residentes y visitantes de la ciudad.',
+            'contenido' => 'En un giro inesperado, el paisaje urbano de Londres ha sido transformado por la reciente instalación de una escultura contemporánea de proporciones monumentales. La obra, titulada "Reflexiones Urbanas", es una creación del aclamado artista británico David Smith y ha sido colocada en un lugar destacado en el centro de la ciudad.
+            La escultura, que se eleva majestuosamente sobre el pavimento, presenta una composición abstracta de formas geométricas y líneas fluidas que evocan la energía y el movimiento de la vida urbana. Construida en acero corten, la obra destaca por su imponente presencia y su capacidad para interactuar con su entorno circundante.
+            Desde su instalación, "Reflexiones Urbanas" ha atraído la atención de los transeúntes y ha generado un intenso debate en la comunidad artística y en la opinión pública. Algunos elogian la audacia y la innovación de la escultura, mientras que otros expresan reservas sobre su idoneidad para el entorno urbano.
+            La obra de Smith se ha convertido rápidamente en un punto focal en el paisaje urbano de Londres, atrayendo a numerosos curiosos que se detienen a contemplar su impactante presencia. La escultura también ha generado interés en las redes sociales, donde las imágenes y opiniones sobre la obra se han compartido ampliamente.
+            El artista, David Smith, ha expresado su esperanza de que "Reflexiones Urbanas" sirva como una invitación a la reflexión sobre la relación entre el arte y el espacio público, y como una celebración de la diversidad y vitalidad de la vida urbana. La escultura está programada para permanecer en su ubicación actual durante varios meses, durante los cuales se espera que continúe inspirando y provocando la imaginación de quienes la contemplen.
+            El impacto de "Reflexiones Urbanas" en el centro de Londres subraya el poder del arte para transformar y enriquecer nuestro entorno cotidiano, así como la importancia de fomentar la creatividad y la innovación en el ámbito público. A medida que la escultura se convierte en parte integral del tejido urbano de la ciudad, queda claro que el arte contemporáneo sigue siendo una fuerza vibrante y relevante en el mundo moderno.',
+            'foto' => 'images/esc1.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Instalación de esculturas cinéticas transforma un parque urbano en una experiencia interactiva de arte',
+            'descripcion' => 'Un parque urbano en la ciudad de Barcelona ha sido transformado por la instalación de una serie de esculturas cinéticas que invitan a los visitantes a explorar el arte en movimiento y experimentar una nueva forma de interacción con el entorno urbano.',
+            'contenido' => 'En una iniciativa innovadora que busca fusionar el arte contemporáneo con el espacio público, un parque urbano emblemático en Barcelona ha sido el escenario de la instalación de una serie de esculturas cinéticas únicas. Estas obras de arte, creadas por el reconocido escultor español Carlos Gómez, están diseñadas para capturar la imaginación y estimular los sentidos de quienes las experimentan.
+            Cada escultura cinética es una exploración de la relación entre el movimiento y la forma, con elementos que giran, oscilan y cambian de posición en respuesta al viento y al movimiento de los espectadores. Fabricadas en materiales ligeros y resistentes, las obras de Gómez desafían las convenciones tradicionales de la escultura estática y ofrecen una experiencia dinámica y participativa.
+            Los visitantes del parque urbano son invitados a recorrer un sendero sinuoso que serpentinea entre las esculturas, permitiéndoles interactuar de cerca con cada obra y descubrir los matices de su movimiento y diseño. Desde grandes estructuras que se balancean suavemente en el viento hasta intrincadas formas que giran y se entrelazan en un ballet cinético, las esculturas de Gómez ofrecen una experiencia multisensorial única.
+            La instalación de las esculturas cinéticas ha generado un renovado interés en el parque urbano, atrayendo a una amplia gama de visitantes, desde aficionados al arte hasta familias y turistas. La interacción entre el público y las obras de arte ha enriquecido el ambiente del parque, convirtiéndolo en un espacio vibrante y dinámico donde la creatividad y la expresión artística están en constante evolución.
+            Carlos Gómez, el artista detrás de esta innovadora instalación, ha expresado su satisfacción por la respuesta positiva del público y su esperanza de que las esculturas cinéticas inspiren a otros artistas a explorar nuevas formas de arte en el espacio público. Con su enfoque audaz y su visión vanguardista, Gómez ha demostrado que el arte contemporáneo puede transformar no solo los espacios físicos, sino también la forma en que experimentamos y percibimos nuestro entorno urbano.',
+            'foto' => 'images/esc2.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Festival de Arte Urbano celebra la creatividad y la diversidad cultural en las calles de Nueva York',
+            'descripcion' => 'El Festival de Arte Urbano de Nueva York ha reunido a artistas de todo el mundo para transformar los espacios públicos de la ciudad en lienzos vivientes, llenando las calles con una explosión de colores, formas y mensajes inspiradores.',
+            'contenido' => 'Durante una semana emocionante, la ciudad de Nueva York se ha convertido en el escenario de un espectáculo de arte sin precedentes, con el Festival de Arte Urbano atrayendo a artistas y entusiastas del arte de todos los rincones del mundo. Desde grafitis impresionantes hasta murales monumentales, el festival ha celebrado la diversidad cultural y la expresión creativa en todas sus formas.
+            Las calles de barrios emblemáticos como Brooklyn, Queens y el Bronx se han convertido en galerías al aire libre, con artistas trabajando en vivo para crear obras de arte que reflejen la rica historia y el espíritu vibrante de la ciudad. Los temas variados abarcan desde la justicia social y la igualdad hasta la naturaleza y la identidad cultural, dando voz a una amplia gama de perspectivas y experiencias.
+            Los visitantes del festival tienen la oportunidad de interactuar con los artistas mientras trabajan en sus creaciones, presenciando el proceso creativo en acción y participando en conversaciones significativas sobre arte, comunidad y activismo. Además de las obras de arte en las calles, el festival incluye una serie de eventos complementarios, como charlas, talleres y proyecciones de películas, que profundizan en los temas explorados por los artistas.
+            El Festival de Arte Urbano de Nueva York no solo celebra la creatividad individual, sino que también fomenta el diálogo y la conexión entre personas de diferentes culturas y antecedentes. Al transformar los espacios públicos en lugares de encuentro y expresión, el festival promueve la inclusión y la diversidad, inspirando a los neoyorquinos y a visitantes de todo el mundo a apreciar la belleza y el poder del arte urbano.',
+            'foto' => 'images/fest.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'arte,historia,cultura,artista',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>4,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+
+
+
+
+        Noticia::create([
+            'titulo' => 'Catalá se lleva a la Alcaldía a la gerente de la fundación Valencia Activa tras los últimos choques con Vox',
+            'descripcion' => 'La oposición, Compromís y PSPV, advierte que el cambio obedece a la crisis de gobierno entre PP y su socio ultra y despeja el camino al segundo teniente de alcalde Juanma Badenas',
+            'contenido' => 'Los grupos de la oposición en el Ayuntamiento de Valencia, Compromís y PSPV-PSOE, han criticado el nombramiento de Isabel Rubio León como directora general de Relaciones Institucionales de la alcaldesa de Valencia, María José Catalá, del PP, apenas seis meses después de haberla puesto al frente de la fundación de empleo Valencia Activa, un departamento que ahora dirige Vox, su socio de gobierno. Compromís denuncia que es el octavo cargo nombrado a dedo por el PP desde que gobierna el consistorio y el PSPV añade que el cambio despeja el camino al segundo teniente de alcalde, Juan Manuel Badenas, para “convertirlo en un chiringuito” de Vox.
+            El grupo valencianista ha indicado que “Catalá ha vuelto a aprobar a escondidas y en la previa de un día festivo, una cuestión tan polémica como la creación de un nuevo cargo directivo para Alcaldía”, al tiempo que ha expuesto que “en total, los ocho cargos creados por la primera edil desde su llegada al gobierno ya suponen un coste para las arcas públicas de 651.069,92 euros”.
+            Ferran Puchades, edil de Compromís, considera que el nombramiento de la que fuera gerente de la Fundación Valencia Activa “demuestra que estamos ante una operación para dejar el campo libre al segundo teniente de alcalde, también responsable de Empleo y portavoz de Vox, para que pueda designar a la persona que quiera para encabezar y dirigir sin escrúpulos su agenda ultra”.
+            Compromís ha aseverado que Isabel Rubio León, que ha trabajado como asesora para los expresidentes de la Generalitat Francisco Camps y Eduardo Zaplana, fue nombrada por el PP gerente de Valencia Activa el pasado 20 de septiembre mientras que Badenas accedió al control de la entidad el pasado 23 de octubre tras el pacto de gobierno entre PP —al que le faltaban cuatro votos para la mayoría absoluta— y Vox.
+            Para el concejal socialista en el Ayuntamiento de Valencia Javier Mateo, la adscripción a Alcaldía de Isabel Rubio es una “confirmación de la crisis de Gobierno de Catalá y Vox, donde la primera está claramente subordinada a los dictados de los ultras”.
+            Según Mateo, “Catalá se ha tenido que llevar a la Alcaldía a la hasta ayer gerente de Valencia Activa, puesta por el PP y persona de su máxima confianza” por la mala relación entre ambos socios. El edil socialista advierte que con este “rescate” la alcaldesa “despeja el camino para que Vox tenga vía libre para hacer un nuevo nombramiento y seguir ahondando en el irreparable daño a la Fundación Valencia Activa”. “Está permitiendo que Vox convierta una entidad de reconocido prestigio en materia laboral en un chiringuito en el que dar mítines y eliminar a la mujer de las políticas laborales”, ha denunciado.
+            Las tensiones entre PP y Vox desde que cerraron el pasado octubre un acuerdo en gobierno han aflorado públicamente en varias ocasiones. El último episodio se produjo en el pleno municipal de marzo, cuando la oposición interpeló a la alcaldesa sobre los cambios en los estatutos de la fundación de empleo Valencia Activa, de los que PP y Vox eliminaron la mención expresa a las mujeres. Badenas exigió responder a la oposición, en su calidad de responsable de Empleo, pero la alcaldesa María José Catalá le dio la palabra al portavoz del PP, Juan Carlos Caballero, lo que provocó que los cuatro ediles del grupo ultra abandonaran el pleno en protesta y quedasen sin aprobar varias medidas previstas por el equipo de gobierno local. Fuentes municipales han precisado, en respuesta a la denuncia de la oposición, que frente a los ocho altos cargos que ha nombrado Catalá desde su llegada a la alcaldía en junio, Compromís y PSOE llegaron a tener 14 altos cargos cuando gobernaban el Ayuntamiento. Las mismas fuentes apuntaron, en referencia al sueldo de la nueva directora de Relaciones Internacionales de la Alcaldía, que todos los directores generales tienen la misma retribución, tanto en esta legislatura como en la anterior, y está equiparada a la jefatura de servicio”, remarcaron.
+            ',
+            'foto' => 'images/catala.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Elecciones Locales: Un Cambio de Rumbo en la Política Municipal',
+            'descripcion' => 'Las elecciones locales marcan un punto crucial en la política de una comunidad, donde los ciudadanos ejercen su poder para elegir líderes que representen sus intereses y necesidades a nivel municipal. Estos comicios no solo moldean el futuro de una ciudad, sino que también reflejan las tendencias políticas y sociales más amplias en juego.',
+            'contenido' => 'Las elecciones locales son un pilar fundamental de la democracia, ya que permiten que los ciudadanos participen activamente en el proceso político y contribuyan a la toma de decisiones que afectan directamente a sus comunidades. A nivel municipal, los votantes eligen alcaldes, concejales y otros funcionarios locales que serán responsables de abordar una amplia gama de cuestiones, desde infraestructura y servicios públicos hasta desarrollo económico y políticas sociales.
+            Estas elecciones suelen reflejar no solo las preocupaciones locales, sino también las tendencias políticas más amplias que están en juego a nivel nacional e incluso internacional. Los resultados de las elecciones locales pueden interpretarse como indicadores tempranos de cambios en el panorama político, así como de la confianza del electorado en los partidos y líderes individuales.
+            Además, las elecciones locales ofrecen una plataforma importante para la participación ciudadana y el activismo político a nivel comunitario. Los candidatos locales suelen estar más cerca de los votantes y tienen la oportunidad de abordar problemas específicos que afectan directamente a la vida diaria de las personas en sus comunidades.
+            En muchos casos, las elecciones locales también son un reflejo de la diversidad y la inclusión en la política, ya que pueden dar voz a grupos minoritarios y marginados que a menudo están subrepresentados en otros niveles de gobierno. La elección de líderes locales de diversos orígenes étnicos, culturales y socioeconómicos puede contribuir a una mayor representatividad y equidad en la toma de decisiones.
+            En resumen, las elecciones locales son un componente vital de la vida política de una comunidad, donde los ciudadanos tienen la oportunidad de influir en el futuro de su ciudad y expresar sus valores y preferencias a través del voto. Estos comicios no solo moldean el rumbo de una ciudad, sino que también reflejan las dinámicas políticas y sociales más amplias en juego a nivel local, nacional e incluso global.',
+            'foto' => 'images/local.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Tensiones Internacionales: Desafíos Diplomáticos en el Escenario Global',
+            'descripcion' => 'Las tensiones internacionales están en aumento, desafiando los cimientos de la diplomacia y la cooperación entre naciones. Desde disputas territoriales hasta conflictos ideológicos, el panorama geopolítico actual presenta una serie de desafíos que requieren un enfoque diplomático cuidadoso y estratégico.',
+            'contenido' => 'Las tensiones internacionales se han intensificado en los últimos años, con una serie de factores que contribuyen a la creciente discordia entre naciones. Disputas territoriales en regiones como el Mar del Sur de China y el Medio Oriente han generado conflictos prolongados y una competencia por recursos estratégicos, aumentando las tensiones entre potencias regionales e internacionales.
+            Además de las disputas territoriales, los conflictos ideológicos y políticos también están contribuyendo a la inestabilidad geopolítica. La rivalidad entre potencias como Estados Unidos, China y Rusia ha generado una competencia feroz por la influencia global, exacerbando las divisiones y dificultando la cooperación en temas de seguridad, comercio y gobernanza mundial.
+            El surgimiento de nuevas amenazas transnacionales, como el cambio climático, el terrorismo y la pandemia de COVID-19, ha añadido una capa adicional de complejidad a las relaciones internacionales. Estos desafíos globales requieren una respuesta coordinada y colaborativa por parte de la comunidad internacional, pero las divergencias políticas y estratégicas obstaculizan los esfuerzos de cooperación.
+            En este contexto, la diplomacia se vuelve más crucial que nunca como medio para abordar las diferencias y buscar soluciones pacíficas a los conflictos internacionales. Los esfuerzos diplomáticos deben centrarse en el diálogo constructivo, la negociación de acuerdos mutuamente beneficiosos y el fortalecimiento de los mecanismos de gobernanza global para abordar los desafíos comunes de manera efectiva.
+            En resumen, las tensiones internacionales representan uno de los principales desafíos de nuestro tiempo, con implicaciones significativas para la estabilidad y la seguridad mundial. La diplomacia desempeña un papel fundamental en la gestión de estas tensiones y en la promoción de un orden mundial basado en la cooperación, el respeto mutuo y la paz duradera.',
+            'foto' => 'images/tension.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'El Debate sobre la Gestión del Gobierno de Sánchez',
+            'descripcion' => 'La tensión política en España se intensifica a medida que el gobierno de Pedro Sánchez enfrenta críticas de la oposición y desafíos internos que ponen a prueba su capacidad de liderazgo y gestión.',
+            'contenido' => 'El gobierno de Pedro Sánchez se encuentra bajo escrutinio público y críticas constantes por parte de la oposición y diversos sectores de la sociedad española. Las tensiones políticas se han agudizado en medio de la crisis económica, la pandemia de COVID-19 y los conflictos territoriales, lo que ha generado un clima de incertidumbre y polarización en el país.
+            La gestión de la crisis sanitaria y económica ha sido objeto de controversia, con acusaciones de falta de transparencia, improvisación y falta de coordinación por parte del gobierno. La oposición ha cuestionado las medidas adoptadas y ha exigido una rendición de cuentas más rigurosa sobre el manejo de la pandemia y la distribución de los fondos de recuperación.
+            Además, las tensiones se han exacerbado por la situación en Cataluña y el desafío independentista, con divisiones políticas cada vez más profundas sobre el enfoque adecuado para abordar este conflicto. La polarización ideológica y la falta de consenso político han dificultado la búsqueda de soluciones duraderas y han alimentado la inestabilidad política en el país.
+            En este contexto, la capacidad de liderazgo y negociación de Pedro Sánchez se ha puesto a prueba, enfrentándose a críticas tanto dentro de su propio partido como de la oposición. La necesidad de construir puentes de diálogo y consenso se vuelve cada vez más urgente para superar las divisiones y encontrar soluciones viables a los desafíos que enfrenta España en la actualidad.
+            En resumen, la tensión política en España refleja un panorama complejo y desafiante, caracterizado por la polarización, la confrontación y la falta de consenso. La capacidad del gobierno de Pedro Sánchez para gestionar esta situación y avanzar hacia una agenda de reformas y reconciliación nacional será determinante para el futuro del país.',
+            'foto' => 'images/sanchez.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        Noticia::create([
+            'titulo' => 'Crisis Migratoria: Desafíos Humanitarios en la Frontera Sur',
+            'descripcion' => 'La crisis migratoria en la frontera sur está alcanzando proporciones críticas, desencadenando desafíos humanitarios urgentes que requieren respuestas efectivas por parte de las autoridades gubernamentales y la comunidad internacional.',
+            'contenido' => 'La frontera sur se enfrenta a una creciente afluencia de migrantes y solicitantes de asilo, muchos de los cuales huyen de la violencia, la pobreza y la inestabilidad en sus países de origen. Esta situación ha generado una crisis humanitaria con miles de personas que buscan refugio y protección en la frontera, enfrentándose a condiciones extremas y riesgos significativos en su búsqueda de una vida mejor.
+            Las capacidades de recepción y procesamiento en los puntos fronterizos se ven abrumadas por el flujo constante de migrantes, lo que genera tensiones y desafíos logísticos para las autoridades locales y nacionales. La falta de recursos y la capacidad limitada para gestionar la llegada masiva de personas están exacerbando la situación humanitaria y planteando interrogantes sobre la capacidad de respuesta del sistema.
+            Además de los desafíos logísticos, la crisis migratoria también plantea cuestiones éticas y legales relacionadas con los derechos humanos y la protección de los más vulnerables. La necesidad de garantizar un trato humano y digno para los migrantes, especialmente niños y familias, es una prioridad urgente que requiere un enfoque coordinado y solidario por parte de las autoridades y la sociedad en su conjunto.
+            En este contexto, es fundamental fortalecer la cooperación internacional y regional para abordar las causas subyacentes de la migración y promover soluciones sostenibles a largo plazo. Esto implica abordar las inequidades económicas, sociales y políticas que impulsan la migración forzada, así como mejorar los mecanismos de protección y asistencia para los migrantes en tránsito y destino.
+            En resumen, la crisis migratoria en la frontera sur representa un desafío humanitario de proporciones alarmantes que requiere una respuesta integral y solidaria. Es fundamental adoptar medidas urgentes para garantizar la protección y el bienestar de los migrantes y buscar soluciones efectivas y sostenibles para abordar las causas fundamentales de la migración.',
+            'foto' => 'images/migra.jpg',
+            'likes' => random_int(10,150),
+            'guardados' => random_int(10,150),
+            'palabras_clave' => 'politica,gobierno,estado,leyes',
+            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'categoria_id'=>5,
+            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
+        ]);
+
+        /********************************************       DEPORTES        ************************************************  */
+
+       
+
         Noticia::create([
             'titulo' => 'Swiatek: "No tiene sentido hablar de los Juegos Olímpicos, todavía queda mucho"',
             'descripcion' => 'La flamante campeona de Indian Wells buscará el título en Miami, donde confiesa todavía no estar pensando en París 2024. Además, la número 1 habló del cambio de condiciones tras pasar por el desierto.',
@@ -421,7 +815,6 @@ class DatabaseSeeder extends Seeder
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
-
 
         Noticia::create([
             'titulo' => 'Dimitrov y Sinner, de momento a momento',
@@ -505,132 +898,7 @@ class DatabaseSeeder extends Seeder
         /********************************************       ECONOMÍA        ************************************************  */
 
 
-        Noticia::create([
-            'titulo' => 'La transformación digital: clave para la competitividad de las empresas españolas',
-            'descripcion' => 'La transformación digital es un proceso imparable que está redefiniendo todos los sectores de la economía. Las empresas españolas que no se adapten a esta nueva realidad corren el riesgo de quedarse atrás en un mercado cada vez más competitivo.',
-            'contenido' => 'a transformación digital es un proceso imparable que está redefiniendo todos los sectores de la economía. Las empresas españolas que no se adapten a esta nueva realidad corren el riesgo de quedarse atrás en un mercado cada vez más competitivo.
-
-            La digitalización de los procesos permite a las empresas ahorrar tiempo y costes, mejorar la calidad de sus productos y servicios, crear nuevos modelos de negocio y llegar a nuevos clientes. En definitiva, las empresas que se digitalizan son más competitivas en el mercado global.
-            
-            Sin embargo, la transformación digital también presenta algunos retos. La falta de inversión, la escasez de talento digital y la resistencia al cambio cultural son algunos de los principales obstáculos que las empresas deben superar.
-            
-            Para tener éxito en la transformación digital, es necesario definir una estrategia clara que se alinee con los objetivos de la empresa, contar con un liderazgo comprometido, crear una cultura de innovación y formación, e invertir en la formación de los empleados.
-            
-            La transformación digital es clave para el futuro de la economía española. Las empresas que se adapten a esta nueva realidad estarán mejor posicionadas para competir en el mercado global y contribuir al crecimiento económico del país.
-            
-            El gobierno español tiene un papel importante que jugar en la promoción de la transformación digital de las empresas. Es necesario crear un marco regulatorio favorable a la innovación, facilitar el acceso a la financiación y a la formación, y fomentar la colaboración entre las empresas, el gobierno y la sociedad civil.
-            
-            En definitiva, la transformación digital es una oportunidad para que las empresas españolas sean más competitivas en el mercado global. Es un esfuerzo que requiere la colaboración de todos los actores para que España aproveche al máximo esta oportunidad.',
-            'foto' => 'images/digital.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>1,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-        Noticia::create([
-            'titulo' => 'Los bancos centrales endurecen su política monetaria para combatir la inflación',
-            'descripcion' => 'Subida de tipos de interés, reducción de la compra de activos y control de la inflación: las medidas que están tomando los bancos centrales para contener la subida de precios',
-            'contenido' => 'Los bancos centrales de todo el mundo están endureciendo su política monetaria en un intento de contener la inflación. La Reserva Federal de Estados Unidos (Fed), el Banco Central Europeo (BCE) y el Banco de Inglaterra (BoE) han anunciado subidas de los tipos de interés, mientras que otros bancos centrales, como el Banco de Japón (BoJ), están empezando a reducir sus programas de compra de activos.
-
-            Razones del endurecimiento monetario:
-            
-            Controlar la inflación: La principal razón del endurecimiento monetario es la necesidad de controlar la inflación, que se encuentra en niveles muy altos en la mayoría de las economías desarrolladas.
-            Evitar una espiral inflacionaria: Los bancos centrales temen que la inflación se descontrole y se convierta en una espiral inflacionaria, lo que sería muy negativo para la economía.
-            Anclar las expectativas de inflación: Los bancos centrales también quieren anclar las expectativas de inflación, es decir, que los agentes económicos esperen que la inflación se mantenga en niveles controlados en el futuro.
-            Medidas que se están tomando:
-            
-            Subida de tipos de interés: La medida más común que están tomando los bancos centrales es la subida de los tipos de interés. Esto encarece el crédito y reduce la demanda agregada, lo que a su vez ayuda a contener la inflación.
-            Reducción de la compra de activos: Los bancos centrales también están reduciendo sus programas de compra de activos, que habían puesto en marcha durante la pandemia para estimular la economía.
-            Control de la curva de tipos: Algunos bancos centrales, como la Fed, también están utilizando herramientas de control de la curva de tipos para mantener los tipos de interés a largo plazo en niveles bajos.
-            Riesgos del endurecimiento monetario:
-            
-            El endurecimiento monetario también tiene algunos riesgos. Una subida de los tipos de interés puede ralentizar el crecimiento económico e incluso provocar una recesión. Además, el endurecimiento monetario puede tener un impacto negativo en los mercados financieros.
-            
-            Efectos del endurecimiento monetario:
-            
-            El endurecimiento monetario ya está empezando a tener algunos efectos en la economía. Los tipos de interés a largo plazo han subido y el crecimiento económico se ha ralentizado en algunos países. Sin embargo, todavía es pronto para saber si el endurecimiento monetario será suficiente para contener la inflación sin provocar una recesión.
-            
-            En definitiva, los bancos centrales están tomando medidas para contener la inflación, pero estas medidas también tienen algunos riesgos. Es importante que los bancos centrales calibres cuidadosamente su política monetaria para evitar una recesión.',
-            'foto' => 'images/banco.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>1,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-
-
-        Noticia::create([
-            'titulo' => 'El paro registrado en España baja en febrero por quinto mes consecutivo',
-            'descripcion' => 'l paro registrado en España ha bajado en febrero por quinto mes consecutivo, situándose en 2,89 millones de personas. La tasa de paro se ha reducido al 12,6%, la más baja desde 2008.',
-            'contenido' => 'El Ministerio de Trabajo y Economía Social ha publicado este martes los datos del paro correspondientes al mes de febrero, que muestran una nueva caída del desempleo en España. En concreto, el paro registrado se ha reducido en 70.744 personas en el último mes, lo que supone un descenso del 2,4%.
-            Esta bajada del paro se ha producido en todos los sectores de actividad, con especial incidencia en el sector servicios, que ha registrado una reducción del desempleo del 3,1%. También se ha producido una bajada significativa del paro en la agricultura (-2,8%) y en la industria (-2,2%).
-            La tasa de paro se ha situado en el 12,6%, lo que supone una décima menos que en el mes anterior y la tasa más baja desde abril de 2008. La tasa de paro entre los jóvenes también ha bajado, situándose en el 32,2%.
-            El número de afiliados a la Seguridad Social también ha aumentado en febrero, en 204.344 personas, lo que supone un crecimiento del 1,1%. El número total de afiliados se sitúa ya en 19.224.112 personas.
-            La buena evolución del mercado laboral español se produce en un contexto de recuperación económica tras la pandemia de COVID-19. El crecimiento del PIB en 2022 fue del 5,5%, y se espera que siga creciendo en 2023.
-            La bajada del paro y el aumento de la afiliación a la Seguridad Social son buenas noticias para la economía española. Estas cifras indican que la recuperación económica está creando empleo y que el mercado laboral español está mejorando.
-            A pesar de la buena evolución del mercado laboral, todavía hay algunos retos que afrontar. Uno de los principales retos es la alta tasa de paro juvenil.
-            Se espera que el mercado laboral español siga mejorando en los próximos meses. El Gobierno español ha puesto en marcha una serie de medidas para fomentar la creación de empleo, como la reforma laboral y el plan de recuperación económica.
-            La bajada del paro en febrero es una buena noticia para la economía española. Es un indicador de que la recuperación económica está en marcha y que el mercado laboral está mejorando. Sin embargo, todavía hay algunos retos que afrontar, como la alta tasa de paro juvenil.',
-            'foto' => 'images/paro.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>1,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-
-        Noticia::create([
-            'titulo' => 'La Reserva Federal de EE.UU. sube los tipos de interés 0,25 puntos, anticipando nuevas subidas',
-            'descripcion' => 'La Reserva Federal de EE.UU. ha elevado los tipos de interés en 0,25 puntos, la primera subida desde 2018. Se espera que otros bancos centrales, como el Banco Central Europeo (BCE), tomen medidas similares en los próximos meses para combatir la inflación.',
-            'contenido' => 'La Reserva Federal de EE.UU. ha decidido subir los tipos de interés en un 0,25%, la primera subida desde diciembre de 2018. La decisión se ha tomado en un contexto de elevada inflación en EE.UU., que se situó en el 7,5% en febrero.
-            Se espera que otros bancos centrales, como el Banco Central Europeo (BCE), tomen medidas similares en los próximos meses. El BCE ha anunciado que comenzará a reducir su programa de compra de activos en marzo, lo que podría ser un primer paso hacia la subida de los tipos de interés.
-            La subida de los tipos de interés tiene como objetivo combatir la inflación. Los bancos centrales consideran que la inflación es demasiado alta y que es necesario tomar medidas para controlarla.
-            La subida de los tipos de interés tendrá un impacto en la economía global. Se espera que frene el crecimiento económico, pero también podría ayudar a contener la inflación. Los bancos centrales están tratando de encontrar un equilibrio entre el crecimiento económico y la estabilidad de precios.
-            Se espera que los bancos centrales continúen subiendo los tipos de interés en los próximos meses. El ritmo de las subidas dependerá de la evolución de la inflación.
-            La subida de los tipos de interés tendrá un impacto en los hogares y las empresas. Los hogares tendrán que pagar más por sus hipotecas y préstamos, y las empresas tendrán que pagar más por sus créditos.
-            Existe un debate sobre si la subida de los tipos de interés es la mejor manera de combatir la inflación. Algunos economistas consideran que la subida de los tipos de interés podría ser contraproducente y podría frenar el crecimiento económico.
-            La subida de los tipos de interés es una medida importante que tendrá un impacto en la economía global. Es importante que los bancos centrales sean prudentes y que monitoricen la evolución de la inflación para tomar las medidas adecuadas.',
-            'foto' => 'images/tipo.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>1,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-
-        Noticia::create([
-            'titulo' => 'La inflación en España se dispara al 6,0% en enero, la tasa más alta desde 1992',
-            'descripcion' => 'El Índice de Precios al Consumidor (IPC) de enero en España se ha situado en el 6,0%, una tasa interanual que supone la más alta desde diciembre de 1992. La energía sigue siendo el principal componente del alza de precios, con una subida del 29,3%.',
-            'contenido' => 'El dato del IPC de enero en España confirma la tendencia al alza de la inflación en los últimos meses. La tasa de inflación se ha duplicado en el último año, pasando del 3,0% en enero de 2022 al 6,0% en enero de 2023.
-            La energía es el principal factor que impulsa la inflación, con una subida del 29,3% en enero. Los alimentos también experimentaron un alza significativa, con un aumento del 5,5%.
-            El resto de los componentes del IPC también registraron subidas, aunque en menor medida. Los precios de los bienes no energéticos subieron un 2,4%, mientras que los precios de los servicios subieron un 2,1%.
-            La elevada inflación está teniendo un impacto negativo en el poder adquisitivo de los hogares españoles. El gobierno ha implementado algunas medidas para paliar sus efectos, como la bonificación de 20 céntimos por litro de combustible, pero los expertos consideran que se necesitan medidas adicionales.
-            Se espera que la inflación se mantenga en niveles altos en los próximos meses, aunque es probable que comience a moderarse a partir de la segunda mitad del año. El Banco Central Europeo (BCE) ha anunciado que subirá los tipos de interés en julio, lo que podría ayudar a contener la inflación.
-            El gobierno español ha implementado algunas medidas para paliar los efectos de la inflación, como la bonificación de 20 céntimos por litro de combustible, la ampliación del bono social eléctrico y la subida del Salario Mínimo Interprofesional (SMI).
-            Las reacciones a la subida del IPC han sido variadas. Los sindicatos han pedido medidas más contundentes para proteger a los trabajadores, mientras que las empresas han advertido que la subida de los precios podría afectar a la competitividad de la economía española.',
-            'foto' => 'images/inflacion.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>1,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
+        
 
 
         Noticia::create([
@@ -751,94 +1019,6 @@ class DatabaseSeeder extends Seeder
 
 
         Noticia::create([
-            'titulo' => 'Nueva tecnología de realidad aumentada revoluciona la experiencia de compra en línea',
-            'descripcion' => 'Una innovadora tecnología de realidad aumentada está cambiando la forma en que las personas compran en línea, ofreciendo una experiencia de compra más inmersiva y personalizada. ',
-            'contenido' => 'La realidad aumentada (RA) está transformando la industria del comercio electrónico al brindar una experiencia de compra completamente nueva y envolvente. Esta tecnología permite a los usuarios visualizar productos en su entorno real a través de dispositivos como teléfonos inteligentes y tabletas, utilizando la cámara para superponer imágenes virtuales sobre el mundo físico.
-            Una de las aplicaciones más impactantes de la realidad aumentada en el comercio electrónico es la capacidad de "probar" productos antes de comprarlos. Por ejemplo, los consumidores pueden ver cómo se vería un mueble en su sala de estar, cómo quedaría un par de gafas de sol en su rostro, o incluso cómo se vería un nuevo color de pintura en sus paredes. Esta experiencia inmersiva no solo ayuda a los clientes a tomar decisiones más informadas, sino que también aumenta la confianza en sus compras, lo que reduce las devoluciones y aumenta la satisfacción del cliente.
-            Además de mejorar la experiencia de compra para los consumidores, la realidad aumentada también beneficia a los minoristas al aumentar las tasas de conversión y las ventas. Al ofrecer una vista previa virtual de los productos, las marcas pueden atraer y retener a los clientes de manera más efectiva, convirtiendo las visitas a sus sitios web en transacciones exitosas. Esto se traduce en un aumento en los ingresos y una mayor fidelidad del cliente a largo plazo.
-            A medida que la tecnología de realidad aumentada continúa mejorando y volviéndose más accesible, se espera que su adopción en el comercio electrónico siga creciendo. Los minoristas que inviertan en esta innovadora tecnología estarán mejor posicionados para destacarse en un mercado cada vez más competitivo y brindar experiencias de compra excepcionales a sus clientes.',
-            'foto' => 'images/real.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>3,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-        Noticia::create([
-            'titulo' => 'Desarrollan nueva tecnología de inteligencia artificial para detectar enfermedades cardíacas',
-            'descripcion' => 'Un equipo de investigadores ha desarrollado una innovadora tecnología de inteligencia artificial capaz de diagnosticar enfermedades cardíacas con una precisión sin precedentes. Esta noticia explora cómo esta tecnología podría revolucionar el diagnóstico y tratamiento de enfermedades cardiovasculares en el futuro cercano.',
-            'contenido' => 'La enfermedad cardiovascular es una de las principales causas de muerte en todo el mundo, y su detección temprana es crucial para un tratamiento efectivo y una mejor atención al paciente. En este contexto, los avances en inteligencia artificial están demostrando ser herramientas prometedoras para mejorar el diagnóstico y la prevención de enfermedades cardíacas.
-            El equipo de investigadores ha desarrollado un algoritmo de inteligencia artificial entrenado con miles de imágenes médicas de ecocardiogramas, resonancias magnéticas y otras pruebas cardíacas. Este algoritmo utiliza técnicas de aprendizaje profundo para analizar las imágenes y detectar patrones sutiles asociados con diversas enfermedades cardíacas, incluyendo la enfermedad coronaria, la insuficiencia cardíaca y las anomalías estructurales del corazón.
-            Lo más destacado de esta tecnología es su capacidad para identificar anomalías cardiacas con una precisión y rapidez excepcionales, superando incluso a los expertos médicos en algunos casos. Además, la tecnología es no invasiva y puede integrarse fácilmente en la práctica clínica existente, lo que la hace accesible para un amplio espectro de profesionales de la salud y pacientes.
-            Se espera que esta nueva tecnología de inteligencia artificial tenga un impacto significativo en el campo de la cardiología al mejorar la detección temprana de enfermedades cardíacas, permitiendo tratamientos más efectivos y personalizados, y reduciendo la carga sobre los sistemas de salud. Además, abre nuevas oportunidades para la investigación en el campo de la medicina cardiovascular y promueve la colaboración entre científicos, médicos y expertos en inteligencia artificial.
-            En resumen, el desarrollo de esta tecnología de inteligencia artificial marca un hito importante en el campo de la salud cardiovascular y ejemplifica el potencial transformador de la inteligencia artificial en el diagnóstico y tratamiento de enfermedades críticas. Con el tiempo, se espera que estas innovaciones mejoren significativamente la calidad de vida de millones de personas en todo el mundo.',
-            'foto' => 'images/ia.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>3,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-        Noticia::create([
-            'titulo' => 'Google anuncia avances en la tecnología de realidad aumentada para facilitar la navegación urbana',
-            'descripcion' => 'Google ha revelado nuevos avances en su tecnología de realidad aumentada, destinados a mejorar la experiencia de navegación urbana para los usuarios de Google Maps. Esta noticia destaca cómo la realidad aumentada está siendo utilizada para proporcionar indicaciones más precisas y visuales mientras se navega por entornos urbanos complejos.',
-            'contenido' => 'La navegación en entornos urbanos puede ser desafiante, con calles congestionadas, edificios altos y múltiples puntos de referencia que pueden confundir a los usuarios. En respuesta a estos desafíos, Google ha estado desarrollando su tecnología de realidad aumentada para ofrecer una experiencia de navegación más intuitiva y precisa.
-            La última actualización de Google Maps presenta una función de realidad aumentada mejorada que utiliza la cámara del teléfono inteligente del usuario para superponer indicaciones visuales en tiempo real sobre el mundo real. Al apuntar la cámara hacia adelante, los usuarios pueden ver señales digitales superpuestas en la pantalla que indican direcciones, giros y destinos, lo que facilita la orientación y la toma de decisiones durante la navegación.
-            Esta tecnología utiliza algoritmos avanzados de visión por computadora y mapeo 3D para identificar con precisión la ubicación del usuario y los elementos circundantes en el entorno urbano. Además, se integra con datos en tiempo real de Google Maps, lo que permite a los usuarios recibir actualizaciones sobre el tráfico, la construcción de carreteras y otros eventos relevantes mientras navegan por la ciudad.
-            La realidad aumentada se ha convertido en una herramienta valiosa para mejorar la experiencia de navegación, especialmente en entornos urbanos densos y complejos. Al proporcionar indicaciones visuales claras y contextualizadas, esta tecnología ayuda a los usuarios a tomar decisiones más informadas y a llegar a su destino de manera más eficiente.
-            Google continúa invirtiendo en el desarrollo de la realidad aumentada y su integración en productos como Google Maps, con el objetivo de ofrecer una experiencia de navegación más intuitiva y personalizada para millones de usuarios en todo el mundo. Este avance marca un paso significativo hacia el futuro de la navegación urbana y demuestra el potencial transformador de la realidad aumentada en nuestra vida diaria.',
-            'foto' => 'images/google.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>3,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-        Noticia::create([
-            'titulo' => 'Tesla anuncia avances en su tecnología de conducción autónoma con la introducción de Tesla Vision',
-            'descripcion' => 'Tesla ha dado un paso adelante en su búsqueda de la conducción autónoma al anunciar Tesla Vision, una nueva tecnología de visión por computadora diseñada para mejorar la seguridad y la eficiencia de sus vehículos eléctricos. Esta noticia destaca cómo Tesla está avanzando hacia un futuro de conducción totalmente autónoma mediante el desarrollo de sistemas de percepción visual más sofisticados.',
-            'contenido' => 'La visión por computadora desempeña un papel fundamental en el desarrollo de vehículos autónomos, permitiendo que los sistemas de conducción interpreten y comprendan su entorno circundante de manera similar a como lo haría un conductor humano. Tesla ha estado a la vanguardia de la tecnología de conducción autónoma, y su último avance, Tesla Vision, promete llevar esta capacidad un paso más allá.
-            Tesla Vision es una solución de visión por computadora basada en redes neuronales que utiliza cámaras integradas en los vehículos Tesla para capturar y procesar imágenes en tiempo real del entorno circundante. Estas cámaras, ubicadas estratégicamente en diferentes partes del automóvil, permiten una visión de 360 grados que abarca tanto la carretera como los objetos y peatones cercanos.
-            Lo que distingue a Tesla Vision es su capacidad para prescindir de los sensores LiDAR tradicionales, que utilizan láseres para mapear el entorno en 3D. En su lugar, Tesla confía en la inteligencia artificial y el aprendizaje automático para interpretar y analizar datos visuales, lo que permite una conducción autónoma más precisa y eficiente.
-            Al eliminar la dependencia de los costosos sensores LiDAR, Tesla puede reducir significativamente el costo de producción de sus vehículos autónomos, lo que los hace más accesibles para los consumidores. Además, al confiar en la visión por computadora, Tesla puede mejorar la robustez y la fiabilidad de sus sistemas de conducción autónoma en una variedad de condiciones climáticas y de iluminación.
-            Tesla Vision representa un paso importante hacia el objetivo final de Tesla de lograr la conducción completamente autónoma. Si bien aún queda trabajo por hacer para perfeccionar esta tecnología y superar los desafíos regulatorios y de seguridad, su introducción marca un hito significativo en el camino hacia un futuro de transporte más seguro, eficiente y sostenible.',
-            'foto' => 'images/tesla.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>3,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-        Noticia::create([
-            'titulo' => 'Google presenta su nuevo chip Tensor para potenciar la inteligencia artificial en dispositivos móviles',
-            'descripcion' => 'Google ha revelado su último avance en tecnología de inteligencia artificial con el lanzamiento del chip Tensor, diseñado específicamente para impulsar el rendimiento de la IA en dispositivos móviles.',
-            'contenido' => 'El chip Tensor de Google marca un hito significativo en la evolución de la inteligencia artificial en dispositivos móviles. Diseñado internamente por los ingenieros de Google, este chip ofrece un rendimiento excepcional en tareas de aprendizaje automático y procesamiento de datos, lo que permite una amplia gama de aplicaciones innovadoras en dispositivos portátiles.
-            Una de las características más destacadas del chip Tensor es su capacidad para ejecutar modelos de inteligencia artificial directamente en el dispositivo, sin necesidad de depender de una conexión a la nube. Esto significa que los dispositivos equipados con el chip Tensor pueden realizar tareas de IA de manera más rápida y eficiente, incluso cuando están fuera de línea o tienen una conexión de datos limitada.
-            El chip Tensor está optimizado para una variedad de aplicaciones de inteligencia artificial, desde reconocimiento de voz y traducción en tiempo real hasta análisis de imágenes y asistencia personalizada. Con su arquitectura altamente eficiente y su capacidad para procesar grandes volúmenes de datos en tiempo real, el chip Tensor proporciona una experiencia de usuario más fluida y receptiva en dispositivos móviles.
-            Google ha anunciado que el chip Tensor debutará en su próxima línea de teléfonos inteligentes Pixel, pero también tiene planes de llevar esta tecnología a otros dispositivos, como tabletas, dispositivos portátiles y dispositivos domésticos inteligentes. Al integrar capacidades avanzadas de inteligencia artificial en una amplia gama de productos, Google busca mejorar la vida cotidiana de las personas y proporcionar soluciones innovadoras a los desafíos del mundo real.',
-            'foto' => 'images/tensor.jpeg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>3,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-        Noticia::create([
             'titulo' => 'España avanza en la digitalización de la administración pública con el lanzamiento de nuevas plataformas online',
             'descripcion' => 'España está dando pasos significativos hacia la digitalización de la administración pública con el lanzamiento de nuevas plataformas en línea que facilitan los trámites y servicios gubernamentales. ',
             'contenido' => 'En un esfuerzo por modernizar la administración pública y hacerla más eficiente, el gobierno español ha puesto en marcha varias iniciativas de digitalización que están transformando la forma en que los ciudadanos interactúan con los servicios gubernamentales.
@@ -952,100 +1132,7 @@ class DatabaseSeeder extends Seeder
 
         /********************************************       ARTE        ************************************************  */
         
-        Noticia::create([
-            'titulo' => 'Nueva exposición de arte contemporáneo en el Museo de Arte Moderno de Nueva York',
-            'descripcion' => 'El Museo de Arte Moderno de Nueva York ha inaugurado una emocionante exposición que presenta obras de algunos de los artistas contemporáneos más innovadores del mundo.',
-            'contenido' => 'La exposición "Vanguardia en el Siglo XXI" ha llegado al Museo de Arte Moderno de Nueva York con un despliegue de creatividad y expresión que ha cautivado a críticos de arte y visitantes por igual. Este evento, que marca un hito en la escena cultural de la ciudad, reúne una colección ecléctica de obras que desafían las convenciones y exploran nuevas fronteras en el arte contemporáneo.
-            Desde pinturas abstractas hasta instalaciones multimedia, la exposición ofrece una amplia gama de estilos y técnicas que reflejan la diversidad y la vitalidad del panorama artístico actual. Los visitantes pueden sumergirse en un mundo de colores vibrantes, formas intrincadas y narrativas provocativas mientras recorren las galerías del museo.
-            Entre las obras destacadas se encuentran piezas de artistas emergentes que están dando forma al futuro del arte contemporáneo, junto con obras icónicas de figuras establecidas en la escena artística mundial. Los temas explorados son igualmente diversos, desde reflexiones sobre la identidad y la cultura hasta exploraciones de la tecnología y el medio ambiente.
-            La exposición no solo celebra la creatividad individual de cada artista, sino que también destaca las conexiones y diálogos entre las obras expuestas. Los visitantes son invitados a reflexionar sobre las intersecciones entre diferentes estilos y corrientes artísticas, así como a considerar el papel del arte en la sociedad contemporánea.
-            Además de las obras en exhibición, la exposición también incluye una serie de eventos complementarios, como charlas de artistas, visitas guiadas y talleres interactivos. Estas actividades ofrecen a los visitantes la oportunidad de involucrarse más profundamente con el arte y ampliar su comprensión de las obras y los procesos creativos detrás de ellas.
-            "Vanguardia en el Siglo XXI" estará abierta al público durante los próximos tres meses, brindando a los amantes del arte la oportunidad de explorar nuevas perspectivas y reflexionar sobre el papel del arte en el mundo moderno. La exposición promete ser un punto culminante en el calendario cultural de la ciudad de Nueva York y una experiencia imperdible para todos los aficionados al arte.
-            Este contenido más extenso ofrece una visión más detallada y envolvente de la exposición de arte contemporáneo, brindando al lector una experiencia más inmersiva y enriquecedora.',
-            'foto' => 'images/museo.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'arte,historia,cultura,artista',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>4,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
         
-
-        Noticia::create([
-            'titulo' => 'Descubren una nueva obra perdida de un maestro renacentista en una mansión italiana',
-            'descripcion' => 'En una emocionante revelación para el mundo del arte, arqueólogos italianos han descubierto una pintura perdida del renombrado maestro renacentista Leonardo da Vinci en una antigua mansión en el corazón de Florencia.',
-            'contenido' => 'El mundo del arte está abuzz con la noticia del descubrimiento de una pintura perdida que se cree que es obra del legendario Leonardo da Vinci. El emocionante hallazgo se produjo durante una excavación arqueológica en una histórica mansión en las afueras de Florencia, Italia.
-            Los arqueólogos, que estaban investigando los restos de la mansión, quedaron asombrados al descubrir una habitación secreta oculta detrás de una pared de yeso. En el interior, entre una colección de artefactos antiguos y polvo acumulado, encontraron una pintura cubierta de suciedad y desgaste, pero claramente identificable como una obra del genio renacentista.
-            La pintura, que muestra una figura misteriosa en un paisaje bucólico, presenta la firma característica de Leonardo da Vinci en la esquina inferior derecha. Los expertos están emocionados por la posibilidad de que esta sea una obra previamente desconocida del maestro italiano, cuya obra ya es venerada en todo el mundo.
-            Los análisis preliminares de la pintura y los materiales utilizados sugieren que la obra data del siglo XVI y coincide con el período en que Leonardo da Vinci estaba activo en la región de Florencia. Sin embargo, se necesitarán análisis más detallados y pruebas científicas para confirmar definitivamente la autenticidad de la obra.
-            El descubrimiento ha generado un gran interés tanto en la comunidad artística como en el público en general, con muchas personas ansiosas por ver la pintura y aprender más sobre su origen y significado. La posibilidad de añadir una nueva obra maestra de Leonardo da Vinci al canon del arte renacentista ha provocado un renovado entusiasmo por el legado del famoso pintor y científico.
-            Los arqueólogos y expertos en arte continúan trabajando para investigar la historia de la mansión y descubrir cómo esta pintura perdida llegó a estar oculta durante siglos. Mientras tanto, la expectación y la emoción en torno al descubrimiento siguen creciendo, con la esperanza de que esta obra pueda arrojar nueva luz sobre la vida y el trabajo de uno de los artistas más influyentes de la historia.
-            Este emocionante descubrimiento nos recuerda la capacidad duradera del arte para sorprendernos y cautivarnos, incluso siglos después de haber sido creado. La posibilidad de descubrir una nueva obra de un maestro como Leonardo da Vinci es un recordatorio de la importancia de preservar y explorar nuestro patrimonio cultural para las generaciones futuras.',
-            'foto' => 'images/obra.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'arte,historia,cultura,artista',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>4,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-        Noticia::create([
-            'titulo' => 'Instalación de una monumental escultura contemporánea en el centro de Londres sorprende a los transeúntes',
-            'descripcion' => 'Una imponente escultura de arte contemporáneo, titulada "Reflexiones Urbanas", ha sido erigida en el corazón de Londres, generando sorpresa y admiración entre los residentes y visitantes de la ciudad.',
-            'contenido' => 'En un giro inesperado, el paisaje urbano de Londres ha sido transformado por la reciente instalación de una escultura contemporánea de proporciones monumentales. La obra, titulada "Reflexiones Urbanas", es una creación del aclamado artista británico David Smith y ha sido colocada en un lugar destacado en el centro de la ciudad.
-            La escultura, que se eleva majestuosamente sobre el pavimento, presenta una composición abstracta de formas geométricas y líneas fluidas que evocan la energía y el movimiento de la vida urbana. Construida en acero corten, la obra destaca por su imponente presencia y su capacidad para interactuar con su entorno circundante.
-            Desde su instalación, "Reflexiones Urbanas" ha atraído la atención de los transeúntes y ha generado un intenso debate en la comunidad artística y en la opinión pública. Algunos elogian la audacia y la innovación de la escultura, mientras que otros expresan reservas sobre su idoneidad para el entorno urbano.
-            La obra de Smith se ha convertido rápidamente en un punto focal en el paisaje urbano de Londres, atrayendo a numerosos curiosos que se detienen a contemplar su impactante presencia. La escultura también ha generado interés en las redes sociales, donde las imágenes y opiniones sobre la obra se han compartido ampliamente.
-            El artista, David Smith, ha expresado su esperanza de que "Reflexiones Urbanas" sirva como una invitación a la reflexión sobre la relación entre el arte y el espacio público, y como una celebración de la diversidad y vitalidad de la vida urbana. La escultura está programada para permanecer en su ubicación actual durante varios meses, durante los cuales se espera que continúe inspirando y provocando la imaginación de quienes la contemplen.
-            El impacto de "Reflexiones Urbanas" en el centro de Londres subraya el poder del arte para transformar y enriquecer nuestro entorno cotidiano, así como la importancia de fomentar la creatividad y la innovación en el ámbito público. A medida que la escultura se convierte en parte integral del tejido urbano de la ciudad, queda claro que el arte contemporáneo sigue siendo una fuerza vibrante y relevante en el mundo moderno.',
-            'foto' => 'images/esc1.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'arte,historia,cultura,artista',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>4,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-        Noticia::create([
-            'titulo' => 'Instalación de esculturas cinéticas transforma un parque urbano en una experiencia interactiva de arte',
-            'descripcion' => 'Un parque urbano en la ciudad de Barcelona ha sido transformado por la instalación de una serie de esculturas cinéticas que invitan a los visitantes a explorar el arte en movimiento y experimentar una nueva forma de interacción con el entorno urbano.',
-            'contenido' => 'En una iniciativa innovadora que busca fusionar el arte contemporáneo con el espacio público, un parque urbano emblemático en Barcelona ha sido el escenario de la instalación de una serie de esculturas cinéticas únicas. Estas obras de arte, creadas por el reconocido escultor español Carlos Gómez, están diseñadas para capturar la imaginación y estimular los sentidos de quienes las experimentan.
-            Cada escultura cinética es una exploración de la relación entre el movimiento y la forma, con elementos que giran, oscilan y cambian de posición en respuesta al viento y al movimiento de los espectadores. Fabricadas en materiales ligeros y resistentes, las obras de Gómez desafían las convenciones tradicionales de la escultura estática y ofrecen una experiencia dinámica y participativa.
-            Los visitantes del parque urbano son invitados a recorrer un sendero sinuoso que serpentinea entre las esculturas, permitiéndoles interactuar de cerca con cada obra y descubrir los matices de su movimiento y diseño. Desde grandes estructuras que se balancean suavemente en el viento hasta intrincadas formas que giran y se entrelazan en un ballet cinético, las esculturas de Gómez ofrecen una experiencia multisensorial única.
-            La instalación de las esculturas cinéticas ha generado un renovado interés en el parque urbano, atrayendo a una amplia gama de visitantes, desde aficionados al arte hasta familias y turistas. La interacción entre el público y las obras de arte ha enriquecido el ambiente del parque, convirtiéndolo en un espacio vibrante y dinámico donde la creatividad y la expresión artística están en constante evolución.
-            Carlos Gómez, el artista detrás de esta innovadora instalación, ha expresado su satisfacción por la respuesta positiva del público y su esperanza de que las esculturas cinéticas inspiren a otros artistas a explorar nuevas formas de arte en el espacio público. Con su enfoque audaz y su visión vanguardista, Gómez ha demostrado que el arte contemporáneo puede transformar no solo los espacios físicos, sino también la forma en que experimentamos y percibimos nuestro entorno urbano.',
-            'foto' => 'images/esc2.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'arte,historia,cultura,artista',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>4,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-        Noticia::create([
-            'titulo' => 'Festival de Arte Urbano celebra la creatividad y la diversidad cultural en las calles de Nueva York',
-            'descripcion' => 'El Festival de Arte Urbano de Nueva York ha reunido a artistas de todo el mundo para transformar los espacios públicos de la ciudad en lienzos vivientes, llenando las calles con una explosión de colores, formas y mensajes inspiradores.',
-            'contenido' => 'Durante una semana emocionante, la ciudad de Nueva York se ha convertido en el escenario de un espectáculo de arte sin precedentes, con el Festival de Arte Urbano atrayendo a artistas y entusiastas del arte de todos los rincones del mundo. Desde grafitis impresionantes hasta murales monumentales, el festival ha celebrado la diversidad cultural y la expresión creativa en todas sus formas.
-            Las calles de barrios emblemáticos como Brooklyn, Queens y el Bronx se han convertido en galerías al aire libre, con artistas trabajando en vivo para crear obras de arte que reflejen la rica historia y el espíritu vibrante de la ciudad. Los temas variados abarcan desde la justicia social y la igualdad hasta la naturaleza y la identidad cultural, dando voz a una amplia gama de perspectivas y experiencias.
-            Los visitantes del festival tienen la oportunidad de interactuar con los artistas mientras trabajan en sus creaciones, presenciando el proceso creativo en acción y participando en conversaciones significativas sobre arte, comunidad y activismo. Además de las obras de arte en las calles, el festival incluye una serie de eventos complementarios, como charlas, talleres y proyecciones de películas, que profundizan en los temas explorados por los artistas.
-            El Festival de Arte Urbano de Nueva York no solo celebra la creatividad individual, sino que también fomenta el diálogo y la conexión entre personas de diferentes culturas y antecedentes. Al transformar los espacios públicos en lugares de encuentro y expresión, el festival promueve la inclusión y la diversidad, inspirando a los neoyorquinos y a visitantes de todo el mundo a apreciar la belleza y el poder del arte urbano.',
-            'foto' => 'images/fest.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'arte,historia,cultura,artista',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>4,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
 
         Noticia::create([
             'titulo' => 'Arte y Cultura Florecen en las Calles de Barcelona: El Renacimiento del Grafiti en el Barrio Gótico',
@@ -1162,100 +1249,7 @@ class DatabaseSeeder extends Seeder
 
         /********************************************       POLITICA        ************************************************  */
 
-        Noticia::create([
-            'titulo' => 'Catalá se lleva a la Alcaldía a la gerente de la fundación Valencia Activa tras los últimos choques con Vox',
-            'descripcion' => 'La oposición, Compromís y PSPV, advierte que el cambio obedece a la crisis de gobierno entre PP y su socio ultra y despeja el camino al segundo teniente de alcalde Juanma Badenas',
-            'contenido' => 'Los grupos de la oposición en el Ayuntamiento de Valencia, Compromís y PSPV-PSOE, han criticado el nombramiento de Isabel Rubio León como directora general de Relaciones Institucionales de la alcaldesa de Valencia, María José Catalá, del PP, apenas seis meses después de haberla puesto al frente de la fundación de empleo Valencia Activa, un departamento que ahora dirige Vox, su socio de gobierno. Compromís denuncia que es el octavo cargo nombrado a dedo por el PP desde que gobierna el consistorio y el PSPV añade que el cambio despeja el camino al segundo teniente de alcalde, Juan Manuel Badenas, para “convertirlo en un chiringuito” de Vox.
-            El grupo valencianista ha indicado que “Catalá ha vuelto a aprobar a escondidas y en la previa de un día festivo, una cuestión tan polémica como la creación de un nuevo cargo directivo para Alcaldía”, al tiempo que ha expuesto que “en total, los ocho cargos creados por la primera edil desde su llegada al gobierno ya suponen un coste para las arcas públicas de 651.069,92 euros”.
-            Ferran Puchades, edil de Compromís, considera que el nombramiento de la que fuera gerente de la Fundación Valencia Activa “demuestra que estamos ante una operación para dejar el campo libre al segundo teniente de alcalde, también responsable de Empleo y portavoz de Vox, para que pueda designar a la persona que quiera para encabezar y dirigir sin escrúpulos su agenda ultra”.
-            Compromís ha aseverado que Isabel Rubio León, que ha trabajado como asesora para los expresidentes de la Generalitat Francisco Camps y Eduardo Zaplana, fue nombrada por el PP gerente de Valencia Activa el pasado 20 de septiembre mientras que Badenas accedió al control de la entidad el pasado 23 de octubre tras el pacto de gobierno entre PP —al que le faltaban cuatro votos para la mayoría absoluta— y Vox.
-            Para el concejal socialista en el Ayuntamiento de Valencia Javier Mateo, la adscripción a Alcaldía de Isabel Rubio es una “confirmación de la crisis de Gobierno de Catalá y Vox, donde la primera está claramente subordinada a los dictados de los ultras”.
-            Según Mateo, “Catalá se ha tenido que llevar a la Alcaldía a la hasta ayer gerente de Valencia Activa, puesta por el PP y persona de su máxima confianza” por la mala relación entre ambos socios. El edil socialista advierte que con este “rescate” la alcaldesa “despeja el camino para que Vox tenga vía libre para hacer un nuevo nombramiento y seguir ahondando en el irreparable daño a la Fundación Valencia Activa”. “Está permitiendo que Vox convierta una entidad de reconocido prestigio en materia laboral en un chiringuito en el que dar mítines y eliminar a la mujer de las políticas laborales”, ha denunciado.
-            Las tensiones entre PP y Vox desde que cerraron el pasado octubre un acuerdo en gobierno han aflorado públicamente en varias ocasiones. El último episodio se produjo en el pleno municipal de marzo, cuando la oposición interpeló a la alcaldesa sobre los cambios en los estatutos de la fundación de empleo Valencia Activa, de los que PP y Vox eliminaron la mención expresa a las mujeres. Badenas exigió responder a la oposición, en su calidad de responsable de Empleo, pero la alcaldesa María José Catalá le dio la palabra al portavoz del PP, Juan Carlos Caballero, lo que provocó que los cuatro ediles del grupo ultra abandonaran el pleno en protesta y quedasen sin aprobar varias medidas previstas por el equipo de gobierno local. Fuentes municipales han precisado, en respuesta a la denuncia de la oposición, que frente a los ocho altos cargos que ha nombrado Catalá desde su llegada a la alcaldía en junio, Compromís y PSOE llegaron a tener 14 altos cargos cuando gobernaban el Ayuntamiento. Las mismas fuentes apuntaron, en referencia al sueldo de la nueva directora de Relaciones Internacionales de la Alcaldía, que todos los directores generales tienen la misma retribución, tanto en esta legislatura como en la anterior, y está equiparada a la jefatura de servicio”, remarcaron.
-            ',
-            'foto' => 'images/catala.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'politica,gobierno,estado,leyes',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>5,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-
-
-        Noticia::create([
-            'titulo' => 'Elecciones Locales: Un Cambio de Rumbo en la Política Municipal',
-            'descripcion' => 'Las elecciones locales marcan un punto crucial en la política de una comunidad, donde los ciudadanos ejercen su poder para elegir líderes que representen sus intereses y necesidades a nivel municipal. Estos comicios no solo moldean el futuro de una ciudad, sino que también reflejan las tendencias políticas y sociales más amplias en juego.',
-            'contenido' => 'Las elecciones locales son un pilar fundamental de la democracia, ya que permiten que los ciudadanos participen activamente en el proceso político y contribuyan a la toma de decisiones que afectan directamente a sus comunidades. A nivel municipal, los votantes eligen alcaldes, concejales y otros funcionarios locales que serán responsables de abordar una amplia gama de cuestiones, desde infraestructura y servicios públicos hasta desarrollo económico y políticas sociales.
-            Estas elecciones suelen reflejar no solo las preocupaciones locales, sino también las tendencias políticas más amplias que están en juego a nivel nacional e incluso internacional. Los resultados de las elecciones locales pueden interpretarse como indicadores tempranos de cambios en el panorama político, así como de la confianza del electorado en los partidos y líderes individuales.
-            Además, las elecciones locales ofrecen una plataforma importante para la participación ciudadana y el activismo político a nivel comunitario. Los candidatos locales suelen estar más cerca de los votantes y tienen la oportunidad de abordar problemas específicos que afectan directamente a la vida diaria de las personas en sus comunidades.
-            En muchos casos, las elecciones locales también son un reflejo de la diversidad y la inclusión en la política, ya que pueden dar voz a grupos minoritarios y marginados que a menudo están subrepresentados en otros niveles de gobierno. La elección de líderes locales de diversos orígenes étnicos, culturales y socioeconómicos puede contribuir a una mayor representatividad y equidad en la toma de decisiones.
-            En resumen, las elecciones locales son un componente vital de la vida política de una comunidad, donde los ciudadanos tienen la oportunidad de influir en el futuro de su ciudad y expresar sus valores y preferencias a través del voto. Estos comicios no solo moldean el rumbo de una ciudad, sino que también reflejan las dinámicas políticas y sociales más amplias en juego a nivel local, nacional e incluso global.',
-            'foto' => 'images/local.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'politica,gobierno,estado,leyes',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>5,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-        Noticia::create([
-            'titulo' => 'Tensiones Internacionales: Desafíos Diplomáticos en el Escenario Global',
-            'descripcion' => 'Las tensiones internacionales están en aumento, desafiando los cimientos de la diplomacia y la cooperación entre naciones. Desde disputas territoriales hasta conflictos ideológicos, el panorama geopolítico actual presenta una serie de desafíos que requieren un enfoque diplomático cuidadoso y estratégico.',
-            'contenido' => 'Las tensiones internacionales se han intensificado en los últimos años, con una serie de factores que contribuyen a la creciente discordia entre naciones. Disputas territoriales en regiones como el Mar del Sur de China y el Medio Oriente han generado conflictos prolongados y una competencia por recursos estratégicos, aumentando las tensiones entre potencias regionales e internacionales.
-            Además de las disputas territoriales, los conflictos ideológicos y políticos también están contribuyendo a la inestabilidad geopolítica. La rivalidad entre potencias como Estados Unidos, China y Rusia ha generado una competencia feroz por la influencia global, exacerbando las divisiones y dificultando la cooperación en temas de seguridad, comercio y gobernanza mundial.
-            El surgimiento de nuevas amenazas transnacionales, como el cambio climático, el terrorismo y la pandemia de COVID-19, ha añadido una capa adicional de complejidad a las relaciones internacionales. Estos desafíos globales requieren una respuesta coordinada y colaborativa por parte de la comunidad internacional, pero las divergencias políticas y estratégicas obstaculizan los esfuerzos de cooperación.
-            En este contexto, la diplomacia se vuelve más crucial que nunca como medio para abordar las diferencias y buscar soluciones pacíficas a los conflictos internacionales. Los esfuerzos diplomáticos deben centrarse en el diálogo constructivo, la negociación de acuerdos mutuamente beneficiosos y el fortalecimiento de los mecanismos de gobernanza global para abordar los desafíos comunes de manera efectiva.
-            En resumen, las tensiones internacionales representan uno de los principales desafíos de nuestro tiempo, con implicaciones significativas para la estabilidad y la seguridad mundial. La diplomacia desempeña un papel fundamental en la gestión de estas tensiones y en la promoción de un orden mundial basado en la cooperación, el respeto mutuo y la paz duradera.',
-            'foto' => 'images/tension.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'politica,gobierno,estado,leyes',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>5,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-        Noticia::create([
-            'titulo' => 'El Debate sobre la Gestión del Gobierno de Sánchez',
-            'descripcion' => 'La tensión política en España se intensifica a medida que el gobierno de Pedro Sánchez enfrenta críticas de la oposición y desafíos internos que ponen a prueba su capacidad de liderazgo y gestión.',
-            'contenido' => 'El gobierno de Pedro Sánchez se encuentra bajo escrutinio público y críticas constantes por parte de la oposición y diversos sectores de la sociedad española. Las tensiones políticas se han agudizado en medio de la crisis económica, la pandemia de COVID-19 y los conflictos territoriales, lo que ha generado un clima de incertidumbre y polarización en el país.
-            La gestión de la crisis sanitaria y económica ha sido objeto de controversia, con acusaciones de falta de transparencia, improvisación y falta de coordinación por parte del gobierno. La oposición ha cuestionado las medidas adoptadas y ha exigido una rendición de cuentas más rigurosa sobre el manejo de la pandemia y la distribución de los fondos de recuperación.
-            Además, las tensiones se han exacerbado por la situación en Cataluña y el desafío independentista, con divisiones políticas cada vez más profundas sobre el enfoque adecuado para abordar este conflicto. La polarización ideológica y la falta de consenso político han dificultado la búsqueda de soluciones duraderas y han alimentado la inestabilidad política en el país.
-            En este contexto, la capacidad de liderazgo y negociación de Pedro Sánchez se ha puesto a prueba, enfrentándose a críticas tanto dentro de su propio partido como de la oposición. La necesidad de construir puentes de diálogo y consenso se vuelve cada vez más urgente para superar las divisiones y encontrar soluciones viables a los desafíos que enfrenta España en la actualidad.
-            En resumen, la tensión política en España refleja un panorama complejo y desafiante, caracterizado por la polarización, la confrontación y la falta de consenso. La capacidad del gobierno de Pedro Sánchez para gestionar esta situación y avanzar hacia una agenda de reformas y reconciliación nacional será determinante para el futuro del país.',
-            'foto' => 'images/sanchez.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'politica,gobierno,estado,leyes',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>5,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
-
-        Noticia::create([
-            'titulo' => 'Crisis Migratoria: Desafíos Humanitarios en la Frontera Sur',
-            'descripcion' => 'La crisis migratoria en la frontera sur está alcanzando proporciones críticas, desencadenando desafíos humanitarios urgentes que requieren respuestas efectivas por parte de las autoridades gubernamentales y la comunidad internacional.',
-            'contenido' => 'La frontera sur se enfrenta a una creciente afluencia de migrantes y solicitantes de asilo, muchos de los cuales huyen de la violencia, la pobreza y la inestabilidad en sus países de origen. Esta situación ha generado una crisis humanitaria con miles de personas que buscan refugio y protección en la frontera, enfrentándose a condiciones extremas y riesgos significativos en su búsqueda de una vida mejor.
-            Las capacidades de recepción y procesamiento en los puntos fronterizos se ven abrumadas por el flujo constante de migrantes, lo que genera tensiones y desafíos logísticos para las autoridades locales y nacionales. La falta de recursos y la capacidad limitada para gestionar la llegada masiva de personas están exacerbando la situación humanitaria y planteando interrogantes sobre la capacidad de respuesta del sistema.
-            Además de los desafíos logísticos, la crisis migratoria también plantea cuestiones éticas y legales relacionadas con los derechos humanos y la protección de los más vulnerables. La necesidad de garantizar un trato humano y digno para los migrantes, especialmente niños y familias, es una prioridad urgente que requiere un enfoque coordinado y solidario por parte de las autoridades y la sociedad en su conjunto.
-            En este contexto, es fundamental fortalecer la cooperación internacional y regional para abordar las causas subyacentes de la migración y promover soluciones sostenibles a largo plazo. Esto implica abordar las inequidades económicas, sociales y políticas que impulsan la migración forzada, así como mejorar los mecanismos de protección y asistencia para los migrantes en tránsito y destino.
-            En resumen, la crisis migratoria en la frontera sur representa un desafío humanitario de proporciones alarmantes que requiere una respuesta integral y solidaria. Es fundamental adoptar medidas urgentes para garantizar la protección y el bienestar de los migrantes y buscar soluciones efectivas y sostenibles para abordar las causas fundamentales de la migración.',
-            'foto' => 'images/migra.jpg',
-            'likes' => random_int(10,150),
-            'guardados' => random_int(10,150),
-            'palabras_clave' => 'politica,gobierno,estado,leyes',
-            'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
-            'categoria_id'=>5,
-            'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
-        ]);
+        
 
         Noticia::create([
             'titulo' => 'Elecciones Autonómicas en Cataluña',
@@ -1433,19 +1427,19 @@ class DatabaseSeeder extends Seeder
 
         UserNoticia::create([
             'user_id' => 5,
+            'noticia_id' => 2,
+            'recomendada' => false,
+        ]);
+
+        UserNoticia::create([
+            'user_id' => 5,
             'noticia_id' => 3,
             'recomendada' => false,
         ]);
 
         UserNoticia::create([
             'user_id' => 5,
-            'noticia_id' => 5,
-            'recomendada' => false,
-        ]);
-
-        UserNoticia::create([
-            'user_id' => 5,
-            'noticia_id' => 7,
+            'noticia_id' => 4,
             'recomendada' => false,
         ]);
 
@@ -1454,25 +1448,25 @@ class DatabaseSeeder extends Seeder
         /**************************  USUARIO ECONOMIA (ana)  ***************************/
         UserNoticia::create([
             'user_id' => 3,
+            'noticia_id' => 6,
+            'recomendada' => false,
+        ]);
+
+        UserNoticia::create([
+            'user_id' => 3,
+            'noticia_id' => 7,
+            'recomendada' => false,
+        ]);
+
+        UserNoticia::create([
+            'user_id' => 3,
             'noticia_id' => 8,
             'recomendada' => false,
         ]);
 
         UserNoticia::create([
             'user_id' => 3,
-            'noticia_id' => 10,
-            'recomendada' => false,
-        ]);
-
-        UserNoticia::create([
-            'user_id' => 3,
-            'noticia_id' => 12,
-            'recomendada' => false,
-        ]);
-
-        UserNoticia::create([
-            'user_id' => 3,
-            'noticia_id' => 14,
+            'noticia_id' => 9,
             'recomendada' => false,
         ]);
 
@@ -1498,31 +1492,31 @@ class DatabaseSeeder extends Seeder
 
         UserNoticia::create([
             'user_id' => 6,
-            'noticia_id' => 5,
+            'noticia_id' => 4,
             'recomendada' => false,
         ]);
 
         UserNoticia::create([
             'user_id' => 6,
-            'noticia_id' => 20,
+            'noticia_id' => 11,
             'recomendada' => false,
         ]);
 
         UserNoticia::create([
             'user_id' => 6,
-            'noticia_id' => 22,
+            'noticia_id' => 12,
             'recomendada' => false,
         ]);
 
         UserNoticia::create([
             'user_id' => 6,
-            'noticia_id' => 23,
+            'noticia_id' => 13,
             'recomendada' => false,
         ]);
 
         UserNoticia::create([
             'user_id' => 6,
-            'noticia_id' => 26,
+            'noticia_id' => 14,
             'recomendada' => false,
         ]);
 

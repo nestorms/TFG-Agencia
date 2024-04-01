@@ -20,6 +20,7 @@ use Illuminate\Auth\Events\Login;
 
 Route::view('/','index');
 Route::get('/recomendadas/{id}', [NoticiaController::class,'noticiasRecomendadas']);
+Route::get('/recientes', [NoticiaController::class,'noticiasRecientes']);
 
 
 /********************   INICIO DE SESIÓN ********************/
