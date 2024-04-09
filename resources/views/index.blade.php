@@ -77,7 +77,7 @@
         <div class="container mt-4 mb-5">
             <div class="carta">
                 @foreach ($noticias as $noticia)
-                        <a href="{{ route('noticias.show', $noticia->id) }}">
+                        <a class="mb-3" href="{{ route('noticias.show', $noticia->id) }}">
                             <div class="card news-card h-100">
                                 <img src="{{ $noticia->foto }}" class="card-img-top" alt="Imagen de la noticia">
                                 <div class="card-body">

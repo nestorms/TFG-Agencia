@@ -103,6 +103,8 @@ return new class extends Migration
         Schema::dropIfExists('user_noticia');
         Schema::dropIfExists('noticias');
         Schema::dropIfExists('users');
+        Schema::dropIfExists('chats');
+        Schema::dropIfExists('user_notification');
         
     }
 };

@@ -104,7 +104,7 @@
 
                         <div class="mx-1">
                             <a class="btn btn-light" href="/mensajes/{{auth()->user()->id}}">
-                                <img src="{{ asset('images/message.png') }}" alt="Mensajes" class="img-fluid" style="width: auto; height: 30px;">
+                                <img src="{{ asset('images/message.png') }}" alt="Mensajes"  style="width: 30px; height: 30px;">
                             </a>
                         </div>
                     </div>

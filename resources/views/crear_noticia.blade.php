@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="container">
-    <h2>Publicar noticia</h2>
+    <h2 class="text-left m-4">Publicar noticia</h2>
 
     <form action="/crear_noticia" method="post">
         @csrf
@@ -81,7 +81,7 @@
             
         </div>
         
-        <div class="d-flex justify-content-center mb-4">
+        <div class="d-flex justify-content-center mb-5">
             <button type="submit" class="btn btn-lg btn-dark w-25 p-3">Publicar</button>
         </div>
     </form>

@@ -16,7 +16,7 @@
         </div>
     
     @else
-        <div id="grid" style="margin-bottom: 250px;">
+        <div id="grid" style="margin-bottom: 280px;">
             <table class="table table-spaced">
                 <thead>
                     <tr>

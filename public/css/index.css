@@ -18,7 +18,7 @@
 .carta{
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 30px;
     justify-content: center;
     margin-top: 6vh;
 }

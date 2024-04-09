@@ -43,12 +43,29 @@
 
     .icon-left {
         float: left;
-        margin-right: 0px; /* Espacio a la derecha del icono */
+        margin-right: 10px; /* Espacio a la derecha del icono */
+        border-radius: 50%;
+        background-color: #cfcbcb;
+        border: 1px solid black;
+        width: 4vw;
+        height: 8vh;
+        align-content: center;
+        text-align: center;
+        font-size: 1.5vw;
     }
 
     .icon-right {
         float: right;
-        margin-left: 0px; /* Espacio a la izquierda del icono */
+        margin-left: 10px; /* Espacio a la izquierda del icono */
+
+        border-radius: 50%;
+        background-color: #b9d9c6;
+        border: 1px solid black;
+        width: 4vw;
+        height: 8vh;
+        align-content: center;
+        text-align: center;
+        font-size: 1.5vw;
     }
 
     .icon-large {
@@ -86,8 +103,8 @@
                         @if ($chat->remitente_id == auth()->user()->id)
                             <div class="">
                                 <div class="icon-right">
-                                    <!-- Icono grande a la derecha -->
-                                    <i class="bi bi-person-circle" style="font-size: 3vw;"></i>
+                                    
+                                    {{ substr(auth()->user()->nombre, 0, 1) }}
                                 </div>
                                 <div class="speech-bubble-right">
                                     <small>{{$chat->mensaje}}</small>
@@ -98,8 +115,8 @@
                         @else
                             <div class="d-flex align-items-center">
                                 <div class="icon-left">
-                                    <!-- Icono grande a la izquierda -->
-                                    <i class="bi bi-person-fill" style="font-size: 3vw;"></i>
+                                    
+                                    {{ substr($destinatario->nombre, 0, 1) }}
 
                                 </div>
                                 <div class="speech-bubble-left">
