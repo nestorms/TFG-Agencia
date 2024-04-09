@@ -270,35 +270,54 @@ class NoticiaController extends Controller
                     'descripcion' => $source['descripcion'],*/
                     'score' => $score,
                     'id_medio' => $source['id_medio'],
+                    'noticia' => $noticia,
                 ];
+            }
+        }
 
+        // Inicializa un array para almacenar las noticias agrupadas por id_medio
+        $noticias_por_medio = [];
 
-                $umbralBM25=10.0;
+        // Agrupa las noticias por id_medio
+        foreach ($noticias2 as $noticia) {
+            $id_medio = $noticia['id_medio'];
+            $noticias_por_medio[$id_medio][] = $noticia;
+        }
 
-                if ($score >= $umbralBM25) {
-                    // El score BM25 cumple con el umbral, almacenar la recomendación
-                    $source = $hit['_source'];
-                    $user_id = $source['id_medio'];
-    
-                    UserNoticia::create([
-                        'user_id' => $user_id,
-                        'noticia_id' => $noticia->id,
-                        'recomendada' => true,
-                    ]);
+        // Recorre cada grupo de noticias por id_medio
+        foreach ($noticias_por_medio as $id_medio => &$notis) {
+            // Ordena las noticias por score de forma descendente
+            usort($notis, function($a, $b) {
+                return $b['score'] <=> $a['score'];
+            });
+            
+            // Selecciona las cinco primeras noticias de cada grupo después de ordenarlas
+            $notis = array_slice($notis, 0, 5);
+        }
 
-                    UserNotification::create([
-                        'user_id' => $user_id,
-                        'noticia_id' => $noticia->id,
-                        'estado' => 'pendiente',
-                        'descripcion' => "Tienes una nueva noticia recomendada de " . $noticia->category->nombre,
-                        'fecha' => date('Y-m-d'),
-                    ]);
-                }
+        // Ahora $noticias_por_medio contiene las tres noticias con el score más alto asociadas a cada medio
+        foreach ($noticias_por_medio as $id_medio => $noticias) {
+            foreach ($noticias as $noticia) {
+                // Crear una entrada en la tabla UserNoticia
+                UserNoticia::create([
+                    'user_id' => $id_medio,
+                    'noticia_id' => $noticia['noticia']->id,
+                    'recomendada' => true,
+                ]);
+        
+                // Crear una entrada en la tabla UserNotification
+                UserNotification::create([
+                    'user_id' => $id_medio,
+                    'noticia_id' => $noticia['noticia']->id,
+                    'estado' => 'pendiente',
+                    'descripcion' => "Tienes una nueva noticia recomendada de " . $noticia['noticia']->category->nombre,
+                    'fecha' => date('Y-m-d'),
+                ]);
             }
         }
 
         // Retornar las noticias encontradas
-        return response()->json(['noticias2' => $noticias2]);
+        return response()->json(['noticias2' => $noticias_por_medio]);
     }
 
     public function index()
@@ -662,7 +681,7 @@ class NoticiaController extends Controller
     }
 
     public function descargarJSON($id)
-{
+    {
         $noticia = Noticia::findOrFail($id);
 
         // Convierto los datos de la noticia a formato JSON
@@ -673,7 +692,66 @@ class NoticiaController extends Controller
             'Content-Type' => 'application/json',
             'Content-Disposition' => 'attachment; filename="noticia.json"',
         ]);
-}
+    }
+
+
+
+    public function ejecutarScriptPython()
+    {
+        // Datos que deseas pasar al script de Python
+        $noticias = Noticia::all();
+        // Convertir las noticias a formato JSON
+        //$datos_json = json_encode($noticias, JSON_FORCE_OBJECT);
+        $datos=2;
+
+        foreach ($noticias as $noticia) {
+            // Construir un objeto JSON para cada noticia
+            $noticia_json = [
+                'id' => $noticia->id,
+                'titulo' => $noticia->titulo,
+                'descripcion' => $noticia->descripcion,
+                'contenido' => $noticia->contenido,
+                'categoria' => $noticia->category,
+                'fecha_publicacion' => $noticia->fecha,
+                // Puedes agregar más campos si lo necesitas
+            ];
+        
+            // Agregar el objeto JSON de la noticia al array de noticias JSON
+            $noticias_json[] = $noticia_json;
+        }
+
+        // Crear un archivo temporal para escribir las noticias en formato JSON
+        $archivo_temporal = tempnam(sys_get_temp_dir(), 'noticias');
+
+        
+        
+        // Construir el objeto JSON final con todas las noticias
+        $json_final = json_encode(['noticias' => $noticias_json]);
+
+        //dd($json_final);
+
+        // Escribir las noticias en el archivo temporal en formato JSON
+        file_put_contents($archivo_temporal, $json_final);
+
+
+
+
+        $ruta_script_python = base_path('python/clasificador.py');
+
+        // Ejecutar el script de Python y pasarle los datos
+        exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal), $salida);
+
+        // Eliminar el archivo temporal después de usarlo
+        unlink($archivo_temporal);
+
+        //dd($noticias_json);
+
+        // La salida del script de Python estará en el array $salida
+        $clase_mas_probable = $salida;
+
+        // Hacer lo que necesites con la clase más probable devuelta por el script de Python
+        return response()->json(['clase_mas_probable' => $clase_mas_probable]);
+    }
 
     
 }
