@@ -42,7 +42,7 @@ Route::get('/crear_noticia', [NoticiaController::class,'publicar']);
 Route::post('/crear_noticia', [NoticiaController::class,'create']);
 
 
-Route::get('/script', [NoticiaController::class,'ejecutarScriptPython']);
+Route::post('/script', [NoticiaController::class,'ejecutarScriptPython']);
 
 Route::post('/noticias/{id}/like', [NoticiaController::class, 'like'])->name('noticias.like');
 Route::post('/noticias/{id}/unlike', [NoticiaController::class, 'unlike'])->name('noticias.unlike');

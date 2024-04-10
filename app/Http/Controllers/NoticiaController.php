@@ -696,7 +696,7 @@ class NoticiaController extends Controller
 
 
 
-    public function ejecutarScriptPython()
+    public function ejecutarScriptPython(Request $request)
     {
         // Datos que deseas pasar al script de Python
         $noticias = Noticia::all();
@@ -728,29 +728,37 @@ class NoticiaController extends Controller
         // Construir el objeto JSON final con todas las noticias
         $json_final = json_encode(['noticias' => $noticias_json]);
 
-        //dd($json_final);
-
         // Escribir las noticias en el archivo temporal en formato JSON
         file_put_contents($archivo_temporal, $json_final);
 
 
+        $ruta_script_python = base_path('resources/py/clasificador.py');
 
-
-        $ruta_script_python = base_path('python/clasificador.py');
+        /*$noticia_clasificar = Noticia::findOrFail(20);
+        $test = $noticia_clasificar->titulo . $noticia_clasificar->descripcion . $noticia_clasificar->contenido;*/
 
         // Ejecutar el script de Python y pasarle los datos
-        exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal), $salida);
+        //exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal), $salida, $error);
+        exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal) . " " . escapeshellarg($request->test) . " 2>&1", $salida, $error);
+
+        //En caso de error lo muestro por pantalla para depurar mejor el código
+        if ($error !== 0) {
+            echo "Error al ejecutar el script de Python. Código de error: $error";
+            foreach ($salida as $linea) {
+                echo "$linea\n";
+            }
+        } 
 
         // Eliminar el archivo temporal después de usarlo
         unlink($archivo_temporal);
 
-        //dd($noticias_json);
+        $id=intval($salida[0]);
 
-        // La salida del script de Python estará en el array $salida
-        $clase_mas_probable = $salida;
-
-        // Hacer lo que necesites con la clase más probable devuelta por el script de Python
-        return response()->json(['clase_mas_probable' => $clase_mas_probable]);
+        $categoria=Category::findOrFail($id)->id;
+        //dd($error);
+        // Devuelvo la categoría mas probable según el clasificador de RandomForest
+        //return $categoria;
+        return response()->json(['categoria' => $categoria]);
     }
 
     
