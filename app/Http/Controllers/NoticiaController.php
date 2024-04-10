@@ -734,19 +734,23 @@ class NoticiaController extends Controller
 
         $ruta_script_python = base_path('resources/py/clasificador.py');
 
-        /*$noticia_clasificar = Noticia::findOrFail(20);
-        $test = $noticia_clasificar->titulo . $noticia_clasificar->descripcion . $noticia_clasificar->contenido;*/
-
         // Ejecutar el script de Python y pasarle los datos
-        //exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal), $salida, $error);
         exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal) . " " . escapeshellarg($request->test) . " 2>&1", $salida, $error);
 
         //En caso de error lo muestro por pantalla para depurar mejor el código
         if ($error !== 0) {
-            echo "Error al ejecutar el script de Python. Código de error: $error";
+            $errores[] = "Error al ejecutar el script de Python. Código de error: $error";
+
+            // Agregar cada línea de salida como un error adicional
             foreach ($salida as $linea) {
-                echo "$linea\n";
+                $errores[] = $linea;
             }
+
+            // Convertir el array de errores a formato JSON
+            $json_errores = json_encode($errores);
+
+            // Enviar el JSON al cliente
+            dd($json_errores);
         } 
 
         // Eliminar el archivo temporal después de usarlo
@@ -755,11 +759,10 @@ class NoticiaController extends Controller
         $id=intval($salida[0]);
 
         $categoria=Category::findOrFail($id)->id;
+
         //dd($error);
-        // Devuelvo la categoría mas probable según el clasificador de RandomForest
+        // Devuelvo la categoría mas probable según el clasificador de NBMultinomial
         //return $categoria;
         return response()->json(['categoria' => $categoria]);
-    }
-
-    
+    }    
 }

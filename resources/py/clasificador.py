@@ -4,6 +4,9 @@ import json
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.pipeline import make_pipeline
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
 
 
 # Obtener la ruta al archivo temporal de las noticias en formato JSON
@@ -30,26 +33,25 @@ for noticia in noticias:
 
 # Dividir los datos en conjuntos de entrenamiento y prueba (NO HACE FALTA EN ESTE CASO)
 #X_train, X_test, y_train, y_test = train_test_split(datos_noticias, datos_categorias, test_size=0.01, random_state=42)
-class_weights ={
-    1: 1,  # Peso de clase para la primera clase (no política)
-    2: 1,  # Peso de clase para la segunda clase (otra clase)
-    3: 1,  # Peso de clase para la tercera clase (política)
-    4: 1,  # Peso de clase para la tercera clase (política)
-    5: 0.2  # Peso de clase para la tercera clase (política)
-}
-# Crear el vectorizador de términos y el clasificador Random Forest
-vectorizer = CountVectorizer()
-clf = RandomForestClassifier(n_estimators=100,class_weight=class_weights, random_state=42)
 
-# Construir el pipeline
-pipeline = make_pipeline(vectorizer, clf)
+# Vectorización del texto
+#vectorizer = CountVectorizer()
+vectorizer = TfidfVectorizer()
+#clf = RandomForestClassifier(n_estimators=100, random_state=42)
+clf = MultinomialNB()
+
+
+X_train_vectorized = vectorizer.fit_transform(datos_noticias)
+X_test_vectorized = vectorizer.transform(X_test)
+
 # Entrenar el modelo
-pipeline.fit(datos_noticias, datos_categorias)
-
+clf.fit(X_train_vectorized, datos_categorias)
 
 # Evaluar el modelo
-y_pred = pipeline.predict(X_test)
+y_pred = clf.predict(X_test_vectorized)
 
 # Imprimir reporte de clasificación
 print(y_pred[0])
+print(X_test_vectorized.shape)
+
 
