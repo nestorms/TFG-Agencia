@@ -22,7 +22,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color:white; padding:0.2rem;">
-            <div class="container align-items-center">
+            <div class="container align-items-center justify-content-center">
                 <!-- Logo -->
                 <a class="navbar-brand" href="/">
                     <img src="{{ asset('images/logo.png') }}" alt="Newstor Logo" style="width: auto; height: 5rem;">
@@ -35,7 +35,7 @@
                     
                 </form>
                 @auth
-                    <div class="d-flex justify-content-end align-items-center">
+                    <div class="d-flex justify-content-center align-items-center mx-5">
 
                         @if (auth()->user()->rol == "medio")
                         <div class="dropdown">
@@ -90,12 +90,12 @@
                             <div class="mx-1">  
                                 @if (auth()->user()->rol == "admin")
                                     <a class="btn btn-light" href="/administracion">
-                                        <img src="{{ asset('images/llave.png') }}" alt="Administración" class="img-fluid" style="width: auto; height: 25px;">
+                                        <img src="{{ asset('images/llave.png') }}" alt="Administración" style="width: 25px; height: 25px;">
                                     </a>
 
                                 @elseif(auth()->user()->rol == "redactor")
                                     <a class="btn btn-light" href="/crear_noticia">
-                                        <img src="{{ asset('images/lapiz.png') }}" alt="Publicar" class="img-fluid" style="width: auto; height: 25px;">
+                                        <img src="{{ asset('images/lapiz.png') }}" alt="Publicar" style="width: 25px; height: 25px;">
                                     </a>
                                 @endif
                                 
@@ -108,11 +108,11 @@
                             </a>
                         </div>
                     </div>
-                    <button class="dropdown btn btn-light p-2" style="color: black; margin-left:7rem;">
+                    <button class="dropdown btn btn-light p-2 mx-auto" style="color: black;">
                         
                         <a class="nav-link dropdown" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="align-items-center" style="color:black;">
-                                <img src="{{ asset('images/profile.png') }}" alt="Perfil" class="img-fluid" style="width: auto; height: 3rem;">
+                                <img src="{{ asset('images/profile.png') }}" alt="Perfil" class="img-fluid" style="width: 3rem; height: 3rem;">
                                 
                                 @if (auth()->user()->rol == "admin")
                                     <i class="bi bi-caret-down-fill"></i>
@@ -151,7 +151,7 @@
                     @guest
                     <a class="btn" href="/login" id="login" role="button">
                         <div class="align-items-center" style="color:black;">
-                            <img src="{{ asset('images/profile.png') }}" alt="Perfil" class="img-fluid" style="width: auto; height: 3rem;">
+                            <img src="{{ asset('images/profile.png') }}" alt="Perfil" class="img-fluid" style="width: 3rem; height: 3rem;">
                             <p class="login">Iniciar sesión</p>
                         </div>
                     </a>

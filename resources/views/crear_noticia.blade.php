@@ -50,7 +50,10 @@
             
             
             <div class="box desplegable">
-                <label for="opciones" class="form-label">Categoría</label> <button type="button" onclick="clasificar()" id="btnSeleccionAutomatica" class="btn btn-light">Seleccionar automáticamente</button>
+                
+                <label for="opciones" class="form-label me-4">Categoría</label> 
+                <button type="button" onclick="clasificar()" id="btnSeleccionAutomatica" class="btn btn-success btn-sm mx-1">Seleccionar automáticamente</button>
+                <span class="icon-help" data-bs-toggle="tooltip" data-bs-placement="right" title="Clasifica tu noticia mediante machine learning con esta función"><i class="bi bi-question-circle"></i></span>
                 <select id="opciones" class="form-select mb-3" name="categoria_id">
                     <option selected value="0">Selecciona una opción</option>
 
@@ -61,6 +64,8 @@
                 @if ($errors->has('categoria_id'))
                     <span class="text-danger text-left">{{ $errors->first('categoria_id') }}</span>
                 @endif
+                <span id="error-clasificar" class="text-danger text-left"></span>
+                <span id="ok-clasificar" class="text-success text-left"></span>
             </div>
             
             
@@ -152,15 +157,20 @@
         var descripcion = document.getElementById("texto2").value;
         var contenido = document.getElementById("textoAnchoCompleto").value;
 
-        // Uno los valores en un solo texto
+        // Uno los valores en un solo string
         var texto = titulo + " " + descripcion + " " + contenido;
+
+        if(texto.trim() == ""){
+            document.getElementById("error-clasificar").innerHTML="Escribe algo para clasificar tu noticia automáticamente!";
+            return;
+        }
 
         console.log("Texto obtenido:", texto);
         var token2 = $('meta[name="csrf-token"]').attr('content');
         console.log("Token obtenido:", token2);
         $.ajax({
             type: 'POST',
-            url: '/script',
+            url: '/clasificar',
             data: { 
                 test: texto,
                 _token: token2,
@@ -168,6 +178,9 @@
             dataType: 'json',
             success: function(response) {
                 console.log("Respuesta exitosa recibida:", response);
+                //Eliminar posible mensaje de error anterior
+                document.getElementById("error-clasificar").innerHTML="";
+                document.getElementById("ok-clasificar").innerHTML="Noticia clasificada automáticamente por Newstor!";
                 // Actualizar la categoria seleccionada
                 var selectedOption = response.categoria; // Suponiendo que 'response.categoria' contiene el valor deseado
                 $('#opciones').val(selectedOption);
@@ -178,6 +191,7 @@
         });
     };
 </script>
+
 
 
 @endsection

@@ -16,7 +16,7 @@ body{
 
 input{
     border: none;
-    width: 60%;
+    min-width: 25vw!important;
 }
 
 input:focus{

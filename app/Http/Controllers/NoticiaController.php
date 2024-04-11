@@ -692,20 +692,17 @@ class NoticiaController extends Controller
             'Content-Type' => 'application/json',
             'Content-Disposition' => 'attachment; filename="noticia.json"',
         ]);
-    }
+    }  
 
-
-
-    public function ejecutarScriptPython(Request $request)
+    public function entrenarModelo()
     {
-        // Datos que deseas pasar al script de Python
+        // Noticias para entrenar al clasificador
         $noticias = Noticia::all();
-        // Convertir las noticias a formato JSON
-        //$datos_json = json_encode($noticias, JSON_FORCE_OBJECT);
-        $datos=2;
 
+        // Convierto las noticias a formato JSON
         foreach ($noticias as $noticia) {
-            // Construir un objeto JSON para cada noticia
+
+            // Objeto JSON para cada noticia
             $noticia_json = [
                 'id' => $noticia->id,
                 'titulo' => $noticia->titulo,
@@ -713,56 +710,68 @@ class NoticiaController extends Controller
                 'contenido' => $noticia->contenido,
                 'categoria' => $noticia->category,
                 'fecha_publicacion' => $noticia->fecha,
-                // Puedes agregar más campos si lo necesitas
             ];
         
-            // Agregar el objeto JSON de la noticia al array de noticias JSON
             $noticias_json[] = $noticia_json;
         }
 
-        // Crear un archivo temporal para escribir las noticias en formato JSON
+        // Creo un archivo temporal para escribir las noticias en formato JSON
         $archivo_temporal = tempnam(sys_get_temp_dir(), 'noticias');
 
-        
-        
-        // Construir el objeto JSON final con todas las noticias
+        // Construyo el objeto JSON final con todas las noticias
         $json_final = json_encode(['noticias' => $noticias_json]);
 
-        // Escribir las noticias en el archivo temporal en formato JSON
+        // Escribo las noticias en el archivo temporal en formato JSON
         file_put_contents($archivo_temporal, $json_final);
 
 
-        $ruta_script_python = base_path('resources/py/clasificador.py');
+        $ruta_script_python = base_path('resources/py/entrenar_clasificador.py');
 
-        // Ejecutar el script de Python y pasarle los datos
-        exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal) . " " . escapeshellarg($request->test) . " 2>&1", $salida, $error);
+        // Ejecutar el script de Python con los datos de script y noticias
+        exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal) . " 2>&1", $salida, $error);
 
         //En caso de error lo muestro por pantalla para depurar mejor el código
         if ($error !== 0) {
             $errores[] = "Error al ejecutar el script de Python. Código de error: $error";
-
-            // Agregar cada línea de salida como un error adicional
             foreach ($salida as $linea) {
                 $errores[] = $linea;
             }
-
-            // Convertir el array de errores a formato JSON
             $json_errores = json_encode($errores);
 
-            // Enviar el JSON al cliente
+            // Paro la ejecución mostrando los errores si los hay
             dd($json_errores);
         } 
 
-        // Eliminar el archivo temporal después de usarlo
+        // Elimino el archivo temporal después de usarlo
         unlink($archivo_temporal);
 
-        $id=intval($salida[0]);
+        // Devuelvo una salida confirmando que todo ha ido bien
+        return response()->json(['salida' => $salida[0]]);
+    } 
 
+
+    public function clasificar(Request $request)
+    {
+        $ruta_script_python = base_path('resources/py/predecir_categoria.py');
+
+        // Ejecutar el script de Python y pasarle los datos
+        exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($request->test) . " 2>&1", $salida, $error);
+
+        //En caso de error lo muestro por pantalla para depurar mejor el código
+        if ($error !== 0) {
+            $errores[] = "Error al ejecutar el script de Python. Código de error: $error";
+            foreach ($salida as $linea) {
+                $errores[] = $linea;
+            }
+            // Paro la ejecución mostrando los errores
+            dd($salida);
+        } 
+
+        //Obtengo el id con la salida del script en Python (la paso a INT)
+        $id=intval($salida[0]);
         $categoria=Category::findOrFail($id)->id;
 
-        //dd($error);
         // Devuelvo la categoría mas probable según el clasificador de NBMultinomial
-        //return $categoria;
         return response()->json(['categoria' => $categoria]);
-    }    
+    } 
 }
