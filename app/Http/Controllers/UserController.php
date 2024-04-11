@@ -95,6 +95,68 @@ class UserController extends Controller
         return redirect('/login')->with('success', 'Registro completado con éxito!');
     }
 
+    public function crearRedactor(Request $request){
+        //dd($request->all());
+        $user = $request->validate([
+        'nombre' => 'required|min:2|max:255',
+        'apellidos' => 'required|min:2|max:255',
+        'email' => 'required|unique:users,email|min:7|max:255',
+        'password' => 'required|min:5',
+        'enlace' => 'min:5',
+        'empresa' => 'required|min:3',
+        'telefono' => 'required'],
+        [
+            'email.required' => 'El campo email es requerido',
+            'email.unique' => 'Este correo ya está en uso',
+            'email.min' => 'Longitud mínima de 2 caracteres',
+            'nombre.required' => 'El campo nombre es requerido',
+            'nombre.min' => 'Longitud mínima de 2 caracteres',
+            'password.required' => 'El campo contraseña es requerido',
+            'password.min' => 'Longitud mínima de 5 caracteres',
+            'apellidos.required' => 'El campo apellido es requerido',
+            'apellidos.min' => 'Longitud mínima de 2 caracteres',
+            'empresa.required' => 'El campo empresa es requerido',
+            'telefono.required' => 'El campo teléfono es requerido',
+            
+        ]);
+
+        $user['rol']="redactor";
+
+        User::create($user);
+        return redirect('/administracion')->with('message', 'Redactor creado con éxito');
+    }
+
+    public function crearMedio(Request $request){
+        //dd($request->all());
+        $user = $request->validate([
+        'nombre' => 'required|min:2|max:255',
+        'apellidos' => 'required|min:2|max:255',
+        'email' => 'required|unique:users,email|min:7|max:255',
+        'password' => 'required|min:5',
+        'enlace' => 'min:5',
+        'empresa' => 'required|min:3',
+        'telefono' => 'required'],
+        [
+            'email.required' => 'El campo email es requerido',
+            'email.unique' => 'Este correo ya está en uso',
+            'email.min' => 'Longitud mínima de 2 caracteres',
+            'nombre.required' => 'El campo nombre es requerido',
+            'nombre.min' => 'Longitud mínima de 2 caracteres',
+            'password.required' => 'El campo contraseña es requerido',
+            'password.min' => 'Longitud mínima de 5 caracteres',
+            'apellidos.required' => 'El campo apellido es requerido',
+            'apellidos.min' => 'Longitud mínima de 2 caracteres',
+            'empresa.required' => 'El campo empresa es requerido',
+            'telefono.required' => 'El campo teléfono es requerido',
+            
+        ]);
+
+        $user['rol']="medio";
+
+        User::create($user);
+        return redirect('/administracion')->with('message', 'Medio creado con éxito');
+    }
+
     public function modificar($id){
         
         $usuario = User::findOrFail($id);
@@ -180,8 +242,6 @@ class UserController extends Controller
         else{
             $personal=Noticia::where('redactor_id',$id)->paginate(3);
         }
-
-        
 
         return view('personal', ['personal' => $personal]);
     }

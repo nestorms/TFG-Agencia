@@ -14,6 +14,22 @@ class CategoryController extends Controller
         return view('modificar_categoria', ['categoria' => $categoria]);
     }
 
+    public function create(Request $request){
+        $categoria = $request->validate([
+            'nombre' => 'required|min:2|max:255',
+            'descripcion' => 'required|min:2|max:255',
+            'palabras_clave' => 'required|min:7|max:255'],
+            [
+                'descripcion.required' => 'El campo descripcion es requerido',
+                'nombre.required' => 'El campo nombre es requerido',
+                'palabras_clave.required' => 'El campo palabras clave es requerido',
+            ]);
+    
+        Category::create($categoria);
+        
+        return redirect('/administracion')->with('message', 'Categoría creada con éxito');
+    }
+
     public function update(Request $request, $id){
 
         $categoria = Category::findOrFail($id);

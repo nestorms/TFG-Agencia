@@ -19,18 +19,19 @@
     <div class="row mb-3">
         <div class="col-md-3">
             <!-- Botones verticales -->
-            <div class="btn-group-vertical p-2">
-                <button type="button" class="btn btn-dark rounded" onclick="showNoticias()">Noticias</button>
-                <button type="button" class="btn btn-dark rounded" onclick="showMedios()">Medios</button>
-                <button type="button" class="btn btn-dark rounded" onclick="showRedactores()">Redactores</button>
-                <button type="button" class="btn btn-dark rounded" onclick="showCategorias()">Categorías</button>
-                <button type="button" class="btn btn-dark rounded" onclick="showComentarios()">Comentarios</button>
+            <div class="btn-group-vertical p-1">
+                <button type="button" class="btn btn-dark rounded w-75" onclick="showNoticias()">Noticias</button>
+                <button type="button" class="btn btn-dark rounded w-75" onclick="showMedios()">Medios</button>
+                <button type="button" class="btn btn-dark rounded w-75" onclick="showRedactores()">Redactores</button>
+                <button type="button" class="btn btn-dark rounded w-75" onclick="showCategorias()">Categorías</button>
+                <button type="button" class="btn btn-dark rounded w-75" onclick="showComentarios()">Comentarios</button>
             </div>
         </div>
         <div class="col-md-9">
             <!-- Grid dinámico -->
             <div id="gridMedios">
-                <h3>Medios</h3>
+                <h3>Medios <a href="/crear_medio" class="btn btn-secondary btn-sm mx-3">Crear nuevo</a></h3>
+                
                 <table class="table table-spaced">
                     <thead>
                         <tr>
@@ -61,7 +62,7 @@
             </div>
 
             <div id="gridRedactores" style="display: none;">
-                <h3>Redactores</h3>
+                <h3>Redactores <a href="/crear_redactor" class="btn btn-secondary btn-sm mx-3">Crear nuevo</a></h3>
                 <table class="table table-spaced">
                     <thead>
                         <tr>
@@ -92,7 +93,7 @@
             </div>
 
             <div id="gridCategorias" style="display: none;">
-                <h3>Categorías</h3>
+                <h3>Categorías <a href="/crear_categoria" class="btn btn-secondary btn-sm mx-3">Crear nueva</a></h3>
                 <table class="table table-spaced">
                     <thead>
                         <tr>
@@ -149,7 +150,7 @@
             </div>
 
             <div id="gridNoticias" style="display: none;">
-                <h3>Noticias</h3>
+                <h3>Noticias <a href="/crear_noticia" class="btn btn-secondary btn-sm mx-3">Crear nueva </a></h3>
                 <table class="table table-spaced">
                     <thead>
                         <tr>
@@ -183,89 +184,6 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-
-    var comentariosMostrados = false;
-    var mediosMostrados = false;
-    var redactoresMostrados = false;
-    var categoriasMostrados = false;
-    var noticiasMostrados = false;
-
-    function showMedios() {
-        $('#gridMedios').show();
-        $('#gridCategorias').hide();
-        $('#gridRedactores').hide();
-        $('#gridComentarios').hide();
-        $('#gridNoticias').hide();
-        mediosMostrados=true;
-    }
-
-    function showRedactores() {
-        $('#gridMedios').hide();
-        $('#gridCategorias').hide();
-        $('#gridRedactores').show();
-        $('#gridComentarios').hide();
-        $('#gridNoticias').hide();
-        redactoresMostrados=true;
-    }
-
-    function showComentarios() {
-        $('#gridMedios').hide();
-        $('#gridCategorias').hide();
-        $('#gridRedactores').hide();
-        $('#gridComentarios').show();
-        $('#gridNoticias').hide();
-        comentariosMostrados=true;
-    }
-
-    function showCategorias() {
-        $('#gridCategorias').show();
-        $('#gridMedios').hide();
-        $('#gridRedactores').hide();
-        $('#gridComentarios').hide();
-        $('#gridNoticias').hide();
-        categoriasMostrados=true;
-    }
-
-    function showNoticias() {
-        $('#gridMedios').hide();
-        $('#gridCategorias').hide();
-        $('#gridRedactores').hide();
-        $('#gridComentarios').hide();
-        $('#gridNoticias').show();
-        noticiasMostrados=true;
-    }
-
-    /*document.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function(event) {
-            event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
-            showNoticias(); // Llamar a la función para mostrar las noticias
-            // Aquí puedes agregar más lógica si es necesario, como cargar los datos de la página correspondiente mediante AJAX
-        });
-    });*/
-
-    // Ejecutar una función por defecto al cargar la página
-    $(document).ready(function() {
-
-        if (comentariosMostrados) {
-            showComentarios();
-        } 
-        else if(mediosMostrados){
-            showMedios();
-        }
-        else if(redactoresMostrados){
-            showRedactores();
-        }
-        else if(categoriasMostrados){
-            showCategorias();
-        }
-        else if(noticiasMostrados){
-            showNoticias();
-            console.log("entroooooo");
-        }
-
-        showNoticias();
-    });
-</script>
+<script src="{{asset('js/administracion.js')}}"></script>
 
 @endsection

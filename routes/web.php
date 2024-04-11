@@ -70,6 +70,13 @@ Route::post('/modificar_user/{id}', [UserController::class, 'update']);
 Route::get('/eliminar_user/{id}', [UserController::class, 'delete']);
 
 
+Route::view('/crear_redactor', 'crear_redactor');
+Route::view('/crear_medio', 'crear_medio');
+Route::view('/crear_categoria', 'crear_categoria');
+Route::post('/crear_redactor', [UserController::class, 'crearRedactor']);
+Route::post('/crear_medio', [UserController::class, 'crearMedio']);
+Route::post('/crear_categoria', [CategoryController::class, 'create']);
+
 
 /********************   SECCIÓN PERSONAL  ********************/
 Route::get('/personal/{id}', [UserController::class, 'personal']);
