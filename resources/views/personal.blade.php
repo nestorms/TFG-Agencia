@@ -7,7 +7,38 @@
 @section('content')
 
 <div class="container mb-4">
-    <h2 class="m-4">Mi sección personal</h2>
+    <div class="d-flex align-items-center column gap-3">
+        <h2 class="m-4">Mi sección personal</h2>
+        <strong class="mb-0 mx-4">Filtrar por:</strong>
+        <div>
+            <a class="btn btn-secondary btn-sm dropdown " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categorías
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                @foreach ($categorias as $cat)
+                    <li><a class="dropdown-item" href="/personal/{{auth()->user()->id}}/filtrar/categoria/{{$cat->id}}">{{$cat->nombre}}</a></li>
+                @endforeach
+            </ul>
+        </div>
+        <div>
+            <a class="btn btn-secondary btn-sm dropdown " id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Fecha
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                <li><a class="dropdown-item" href="/personal/{{auth()->user()->id}}/filtrar/fecha/0">Más reciente</a></li>
+                <li><a class="dropdown-item" href="/personal/{{auth()->user()->id}}/filtrar/fecha/1">Más antiguo</a></li>
+            </ul>
+        </div>
+        <div>
+            <a class="btn btn-secondary btn-sm dropdown " id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Guardados
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                <li><a class="dropdown-item" href="/administracion">Más guardados</a></li>
+                <li><a class="dropdown-item" href="/administracion">Menos guardados</a></li>
+            </ul>
+        </div>
+    </div>
 
     @if(count($personal) > 0)
         <div id="grid">
@@ -100,15 +131,20 @@
                 </tbody>
             </table>
         </div>
+        <div style="margin-bottom: 155px;"></div>
     @else
         <h4>No has seleccionado ninguna noticia</h4>
         <div style="margin-bottom: 350px;"></div>
     @endif
 
     <div class="d-flex justify-content-center">
-        {{ $personal->links() }}
+        @if (auth()->user()->rol == "redactor")
+            {{ $personal->links() }}
+        @endif
+        
     </div>
 </div>
 
+   
 
 @endsection

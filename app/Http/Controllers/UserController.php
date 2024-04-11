@@ -11,6 +11,9 @@ use App\Models\Chat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserController extends Controller
 {
@@ -235,6 +238,7 @@ class UserController extends Controller
     public function personal($id){
 
         $personal="";
+        $categorias=Category::all();
 
         if(User::findOrFail($id)->rol != "redactor"){
             $personal=UserNoticia::where('user_id',$id)->where('recomendada',false)->paginate(3);
@@ -243,7 +247,55 @@ class UserController extends Controller
             $personal=Noticia::where('redactor_id',$id)->paginate(3);
         }
 
-        return view('personal', ['personal' => $personal]);
+        return view('personal', ['personal' => $personal, 'categorias' => $categorias]);
+    }
+
+    public function filtrarPersonal($id,$campo,$id_campo){
+
+        $personal="";
+        $categorias=Category::all();
+
+        if($campo == "categoria"){
+            if(User::findOrFail($id)->rol != "redactor"){
+                $personal=UserNoticia::where('user_id',$id)->where('recomendada',false)->whereHas('noticia', function (Builder $query) use ($id_campo) {
+                    $query->where('categoria_id', $id_campo);
+                })->paginate(3);
+
+            }
+            else{
+                $personal=Noticia::where('redactor_id',$id)->where('categoria_id',$id_campo)->paginate(3);
+            }
+        }
+        else if($campo == "fecha"){
+            if(User::findOrFail($id)->rol != "redactor"){
+
+                if($id_campo == 0){
+                    $personal=UserNoticia::where('user_id',$id)->where('recomendada',false)->get();
+                    $personal = $personal->sortByDesc(function ($userNoticia) {
+                        return $userNoticia->noticia->fecha;
+                    });
+                }
+                else{
+                    $personal=UserNoticia::where('user_id',$id)->where('recomendada',false)->get();
+                    $personal = $personal->sortBy(function ($userNoticia) {
+                        return $userNoticia->noticia->fecha;
+                    });
+                }
+
+            }
+            else{
+                if($id_campo == 0){
+                    $personal=Noticia::where('redactor_id',$id)->orderBy('fecha','desc')->paginate(3);
+                }
+                else{
+                    $personal=Noticia::where('redactor_id',$id)->orderBy('fecha','asc')->paginate(3);
+                }
+            }
+            
+        }
+
+
+        return view('personal', ['personal' => $personal, 'categorias' => $categorias]);
     }
 
     public function config($id){

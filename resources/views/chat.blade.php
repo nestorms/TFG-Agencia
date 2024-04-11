@@ -47,11 +47,11 @@
         border-radius: 50%;
         background-color: #cfcbcb;
         border: 1px solid black;
-        width: 4vw;
-        height: 8vh;
+        width: 60px;
+        height: 60px;
         align-content: center;
         text-align: center;
-        font-size: 1.5vw;
+        font-size: 22px;
     }
 
     .icon-right {
@@ -61,11 +61,11 @@
         border-radius: 50%;
         background-color: #b9d9c6;
         border: 1px solid black;
-        width: 4vw;
-        height: 8vh;
+        width: 60px;
+        height: 60px;
         align-content: center;
         text-align: center;
-        font-size: 1.5vw;
+        font-size: 22px;
     }
 
     .icon-large {

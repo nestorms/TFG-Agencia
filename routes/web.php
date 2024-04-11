@@ -80,6 +80,7 @@ Route::post('/crear_categoria', [CategoryController::class, 'create']);
 
 /********************   SECCIÓN PERSONAL  ********************/
 Route::get('/personal/{id}', [UserController::class, 'personal']);
+Route::get('/personal/{id}/filtrar/{campo}/{id_campo}', [UserController::class, 'filtrarPersonal']);
 Route::get('/noticias/{id}/unsave', [NoticiaController::class, 'unsave_personal']);
 
 Route::get('/config/{id}', [UserController::class, 'config'])->name('config');
