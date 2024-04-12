@@ -293,6 +293,32 @@ class UserController extends Controller
             }
             
         }
+        else{
+            if(User::findOrFail($id)->rol != "redactor"){
+
+                if($id_campo == 0){
+                    $personal=UserNoticia::where('user_id',$id)->where('recomendada',false)->get();
+                    $personal = $personal->sortByDesc(function ($userNoticia) {
+                        return $userNoticia->noticia->guardados;
+                    });
+                }
+                else{
+                    $personal=UserNoticia::where('user_id',$id)->where('recomendada',false)->get();
+                    $personal = $personal->sortBy(function ($userNoticia) {
+                        return $userNoticia->noticia->guardados;
+                    });
+                }
+
+            }
+            else{
+                if($id_campo == 0){
+                    $personal=Noticia::where('redactor_id',$id)->orderBy('guardados','desc')->paginate(3);
+                }
+                else{
+                    $personal=Noticia::where('redactor_id',$id)->orderBy('guardados','asc')->paginate(3);
+                }
+            }
+        }
 
 
         return view('personal', ['personal' => $personal, 'categorias' => $categorias]);

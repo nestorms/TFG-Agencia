@@ -34,9 +34,14 @@
                 Guardados
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                <li><a class="dropdown-item" href="/administracion">Más guardados</a></li>
-                <li><a class="dropdown-item" href="/administracion">Menos guardados</a></li>
+                <li><a class="dropdown-item" href="/personal/{{auth()->user()->id}}/filtrar/guardados/0">Más guardados</a></li>
+                <li><a class="dropdown-item" href="/personal/{{auth()->user()->id}}/filtrar/guardados/1">Menos guardados</a></li>
             </ul>
+        </div>
+        <div>
+            <a href="/personal/{{auth()->user()->id}}">
+                <i class="bi bi-x-square-fill text-dark"></i>
+            </a>
         </div>
     </div>
 
@@ -138,9 +143,10 @@
     @endif
 
     <div class="d-flex justify-content-center">
-        @if (auth()->user()->rol == "redactor")
+        @if (auth()->user()->rol == "redactor" || (!($personal->count() > 3)))
             {{ $personal->links() }}
         @endif
+        
         
     </div>
 </div>
