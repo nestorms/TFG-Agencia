@@ -83,6 +83,9 @@ Route::get('/personal/{id}', [UserController::class, 'personal']);
 Route::get('/personal/{id}/filtrar/{campo}/{id_campo}', [UserController::class, 'filtrarPersonal']);
 Route::get('/noticias/{id}/unsave', [NoticiaController::class, 'unsave_personal']);
 
+
+Route::get('/personal/{id}/cluster', [UserController::class, 'cluster']);
+
 Route::get('/config/{id}', [UserController::class, 'config'])->name('config');
 Route::post('/config/{id}', [UserController::class, 'modificarPerfil']);
 

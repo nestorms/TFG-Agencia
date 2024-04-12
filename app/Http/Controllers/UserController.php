@@ -247,7 +247,7 @@ class UserController extends Controller
             $personal=Noticia::where('redactor_id',$id)->paginate(3);
         }
 
-        return view('personal', ['personal' => $personal, 'categorias' => $categorias]);
+        return view('personal', ['personal' => $personal, 'categorias' => $categorias, 'ruta' => ""]);
     }
 
     public function filtrarPersonal($id,$campo,$id_campo){
@@ -321,7 +321,7 @@ class UserController extends Controller
         }
 
 
-        return view('personal', ['personal' => $personal, 'categorias' => $categorias]);
+        return view('personal', ['personal' => $personal, 'categorias' => $categorias, 'ruta' => ""]);
     }
 
     public function config($id){
@@ -442,4 +442,66 @@ class UserController extends Controller
         return redirect()->route('chat',$id);
         
     }
+
+
+
+
+    public function cluster($id)
+    {
+        // Noticias para entrenar al clasificador
+        $noticias = UserNoticia::where('user_id', $id)->where('recomendada',false)->get();
+        $personal=$noticias;
+        $categorias=Category::all();
+
+        // Convierto las noticias a formato JSON
+        foreach ($noticias as $noticia) {
+
+            // Objeto JSON para cada noticia
+            $noticia_json = [
+                'id' => $noticia->noticia->id,
+                'titulo' => $noticia->noticia->titulo,
+                'descripcion' => $noticia->noticia->descripcion,
+                'contenido' => $noticia->noticia->contenido,
+                'categoria' => $noticia->noticia->category,
+                'fecha_publicacion' => $noticia->noticia->fecha,
+            ];
+        
+            $noticias_json[] = $noticia_json;
+        }
+
+        // Creo un archivo temporal para escribir las noticias en formato JSON
+        $archivo_temporal = tempnam(sys_get_temp_dir(), 'noticias');
+
+        // Construyo el objeto JSON final con todas las noticias
+        $json_final = json_encode(['noticias' => $noticias_json]);
+
+        // Escribo las noticias en el archivo temporal en formato JSON
+        file_put_contents($archivo_temporal, $json_final);
+
+
+        $ruta_script_python = base_path('resources/py/clustering.py');
+
+        // Ejecutar el script de Python con los datos de script y noticias
+        exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal) . " 2>&1", $salida, $error);
+
+        //En caso de error lo muestro por pantalla para depurar mejor el código
+        if ($error !== 0) {
+            $errores[] = "Error al ejecutar el script de Python. Código de error: $error";
+            foreach ($salida as $linea) {
+                $errores[] = $linea;
+            }
+            $json_errores = json_encode($errores);
+
+            // Paro la ejecución mostrando los errores si los hay
+            dd($salida);
+        } 
+
+        // Elimino el archivo temporal después de usarlo
+        unlink($archivo_temporal);
+
+        // Devuelvo una salida confirmando que todo ha ido bien
+        return view('personal', ['personal' => $personal, 'categorias' => $categorias, 'ruta' => $salida[0]]);
+        //return response()->json(['salida' => $salida[0]]);
+    }
+
 }
