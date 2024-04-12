@@ -11,6 +11,7 @@ import numpy as np
 
 # Obtengo la ruta al archivo temporal de las noticias en formato JSON
 ruta_archivo_temporal = sys.argv[1]
+id_usuario = sys.argv[2]
 
 # Leo las noticias del archivo temporal en formato JSON
 with open(ruta_archivo_temporal, 'r') as archivo:
@@ -22,14 +23,14 @@ noticias = json.loads(noticias_json)['noticias']
 # Creo un array para almacenar los datos de las noticias y sus clases
 datos_noticias = []
 datos_categorias = []
-nombres_categorias = []
+nombres_categorias = {}
 
 # Recorro todas las noticias y almaceno sus datos en el array
 for noticia in noticias:
     datos_noticia = ' '.join([noticia['titulo'], noticia['descripcion'], noticia['contenido']])
     datos_noticias.append(datos_noticia)
     datos_categorias.append(noticia['categoria']['id'])
-    nombres_categorias.append(noticia['categoria']['nombre'])
+    nombres_categorias[noticia['categoria']['id']] = noticia['categoria']['nombre']
 
 
 # Vectorización del texto
@@ -46,6 +47,7 @@ clusters=msh.fit_predict(X_train_vectorized.toarray())
 
 # Calculamos la matriz de conteo entre clusters y categorías
 heatmap_data = np.zeros((len(np.unique(clusters)), len(np.unique(datos_categorias))))
+
 for i, cluster in enumerate(np.unique(clusters)):
     for j, categoria in enumerate(np.unique(datos_categorias)):
         heatmap_data[i, j] = np.sum((clusters == cluster) & (datos_categorias == categoria))
@@ -54,10 +56,16 @@ for i, cluster in enumerate(np.unique(clusters)):
 plt.figure(figsize=(10, 6))
 sns.heatmap(heatmap_data, annot=True, fmt='g', cmap='YlGnBu')
 
-plt.xticks(np.arange(len(np.unique(nombres_categorias))) + 0.5, np.unique(nombres_categorias))
+etiquetas_x=[]
+for i in nombres_categorias:
+    etiquetas_x.append(nombres_categorias[i])
+
+plt.xticks(np.arange(len(np.unique(etiquetas_x))) + 0.5, etiquetas_x)
 plt.xlabel('Categorías')
 plt.ylabel('Clusters')
 plt.title('Mapa de Calor: Relación entre Clusters y Categorías')
-plt.savefig('C:\\Users\\Néstor Martínez Sáez\\Desktop\\UNIVERSIDAD\\TFG Agencia\\Proyecto\\agencia-noticias\\public\\images\\heatmap.png')
 
-print("heatmap.png")
+
+plt.savefig('C:\\Users\\Néstor Martínez Sáez\\Desktop\\UNIVERSIDAD\\TFG Agencia\\Proyecto\\agencia-noticias\\public\\images\\heatmap_{}.png'.format(id_usuario))
+
+print('heatmap_{}.png'.format(id_usuario))

@@ -482,7 +482,7 @@ class UserController extends Controller
         $ruta_script_python = base_path('resources/py/clustering.py');
 
         // Ejecutar el script de Python con los datos de script y noticias
-        exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal) . " 2>&1", $salida, $error);
+        exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal) . " " . $id . " 2>&1", $salida, $error);
 
         //En caso de error lo muestro por pantalla para depurar mejor el código
         if ($error !== 0) {
