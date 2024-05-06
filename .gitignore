@@ -17,5 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-*.pkl
-heatmap_*.png
+/public/images/heatmap_*.png
+/resources/py/*.pkl
