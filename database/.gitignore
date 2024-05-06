@@ -1,1 +1,3 @@
 *.sqlite*
+*.pkl
+heatmap_*.png

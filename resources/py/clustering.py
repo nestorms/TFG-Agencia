@@ -60,6 +60,10 @@ etiquetas_x=[]
 for i in nombres_categorias:
     etiquetas_x.append(nombres_categorias[i])
 
+ultimo_elemento = etiquetas_x.pop()  # Guardar y eliminar el último elemento
+etiquetas_x.insert(0, ultimo_elemento)  # Insertar el último elemento al principio
+
+
 plt.xticks(np.arange(len(np.unique(etiquetas_x))) + 0.5, etiquetas_x)
 plt.xlabel('Categorías')
 plt.ylabel('Clusters')
