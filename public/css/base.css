@@ -71,6 +71,15 @@ a{
     background-color: white!important;
 }
 
+.btn-light{
+    background-color: white!important;
+    border: none!important;
+}
+
+.btn-light:hover{
+    background-color: lightgray!important;
+}
+
 
 /* Media query para pantallas pequeñas */
 @media screen and (max-width: 768px) {

@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\UserNoticia;
 use App\Models\UserNotification;
 use Elastic\Elasticsearch\Client;
+use Carbon\Carbon;
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -220,7 +221,16 @@ class NoticiaController extends Controller
     {
         // Definir los parámetros de búsqueda
 
-        $noticias = Noticia::where('id', '>=', 25)->get();
+        //$noticias = Noticia::where('id', '>=', 25)->get();
+
+        // Obtengo la fecha de hoy
+        $hoy = Carbon::now();
+
+        // Obtengo la fecha de ayer
+        $ayer = $hoy->subDay();
+
+        // Consultar las noticias publicadas el día anterior
+        $noticias = Noticia::whereDate('fecha', $ayer)->get();
         UserNoticia::where('recomendada',true)->delete();
 
         if (UserNotification::count() > 0) {
@@ -643,6 +653,7 @@ class NoticiaController extends Controller
             // Obtengo el ID del usuario autenticado
             $userId = auth()->user()->id;
             $noticia = Noticia::findOrFail($id);
+            $categorias = Category::all();
             
             // Busco la fila en la tabla intermedia user_noticia
             UserNoticia::where('user_id', $userId)->where('noticia_id', $id)->where('recomendada', false)->delete();
@@ -652,7 +663,7 @@ class NoticiaController extends Controller
 
             $personal=UserNoticia::where('user_id',$userId)->where('recomendada', false)->paginate(3);
 
-            return view('personal', ['personal' => $personal]);
+            return view('personal', ['personal' => $personal, 'categorias' => $categorias, 'ruta' => ""]);
         }
         else {
             // Si el usuario no está autenticado, devuelvo mensaje de error

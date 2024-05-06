@@ -96,7 +96,7 @@
                                             </div>
                                         </div>
                                         <a class="btn btn-light p-0" href="/noticia/{{$seleccionada->noticia->id}}"><i class="bi bi-eye mx-2" style="color: black; font-size:20px;"></i></a>
-                                        <a class="btn btn-light p-0" href="/noticias/{{$seleccionada->noticia->id}}/unsave"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
+                                        <a class="btn btn-light p-0" href="/noticias/{{$seleccionada->noticia->id}}/unsave_personal"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
 
                                         @if (auth()->user()->rol != "redactor")
                                             <a class="btn btn-light p-0" href="/chat/{{$seleccionada->noticia->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
@@ -129,7 +129,7 @@
                                             </div>
                                         </div>
                                         <a class="btn btn-light p-0" href="/noticia/{{$seleccionada->id}}"><i class="bi bi-eye mx-2" style="color: black; font-size:20px;"></i></a>
-                                        <a class="btn btn-light p-0" href="/noticias/{{$seleccionada->id}}/unsave"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
+                                        <a class="btn btn-light p-0" href="/noticias/{{$seleccionada->id}}/unsave_personal"><i class="bi bi-trash mx-2" style="color: black; font-size:20px;"></i></a>
 
                                         @if (auth()->user()->rol != "redactor")
                                             <a class="btn btn-light p-0" href="/chat/{{$seleccionada->redactor->id}}"><i class="bi bi-send mx-2" style="color: black; font-size:20px;"></i></a>
@@ -141,6 +141,13 @@
                         @endif
                     </tbody>
                 </table>
+            </div>
+            <div class="d-flex justify-content-center">
+                @if (auth()->user()->rol == "redactor" || (!($personal->count() > 3)))
+                    {{ $personal->links() }}
+                @endif
+                
+                
             </div>
             <div style="margin-bottom: 155px;"></div>
         @else
@@ -155,13 +162,7 @@
         <div style="margin-bottom: 350px;"></div>
     @endif
 
-    <div class="d-flex justify-content-center">
-        @if (auth()->user()->rol == "redactor" || (!($personal->count() > 3)))
-            {{ $personal->links() }}
-        @endif
-        
-        
-    </div>
+    
 </div>
 
    

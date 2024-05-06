@@ -34,12 +34,12 @@
 
     .rating2 label {
         font-size: 2.5em;
-        color: #ccc; /* Color por defecto de las estrellas */
+        color: #959595; /* Color por defecto de las estrellas */
         cursor: pointer;
     }
 
     .rating2 input[type="radio"]:checked ~ label {
-        color: yellow; /* Cambia el color a amarillo cuando está seleccionado */
+        color: rgb(218, 218, 66); /* Cambia el color a amarillo cuando está seleccionado */
     }
 
     .star {
@@ -203,28 +203,28 @@
                         @if ($errors->has('valoracion'))
                             <span class="text-danger text-center">{{ $errors->first('valoracion') }}</span>
                         @endif
-                        <textarea class="form-control w-100" style="height: 15vh" id="comentario" name="comentario" rows="3" required></textarea>
+                        <textarea class="form-control w-100" style="height: 150px; border:solid 0.5px black;" id="comentario" name="comentario" rows="3" required></textarea>
                     </div>
                 
                     <!-- Valoración -->
                     <div class="mb-3 mx-3 w-30">
                         
                         <div class="rating2 w-100 mx-2">
-                            <input type="radio" id="estrella1" name="valoracion" value="1">
+                            <input type="radio" id="estrella1" name="valoracion" value="5">
                             <label for="estrella1">&#9733;</label>
-                            <input type="radio" id="estrella2" name="valoracion" value="2">
+                            <input type="radio" id="estrella2" name="valoracion" value="4">
                             <label for="estrella2">&#9733;</label>
                             <input type="radio" id="estrella3" name="valoracion" value="3">
                             <label for="estrella3">&#9733;</label>
-                            <input type="radio" id="estrella4" name="valoracion" value="4">
+                            <input type="radio" id="estrella4" name="valoracion" value="2">
                             <label for="estrella4">&#9733;</label>
-                            <input type="radio" id="estrella5" name="valoracion" value="5">
+                            <input type="radio" id="estrella5" name="valoracion" value="1">
                             <label for="estrella5">&#9733;</label>
                         </div>
                     </div>
                 
                     <!-- Botón de envío -->
-                    <button type="submit" class="btn btn-success mx-5 mb-2" style="width: 150px; height:8vh; font-size:1.2em;">Comentar</button>
+                    <button type="submit" class="btn btn-success mx-5 mb-2" style="width: 150px; height:60px; font-size:1.2em;">Comentar</button>
                 </form>
             </div>
         @endauth

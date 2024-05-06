@@ -36,7 +36,7 @@
                 @endif
             @else
                 <h4>Esta es una función restringida para los medios de comunicación</h4>
-                <div style="margin-bottom: 370px;">
+                <div style="margin-bottom: 435px;">
 
                 </div>
             @endif  
@@ -44,7 +44,7 @@
         
         @guest
             <h4>Para ver noticias recomendadas <a class="icon-link icon-link-hover link-warning" href="/login">inicia sesión<i class="bi bi-lock-fill"></i></a></h4>
-            <div style="margin-bottom: 370px;">
+            <div style="margin-bottom: 435px;">
 
             </div>
         @endguest
