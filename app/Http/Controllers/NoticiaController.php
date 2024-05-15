@@ -757,7 +757,7 @@ class NoticiaController extends Controller
         unlink($archivo_temporal);
 
         // Devuelvo una salida confirmando que todo ha ido bien
-        return response()->json(['salida' => $salida[0]]);
+        return response()->json(['salida' => "Modelo SVM entrenado correctamente"]);
     } 
 
 
