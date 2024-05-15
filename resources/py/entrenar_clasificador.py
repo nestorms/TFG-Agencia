@@ -2,6 +2,8 @@ import sys
 import json
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.svm import LinearSVC
+from sklearn.neighbors import KNeighborsClassifier
 
 import joblib
 
@@ -31,7 +33,7 @@ for noticia in noticias:
 vectorizer = TfidfVectorizer()
 
 #Clasificador Naive-bayes paa varias clases
-clf = MultinomialNB()
+clf = LinearSVC()
 
 #Vectorizo los datos de entrenamiento (todas las noticias)
 X_train_vectorized = vectorizer.fit_transform(datos_noticias)

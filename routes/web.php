@@ -43,6 +43,7 @@ Route::post('/crear_noticia', [NoticiaController::class,'create']);
 
 Route::post('/clasificar', [NoticiaController::class,'clasificar']);
 Route::get('/entrenar_modelo', [NoticiaController::class,'entrenarModelo']);
+Route::get('/comparar_modelos', [NoticiaController::class,'compararModelos']);
 
 Route::post('/noticias/{id}/like', [NoticiaController::class, 'like'])->name('noticias.like');
 Route::post('/noticias/{id}/unlike', [NoticiaController::class, 'unlike'])->name('noticias.unlike');

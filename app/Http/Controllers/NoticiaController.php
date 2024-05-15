@@ -785,4 +785,62 @@ class NoticiaController extends Controller
         // Devuelvo la categoría mas probable según el clasificador de NBMultinomial
         return response()->json(['categoria' => $categoria]);
     } 
+
+
+
+    public function compararModelos()
+    {
+        // Noticias para entrenar al clasificador
+        $noticias = Noticia::all();
+
+        // Convierto las noticias a formato JSON
+        foreach ($noticias as $noticia) {
+
+            // Objeto JSON para cada noticia
+            $noticia_json = [
+                'id' => $noticia->id,
+                'titulo' => $noticia->titulo,
+                'descripcion' => $noticia->descripcion,
+                'contenido' => $noticia->contenido,
+                'categoria' => $noticia->category,
+                'fecha_publicacion' => $noticia->fecha,
+            ];
+        
+            $noticias_json[] = $noticia_json;
+        }
+
+        // Creo un archivo temporal para escribir las noticias en formato JSON
+        $archivo_temporal = tempnam(sys_get_temp_dir(), 'noticias');
+
+        // Construyo el objeto JSON final con todas las noticias
+        $json_final = json_encode(['noticias' => $noticias_json]);
+
+        // Escribo las noticias en el archivo temporal en formato JSON
+        file_put_contents($archivo_temporal, $json_final);
+
+
+        $ruta_script_python = base_path('resources/py/comparar_clasificadores.py');
+
+        // Ejecutar el script de Python con los datos de script y noticias
+        exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal) . " 2>&1", $salida, $error);
+
+        //En caso de error lo muestro por pantalla para depurar mejor el código
+        if ($error !== 0) {
+            $errores[] = "Error al ejecutar el script de Python. Código de error: $error";
+            foreach ($salida as $linea) {
+                $errores[] = $linea;
+            }
+            $json_errores = json_encode($errores);
+
+            // Paro la ejecución mostrando los errores si los hay
+            dd($salida);
+        } 
+
+        // Elimino el archivo temporal después de usarlo
+        unlink($archivo_temporal);
+
+
+        // Devuelvo una salida confirmando que todo ha ido bien
+        return response()->json(['salida' => "Comparativa entre clasificadores realizada con ÉXITO"]);
+    } 
 }
