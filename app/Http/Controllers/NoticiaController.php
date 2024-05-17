@@ -11,6 +11,7 @@ use App\Models\UserNoticia;
 use App\Models\UserNotification;
 use Elastic\Elasticsearch\Client;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -221,7 +222,7 @@ class NoticiaController extends Controller
     {
         // Definir los parámetros de búsqueda
 
-        //$noticias = Noticia::where('id', '>=', 25)->get();
+        $noticias = Noticia::where('id', '>=', 25)->get();
 
         // Obtengo la fecha de hoy
         $hoy = Carbon::now();
@@ -230,7 +231,7 @@ class NoticiaController extends Controller
         $ayer = $hoy->subDay();
 
         // Consultar las noticias publicadas el día anterior
-        $noticias = Noticia::whereDate('fecha', $ayer)->get();
+        //$noticias = Noticia::whereDate('fecha', $ayer)->get();
         UserNoticia::where('recomendada',true)->delete();
 
         if (UserNotification::count() > 0) {
@@ -307,6 +308,7 @@ class NoticiaController extends Controller
 
         // Ahora $noticias_por_medio contiene las tres noticias con el score más alto asociadas a cada medio
         foreach ($noticias_por_medio as $id_medio => $noticias) {
+            $noticias_a_recomendar = [];
             foreach ($noticias as $noticia) {
                 // Crear una entrada en la tabla UserNoticia
                 UserNoticia::create([
@@ -323,7 +325,26 @@ class NoticiaController extends Controller
                     'descripcion' => "Tienes una nueva noticia recomendada de " . $noticia['noticia']->category->nombre,
                     'fecha' => date('Y-m-d'),
                 ]);
+        
+                // Añadir la noticia al array de noticias a recomendar
+                $noticias_a_recomendar[] = $noticia;
             }
+        
+            // Obtener el usuario al que se le enviará la notificación
+            $user = User::find($id_medio);
+        
+            // Preparar el contenido del correo con todas las noticias
+            $correo_contenido = "Tienes nuevas noticias recomendadas:\n\n";
+            foreach ($noticias_a_recomendar as $noticia) {
+                $correo_contenido .= "Categoría: " . $noticia['noticia']->category->nombre . "\n";
+                $correo_contenido .= "Título: " . $noticia['noticia']->titulo . "\n\n";
+            }
+        
+            // Enviar la notificación por correo con todas las noticias
+            Mail::send('email', ['noticias' => $noticias_a_recomendar, 'usuario' => $user], function ($message) use ($user) {
+                $message->to($user->email)
+                        ->subject('Nuevas noticias recomendadas en NEWSTOR');
+            });
         }
 
         // Retornar las noticias encontradas
