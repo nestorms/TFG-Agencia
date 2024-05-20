@@ -479,7 +479,7 @@ class UserController extends Controller
         file_put_contents($archivo_temporal, $json_final);
 
 
-        $ruta_script_python = base_path('resources/py/clustering.py');
+        $ruta_script_python = base_path('resources/py/clustering2.py');
 
         // Ejecutar el script de Python con los datos de script y noticias
         exec("python " . escapeshellarg($ruta_script_python) . " " . escapeshellarg($archivo_temporal) . " " . $id . " 2>&1", $salida, $error);
@@ -498,9 +498,11 @@ class UserController extends Controller
 
         // Elimino el archivo temporal después de usarlo
         unlink($archivo_temporal);
-
+        //dd($salida);
+        $clusters = json_decode($salida[0], true);
+        $ruta = $salida[1];
         // Devuelvo una salida confirmando que todo ha ido bien
-        return view('personal', ['personal' => $personal, 'categorias' => $categorias, 'ruta' => $salida[0]]);
+        return view('personal', ['personal' => $personal, 'categorias' => $categorias, 'clusters' => $clusters, 'ruta'=> $ruta]);
         //return response()->json(['salida' => $salida[0]]);
     }
 

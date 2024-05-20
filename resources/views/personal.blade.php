@@ -151,9 +151,32 @@
             </div>
             <div style="margin-bottom: 155px;"></div>
         @else
-            <div class="text-center mt-4">
-                <h3 class="m-0">Tus noticias agrupadas en bloques automáticos</h3>
-                <img class="img-fluid" src="{{ asset('images/' . $ruta) }}" alt="Mapa de calor generado automáticamente a partir de tus noticias">
+            <div class="d-flex justify-content-center align-items-center mt-4">
+                <div style="max-width: 900px; width: 100%;">
+                    <h3 class="m-3">Tus noticias agrupadas en bloques automáticos</h3>
+                    <ol class="list-group">
+                        @foreach ($clusters as $cluster)
+                        <li class="list-group-item d-flex justify-content-between align-items-start" style="padding: 10px;">
+                            <div class="ms-2 me-auto" style="width: 100%;">
+                                <div class="fw-bold mb-2">Cluster {{ $cluster['cluster'] }}</div>
+                                @foreach ($cluster['noticias'] as $noticia)
+                                    <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/noticia/{{ $noticia['id'] }}">{{ $noticia['titulo'] }}</a>
+                                    <hr class="m-1" style="opacity:0;">
+                                @endforeach
+                            </div>
+                            @if (count($cluster['noticias']) > 1)
+                                <span class="badge text-bg-dark">{{ count($cluster['noticias']) }} noticias</span>
+                            @else
+                                <span class="badge text-bg-dark">{{ count($cluster['noticias']) }} noticia</span>
+                            @endif
+                            
+                        </li>
+                        @endforeach
+                    </ol>
+                </div>
+                <div class="text-center mt-4">
+                    <img class="img-fluid" style="max-width: 550px; height: auto;" src="{{ asset('images/' . $ruta) }}" alt="Mapa de calor generado automáticamente a partir de tus noticias">
+                </div>
             </div>
         @endif
         
