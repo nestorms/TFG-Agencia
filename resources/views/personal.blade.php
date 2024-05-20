@@ -151,9 +151,21 @@
             </div>
             <div style="margin-bottom: 155px;"></div>
         @else
+            <div class="text-center">
+                <h4 class="m-3">Tus noticias agrupadas en bloques automáticos</h4>
+            </div>
+            
+            <div class="d-flex justify-content-center align-items-center mt-4">
+                <div class="text-center mt-4">
+                    <img class="img-fluid" style="max-width: 600px; height: auto;" src="{{ asset('images/' . $ruta) }}" alt="Mapa de puntos dispersos generado automáticamente a partir de tus noticias">
+                </div>
+                <div class="text-center mt-4">
+                    <img class="img-fluid" style="max-width: 600px; height: auto;" src="{{ asset('images/' . $ruta2) }}" alt="Mapa de calor generado automáticamente a partir de tus noticias">
+                </div>
+            </div>
             <div class="d-flex justify-content-center align-items-center mt-4">
                 <div style="max-width: 900px; width: 100%;">
-                    <h3 class="m-3">Tus noticias agrupadas en bloques automáticos</h3>
+                    
                     <ol class="list-group">
                         @foreach ($clusters as $cluster)
                         <li class="list-group-item d-flex justify-content-between align-items-start" style="padding: 10px;">
@@ -173,9 +185,6 @@
                         </li>
                         @endforeach
                     </ol>
-                </div>
-                <div class="text-center mt-4">
-                    <img class="img-fluid" style="max-width: 550px; height: auto;" src="{{ asset('images/' . $ruta) }}" alt="Mapa de calor generado automáticamente a partir de tus noticias">
                 </div>
             </div>
         @endif

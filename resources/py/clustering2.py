@@ -1,7 +1,9 @@
 import sys
 import json
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import MeanShift
+from sklearn.cluster import DBSCAN
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
@@ -37,16 +39,20 @@ for noticia in noticias:
     noticias_dict[noticia['id']] = noticia
 
 # Vectorización del texto
-vectorizer = CountVectorizer()
+vectorizer = TfidfVectorizer()
 
 # Algoritmo Mean-Shift
 msh = MeanShift()
+
+dbscan = DBSCAN(eps=1.05, min_samples=2, metric='euclidean')
+
 
 # Vectorizo los datos para el clustering (todas las noticias del perfil)
 X_train_vectorized = vectorizer.fit_transform(datos_noticias)
 
 # Algoritmo de clustering MeanShift
-clusters = msh.fit_predict(X_train_vectorized.toarray())
+#clusters = msh.fit_predict(X_train_vectorized.toarray())
+clusters = dbscan.fit_predict(X_train_vectorized.toarray())
 
 # Reducir la dimensionalidad a 2D para visualización usando PCA
 pca = PCA(n_components=2)
@@ -71,33 +77,48 @@ for cluster, ids in clusters_dict.items():
 # Imprimir la salida en formato JSON
 print(json.dumps(clusters_json))
 
-# # Calculamos la matriz de conteo entre clusters y categorías
-# heatmap_data = np.zeros((len(np.unique(clusters)), len(np.unique(datos_categorias))))
 
-# for i, cluster in enumerate(np.unique(clusters)):
-#     for j, categoria in enumerate(np.unique(datos_categorias)):
-#         heatmap_data[i, j] = np.sum((clusters == cluster) & (np.array(datos_categorias) == categoria))
 
-# # Creamos el mapa de calor
-# plt.figure(figsize=(10, 6))
-# sns.heatmap(heatmap_data, annot=True, fmt='g', cmap='YlGnBu')
 
-# etiquetas_x = []
-# for i in nombres_categorias:
-#     etiquetas_x.append(nombres_categorias[i])
+#################################################################################################################
 
-# ultimo_elemento = etiquetas_x.pop()  # Guardar y eliminar el último elemento
-# etiquetas_x.insert(0, ultimo_elemento)  # Insertar el último elemento al principio
 
-# plt.xticks(np.arange(len(np.unique(etiquetas_x))) + 0.5, etiquetas_x)
-# plt.xlabel('Categorías')
-# plt.ylabel('Clusters')
-# plt.title('Mapa de Calor: Relación entre Clusters y Categorías')
 
-# plt.savefig('C:\\Users\\Néstor Martínez Sáez\\Desktop\\UNIVERSIDAD\\TFG Agencia\\Proyecto\\agencia-noticias\\public\\images\\heatmap_{}.png'.format(id_usuario))
+#Mapa de calor
+# Calculamos la matriz de conteo entre clusters y categorías
+heatmap_data = np.zeros((len(np.unique(clusters)), len(np.unique(datos_categorias))))
 
-# print('heatmap_{}.png'.format(id_usuario))
+for i, cluster in enumerate(np.unique(clusters)):
+    for j, categoria in enumerate(np.unique(datos_categorias)):
+        heatmap_data[i, j] = np.sum((clusters == cluster) & (np.array(datos_categorias) == categoria))
 
+# Creamos el mapa de calor
+plt.figure(figsize=(10, 6))
+sns.heatmap(heatmap_data, annot=True, fmt='g', cmap='YlGnBu')
+
+etiquetas_x = []
+for i in nombres_categorias:
+    etiquetas_x.append(nombres_categorias[i])
+
+ultimo_elemento = etiquetas_x.pop()  # Guardar y eliminar el último elemento
+etiquetas_x.insert(0, ultimo_elemento)  # Insertar el último elemento al principio
+
+plt.xticks(np.arange(len(np.unique(etiquetas_x))) + 0.5, etiquetas_x)
+plt.xlabel('Categorías')
+plt.ylabel('Clusters')
+plt.title('Mapa de Calor: Relación entre Clusters y Categorías')
+
+plt.savefig('C:\\Users\\Néstor Martínez Sáez\\Desktop\\UNIVERSIDAD\\TFG Agencia\\Proyecto\\agencia-noticias\\public\\images\\heatmap_{}.png'.format(id_usuario))
+
+print('heatmap_{}.png'.format(id_usuario))
+
+
+
+#################################################################################################################
+
+
+
+#Gráfico de dispersión
 # Crear gráfico de dispersión con círculos que indican los clusters
 plt.figure(figsize=(10, 6))
 
@@ -114,8 +135,6 @@ for cluster_id in np.unique(clusters):
     plt.gca().add_patch(circle)
 
 plt.title('Visualización de Clusters de Noticias')
-plt.xlabel('Componente Principal 1')
-plt.ylabel('Componente Principal 2')
 plt.legend()
 plt.grid(True)
 

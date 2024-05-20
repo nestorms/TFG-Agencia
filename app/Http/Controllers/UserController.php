@@ -501,8 +501,9 @@ class UserController extends Controller
         //dd($salida);
         $clusters = json_decode($salida[0], true);
         $ruta = $salida[1];
+        $ruta2= $salida[2];
         // Devuelvo una salida confirmando que todo ha ido bien
-        return view('personal', ['personal' => $personal, 'categorias' => $categorias, 'clusters' => $clusters, 'ruta'=> $ruta]);
+        return view('personal', ['personal' => $personal, 'categorias' => $categorias, 'clusters' => $clusters, 'ruta' => $ruta, 'ruta2' => $ruta2]);
         //return response()->json(['salida' => $salida[0]]);
     }
 
