@@ -19,6 +19,7 @@ use Illuminate\Auth\Events\Login;
 */
 
 Route::view('/','index');
+Route::view('/conocenos','conocenos');
 Route::get('/recomendadas/{id}', [NoticiaController::class,'noticiasRecomendadas']);
 Route::get('/recientes', [NoticiaController::class,'noticiasRecientes']);
 

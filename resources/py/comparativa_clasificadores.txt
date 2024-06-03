@@ -1,152 +1,157 @@
 Resultados para Naive Bayes:
-Accuracy: 0.5000
-F1 Score: 0.5000
-Precision: 0.5000
-Recall: 0.5000
+Accuracy: 0.5556
+F1 Score: 0.5142
+Precision: 0.7852
+Recall: 0.5556
 
-Reporte de Clasificación:
+Reporte de Clasificaciï¿½n:
               precision    recall  f1-score   support
 
-           1       1.00      1.00      1.00         2
-           2       0.00      0.00      0.00         2
-           3       1.00      1.00      1.00         1
-           4       0.00      0.00      0.00         0
-           5       0.00      0.00      0.00         1
+           1       1.00      0.14      0.25         7
+           2       0.67      1.00      0.80         2
+           3       0.40      1.00      0.57         2
+           4       1.00      0.75      0.86         4
+           5       0.33      0.67      0.44         3
 
-    accuracy                           0.50         6
-   macro avg       0.40      0.40      0.40         6
-weighted avg       0.50      0.50      0.50         6
+    accuracy                           0.56        18
+   macro avg       0.68      0.71      0.58        18
+weighted avg       0.79      0.56      0.51        18
 ============================================================
 
 Resultados para Logistic Regression:
-Accuracy: 0.8333
-F1 Score: 0.7778
-Precision: 0.7500
-Recall: 0.8333
+Accuracy: 0.6111
+F1 Score: 0.5639
+Precision: 0.8069
+Recall: 0.6111
 
-Reporte de Clasificación:
+Reporte de Clasificaciï¿½n:
               precision    recall  f1-score   support
 
-           1       1.00      1.00      1.00         2
-           2       1.00      1.00      1.00         2
-           3       0.50      1.00      0.67         1
-           5       0.00      0.00      0.00         1
+           1       1.00      0.14      0.25         7
+           2       0.67      1.00      0.80         2
+           3       0.67      1.00      0.80         2
+           4       1.00      1.00      1.00         4
+           5       0.29      0.67      0.40         3
 
-    accuracy                           0.83         6
-   macro avg       0.62      0.75      0.67         6
-weighted avg       0.75      0.83      0.78         6
+    accuracy                           0.61        18
+   macro avg       0.72      0.76      0.65        18
+weighted avg       0.81      0.61      0.56        18
 ============================================================
 
 Resultados para SVM:
-Accuracy: 0.8333
-F1 Score: 0.7778
-Precision: 0.7500
-Recall: 0.8333
+Accuracy: 0.7778
+F1 Score: 0.7781
+Precision: 0.8426
+Recall: 0.7778
 
-Reporte de Clasificación:
+Reporte de Clasificaciï¿½n:
               precision    recall  f1-score   support
 
-           1       1.00      1.00      1.00         2
-           2       1.00      1.00      1.00         2
-           3       0.50      1.00      0.67         1
-           5       0.00      0.00      0.00         1
+           1       1.00      0.57      0.73         7
+           2       0.67      1.00      0.80         2
+           3       0.67      1.00      0.80         2
+           4       1.00      1.00      1.00         4
+           5       0.50      0.67      0.57         3
 
-    accuracy                           0.83         6
-   macro avg       0.62      0.75      0.67         6
-weighted avg       0.75      0.83      0.78         6
+    accuracy                           0.78        18
+   macro avg       0.77      0.85      0.78        18
+weighted avg       0.84      0.78      0.78        18
 ============================================================
 
 Resultados para Random Forest:
-Accuracy: 0.8333
-F1 Score: 0.7778
-Precision: 0.7500
-Recall: 0.8333
+Accuracy: 0.7778
+F1 Score: 0.7886
+Precision: 0.8519
+Recall: 0.7778
 
-Reporte de Clasificación:
+Reporte de Clasificaciï¿½n:
               precision    recall  f1-score   support
 
-           1       1.00      1.00      1.00         2
-           2       1.00      1.00      1.00         2
-           3       0.50      1.00      0.67         1
-           5       0.00      0.00      0.00         1
+           1       1.00      0.71      0.83         7
+           2       0.67      1.00      0.80         2
+           3       0.50      1.00      0.67         2
+           4       1.00      0.75      0.86         4
+           5       0.67      0.67      0.67         3
 
-    accuracy                           0.83         6
-   macro avg       0.62      0.75      0.67         6
-weighted avg       0.75      0.83      0.78         6
+    accuracy                           0.78        18
+   macro avg       0.77      0.83      0.76        18
+weighted avg       0.85      0.78      0.79        18
 ============================================================
 
 Resultados para Gradient Boosting:
-Accuracy: 1.0000
-F1 Score: 1.0000
-Precision: 1.0000
-Recall: 1.0000
+Accuracy: 0.8333
+F1 Score: 0.8349
+Precision: 0.8519
+Recall: 0.8333
 
-Reporte de Clasificación:
+Reporte de Clasificaciï¿½n:
               precision    recall  f1-score   support
 
-           1       1.00      1.00      1.00         2
-           2       1.00      1.00      1.00         2
-           3       1.00      1.00      1.00         1
-           5       1.00      1.00      1.00         1
+           1       0.86      0.86      0.86         7
+           2       0.67      1.00      0.80         2
+           3       1.00      1.00      1.00         2
+           4       1.00      0.75      0.86         4
+           5       0.67      0.67      0.67         3
 
-    accuracy                           1.00         6
-   macro avg       1.00      1.00      1.00         6
-weighted avg       1.00      1.00      1.00         6
+    accuracy                           0.83        18
+   macro avg       0.84      0.85      0.84        18
+weighted avg       0.85      0.83      0.83        18
 ============================================================
 
 Resultados para Neural Network:
-Accuracy: 0.6667
-F1 Score: 0.6389
-Precision: 0.7222
-Recall: 0.6667
+Accuracy: 0.7778
+F1 Score: 0.7791
+Precision: 0.8796
+Recall: 0.7778
 
-Reporte de Clasificación:
+Reporte de Clasificaciï¿½n:
               precision    recall  f1-score   support
 
-           1       1.00      0.50      0.67         2
-           2       1.00      1.00      1.00         2
-           3       0.33      1.00      0.50         1
-           5       0.00      0.00      0.00         1
+           1       1.00      0.57      0.73         7
+           2       1.00      0.50      0.67         2
+           3       0.67      1.00      0.80         2
+           4       1.00      1.00      1.00         4
+           5       0.50      1.00      0.67         3
 
-    accuracy                           0.67         6
-   macro avg       0.58      0.62      0.54         6
-weighted avg       0.72      0.67      0.64         6
+    accuracy                           0.78        18
+   macro avg       0.83      0.81      0.77        18
+weighted avg       0.88      0.78      0.78        18
 ============================================================
 
 Comparativa de Resultados:
 Naive Bayes:
-  accuracy: 0.5000
-  f1_score: 0.5000
-  precision: 0.5000
-  recall: 0.5000
+  accuracy: 0.5556
+  f1_score: 0.5142
+  precision: 0.7852
+  recall: 0.5556
 
 Logistic Regression:
-  accuracy: 0.8333
-  f1_score: 0.7778
-  precision: 0.7500
-  recall: 0.8333
+  accuracy: 0.6111
+  f1_score: 0.5639
+  precision: 0.8069
+  recall: 0.6111
 
 SVM:
-  accuracy: 0.8333
-  f1_score: 0.7778
-  precision: 0.7500
-  recall: 0.8333
+  accuracy: 0.7778
+  f1_score: 0.7781
+  precision: 0.8426
+  recall: 0.7778
 
 Random Forest:
-  accuracy: 0.8333
-  f1_score: 0.7778
-  precision: 0.7500
-  recall: 0.8333
+  accuracy: 0.7778
+  f1_score: 0.7886
+  precision: 0.8519
+  recall: 0.7778
 
 Gradient Boosting:
-  accuracy: 1.0000
-  f1_score: 1.0000
-  precision: 1.0000
-  recall: 1.0000
+  accuracy: 0.8333
+  f1_score: 0.8349
+  precision: 0.8519
+  recall: 0.8333
 
 Neural Network:
-  accuracy: 0.6667
-  f1_score: 0.6389
-  precision: 0.7222
-  recall: 0.6667
+  accuracy: 0.7778
+  f1_score: 0.7791
+  precision: 0.8796
+  recall: 0.7778
 

@@ -187,7 +187,7 @@
                 <a class="nav-link" href="/categorias">CATEGORÍAS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">CONÓCENOS</a>
+                <a class="nav-link" href="/conocenos">CONÓCENOS</a>
             </li>
         </ul>
     </nav>
@@ -200,7 +200,7 @@
 
         
         <footer class="d-flex flex-wrap justify-content-between align-items-center p-3 border-top border-black m-0">
-            <p class="col-md-4 mb-0 text-body-secondary">&copy; 2024 Newstor, Inc</p>
+            <p class="col-md-4 mb-0 text-body-secondary">&copy; 2024 - Néstor Martínez Sáez</p>
         
             <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <img src="{{ asset('images/logo.png') }}" alt="Newstor Logo" style="width: auto; height: 3rem;">
