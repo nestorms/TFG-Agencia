@@ -25,6 +25,8 @@
                 <button type="button" class="btn btn-dark rounded w-75" onclick="showRedactores()">Redactores</button>
                 <button type="button" class="btn btn-dark rounded w-75" onclick="showCategorias()">Categorías</button>
                 <button type="button" class="btn btn-dark rounded w-75" onclick="showComentarios()">Comentarios</button>
+                <button type="button" class="btn btn-dark rounded w-75" onclick="showComentarios()">Mensajes</button>
+                <button type="button" class="btn btn-dark rounded w-75" onclick="showComentarios()">Notificaciones</button>
             </div>
         </div>
         <div class="col-md-9">

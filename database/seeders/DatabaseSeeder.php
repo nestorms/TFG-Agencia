@@ -76,14 +76,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'nombre' => 'Migue',
-            'email' => 'migue@ex.com',
-            'password' => 'migue1234',
+            'nombre' => 'Néstor',
+            'email' => 'nestor@example.com',
+            'password' => 'nestor1234',
             'rol' => 'medio',
-            'apellidos' => 'Rosado García',
-            'empresa' => 'Princess',
+            'apellidos' => 'Martínez Sáez',
+            'empresa' => 'Relevo',
             'telefono' => '675433628',
-            'enlace' => 'noticiasprincesa.com',
+            'enlace' => 'relevo.com',
             
         ]);
 
@@ -239,7 +239,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'laliga,futbol,copa,rey',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -262,7 +262,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'laliga,futbol,granada,descenso',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -284,7 +284,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'futbol,deporte,baloncesto,tenis,partido,entrenador',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -317,7 +317,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'futbol,deporte,baloncesto,tenis,partido,entrenador',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -361,7 +361,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'futbol,deporte,baloncesto,tenis,partido,entrenador',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -384,7 +384,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>1,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -407,7 +407,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>1,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -429,7 +429,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>1,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -450,7 +450,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>1,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -470,7 +470,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>1,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -490,7 +490,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>3,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -508,7 +508,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>3,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -526,7 +526,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>3,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -544,7 +544,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>3,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -561,7 +561,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>3,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -585,7 +585,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'arte,historia,cultura,artista',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>4,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -605,7 +605,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'arte,historia,cultura,artista',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>4,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -624,7 +624,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'arte,historia,cultura,artista',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>4,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -642,7 +642,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'arte,historia,cultura,artista',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>4,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -659,7 +659,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'arte,historia,cultura,artista',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>4,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -684,7 +684,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -702,7 +702,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -720,7 +720,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -738,7 +738,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -756,7 +756,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -790,7 +790,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'futbol,deporte,baloncesto,tenis,partido,entrenador',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -811,7 +811,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'futbol,deporte,baloncesto,tenis,partido,entrenador',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -829,7 +829,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'futbol,baloncesto,tenis,partido',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -847,7 +847,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'futbol,baloncesto,tenis,partido',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -866,7 +866,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'futbol,baloncesto,tenis,partido',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -882,11 +882,11 @@ class DatabaseSeeder extends Seeder
             Además, han tenido fallos en todos los circuitos. En Bahrein, en la vuelta 30, Valtteri Bottas tuvo un pit stop de 52,44 segundos, ya que no conseguían quitar una de las ruedas. El mismo error les ocurrió en Jeddah, pero esa vez con Guanyu Zhou, que tuvo que estar en el pit lane 28,71 segundos.
             En Melbourne, ya no quisieron hacer diferencias y tuvieron errores con ambos pilotos, confirmando que el equipo tiene problemas en general, que debe mejorar si quieren tener opciones a liderar esa zona baja de la tabla. Bottas tuvo una parada de 31,18 segundos y el chino de 20,20. Todos estos errores hacen que la escudería, que será Audi en 2026, tenga una media superior al tiempo de media de paradas con cambios de alerón.',
             'foto' => 'images/sauber.jpg',
-            'likes' => random_int(10,150),
+            'likes' => 200,
             'guardados' => random_int(10,150),
             'palabras_clave' => 'futbol,baloncesto,tenis,partido',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>2,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -915,7 +915,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>1,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -932,7 +932,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>1,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -949,7 +949,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>1,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -963,11 +963,11 @@ class DatabaseSeeder extends Seeder
             En respuesta a las nuevas regulaciones fiscales, muchos inversores y comerciantes de criptomonedas están adoptando medidas para cumplir con las obligaciones fiscales y mitigar los riesgos asociados con la inversión en activos digitales. Esto incluye la realización de auditorías fiscales internas, la declaración adecuada de las ganancias y pérdidas de criptomonedas en las declaraciones de impuestos, y la búsqueda de asesoramiento profesional para comprender y cumplir con las regulaciones fiscales aplicables en sus jurisdicciones.
             En resumen, las nuevas regulaciones fiscales están remodelando el panorama del mercado de criptomonedas y están generando desafíos y oportunidades para los inversores y comerciantes en este espacio. A medida que los países continúan desarrollando y ajustando sus marcos regulatorios, se espera que el mercado de criptomonedas evolucione para adaptarse a un entorno regulatorio cambiante y maduro.',
             'foto' => 'images/fiscal.jpg',
-            'likes' => random_int(10,150),
+            'likes' => 200,
             'guardados' => random_int(10,150),
             'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>1,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -985,7 +985,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>1,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1004,7 +1004,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'economia,pib,bitcoin,global,inflacion',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>1,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1031,7 +1031,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>3,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1049,7 +1049,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>3,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1063,11 +1063,11 @@ class DatabaseSeeder extends Seeder
             En el ámbito empresarial, el despliegue de redes 5G está abriendo nuevas oportunidades para la transformación digital y la innovación en los negocios. Desde la automatización de procesos industriales hasta la telemedicina y el comercio electrónico, el 5G está permitiendo a las empresas mejorar su eficiencia operativa, expandir su alcance global y ofrecer nuevos productos y servicios a sus clientes.
             En resumen, el avance de la tecnología 5G en España está impulsando la conectividad y la innovación en todos los ámbitos de la sociedad, desde el hogar hasta la empresa. Con su capacidad para ofrecer velocidades de conexión ultrarrápidas y baja latencia, el 5G está sentando las bases para un futuro digital más avanzado, conectado y colaborativo.',
             'foto' => 'images/5g.jpeg',
-            'likes' => random_int(10,150),
+            'likes' => 200,
             'guardados' => random_int(10,150),
             'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>3,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1085,7 +1085,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>3,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1103,7 +1103,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>3,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1121,7 +1121,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'tecnologia,ia,informatica,avances,bigdata',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>3,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1146,7 +1146,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'arte,historia,cultura,artista',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>4,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1164,7 +1164,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'arte,historia,cultura,artista',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>4,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1182,7 +1182,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'arte,historia,cultura,artista',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>4,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1200,7 +1200,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'arte,historia,cultura,artista',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>4,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1218,7 +1218,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'arte,historia,cultura,artista',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>4,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1236,7 +1236,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'arte,historia,cultura,artista',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>4,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1264,7 +1264,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1281,7 +1281,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1298,7 +1298,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1315,7 +1315,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1333,7 +1333,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1352,7 +1352,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1369,7 +1369,7 @@ class DatabaseSeeder extends Seeder
             'guardados' => random_int(10,150),
             'palabras_clave' => 'politica,gobierno,estado,leyes',
             'hora' => date('H:i:s', mt_rand(strtotime('00:00:00'), strtotime('23:59:59'))),
-            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-01-01'), strtotime('2024-07-1'))),
+            'fecha' => date('Y-m-d', mt_rand(strtotime('2024-06-01'), strtotime('2024-06-04'))),
             'categoria_id'=>5,
             'redactor_id' => User::where('rol', 'redactor')->get()->random()->id,
         ]);
@@ -1390,20 +1390,27 @@ class DatabaseSeeder extends Seeder
         /**********************   COMENTARIOS   ************************* */
 
         Comment::create([
-            'contenido' => 'El mejor partido que he visto en mucho tiempo, me ha encantado. Que grande es Berenguer, aupa athletic ostia, el de Bilbao, no el otro.',
+            'contenido' => 'Muy buena redacción y rápida publicación. Enhorabuena!.',
             'valoracion' => 5,
             'fecha' => date('Y-m-d'),
             'medio' => $usuarioMedio->nombre . ' ' .$usuarioMedio->apellidos,
             'noticia_id' => 1,
         ]);
-
         Comment::create([
+            'contenido' => 'Sin entrar en detalle pero con información detallada, me ha gustado',
+            'valoracion' => 4,
+            'fecha' => date('Y-m-d'),
+            'medio' => $usuarioMedio->nombre . ' ' .$usuarioMedio->apellidos,
+            'noticia_id' => 1,
+        ]);
+
+        /*Comment::create([
             'contenido' => 'Basura de partido, el atleti esta muy muy mal. Cholo fuer YA!',
             'valoracion' => 3,
             'fecha' => date('Y-m-d'),
             'medio' => $usuarioMedio->nombre . ' ' .$usuarioMedio->apellidos,
             'noticia_id' => 1,
-        ]);
+        ]);*/
 
 
 
@@ -1517,6 +1524,46 @@ class DatabaseSeeder extends Seeder
         UserNoticia::create([
             'user_id' => 6,
             'noticia_id' => 14,
+            'recomendada' => false,
+        ]);
+        UserNoticia::create([
+            'user_id' => 6,
+            'noticia_id' => 16,
+            'recomendada' => false,
+        ]);
+        UserNoticia::create([
+            'user_id' => 6,
+            'noticia_id' => 20,
+            'recomendada' => false,
+        ]);
+        UserNoticia::create([
+            'user_id' => 6,
+            'noticia_id' => 18,
+            'recomendada' => false,
+        ]);
+        UserNoticia::create([
+            'user_id' => 6,
+            'noticia_id' => 17,
+            'recomendada' => false,
+        ]);
+        UserNoticia::create([
+            'user_id' => 6,
+            'noticia_id' => 30,
+            'recomendada' => false,
+        ]);
+        UserNoticia::create([
+            'user_id' => 6,
+            'noticia_id' => 31,
+            'recomendada' => false,
+        ]);
+        UserNoticia::create([
+            'user_id' => 6,
+            'noticia_id' => 38,
+            'recomendada' => false,
+        ]); 
+        UserNoticia::create([
+            'user_id' => 6,
+            'noticia_id' => 39,
             'recomendada' => false,
         ]);
 

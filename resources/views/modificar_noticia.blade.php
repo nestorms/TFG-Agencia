@@ -41,8 +41,10 @@
             
             <div class="box desplegable">
                 <label for="opciones" class="form-label">Categoría</label>
+                <button type="button" onclick="clasificar()" id="btnSeleccionAutomatica" class="btn btn-success btn-sm mx-1">Seleccionar automáticamente</button>
+                <span class="icon-help" data-bs-toggle="tooltip" data-bs-placement="right" title="Clasifica tu noticia mediante machine learning con esta función"><i class="bi bi-question-circle"></i></span>
                 <select id="opciones" class="form-select mb-3" name="categoria">
-                    <option value="{{$categoria->id}}" selected>{{$noticia->category->nombre}}</option>
+                    <option value="{{$noticia->category->id}}" selected>{{$noticia->category->nombre}}</option>
 
                     @foreach ($categorias as $categoria)
                         <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
