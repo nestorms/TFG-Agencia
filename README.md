@@ -76,7 +76,7 @@ Las contribuciones son bienvenidas. Por favor, sigue los siguientes pasos para c
 
 ## Licencia
 
-Este proyecto está licenciado bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto está licenciado bajo la Licencia GPL-3.0. Ver el archivo [LICENSE](LICENSE) para más detalles.
 
 ## Contacto
 
