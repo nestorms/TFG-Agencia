@@ -1,68 +1,87 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Agencia de Noticias - Aplicación Web
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descripción del Proyecto
 
-## About Laravel
+Este proyecto es una aplicación web desarrollada como trabajo de fin de grado, destinada a la gestión de una agencia de noticias. La aplicación está diseñada para atender las necesidades de tres tipos de usuarios: medios de comunicación, redactores y administradores.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Funcionalidades Principales
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Usuarios
+1. **Redactores**: Publican noticias que son visibles para todos los usuarios de la web.
+2. **Medios de Comunicación**: Tienen la opción de guardar las noticias publicadas por los redactores en su sección personal para publicarlas en sus propias páginas.
+3. **Administradores**: Gestionan todas las entidades de la agencia, incluyendo la creación, modificación y eliminación de noticias, usuarios y otros recursos.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Publicación y Gestión de Noticias
+- **Publicación de Noticias**: Los redactores pueden escribir y publicar noticias, las cuales son visibles para todos los usuarios.
+- **Descarga de Noticias**: Las noticias pueden ser descargadas en formatos PDF o JSON.
+- **Mensajes Internos**: Comunicación interna entre redactores y medios de comunicación.
 
-## Learning Laravel
+### Sistema de Recomendación
+- **Recomendación Automática**: Utiliza Elasticsearch para recomendar noticias a los medios de comunicación basándose en las noticias que ya han guardado.
+- **Notificaciones**: Los medios son notificados automáticamente cuando hay una nueva noticia recomendada.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Clasificación Automática de Noticias
+- **Clasificador de Machine Learning**: Los redactores pueden utilizar un modelo de machine learning para clasificar automáticamente las noticias en categorías adecuadas.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Filtrado y Clustering
+- **Filtrado de Noticias**: Los medios pueden filtrar noticias por categorías, fecha, más guardados, etc.
+- **Clustering de Noticias**: Utiliza algoritmos de clustering para agrupar noticias y mostrar un mapa de calor, facilitando la visualización de los diferentes bloques de noticias seleccionadas.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Otras Funcionalidades
+- **CRUD Básico**: Funcionalidades básicas de creación, lectura, actualización y eliminación para todas las entidades de la agencia.
+- **Comentarios**: Los medios pueden hacer comentarios en las noticias.
+- **Buscador**: Filtrado de noticias por texto.
+- **Notificaciones**: Recibe notificaciones en base a las noticias recomendadas.
+- **Descarga de noticias**: Posibilidad de descargar las noticias en formato PDF y JSON.
 
-## Laravel Sponsors
+## Motivación
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+La motivación detrás de este proyecto es mejorar la gestión y distribución de noticias en una agencia, proporcionando herramientas avanzadas de recomendación, clasificación y filtrado que faciliten el trabajo de los medios de comunicación y los redactores. Además, busca aprovechar técnicas de machine learning y clustering para optimizar y personalizar la experiencia del usuario.
 
-### Premium Partners
+## Objetivos
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. **Facilitar la Gestión de Noticias**: Proveer una plataforma eficiente para que los redactores publiquen y gestionen noticias.
+2. **Mejorar la Distribución de Contenidos**: Ayudar a los medios de comunicación a encontrar y distribuir las noticias de manera más efectiva.
+3. **Automatización e Inteligencia**: Utilizar machine learning y técnicas avanzadas para clasificar y recomendar noticias, mejorando la personalización y relevancia de los contenidos.
+4. **Interacción y Colaboración**: Fomentar la comunicación y colaboración entre redactores y medios de comunicación a través de mensajes y comentarios.
+5. **Visualización Avanzada**: Implementar herramientas de visualización, como mapas de calor, para una mejor comprensión y análisis de las noticias.
 
-## Contributing
+## Tecnologías Utilizadas
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Frontend**: [Tecnologías usadas para el frontend, en este caso HTML, CSS y JavaScript]
+- **Backend**: [Tecnologías usadas para el backend, se ha utilizado el framework PHP Laravel]
+- **Base de Datos**: [Tecnologías usadas para la base de datos, en este caso MySQL]
+- **Machine Learning**: [Librerías y herramientas de machine learning, como Scikit-learn, numpy etc.]
+- **Elasticsearch**: Para el sistema de recomendación y búsqueda avanzada.
+- **Herramientas de Clustering**: [Librerías y herramientas usadas para clustering, como SciPy, etc.]
 
-## Code of Conduct
+## Contribuciones
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Las contribuciones son bienvenidas. Por favor, sigue los siguientes pasos para contribuir:
 
-## Security Vulnerabilities
+1. **Fork el repositorio**.
+2. **Crear una nueva rama**:
+    ```bash
+    git checkout -b feature-nueva-funcionalidad
+    ```
+3. **Realizar los cambios y commitear**:
+    ```bash
+    git commit -m "Añadida nueva funcionalidad"
+    ```
+4. **Hacer push a la rama**:
+    ```bash
+    git push origin feature-nueva-funcionalidad
+    ```
+5. **Crear un Pull Request**.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Licencia
 
-## License
+Este proyecto está licenciado bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Contacto
 
+Para preguntas o soporte, por favor contacta a [nestormartinez@correo.ugr.es](mailto:nestormartinez@correo.ugr.es).
+
+---
+
+¡Gracias por usar mi aplicación de gestión de noticias!
